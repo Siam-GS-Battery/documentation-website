@@ -34,6 +34,60 @@ function HomepageHeader() {
   );
 }
 
+function CategoryCards() {
+  const categories = [
+    {
+      title: 'IT Management',
+      description: 'Documentation and best practices for IT management',
+      link: '/docs/Itmanagement/intro',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=200&fit=crop&crop=center'
+    },
+    {
+      title: 'IT Development',
+      description: 'Documentation and best practices for IT development',
+      link: '/docs/Itdevelopment/intro',
+      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop&crop=center'
+    },
+    {
+      title: 'Data Management',
+      description: 'Documentation and best practices for data management',
+      link: '/docs/Datamanagement/intro',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center'
+    }
+  ];
+
+  return (
+    <section className={styles.categorySection}>
+      <div className="container">
+        <div className="row">
+          {categories.map((category, idx) => (
+            <div key={idx} className="col col--4 margin-bottom--lg">
+              <div className={styles.categoryCard}>
+                <div className={styles.categoryIcon}>
+                  <img 
+                    src={category.image} 
+                    alt={category.title}
+                  />
+                </div>
+                <div className={styles.categoryContent}>
+                  <h3>{category.title}</h3>
+                  <p>{category.description}</p>
+                  <Link
+                    className="button button--outline button--primary"
+                    to={category.link}
+                  >
+                    View Documentation
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function TeamMembers() {
   const members = [
     {
@@ -121,12 +175,13 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title} - แผนกเทคโนโลยีสารสนเทศ`}
-      description="เว็บไซต์เอกสารและความรู้ด้านเทคโนโลยีสารสนเทศ">
+      title={`Documentation - IT & Data Management`}
+      description="IT & Data Management">
       <HomepageHeader />
       <main>
         {/* <HomepageFeatures /> */}
         {/* <TeamMembers /> */}
+        <CategoryCards />
       </main>
     </Layout>
   );
