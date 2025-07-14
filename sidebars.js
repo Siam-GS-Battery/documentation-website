@@ -35,7 +35,7 @@ const sidebars = {
       type: 'category',
       label: 'Tech Stack',
       items: [
-        'techstack/asana',
+        'techstack/as',
       ],
     },
   ],
@@ -60,7 +60,7 @@ const sidebars = {
       label: 'Projects',
       link: {
         type: 'generated-index',
-        description: 'Documents and best practices for IT development in the IT & Data Management'
+        description: 'Documents and best practices for IT development in the IT & Data Management moew'
       },
       items: [
         'Itdevelopment/Projecttest',
