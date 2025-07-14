@@ -33,10 +33,9 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Tutorial Extras',
+      label: 'Tech Stack',
       items: [
-        'tutorial-extras/manage-docs-versions',
-        'tutorial-extras/translate-your-site',
+        'techstack/asana',
       ],
     },
   ],
@@ -64,17 +63,7 @@ const sidebars = {
         description: 'Documents and best practices for IT development in the IT & Data Management'
       },
       items: [
-        {
-          type: 'category',
-          label: 'Software Development Project',
-          link: {
-            type: 'generated-index',
-            description: 'Resources and documentation for Customer Data Platform projects'
-          },
-          items: [
-            'Itdevelopment/Projecttest',
-          ],
-        },
+        'Itdevelopment/Projecttest',
       ],
     },
   ],
