@@ -1,45 +1,246 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from '@docusaurus/router';
 import clsx from 'clsx';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import './SearchBox.css';
-
-// ข้อมูลเอกสารทั้งหมดในเว็บไซต์
-const allDocs = [
-  // Tutorial Sidebar
-  { title: 'Welcome', path: '/docs/intro', category: 'Documentation' },
-  { title: 'Create a Document', path: '/docs/tutorial-basics/create-a-document', category: 'Documentation > Tutorial Basics' },
-  { title: 'Create a Blog Post', path: '/docs/tutorial-basics/create-a-blog-post', category: 'Documentation > Tutorial Basics' },
-  { title: 'Markdown Features', path: '/docs/tutorial-basics/markdown-features', category: 'Documentation > Tutorial Basics' },
-  { title: 'Deploy your site', path: '/docs/tutorial-basics/deploy-your-site', category: 'Documentation > Tutorial Basics' },
-  { title: 'Create a Page', path: '/docs/tutorial-basics/create-a-page', category: 'Documentation > Tutorial Basics' },
-  { title: 'Congratulations', path: '/docs/tutorial-basics/congratulations', category: 'Documentation > Tutorial Basics' },
-  { title: 'Manage Docs Versions', path: '/docs/tutorial-extras/manage-docs-versions', category: 'Documentation > Tutorial Extras' },
-  { title: 'Translate your site', path: '/docs/tutorial-extras/translate-your-site', category: 'Documentation > Tutorial Extras' },
-  
-  // IT Management Sidebar
-  { title: 'IT Management Introduction', path: '/docs/Itmanagement/intro', category: 'IT Management' },
-  { title: 'How to use Asana', path: '/docs/Itmanagement/HowtouseAsana', category: 'IT Management > Projects' },
-  
-  // IT Development Sidebar
-  { title: 'IT Development Introduction', path: '/docs/Itdevelopment/intro', category: 'IT Development' },
-  { title: 'Project Test', path: '/docs/Itdevelopment/Projecttest', category: 'IT Development > Projects > Software Development Project' },
-  
-  // Data Management Sidebar
-  { title: 'Data Management Introduction', path: '/docs/Datamanagement/intro', category: 'Data Management' },
-  { title: 'Project Test', path: '/docs/Datamanagement/projecttest', category: 'Data Management > Projects > Customer Data Platform' },
-];
 
 export default function SearchBox() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [allDocs, setAllDocs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const searchRef = useRef(null);
   const history = useHistory();
+  const { siteConfig } = useDocusaurusContext();
+
+  // ฟังก์ชันสำหรับดึงข้อมูลเอกสารทั้งหมดจาก Docusaurus sidebars
+  const fetchAllDocs = async () => {
+    try {
+      // ใช้ Docusaurus context เพื่อเข้าถึงข้อมูล sidebars
+      const { pluginContentDocs } = siteConfig;
+      if (pluginContentDocs && pluginContentDocs.sidebars) {
+        const docs = [];
+        
+        // วนลูปผ่าน sidebars ทั้งหมด
+        Object.entries(pluginContentDocs.sidebars).forEach(([sidebarName, sidebarItems]) => {
+          processSidebarItems(sidebarItems, docs, sidebarName);
+        });
+        
+        setAllDocs(docs);
+      } else {
+        // Fallback: ใช้ข้อมูลจาก sidebars configuration ที่ hardcode
+        await fetchDocsFromSidebarsConfig();
+      }
+    } catch (error) {
+      console.warn('Failed to fetch docs from siteConfig, using fallback method:', error);
+      // Fallback: ใช้ข้อมูลจาก sidebars configuration ที่ hardcode
+      await fetchDocsFromSidebarsConfig();
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Fallback method: ดึงข้อมูลจาก sidebars configuration ที่ hardcode
+  const fetchDocsFromSidebarsConfig = async () => {
+    try {
+      // พยายามดึงข้อมูลจาก sidebars.js ไฟล์จริง
+      const response = await fetch('/sidebars.js');
+      if (response.ok) {
+        const sidebarsText = await response.text();
+        // แปลง sidebars configuration เป็น object
+        const sidebarsConfig = parseSidebarsConfig(sidebarsText);
+        
+        if (sidebarsConfig) {
+          const docs = [];
+          
+          // วนลูปผ่าน sidebars ทั้งหมด
+          Object.entries(sidebarsConfig).forEach(([sidebarName, sidebarItems]) => {
+            processSidebarItems(sidebarItems, docs, sidebarName);
+          });
+          
+          setAllDocs(docs);
+          return;
+        }
+      }
+      
+      // Fallback: ใช้ข้อมูลจาก sidebars configuration ที่ hardcode
+      await fetchDocsFromHardcodedConfig();
+    } catch (error) {
+      console.warn('Failed to fetch sidebars.js, using hardcoded config:', error);
+      // Fallback: ใช้ข้อมูลจาก sidebars configuration ที่ hardcode
+      await fetchDocsFromHardcodedConfig();
+    }
+  };
+
+  // ฟังก์ชันสำหรับแปลง sidebars.js text เป็น object
+  const parseSidebarsConfig = (sidebarsText) => {
+    try {
+      // ลบ comments และ export statement
+      const cleanText = sidebarsText
+        .replace(/\/\*[\s\S]*?\*\//g, '') // ลบ /* comments */
+        .replace(/\/\/.*$/gm, '') // ลบ // comments
+        .replace(/export default sidebars;/, '')
+        .replace(/const sidebars = /, '')
+        .replace(/;?\s*$/, '');
+      
+      // แปลงเป็น object
+      return eval(`(${cleanText})`);
+    } catch (error) {
+      console.error('Failed to parse sidebars config:', error);
+      return null;
+    }
+  };
+
+  // Fallback method: ใช้ข้อมูลจาก sidebars configuration ที่ hardcode
+  const fetchDocsFromHardcodedConfig = async () => {
+    try {
+      // ใช้ข้อมูลจาก sidebars.js ที่เราเห็น
+      const sidebarsConfig = {
+        tutorialSidebar: [
+          'intro',
+          {
+            type: 'category',
+            label: 'Tutorial Basics',
+            items: [
+              'tutorial-basics/create-a-document',
+              'tutorial-basics/create-a-blog-post',
+              'tutorial-basics/markdown-features',
+              'tutorial-basics/deploy-your-site',
+              'tutorial-basics/create-a-page',
+              'tutorial-basics/congratulations',
+            ],
+          },
+          {
+            type: 'category',
+            label: 'Tech Stack',
+            items: [
+              'techstack/asana',
+            ],
+          },
+        ],
+        ITmanagementSidebar: [
+          'Itmanagement/intro',
+          {
+            type: 'category',
+            label: 'Projects',
+            items: [
+              'Itmanagement/HowtouseAsana',
+            ],
+          },
+        ],
+        ITdevelopmentSidebar: [
+          'Itdevelopment/intro',
+          {
+            type: 'category',
+            label: 'Projects',
+            items: [
+              'Itdevelopment/E-Commerce Management System',
+            ],
+          },
+        ],
+        DataManagementSidebar: [
+          'Datamanagement/intro',
+          {
+            type: 'category',
+            label: 'Projects',
+            items: [
+              {
+                type: 'category',
+                label: 'Customer Data Platform',
+                items: [
+                  'Datamanagement/Customer Data Platform',
+                ],
+              },
+            ],
+          },
+        ],
+      };
+
+      const docs = [];
+      
+      // วนลูปผ่าน sidebars ทั้งหมด
+      Object.entries(sidebarsConfig).forEach(([sidebarName, sidebarItems]) => {
+        processSidebarItems(sidebarItems, docs, sidebarName);
+      });
+      
+      setAllDocs(docs);
+    } catch (error) {
+      console.error('Failed to fetch docs from hardcoded config:', error);
+      // ใช้ข้อมูล default ถ้าไม่สามารถดึงข้อมูลได้
+      setAllDocs(getDefaultDocs());
+    }
+  };
+
+  // ฟังก์ชันสำหรับประมวลผล sidebar items
+  const processSidebarItems = (items, docs, category) => {
+    items.forEach(item => {
+      if (typeof item === 'string') {
+        // เป็น document ID
+        docs.push({
+          title: formatTitle(item),
+          path: `/docs/${item}`,
+          category: formatCategory(category)
+        });
+      } else if (item.type === 'category') {
+        // เป็น category
+        const subCategory = `${formatCategory(category)} > ${item.label}`;
+        if (item.items) {
+          processSidebarItems(item.items, docs, subCategory);
+        }
+      }
+    });
+  };
+
+  // ฟังก์ชันสำหรับจัดรูปแบบ title
+  const formatTitle = (id) => {
+    return id
+      .split('/')
+      .pop()
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  // ฟังก์ชันสำหรับจัดรูปแบบ category
+  const formatCategory = (category) => {
+    const categoryMap = {
+      'tutorialSidebar': 'Documentation',
+      'ITmanagementSidebar': 'IT Management',
+      'ITdevelopmentSidebar': 'IT Development',
+      'DataManagementSidebar': 'Data Management'
+    };
+    return categoryMap[category] || category;
+  };
+
+  // ข้อมูล default ถ้าไม่สามารถดึงข้อมูลได้
+  const getDefaultDocs = () => [
+    { title: 'Welcome', path: '/docs/intro', category: 'Documentation' },
+    { title: 'Create a Document', path: '/docs/tutorial-basics/create-a-document', category: 'Documentation > Tutorial Basics' },
+    { title: 'Create a Blog Post', path: '/docs/tutorial-basics/create-a-blog-post', category: 'Documentation > Tutorial Basics' },
+    { title: 'Markdown Features', path: '/docs/tutorial-basics/markdown-features', category: 'Documentation > Tutorial Basics' },
+    { title: 'Deploy your site', path: '/docs/tutorial-basics/deploy-your-site', category: 'Documentation > Tutorial Basics' },
+    { title: 'Create a Page', path: '/docs/tutorial-basics/create-a-page', category: 'Documentation > Tutorial Basics' },
+    { title: 'Congratulations', path: '/docs/tutorial-basics/congratulations', category: 'Documentation > Tutorial Basics' },
+    { title: 'Manage Docs Versions', path: '/docs/tutorial-extras/manage-docs-versions', category: 'Documentation > Tutorial Extras' },
+    { title: 'Translate your site', path: '/docs/tutorial-extras/translate-your-site', category: 'Documentation > Tutorial Extras' },
+    { title: 'IT Management Introduction', path: '/docs/Itmanagement/intro', category: 'IT Management' },
+    { title: 'How to use Asana', path: '/docs/Itmanagement/HowtouseAsana', category: 'IT Management > Projects' },
+    { title: 'IT Development Introduction', path: '/docs/Itdevelopment/intro', category: 'IT Development' },
+    { title: 'E-Commerce Management System', path: '/docs/Itdevelopment/E-Commerce Management System', category: 'IT Development > Projects' },
+    { title: 'Data Management Introduction', path: '/docs/Datamanagement/intro', category: 'Data Management' },
+    { title: 'Customer Data Platform', path: '/docs/Datamanagement/Customer Data Platform', category: 'Data Management > Projects > Customer Data Platform' },
+  ];
+
+  // ดึงข้อมูลเอกสารเมื่อ component mount
+  useEffect(() => {
+    fetchAllDocs();
+  }, []);
 
   // ค้นหาเอกสาร
   const searchDocs = (searchQuery) => {
-    if (!searchQuery.trim()) {
+    if (!searchQuery.trim() || isLoading) {
       setResults([]);
       return;
     }
@@ -121,12 +322,13 @@ export default function SearchBox() {
       <div className="search-input-wrapper">
         <input
           type="text"
-          placeholder="Search for documentation..."
+          placeholder={isLoading ? "Loading documents..." : "Search for documentation..."}
           value={query}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           onFocus={() => setIsOpen(true)}
           className="search-input"
+          disabled={isLoading}
         />
         <div className="search-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -154,7 +356,7 @@ export default function SearchBox() {
         </div>
       )}
       
-      {isOpen && query && results.length === 0 && (
+      {isOpen && query && results.length === 0 && !isLoading && (
         <div className="search-results">
           <div className="no-results">
             No results found for "{query}"
