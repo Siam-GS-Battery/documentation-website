@@ -35,7 +35,7 @@ const sidebars = {
       type: 'category',
       label: 'Tech Stack',
       items: [
-        'techstack/as',
+        'techstack/asana',
       ],
     },
   ],
@@ -60,10 +60,10 @@ const sidebars = {
       label: 'Projects',
       link: {
         type: 'generated-index',
-        description: 'Documents and best practices for IT development in the IT & Data Management moew'
+        description: 'Documents and best practices for IT development in the IT & Data Management'
       },
       items: [
-        'Itdevelopment/Projecttest',
+        'Itdevelopment/E-Commerce Management System',
       ],
     },
   ],
@@ -77,17 +77,8 @@ const sidebars = {
         description: 'Documents and best practices for Data management in the IT & Data Management'
       },
       items: [
-        {
-          type: 'category',
-          label: 'Customer Data Platform',
-          link: {
-            type: 'generated-index',
-            description: 'Resources and documentation for Customer Data Platform projects'
-          },
-          items: [
-            'Datamanagement/projecttest',
-          ],
-        },
+        
+        'Datamanagement/Customer Data Platform',
         // สามารถเพิ่มหมวดหมู่ย่อยอื่นๆ ได้ที่นี่
       ],
     },
