@@ -80,3 +80,114 @@ h1, h2, h3, h4, h5, h6 {
 .footer, .footer * {
   font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
 }
+
+/* ===== NAVBAR TEXT COLOR STYLING ===== */
+
+/* สีตัวอักษรหลักใน Navbar */
+.navbar__item,
+.navbar__link {
+  color: #1f2937 !important; /* สีเทาเข้ม */
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+/* สีตัวอักษรเมื่อ hover */
+.navbar__item:hover,
+.navbar__link:hover {
+  color: #005baa !important; /* สีน้ำเงิน primary */
+}
+
+/* สีตัวอักษรเมื่อ active/selected */
+.navbar__item--active,
+.navbar__link--active {
+  color: #005baa !important; /* สีน้ำเงิน primary */
+  font-weight: 600;
+}
+
+/* สีตัวอักษรของ brand/logo text */
+.navbar__brand {
+  color: #1f2937 !important; /* สีเทาเข้ม */
+  font-weight: 100;
+  font-size: 1.1rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  color: #005baa !important;
+}
+
+/* สีตัวอักษรใน dropdown menu */
+.dropdown__link {
+  color: #374151 !important; /* สีเทากลาง */
+}
+
+.dropdown__link:hover {
+  color: #005baa !important; /* สีน้ำเงิน primary */
+}
+
+/* สีตัวอักษรใน mobile menu */
+.navbar-sidebar__item {
+  color: #1f2937 !important;
+}
+
+.navbar-sidebar__link {
+  color: #374151 !important;
+}
+
+.navbar-sidebar__link:hover {
+  color: #005baa !important;
+}
+
+/* สีตัวอักษรใน search bar */
+.navbar-search-input {
+  color: #1f2937 !important;
+}
+
+.navbar-search-input::placeholder {
+  color: #9ca3af !important; /* สีเทาอ่อน */
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+[data-theme='dark'] .navbar__item,
+[data-theme='dark'] .navbar__link {
+  color: #f9fafb !important; /* สีขาว */
+}
+
+[data-theme='dark'] .navbar__item:hover,
+[data-theme='dark'] .navbar__link:hover {
+  color: #005baa !important; /* สีน้ำเงินอ่อน */
+}
+
+[data-theme='dark'] .navbar__item--active,
+[data-theme='dark'] .navbar__link--active {
+  color: #005baa !important; /* สีน้ำเงินอ่อน */
+}
+
+[data-theme='dark'] .navbar__brand {
+  color: #f9fafb !important; /* สีขาว */
+}
+
+[data-theme='dark'] .dropdown__link {
+  color: #d1d5db !important; /* สีเทาอ่อน */
+}
+
+[data-theme='dark'] .dropdown__link:hover {
+  color: #005baa !important; /* สีน้ำเงินอ่อน */
+}
+
+[data-theme='dark'] .navbar-sidebar__item {
+  color: #f9fafb !important; /* สีขาว */
+}
+
+[data-theme='dark'] .navbar-sidebar__link {
+  color: #d1d5db !important; /* สีเทาอ่อน */
+}
+
+[data-theme='dark'] .navbar-sidebar__link:hover {
+  color: #005baa !important; /* สีน้ำเงินอ่อน */
+}
+
+[data-theme='dark'] .navbar-search-input {
+  color: #f9fafb !important; /* สีขาว */
+}
+
+[data-theme='dark'] .navbar-search-input::placeholder {
+  color: #6b7280 !important; /* สีเทากลาง */
+}

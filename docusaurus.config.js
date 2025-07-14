@@ -80,8 +80,13 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
       navbar: {
-        title: 'IT Documentation',
+        title: 'IT & Data Management',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg', //เปลี่ยนโลโก้ที่นี่จ้า
@@ -124,46 +129,83 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Documentation',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Documentation',
                 to: '/docs/intro',
               },
+              {
+                label: 'IT Management',
+                to: '/docs/Itmanagement/intro',
+              },
+              {
+                label: 'IT Development',
+                to: '/docs/Itdevelopment/intro',
+              },
+              {
+                label: 'Data Management',
+                to: '/docs/Datamanagement/intro',
+              },
             ],
           },
+          // {
+          //   title: 'Team',
+          //   items: [
+          //     {
+          //       label: 'Bow - IT Manager',
+          //       href: '#',
+          //     },
+          //     {
+          //       label: 'Mew - System Administrator',
+          //       href: '#',
+          //     },
+          //     {
+          //       label: 'June - Developer',
+          //       href: '#',
+          //     },
+          //     {
+          //       label: 'Duay - Database Administrator',
+          //       href: '#',
+          //     },
+          //   ],
+          // },
           {
-            title: 'Community',
+            title: 'Contact Us',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Email',
+                href: 'mailto:it-support@company.com',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Phone',
+                href: 'tel:+66-2-123-4567',
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'Address',
+                href: '#',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'More Links',
             items: [
               {
                 label: 'Blog',
                 to: '/blog',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Privacy Policy',
+                href: '#',
+              },
+              {
+                label: 'Terms of Use',
+                href: '#',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `© ${new Date().getFullYear()} Siam GS Battery. All rights reserved.`,
       },
       prism: {
         theme: prismThemes.github,
