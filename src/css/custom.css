@@ -1,0 +1,82 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #3b82f6;
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #dbeafe;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  
+  /* เปลี่ยน Font เป็น Inter */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'Inter', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1d4ed8;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #dbeafe;
+  --ifm-color-primary-lightest: #eff6ff;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* ปรับขนาดโลโก้ใน Navbar */
+.navbar__logo img {
+  height: 26px; /* ปรับความสูงของโลโก้ (ค่าเริ่มต้นประมาณ 40px) */
+  width: auto;
+  margin-right: 20px; /* รักษาอัตราส่วน */
+}
+
+/* หรือถ้าต้องการปรับขนาดแบบ responsive */
+@media (max-width: 768px) {
+  .navbar__logo img {
+    height: 28px; /* เล็กกว่าในหน้าจอมือถือ */
+  }
+}
+
+/* ใช้ Font Inter ในทุกส่วนของเว็บไซต์ */
+* {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* ใช้ Font Inter ใน headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* ใช้ Font Inter ใน navigation */
+.navbar, .navbar__brand, .navbar__item, .navbar__link {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* ใช้ Font Inter ใน content */
+.main-wrapper, .main-wrapper * {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* ใช้ Font Inter ใน sidebar */
+.theme-doc-sidebar-menu, .theme-doc-sidebar-item-link {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* ใช้ Font Inter ใน footer */
+.footer, .footer * {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
