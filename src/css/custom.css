@@ -191,3 +191,33 @@ h1, h2, h3, h4, h5, h6 {
 [data-theme='dark'] .navbar-search-input::placeholder {
   color: #6b7280 !important; /* สีเทากลาง */
 }
+
+/* ===== FOOTER STICKY BOTTOM ===== */
+
+/* ทำให้ Layout ใช้ flexbox และเต็มความสูงของหน้าจอ */
+html, body {
+  height: 100%;
+}
+
+#__docusaurus {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ทำให้ main content ขยายเต็มพื้นที่ที่เหลือ */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ทำให้ main content ขยายเต็มพื้นที่ */
+main {
+  flex: 1;
+}
+
+/* ทำให้ Footer อยู่ล่างสุดเสมอ */
+.footer {
+  margin-top: auto;
+}

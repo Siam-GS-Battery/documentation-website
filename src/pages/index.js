@@ -20,9 +20,9 @@ import memberPtum from '@site/src/assets/memberptum.jpg';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <div className={styles.heroBanner}>
       <div className={styles.heroContent}>
-        <Heading as="h1" className="hero__title">
+        <Heading as="h1" className="hero__title" style={{ fontWeight: 400 }}>
           IT & Data Management
         </Heading>
         <p className="hero__subtitle">The central hub for IT & Data Management documentation and knowledge</p>
@@ -30,7 +30,7 @@ function HomepageHeader() {
           <SearchBox />
         </div>
       </div>
-    </header>
+    </div>
   );
 }
 
