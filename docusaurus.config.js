@@ -127,28 +127,28 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Documentation',
-            items: [
-              {
-                label: 'Documentation',
-                to: '/docs/intro',
-              },
-              {
-                label: 'IT Management',
-                to: '/docs/Itmanagement/intro',
-              },
-              {
-                label: 'IT Development',
-                to: '/docs/Itdevelopment/intro',
-              },
-              {
-                label: 'Data Management',
-                to: '/docs/Datamanagement/intro',
-              },
-            ],
-          },
+        // links: [
+        //   {
+        //     title: 'Documentation',
+        //     items: [
+        //       {
+        //         label: 'Documentation',
+        //         to: '/docs/intro',
+        //       },
+        //       {
+        //         label: 'IT Management',
+        //         to: '/docs/Itmanagement/intro',
+        //       },
+        //       {
+        //         label: 'IT Development',
+        //         to: '/docs/Itdevelopment/intro',
+        //       },
+        //       {
+        //         label: 'Data Management',
+        //         to: '/docs/Datamanagement/intro',
+        //       },
+        //     ],
+        //   },
           // {
           //   title: 'Team',
           //   items: [
@@ -170,41 +170,41 @@ const config = {
           //     },
           //   ],
           // },
-          {
-            title: 'Contact Us',
-            items: [
-              {
-                label: 'Email',
-                href: 'mailto:it-support@company.com',
-              },
-              {
-                label: 'Phone',
-                href: 'tel:+66-2-123-4567',
-              },
-              {
-                label: 'Address',
-                href: '#',
-              },
-            ],
-          },
-          {
-            title: 'More Links',
-            items: [
-              // {
-              //   label: 'Blog',
-              //   to: '/blog',
-              // },
-              {
-                label: 'Privacy Policy',
-                href: '#',
-              },
-              {
-                label: 'Terms of Use',
-                href: '#',
-              },
-            ],
-          },
-        ],
+        //   {
+        //     title: 'Contact Us',
+        //     items: [
+        //       {
+        //         label: 'Email',
+        //         href: 'mailto:it-support@company.com',
+        //       },
+        //       {
+        //         label: 'Phone',
+        //         href: 'tel:+66-2-123-4567',
+        //       },
+        //       {
+        //         label: 'Address',
+        //         href: '#',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'More Links',
+        //     items: [
+        //       {
+        //         label: 'Blog',
+        //         to: '/blog',
+        //       },
+        //       {
+        //         label: 'Privacy Policy',
+        //         href: '#',
+        //       },
+        //       {
+        //         label: 'Terms of Use',
+        //         href: '#',
+        //       },
+        //     ],
+        //   },
+        // ],
         copyright: `© ${new Date().getFullYear()} Siam GS Battery. All rights reserved.`,
       },
       prism: {
