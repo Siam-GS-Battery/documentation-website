@@ -20,6 +20,18 @@ const sidebars = {
     'intro',
     {
       type: 'category',
+      label: 'How to create Markdown',
+      items: [
+        'markdown-create/intro',
+        'markdown-create/markdown-basics',
+        'markdown-create/advanced-features',
+        'markdown-create/visual-elements',
+        'markdown-create/project-docs',
+        'markdown-create/sop-writing',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Tutorial Basics',
       items: [
         'tutorial-basics/create-a-document',
