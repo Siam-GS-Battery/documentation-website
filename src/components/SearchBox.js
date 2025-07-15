@@ -102,6 +102,18 @@ export default function SearchBox() {
           'intro',
           {
             type: 'category',
+            label: 'How to create Markdown',
+            items: [
+              'markdown-create/intro',
+              'markdown-create/markdown-basics',
+              'markdown-create/advanced-features',
+              'markdown-create/visual-elements',
+              'markdown-create/project-docs',
+              'markdown-create/sop-writing',
+            ],
+          },
+          {
+            type: 'category',
             label: 'Tutorial Basics',
             items: [
               'tutorial-basics/create-a-document',
@@ -110,6 +122,7 @@ export default function SearchBox() {
               'tutorial-basics/deploy-your-site',
               'tutorial-basics/create-a-page',
               'tutorial-basics/congratulations',
+              // 'tutorail-basics/Howtocreatemd',
             ],
           },
           {
@@ -125,6 +138,10 @@ export default function SearchBox() {
           {
             type: 'category',
             label: 'Projects',
+            link: {
+              type: 'generated-index',
+              description: 'Documents and best practices for IT management in the IT & Data Management'
+            },
             items: [
               'Itmanagement/HowtouseAsana',
             ],
@@ -135,6 +152,10 @@ export default function SearchBox() {
           {
             type: 'category',
             label: 'Projects',
+            link: {
+              type: 'generated-index',
+              description: 'Documents and best practices for IT development in the IT & Data Management'
+            },
             items: [
               'Itdevelopment/E-Commerce Management System',
             ],
@@ -145,14 +166,14 @@ export default function SearchBox() {
           {
             type: 'category',
             label: 'Projects',
+            link: {
+              type: 'generated-index',
+              description: 'Documents and best practices for Data management in the IT & Data Management'
+            },
             items: [
-              {
-                type: 'category',
-                label: 'Customer Data Platform',
-                items: [
-                  'Datamanagement/Customer Data Platform',
-                ],
-              },
+              
+              'Datamanagement/Customer Data Platform',
+              // สามารถเพิ่มหมวดหมู่ย่อยอื่นๆ ได้ที่นี่
             ],
           },
         ],
