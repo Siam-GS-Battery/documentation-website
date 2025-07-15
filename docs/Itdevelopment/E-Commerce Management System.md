@@ -1,4 +1,6 @@
-# E-Commerce Management System
+# E-Commerce Management System 
+<span style={{ backgroundColor: '#ececec', color: 'black', padding: '2px 8px', borderRadius: '12px', fontSize: '14px' }}>Create at : 15-jul-25</span>
+<span style={{ backgroundColor: '#28a745', color: 'white', padding: '2px 8px', borderRadius: '12px', fontSize: '14px' }}>Active</span>
 
 ## Project Overview
 This project aims to develop a comprehensive **E-Commerce Management System** that provides a complete solution for online businesses. The system will include customer-facing features, administrative tools, inventory management, and analytics capabilities.
