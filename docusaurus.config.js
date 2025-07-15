@@ -117,6 +117,11 @@ const config = {
             position: 'left',
             label: 'Data Management',
           },
+          {
+            to: '/content-submission',
+            label: 'Create Document',
+            position: 'right',
+          },
           // {to: '/blog', label: 'Blog', position: 'left'},
           // {
           //   href: 'https://github.com/facebook/docusaurus',
