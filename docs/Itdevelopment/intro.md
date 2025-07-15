@@ -128,8 +128,4 @@ The IT Development department is responsible for:
 
 ## Related Documentation
 
-- [Development Environment Setup](./dev-environment.md)
-- [Coding Standards and Guidelines](./coding-standards.md)
-- [API Documentation Standards](./api-docs.md)
-- [Testing Strategy and Procedures](./testing-strategy.md)
-- [Deployment and Release Process](./deployment-process.md)
+> **Note:** Additional documentation for development environment setup, coding standards, API documentation, testing strategies, and deployment processes will be added as the documentation grows.

@@ -88,6 +88,67 @@ function CategoryCards() {
   );
 }
 
+function LatestDocumentation() {
+  const latestDocs = [
+    {
+      title: 'E-Commerce Management System',
+      description: 'Comprehensive guide for developing a complete e-commerce platform with customer portal, admin dashboard, and inventory management.',
+      category: 'IT Development',
+      link: '/docs/Itdevelopment/E-Commerce Management System',
+      date: '2025'
+    },
+    {
+      title: 'Customer Data Platform (CDP)',
+      description: 'Complete guide for building a Customer Data Platform to centralize, organize, and manage customer data from multiple sources.',
+      category: 'Data Management',
+      link: '/docs/Datamanagement/Customer Data Platform',
+      date: '2025'
+    },
+    {
+      title: 'Getting Started with Asana',
+      description: 'Complete guide to using Asana for project management and team collaboration with best practices.',
+      category: 'Tech Stack',
+      link: '/docs/techstack/asana',
+      date: '2025'
+    }
+  ];
+
+  return (
+    <section className={styles.latestDocsSection}>
+      <div className="container">
+        <div className="text--center margin-bottom--xl">
+          <h2>Latest Documentation</h2>
+          <p>Discover our newest guides and tutorials for IT & Data Management</p>
+        </div>
+        <div className={styles.latestDocsGrid}>
+          {latestDocs.map((doc, idx) => (
+            <div key={idx} className={styles.docItem}>
+              <div className={styles.docHeader}>
+                <span className={styles.categoryBadge}>{doc.category}</span>
+                <span className={styles.docDate}>{doc.date}</span>
+              </div>
+              <h3 className={styles.docTitle}>
+                <Link to={doc.link}>
+                  {doc.title}
+                </Link>
+              </h3>
+              <p className={styles.docDescription}>{doc.description}</p>
+            </div>
+          ))}
+        </div>
+        <div className="text--center margin-top--xl">
+          <Link
+            className="button button--primary button--lg"
+            to="/docs/intro"
+          >
+            View All Documentation
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function TeamMembers() {
   const members = [
     {
@@ -182,6 +243,7 @@ export default function Home() {
         {/* <HomepageFeatures /> */}
         {/* <TeamMembers /> */}
         <CategoryCards />
+        <LatestDocumentation />
       </main>
     </Layout>
   );

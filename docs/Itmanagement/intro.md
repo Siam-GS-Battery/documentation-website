@@ -88,7 +88,4 @@ The IT Management department is responsible for:
 
 ## Related Documentation
 
-- [Network Configuration Guide](./network-config.md)
-- [Hardware Procurement Process](./hardware-procurement.md)
-- [Infrastructure Monitoring Setup](./monitoring-setup.md)
-- [Security Policies and Procedures](./security-policies.md)
+> **Note:** Additional documentation for network configuration, hardware procurement, infrastructure monitoring, and security policies will be added as the documentation grows.
