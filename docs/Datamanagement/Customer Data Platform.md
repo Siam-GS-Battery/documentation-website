@@ -1,4 +1,6 @@
 # Data Management Project: Customer Data Platform (CDP)
+<span style={{ backgroundColor: '#ececec', color: 'black', padding: '2px 8px', borderRadius: '12px', fontSize: '14px' }}>Create at : 15-jul-25</span>
+<span style={{ backgroundColor: '#28a745', color: 'white', padding: '2px 8px', borderRadius: '12px', fontSize: '14px' }}>Active</span>
 
 ## Project Overview
 
