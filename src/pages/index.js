@@ -22,10 +22,10 @@ function HomepageHeader() {
   return (
     <div className={styles.heroBanner}>
       <div className={styles.heroContent}>
-        <Heading as="h1" className="hero__title" style={{ fontWeight: 400 }}>
+        <Heading as="h1" className="hero__title" style={{ fontWeight: 400, fontSize: '2.7rem' }}>
           IT & Data Management
         </Heading>
-        <p className="hero__subtitle">The central hub for IT & Data Management documentation and knowledge</p>
+        <p className="hero__subtitle" style={{ fontWeight: 300, fontSize: '1.3rem' }} >The central hub for IT & Data Management documentation and knowledge</p>
         <div className={styles.searchSection}>
           <SearchBox />
         </div>

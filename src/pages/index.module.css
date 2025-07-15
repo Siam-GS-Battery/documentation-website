@@ -16,7 +16,7 @@
 }
 
 .heroContent {
-  padding: 1rem 0 2rem 5rem; /* t r b l*/
+  padding: 1rem 0 2rem 2rem; /* t r b l*/
   max-width: 100%;
   margin: 0;
 }
@@ -74,7 +74,7 @@
 /* ===== CATEGORY CARDS ===== */
 .categorySection {
   padding: 4rem 0;
-  background-color: #f3f3f3;
+  background-color: #ffffff;
 }
 
 .categorySection .text--left {

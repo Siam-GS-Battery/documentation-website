@@ -19,10 +19,20 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   
-  /* เปลี่ยน Font เป็น Inter */
+  /* เปลี่ยน Font เป็น Inter และปรับขนาดตัวหนังสือให้เท่ากับ Next.js Templates */
   --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
   --ifm-heading-font-family: 'Inter', system-ui, -apple-system, sans-serif;
   --ifm-font-family-monospace: 'Inter', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  
+  /* ปรับขนาดตัวหนังสือให้เล็กลงและบางลงเล็กน้อย */
+  --ifm-font-size-base: 14px;
+  --ifm-line-height-base: 1.6;
+  --ifm-h1-font-size: 2.2rem;
+  --ifm-h2-font-size: 1.8rem;
+  --ifm-h3-font-size: 1.4rem;
+  --ifm-h4-font-size: 1.2rem;
+  --ifm-h5-font-size: 1rem;
+  --ifm-h6-font-size: 0.9rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -35,6 +45,101 @@
   --ifm-color-primary-lighter: #dbeafe;
   --ifm-color-primary-lightest: #eff6ff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== STANDARD LAYOUT CONTAINER STYLING ===== */
+
+/* กำหนดขนาดมาตรฐานสำหรับทุกหน้า */
+:root {
+  --layout-max-width: 1400px;
+  --sidebar-width: 280px;
+  --toc-width: 330px; /* เพิ่มความกว้างจาก 240px เป็น 280px */
+  --content-max-width: 800px;
+  --content-padding: 2rem;
+  --header-height: 60px;
+  --border-color: #e5e7eb;
+}
+
+/* สร้าง container หลักที่มีขนาดมาตรฐาน */
+.container {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  box-sizing: border-box;
+}
+
+/* ปรับ main wrapper ให้มีขนาดมาตรฐาน */
+.main-wrapper {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  box-sizing: border-box;
+}
+
+/* ปรับ navbar container */
+.navbar__inner {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  box-sizing: border-box;
+}
+
+/* ปรับ footer container */
+.footer__links {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  box-sizing: border-box;
+}
+
+.footer__bottom {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  box-sizing: border-box;
+}
+
+/* ปรับ doc page layout ให้มีขนาดมาตรฐาน */
+.theme-doc-layout {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ปรับ doc page main content ให้มีขนาดมาตรฐาน */
+.theme-doc-layout-main {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  box-sizing: border-box;
+}
+
+/* ปรับ responsive design ให้มีขนาดมาตรฐาน */
+@media (max-width: 1280px) {
+  .container,
+  .main-wrapper,
+  .navbar__inner,
+  .footer__links,
+  .footer__bottom,
+  .theme-doc-layout,
+  .theme-doc-layout-main {
+    max-width: 100%;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .main-wrapper,
+  .navbar__inner,
+  .footer__links,
+  .footer__bottom,
+  .theme-doc-layout,
+  .theme-doc-layout-main {
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+  }
 }
 
 /* ปรับขนาดโลโก้ใน Navbar */
@@ -221,3 +326,697 @@ main {
 .footer {
   margin-top: auto;
 }
+/* ===== TYPOGRAPHY ADJUSTMENTS TO MATCH NEXT.JS TEMPLATES ===== */
+
+/* ปรับระยะห่างของแต่ละบรรทัดในเนื้อหาหลัก */
+.theme-doc-markdown {
+  line-height: 1.1;
+}
+
+/* ปรับขนาดและระยะห่างของ paragraphs */
+p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ headings */
+h1 {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* ปรับขนาดและระยะห่างของ lists */
+ul, ol {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+li {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ links */
+a {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ navbar */
+.navbar__item,
+.navbar__link {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ sidebar */
+.theme-doc-sidebar-item-link {
+  font-size: 14px;
+  line-height: 1.1;
+  font-weight: 300;
+  margin-bottom: 0.1rem;
+  padding: 0.1rem 0;
+}
+
+/* ปรับขนาดและระยะห่างของ breadcrumbs */
+.theme-doc-breadcrumbs {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ปรับขนาดและระยะห่างของ table of contents */
+.theme-doc-toc-desktop {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ปรับขนาดและระยะห่างของ footer */
+.footer {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ปรับขนาดและระยะห่างของ code blocks */
+code {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ blockquotes */
+blockquote {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ tables */
+table {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+th, td {
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 0.75rem;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ buttons */
+.button {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ form elements */
+input, textarea, select {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ alerts */
+.alert {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ badges */
+.badge {
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ cards */
+.card {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ callouts */
+.callout {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ search bar */
+.navbar-search-input {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ dropdown */
+.dropdown__link {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ mobile menu */
+.navbar-sidebar__item,
+.navbar-sidebar__link {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ปรับขนาดและระยะห่างของ pagination */
+.theme-doc-pagination {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ===== SIDEBAR SPACING ADJUSTMENTS ===== */
+
+/* ปรับระยะห่างของ sidebar categories */
+.theme-doc-sidebar-item-category {
+  margin-bottom: 0.1rem;
+}
+
+/* ปรับระยะห่างของ sidebar category labels */
+.theme-doc-sidebar-item-category-level-1 > .theme-doc-sidebar-item-link {
+  font-weight: 500;
+  margin-bottom: 0.1rem;
+  padding: 0.1rem 0;
+  line-height: 1.1;
+}
+
+/* ปรับระยะห่างของ sidebar sub-items */
+.theme-doc-sidebar-item-category-level-2 > .theme-doc-sidebar-item-link,
+.theme-doc-sidebar-item-category-level-3 > .theme-doc-sidebar-item-link {
+  margin-bottom: 0.05rem;
+  padding: 0.05rem 0;
+  line-height: 1;
+}
+
+/* ปรับระยะห่างของ sidebar menu */
+.theme-doc-sidebar-menu {
+  margin-bottom: 0.5rem;
+}
+
+/* ปรับระยะห่างของ sidebar menu items */
+.theme-doc-sidebar-menu__item {
+  margin-bottom: 0.25rem;
+}
+
+/* ปรับระยะห่างของ sidebar menu links */
+.theme-doc-sidebar-menu__link {
+  padding: 0.25rem 0;
+  line-height: 1.2;
+}
+
+/* ปรับระยะห่างของ sidebar collapsible items */
+.theme-doc-sidebar-item-category-level-1.theme-doc-sidebar-item-category--collapsed {
+  margin-bottom: 0.25rem;
+}
+
+/* ปรับระยะห่างของ sidebar expanded items */
+.theme-doc-sidebar-item-category-level-1.theme-doc-sidebar-item-category--expanded {
+  margin-bottom: 0.5rem;
+}
+
+/* ปรับระยะห่างของ sidebar nested items */
+.theme-doc-sidebar-item-category-level-2,
+.theme-doc-sidebar-item-category-level-3 {
+  margin-bottom: 0.25rem;
+}
+
+/* ===== MAIN CONTENT SPACING ADJUSTMENTS ===== */
+
+/* ปรับระยะห่างรอบเนื้อหาหลักให้เท่ากับในภาพ */
+.theme-doc-layout {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ปรับ main content area ให้มีระยะห่างที่เหมาะสม */
+.theme-doc-layout-main {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem 3rem; /* เพิ่มระยะห่างด้านบนและล่าง */
+}
+
+/* ปรับ doc content wrapper */
+.theme-doc-markdown {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ปรับ doc content container */
+.theme-doc-content {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ปรับ doc page wrapper */
+.theme-doc-page {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ===== SIDEBAR FIXED POSITIONING ===== */
+
+/* ทำให้ sidebar มีตำแหน่งคงที่ ไม่ขยับเมื่อเปลี่ยนเนื้อหา */
+.theme-doc-sidebar {
+  position: fixed;
+  top: 60px; /* ปรับตามความสูงของ navbar */
+  left: 0;
+  width: 300px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  background: var(--ifm-background-color);
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  z-index: 100;
+  transition: none; /* ปิดการ transition เพื่อไม่ให้ขยับ */
+}
+
+/* ปรับ main content ให้มีขนาดมาตรฐาน */
+.theme-doc-layout-main {
+  margin-left: 0; /* ไม่ต้องใช้ margin เพราะใช้ grid แล้ว */
+  width: 100%;
+  max-width: var(--content-max-width);
+  padding: var(--content-padding);
+  box-sizing: border-box;
+}
+
+/* ปรับ doc content ให้มีขนาดมาตรฐาน */
+.theme-doc-content {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== RESPONSIVE DESIGN FOR SIDEBAR ===== */
+
+/* สำหรับหน้าจอขนาดกลาง */
+@media (max-width: 1200px) {
+  .theme-doc-sidebar {
+    width: 280px;
+  }
+  
+  .theme-doc-layout-main {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+  }
+}
+
+/* สำหรับหน้าจอมือถือ */
+@media (max-width: 768px) {
+  .theme-doc-sidebar {
+    position: fixed;
+    top: 60px;
+    left: -100%; /* ซ่อน sidebar ไว้ด้านนอก */
+    width: 280px;
+    height: calc(100vh - 60px);
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .theme-doc-sidebar.theme-doc-sidebar--show {
+    left: 0;
+  }
+  
+  .theme-doc-layout-main {
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+  
+  .theme-doc-content {
+    max-width: 100%;
+  }
+}
+
+/* ===== STANDARD GRID LAYOUT ===== */
+
+/* ใช้ CSS Grid เพื่อให้มีขนาดมาตรฐานที่สม่ำเสมอ */
+.theme-doc-layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr var(--toc-width);
+  grid-template-rows: 1fr;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+  gap: 0;
+}
+
+/* ปรับ main content area ใน grid */
+.theme-doc-layout-main {
+  grid-column: 2;
+  grid-row: 1;
+  padding: var(--content-padding);
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* ปรับ sidebar ใน grid */
+.theme-doc-sidebar {
+  grid-column: 1;
+  grid-row: 1;
+  position: sticky;
+  top: var(--header-height);
+  overflow-y: auto;
+  background: var(--ifm-background-color);
+  border-right: 1px solid var(--border-color);
+  box-sizing: border-box;
+  width: var(--sidebar-width);
+}
+
+/* ปรับ table of contents ใน grid */
+.theme-doc-toc-desktop {
+  grid-column: 3;
+  grid-row: 1;
+  position: sticky;
+  top: var(--header-height);
+  overflow-y: auto;
+  background: var(--ifm-background-color);
+  border-left: 1px solid var(--border-color);
+  box-sizing: border-box;
+  width: var(--toc-width);
+  padding: var(--content-padding);
+}
+
+/* ปรับ responsive grid ให้มีขนาดมาตรฐาน */
+@media (max-width: 1200px) {
+  .theme-doc-layout {
+    grid-template-columns: var(--sidebar-width) 1fr;
+    max-width: 100%;
+  }
+  
+  .theme-doc-toc-desktop {
+    display: none; /* ซ่อน TOC ในหน้าจอขนาดกลาง */
+  }
+}
+
+@media (max-width: 768px) {
+  .theme-doc-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    max-width: 100%;
+  }
+  
+  .theme-doc-layout-main {
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  
+  .theme-doc-sidebar {
+    grid-column: 1;
+    grid-row: 1;
+    position: fixed;
+    left: -100%;
+    z-index: 1000;
+    width: var(--sidebar-width);
+  }
+  
+  .theme-doc-toc-desktop {
+    display: none; /* ซ่อน TOC ในมือถือ */
+  }
+  
+  .theme-doc-markdown {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--content-max-width);
+  }
+}
+
+/* ===== CONTENT AREA SPACING ===== */
+
+/* ปรับระยะห่างของเนื้อหาภายในให้มีขนาดมาตรฐาน */
+.theme-doc-markdown h1 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding-top: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.theme-doc-markdown h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  padding-top: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.theme-doc-markdown h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-top: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.theme-doc-markdown p {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.theme-doc-markdown ul,
+.theme-doc-markdown ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.theme-doc-markdown li {
+  margin-bottom: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* กำหนดขนาดมาตรฐานสำหรับ markdown elements อื่นๆ */
+.theme-doc-markdown blockquote {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+}
+
+.theme-doc-markdown code {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.theme-doc-markdown pre {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+}
+
+.theme-doc-markdown table {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+}
+
+.theme-doc-markdown img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+}
+
+.theme-doc-markdown div {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ปรับระยะห่างของ breadcrumbs ให้มีขนาดมาตรฐาน */
+.theme-doc-breadcrumbs {
+  margin-bottom: 2rem;
+  padding: 0;
+  width: 100%;
+  max-width: var(--content-max-width);
+  box-sizing: border-box;
+}
+
+/* ปรับระยะห่างของ table of contents ให้มีขนาดมาตรฐาน */
+.theme-doc-toc-desktop {
+  position: sticky;
+  top: calc(var(--header-height) + 20px);
+  overflow-y: auto;
+  width: var(--toc-width);
+  box-sizing: border-box;
+}
+
+/* ===== STANDARD MARKDOWN PAGE WIDTH ===== */
+
+/* กำหนดความกว้างมาตรฐานสำหรับ markdown page */
+.theme-doc-markdown {
+  width: 100%;
+  max-width: var(--content-max-width);
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ปรับ doc page wrapper ให้มีขนาดมาตรฐาน */
+.theme-doc-page {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ปรับ doc layout wrapper ให้มีขนาดมาตรฐาน */
+.theme-doc-layout {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ปรับ main wrapper ให้มีขนาดมาตรฐาน */
+.main-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ปรับ content wrapper ให้มีขนาดมาตรฐาน */
+.content-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* กำหนดความกว้างมาตรฐานสำหรับ markdown content container */
+.theme-doc-markdown > div {
+  width: 100%;
+  max-width: var(--content-max-width);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* กำหนดความกว้างมาตรฐานสำหรับ markdown content */
+.theme-doc-markdown article {
+  width: 100%;
+  max-width: var(--content-max-width);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* กำหนดความกว้างมาตรฐานสำหรับ markdown content wrapper */
+.theme-doc-markdown .theme-doc-markdown {
+  width: 100%;
+  max-width: var(--content-max-width);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* ===== SIDEBAR SCROLLING BEHAVIOR ===== */
+
+/* ทำให้ sidebar scroll แยกจาก main content */
+.theme-doc-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ifm-color-emphasis-300) transparent;
+}
+
+.theme-doc-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.theme-doc-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.theme-doc-sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--ifm-color-emphasis-300);
+  border-radius: 3px;
+}
+
+.theme-doc-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ifm-color-emphasis-400);
+}
+
+/* ===== MAIN CONTENT SCROLLING ===== */
+
+/* ทำให้ main content scroll แยกจาก sidebar */
+.theme-doc-layout-main {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ifm-color-emphasis-300) transparent;
+}
+
+.theme-doc-layout-main::-webkit-scrollbar {
+  width: 6px;
+}
+
+.theme-doc-layout-main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.theme-doc-layout-main::-webkit-scrollbar-thumb {
+  background-color: var(--ifm-color-emphasis-300);
+  border-radius: 3px;
+}
+
+.theme-doc-layout-main::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ifm-color-emphasis-400);
+}
+

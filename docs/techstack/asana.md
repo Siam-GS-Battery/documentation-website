@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Getting Started with Asana
 
+![ทดสอบการแสดงภาพ](./img/picture.jpg)
+
 This guide will help you understand the basics of using Asana for project management and team collaboration.
 
 ## What is Asana?

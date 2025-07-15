@@ -1,7 +1,6 @@
 # E-Commerce Management System
 
 ## Project Overview
-
 This project aims to develop a comprehensive **E-Commerce Management System** that provides a complete solution for online businesses. The system will include customer-facing features, administrative tools, inventory management, and analytics capabilities.
 
 ### Project Vision
