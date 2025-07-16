@@ -89,7 +89,6 @@ const sidebars = {
         description: 'Documents and best practices for Data management in the IT & Data Management'
       },
       items: [
-        
         'Datamanagement/Customer Data Platform',
         // สามารถเพิ่มหมวดหมู่ย่อยอื่นๆ ได้ที่นี่
       ],

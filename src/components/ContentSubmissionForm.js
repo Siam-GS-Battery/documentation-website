@@ -143,19 +143,30 @@ const ContentSubmissionForm = () => {
   const generateMarkdown = () => {
     const { title, category, subcategory, description, author, tags, content, isSubDocument, parentDocument } = formData;
     
-    const tagsArray = tags.split(',').map(tag => tag.trim()).filter(tag => tag);
-    const frontMatter = {
+    // Main front matter fields
+    const mainFrontMatter = {
+      id: title,
       title,
-      description,
+      sidebar_label: title,
+      description
+    };
+
+    // Other front matter fields
+    const otherFrontMatter = {
       author,
-      tags: tagsArray,
       category,
       ...(subcategory && { subcategory }),
       date: new Date().toISOString().split('T')[0],
       ...(isSubDocument && parentDocument && { parent: parentDocument })
     };
 
-    const frontMatterString = `---\n${Object.entries(frontMatter)
+    // Generate front matter string with separation
+    const mainFrontMatterString = Object.entries(mainFrontMatter)
+      .filter(([_, value]) => value !== '' && value !== null && value !== undefined)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('\n');
+
+    const otherFrontMatterString = Object.entries(otherFrontMatter)
       .filter(([_, value]) => value !== '' && value !== null && value !== undefined)
       .map(([key, value]) => {
         if (Array.isArray(value)) {
@@ -163,7 +174,9 @@ const ContentSubmissionForm = () => {
         }
         return `${key}: ${value}`;
       })
-      .join('\n')}\n---\n\n`;
+      .join('\n');
+
+    const frontMatterString = `---\n${mainFrontMatterString}\n\n${otherFrontMatterString}\n---\n\n`;
 
     // Process content for preview
     let processedContent = content
