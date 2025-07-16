@@ -59,6 +59,7 @@ function CategoryCards() {
   return (
     <section className={styles.categorySection}>
       <div className="container">
+      <h2>Categories</h2>
         <div className="row">
           {categories.map((category, idx) => (
             <div key={idx} className="col col--4 margin-bottom--lg">
@@ -89,60 +90,99 @@ function CategoryCards() {
 }
 
 function LatestDocumentation() {
-  const latestDocs = [
+  const gettingStarted = [
+    {
+      title: 'Getting Started with Documentation',
+      description: 'Learn the basics of creating and managing documentation for your IT projects and workflows.',
+      link: '/docs/intro'
+    },
+    {
+      title: 'How to Create Markdown Files',
+      description: 'Master the art of writing documentation using Markdown syntax and best practices for formatting.',
+      link: '/docs/markdown-create/markdown-basics'
+    },
+    {
+      title: 'Project Management with Asana',
+      description: 'Set up and use Asana for effective project management and team collaboration workflows.',
+      link: '/docs/techstack/asana'
+    },
+    {
+      title: 'IT Development Best Practices',
+      description: 'Learn fundamental practices for software development and system management in your organization.',
+      link: '/docs/Itdevelopment/intro'
+    }
+  ];
+
+  const popular = [
     {
       title: 'E-Commerce Management System',
-      description: 'Comprehensive guide for developing a complete e-commerce platform with customer portal, admin dashboard, and inventory management.',
-      category: 'IT Development',
+      description: 'Learn how to build and manage a complete e-commerce platform with admin dashboard and inventory management.',
       link: '/docs/Itdevelopment/E-Commerce Management System',
-      date: '2025'
+      status: 'Active',
+      date: '15 March 2025'
     },
     {
-      title: 'Customer Data Platform (CDP)',
-      description: 'Complete guide for building a Customer Data Platform to centralize, organize, and manage customer data from multiple sources.',
-      category: 'Data Management',
+      title: 'Customer Data Platform Setup',
+      description: 'Complete guide for building a Customer Data Platform to centralize and manage customer data effectively.',
       link: '/docs/Datamanagement/Customer Data Platform',
-      date: '2025'
+      status: 'Active',
+      date: '10 March 2025'
     },
     {
-      title: 'Getting Started with Asana',
-      description: 'Complete guide to using Asana for project management and team collaboration with best practices.',
-      category: 'Tech Stack',
-      link: '/docs/techstack/asana',
-      date: '2025'
+      title: 'Asana Project Management Guide',
+      description: 'Master project management and team collaboration using Asana with advanced workflows and best practices.',
+      link: '/docs/Itmanagement/HowtouseAsana',
+      status: 'Active',
+      date: '08 March 2025'
+    },
+    {
+      title: 'Advanced Markdown Documentation',
+      description: 'Create professional documentation with advanced Markdown features, visual elements, and formatting techniques.',
+      link: '/docs/markdown-create/advanced-features',
+      status: 'Active',
+      date: '05 March 2025'
     }
   ];
 
   return (
     <section className={styles.latestDocsSection}>
       <div className="container">
-        <div className="text--center margin-bottom--xl">
-          <h2>Latest Documentation</h2>
-          <p>Discover our newest guides and tutorials for IT & Data Management</p>
-        </div>
-        <div className={styles.latestDocsGrid}>
-          {latestDocs.map((doc, idx) => (
-            <div key={idx} className={styles.docItem}>
-              <div className={styles.docHeader}>
-                <span className={styles.categoryBadge}>{doc.category}</span>
-                <span className={styles.docDate}>{doc.date}</span>
-              </div>
-              <h3 className={styles.docTitle}>
-                <Link to={doc.link}>
-                  {doc.title}
-                </Link>
-              </h3>
-              <p className={styles.docDescription}>{doc.description}</p>
+        <div className={styles.docsGrid}>
+          <div className={styles.docsColumn}>
+            <h2>Getting started</h2>
+            <div className={styles.docsList}>
+              {gettingStarted.map((doc, idx) => (
+                <div key={idx} className={styles.docItem}>
+                  <h3 className={styles.docTitle}>
+                    <Link to={doc.link}>
+                      {doc.title}
+                    </Link>
+                  </h3>
+                  <p className={styles.docDescription}>{doc.description}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="text--center margin-top--xl">
-          <Link
-            className="button button--primary button--lg"
-            to="/docs/intro"
-          >
-            View All Documentation
-          </Link>
+          </div>
+          
+          <div className={styles.docsColumn}>
+            <h2>Popular</h2>
+            <div className={styles.docsList}>
+              {popular.map((doc, idx) => (
+                <div key={idx} className={styles.docItem}>
+                  <div className={styles.docHeader}>
+                    <span className={styles.docDate}>{doc.date}</span>
+                    <span className={styles.statusBadge}>{doc.status}</span>
+                  </div>
+                  <h3 className={styles.docTitle}>
+                    <Link to={doc.link}>
+                      {doc.title}
+                    </Link>
+                  </h3>
+                  <p className={styles.docDescription}>{doc.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -128,7 +128,7 @@
 
 .categoryCard:hover {
   border-color: #d1d5db;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 .categoryIcon {
@@ -211,6 +211,24 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .categoryIcon {
+    height: 120px;
+  }
+  
+  .categoryContent {
+    padding: 1rem;
+  }
+  
+  .categoryContent h3 {
+    font-size: 1rem;
+  }
+  
+  .categoryContent p {
+    font-size: 0.8rem;
+  }
+}
+
 /* ===== LATEST DOCUMENTATION SECTION ===== */
 .latestDocsSection {
   padding: 2rem 0;
@@ -218,26 +236,42 @@
   background-color: #ffffff;
 }
 
-.latestDocsGrid {
+.docsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
+  grid-template-columns: 1fr 1fr;
+  gap: 7rem;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.docItem {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: all 0.2s ease;
+.docsColumn {
+  min-width: 0;
 }
 
-.docItem:hover {
-  border-color: #d1d5db;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+.docsColumn h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.docsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.docItem {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.docItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .docHeader {
@@ -247,16 +281,16 @@
   margin-bottom: 0.75rem;
 }
 
-.categoryBadge {
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  color: #374151;
+.statusBadge {
+  background:#10b981 ;
+  color: white;
   padding: 0.25rem 0.75rem;
-  border-radius: 16px;
+  border-radius: 12px;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 3px 0 rgba(16, 185, 129, 0.2);
 }
 
 .docDate {
@@ -266,27 +300,27 @@
 }
 
 .docTitle {
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.5rem 0;
   font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937;
+  font-weight: 500;
   line-height: 1.4;
 }
 
 .docTitle a {
-  color: inherit;
+  color: #0969da;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .docTitle a:hover {
-  color: #3b82f6;
+  color: #0550ae;
+  text-decoration: underline;
 }
 
 .docDescription {
   margin: 0;
-  color: #6b7280;
-  line-height: 1.6;
+  color: #656d76;
+  line-height: 1.5;
   font-size: 0.875rem;
 }
 
@@ -296,14 +330,36 @@
     padding: 3rem 0;
   }
   
-  .latestDocsGrid {
+  .docsGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 3rem;
     padding: 0 1rem;
   }
   
+  .docsColumn h2 {
+    font-size: 1.375rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .docsList {
+    gap: 1.25rem;
+  }
+  
   .docItem {
-    padding: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  
+  .docHeader {
+    margin-bottom: 0.5rem;
+  }
+  
+  .statusBadge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .docDate {
+    font-size: 0.8rem;
   }
   
   .docTitle {
@@ -313,19 +369,44 @@
   .docDescription {
     font-size: 0.8rem;
   }
-  
-  .categoryBadge {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-  }
 }
 
 @media screen and (max-width: 768px) {
-  .latestDocsGrid {
+  .docsGrid {
     padding: 0 0.5rem;
+    gap: 2rem;
+  }
+  
+  .docsColumn h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .docsList {
+    gap: 1rem;
   }
   
   .docItem {
-    padding: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .docHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .statusBadge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+  }
+  
+  .docDate {
+    font-size: 0.75rem;
+  }
+  
+  .docTitle {
+    font-size: 0.95rem;
   }
 }
