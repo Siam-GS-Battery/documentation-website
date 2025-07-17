@@ -55,42 +55,213 @@ const sidebars = {
     'Itmanagement/intro',
     {
       type: 'category',
-      label: 'Projects',
+      label: 'User Guide',
       link: {
         type: 'generated-index',
-        description: 'Documents and best practices for IT management in the IT & Data Management'
+        description: 'A step-by-step manual for end users. Provides detailed instructions with visuals on how to use each feature of the system. Helps users navigate and operate the platform effectively and independently.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Tech Stack',
+      link: {
+        type: 'generated-index',
+        description: 'Technologies used in the project. Lists the programming languages, frameworks, tools, and platforms used to build and run the system. Useful for developers, maintainers, and technical stakeholders.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Projects Documentation',
+      link: {
+        type: 'generated-index',
+        description: 'Comprehensive project overview. Covers the project\'s goals, scope, architecture, database design, and development process. Helps all stakeholders understand the system at a high level.'
       },
       items: [
         'Itmanagement/HowtouseAsana',
       ],
     },
+    {
+      type: 'category',
+      label: 'Troubleshooting',
+      link: {
+        type: 'generated-index',
+        description: 'Common issues and how to resolve them. Offers solutions and step-by-step guides for frequently encountered problems. Designed to assist both end users and support teams in diagnosing and fixing issues quickly.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'SOP',
+      link: {
+        type: 'generated-index',
+        description: 'Standardized workflows and responsibilities. Outlines the official procedures for common tasks and operations within the system. Ensures consistency, compliance, and clarity in how tasks are performed.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Training Material',
+      link: {
+        type: 'generated-index',
+        description: 'Learning resources for system onboarding. Includes manuals, slides, videos, and exercises designed to train new users and staff. Helps ensure users can confidently use the system as intended.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
   ],
+  
+  
   ITdevelopmentSidebar: [
     'Itdevelopment/intro',
     {
       type: 'category',
-      label: 'Projects',
+      label: 'User Guide',
       link: {
         type: 'generated-index',
-        description: 'Documents and best practices for IT development in the IT & Data Management'
+        description: 'A step-by-step manual for end users. Provides detailed instructions with visuals on how to use each feature of the system. Helps users navigate and operate the platform effectively and independently.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Tech Stack',
+      link: {
+        type: 'generated-index',
+        description: 'Technologies used in the project. Lists the programming languages, frameworks, tools, and platforms used to build and run the system. Useful for developers, maintainers, and technical stakeholders.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Projects Documentation',
+      link: {
+        type: 'generated-index',
+        description: 'Comprehensive project overview. Covers the project\'s goals, scope, architecture, database design, and development process. Helps all stakeholders understand the system at a high level.'
       },
       items: [
         'Itdevelopment/E-Commerce Management System',
       ],
     },
+    {
+      type: 'category',
+      label: 'Troubleshooting',
+      link: {
+        type: 'generated-index',
+        description: 'Common issues and how to resolve them. Offers solutions and step-by-step guides for frequently encountered problems. Designed to assist both end users and support teams in diagnosing and fixing issues quickly.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'SOP',
+      link: {
+        type: 'generated-index',
+        description: 'Standardized workflows and responsibilities. Outlines the official procedures for common tasks and operations within the system. Ensures consistency, compliance, and clarity in how tasks are performed.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Training Material',
+      link: {
+        type: 'generated-index',
+        description: 'Learning resources for system onboarding. Includes manuals, slides, videos, and exercises designed to train new users and staff. Helps ensure users can confidently use the system as intended.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
   ],
+  
+  
+  
+  
   DataManagementSidebar: [
     'Datamanagement/intro',
     {
       type: 'category',
-      label: 'Projects',
+      label: 'User Guide',
       link: {
         type: 'generated-index',
-        description: 'Documents and best practices for Data management in the IT & Data Management'
+        description: 'A step-by-step manual for end users. Provides detailed instructions with visuals on how to use each feature of the system. Helps users navigate and operate the platform effectively and independently.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Tech Stack',
+      link: {
+        type: 'generated-index',
+        description: 'Technologies used in the project. Lists the programming languages, frameworks, tools, and platforms used to build and run the system. Useful for developers, maintainers, and technical stakeholders.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Projects Documentation',
+      link: {
+        type: 'generated-index',
+        description: 'Comprehensive project overview. Covers the project\'s goals, scope, architecture, database design, and development process. Helps all stakeholders understand the system at a high level.'
       },
       items: [
         'Datamanagement/Customer Data Platform',
         // สามารถเพิ่มหมวดหมู่ย่อยอื่นๆ ได้ที่นี่
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Troubleshooting',
+      link: {
+        type: 'generated-index',
+        description: 'Common issues and how to resolve them. Offers solutions and step-by-step guides for frequently encountered problems. Designed to assist both end users and support teams in diagnosing and fixing issues quickly.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'SOP',
+      link: {
+        type: 'generated-index',
+        description: 'Standardized workflows and responsibilities. Outlines the official procedures for common tasks and operations within the system. Ensures consistency, compliance, and clarity in how tasks are performed.'
+      },
+      items: [
+      'techstack/asana',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Training Material',
+      link: {
+        type: 'generated-index',
+        description: 'Learning resources for system onboarding. Includes manuals, slides, videos, and exercises designed to train new users and staff. Helps ensure users can confidently use the system as intended.'
+      },
+      items: [
+      'techstack/asana',
       ],
     },
   ],

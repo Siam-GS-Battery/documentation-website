@@ -424,15 +424,12 @@ const ContentSubmissionForm = () => {
               onChange={handleInputChange}
             >
               <option value="">Select subcategory</option>
-              <option value="tech-stack">Tech Stack</option>
-              <option value="api-docs">API Documentation</option>
               <option value="user-guide">User Guide</option>
-              <option value="installation">Installation Guide</option>
+              <option value="tech-stack">Tech Stack</option>
+              <option value="project-document">Project Documentation</option>
               <option value="troubleshooting">Troubleshooting</option>
               <option value="sop">SOP</option>
-              <option value="project-document">Project Document</option>
               <option value="training">Training Material</option>
-              <option value="reference">Reference Guide</option>
             </select>
           </div>
         </div>
