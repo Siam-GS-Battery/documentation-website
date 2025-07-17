@@ -30,27 +30,29 @@ const sidebars = {
         'markdown-create/sop-writing',
       ],
     },
-    {
-      type: 'category',
-      label: 'Tutorial Basics',
-      items: [
-        'tutorial-basics/create-a-document',
-        'tutorial-basics/create-a-blog-post',
-        'tutorial-basics/markdown-features',
-        'tutorial-basics/deploy-your-site',
-        'tutorial-basics/create-a-page',
-        'tutorial-basics/congratulations',
-        // 'tutorail-basics/Howtocreatemd',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Tech Stack',
-      items: [
-        'techstack/asana',
-      ],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Tutorial Basics',
+    //   items: [
+    //     'tutorial-basics/create-a-document',
+    //     'tutorial-basics/create-a-blog-post',
+    //     'tutorial-basics/markdown-features',
+    //     'tutorial-basics/deploy-your-site',
+    //     'tutorial-basics/create-a-page',
+    //     'tutorial-basics/congratulations',
+    //     // 'tutorail-basics/Howtocreatemd',
+    //   ],
+    // },
+    // {
+    //   type: 'category',
+    //   label: 'Tech Stack',
+    //   items: [
+    //     'techstack/asana',
+    //   ],
+    // },
   ],
+  
+  
   ITmanagementSidebar: [
     'Itmanagement/intro',
     {
