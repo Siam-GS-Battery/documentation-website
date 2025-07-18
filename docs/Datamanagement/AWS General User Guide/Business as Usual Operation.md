@@ -258,29 +258,33 @@ The schedule is currently set to be started and stopped at:
 - **7.15 AM GMT+7** or **0.15 AM GMT+0**
 - **17.00 AM GMT+7** or **10.00 AM GMT+0**
 
+![Redshift console](./img/image105.png)
+
 Outside of the scheduler that has been set, Redshift can be started manually by resuming the Redshift cluster via the Console:
+
+
 
 1. **Open the Redshift console:**
 
-![Redshift console](./img/image105.png)
+![Redshift cluster](./img/image106.png)
 
 2. **Open the Redshift Cluster ID `p-gsth-dw-redshift`:**
 
-![Redshift cluster](./img/image106.png)
+![Redshift cluster](./img/image107.png)
 
 3. **Open the action button on the top right of the screen:**
 
-![Action button](./img/image107.png)
+![Action button](./img/image108.png)
 
 4. **Select the action resume:**
 
-![Resume action](./img/image108.png)
+![Resume action](./img/image109.png)
 
 5. **Wait for the cluster status to be Available:**
 
-![Cluster available](./img/image109.png)
+![Cluster available](./img/image110.png)
 
-Outside of the scheduler that has been set, Redshift can also be stopped manually by pausing the Redshift cluster via the Console:
+<!-- Outside of the scheduler that has been set, Redshift can also be stopped manually by pausing the Redshift cluster via the Console:
 
 1. **Open the Redshift console:**
 
@@ -292,7 +296,7 @@ Outside of the scheduler that has been set, Redshift can also be stopped manuall
 
 3. **Open the action button on the top right of the screen:**
 
-![Action button](./img/Screenshot 2025-07-18 103620.png)
+
 
 4. **Select the Pause resume:**
 
@@ -300,13 +304,13 @@ Outside of the scheduler that has been set, Redshift can also be stopped manuall
 
 5. **Wait for the cluster status to be Stopped:**
 
-![Cluster stopped](./img/Screenshot 2025-07-18 103721.png)
+![Cluster stopped](./img/Screenshot 2025-07-18 103721.png) -->
 
 ## 7.4. Processing for the Redshift Table:
 
 Processing for Redshift table can be run automatically by scheduler and by manual process also. Automatically, the process is set to be run by scheduler set on AWS EventBridge and AWS Lambda. The processing configuration can be found on the Lambda `p-gsth-lambda-dms-task-initiator`:
 
-![Lambda DMS task initiator](./img/image104.png)
+![Lambda DMS task initiator](./img/image111.png)
 
 Automatic process configuration by schedule can be found on here:
 
