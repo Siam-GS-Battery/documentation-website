@@ -281,22 +281,19 @@
   margin-bottom: 0.75rem;
 }
 
-.statusBadge {
-  background:#10b981 ;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 1px 3px 0 rgba(16, 185, 129, 0.2);
+.docDate {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-right: 8px;
 }
 
-.docDate {
-  color: #6b7280;
-  font-size: 0.875rem;
-  font-weight: 400;
+.statusBadge {
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-left: 8px;
 }
 
 .docTitle {
@@ -322,6 +319,50 @@
   color: #656d76;
   line-height: 1.5;
   font-size: 0.875rem;
+}
+
+.docBadges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badgeGeneral {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.badgeITDevelopment {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.badgeITManagement {
+  background-color: #fae8ff;
+  color: #86198f;
+}
+
+.badgeDataManagement {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.badgeSubcategory {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.badgeDocumentation {
+  background-color: #fef3c7;
+  color: #92400e;
 }
 
 /* Responsive design for latest documentation */

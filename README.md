@@ -311,14 +311,14 @@ yarn start --port 3001
 - Test changes thoroughly
 - Update documentation when adding new features
 
-## 📞 Support
+<!-- ## 📞 Support
 
 For questions, issues, or support:
 
 - **Email**: it-support@company.com
 - **Phone**: +66-2-123-4567
 - **Documentation**: Check the website's documentation sections
-- **Issues**: Create an issue in the repository
+- **Issues**: Create an issue in the repository -->
 
 ## 📄 License
 

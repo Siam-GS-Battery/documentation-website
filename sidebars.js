@@ -63,7 +63,7 @@ const sidebars = {
         description: 'A step-by-step manual for end users. Provides detailed instructions with visuals on how to use each feature of the system. Helps users navigate and operate the platform effectively and independently.'
       },
       items: [
-      'techstack/asana',
+      'Itmanagement/HowtouseAsana',
       ],
     },
     {
@@ -207,7 +207,21 @@ const sidebars = {
         description: 'A step-by-step manual for end users. Provides detailed instructions with visuals on how to use each feature of the system. Helps users navigate and operate the platform effectively and independently.'
       },
       items: [
-      'techstack/asana',
+      {
+        type: 'category',
+        label: 'AWS General User Guide',
+        link: {
+          type: 'generated-index',
+          description: 'AWS General User Guide for data management and cloud services.'
+        },
+        items: [
+        'Datamanagement/AWS General User Guide/General Information',
+        'Datamanagement/AWS General User Guide/AWS Command Line Interface',
+        'Datamanagement/AWS General User Guide/Access EC2 Instance',
+        'Datamanagement/AWS General User Guide/QuickSight',
+        
+        ],
+      },
       ],
     },
     {
@@ -230,7 +244,6 @@ const sidebars = {
       },
       items: [
         'Datamanagement/Customer Data Platform',
-        // สามารถเพิ่มหมวดหมู่ย่อยอื่นๆ ได้ที่นี่
       ],
     },
     {

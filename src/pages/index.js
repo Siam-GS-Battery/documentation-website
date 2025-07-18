@@ -92,53 +92,69 @@ function CategoryCards() {
 function LatestDocumentation() {
   const gettingStarted = [
     {
-      title: 'Getting Started with Documentation',
-      description: 'Learn the basics of creating and managing documentation for your IT projects and workflows.',
-      link: '/docs/intro'
+      title: 'Introduction to Markdown Creation',
+      description: 'Get started with the basics of creating documentation using Markdown.',
+      link: '/docs/markdown-create/intro',
+      category: 'Documentation',
+      subcategory: 'How to create Markdown'
     },
     {
-      title: 'How to Create Markdown Files',
-      description: 'Master the art of writing documentation using Markdown syntax and best practices for formatting.',
-      link: '/docs/markdown-create/markdown-basics'
+      title: 'Markdown Basics',
+      description: 'Learn the fundamental syntax and formatting options in Markdown.',
+      link: '/docs/markdown-create/markdown-basics',
+      category: 'Documentation', 
+      subcategory: 'How to create Markdown'
     },
     {
-      title: 'Project Management with Asana',
-      description: 'Set up and use Asana for effective project management and team collaboration workflows.',
-      link: '/docs/techstack/asana'
+      title: 'Advanced Markdown Features',
+      description: 'Master advanced Markdown techniques and formatting options.',
+      link: '/docs/markdown-create/advanced-features',
+      category: 'Documentation',
+      subcategory: 'How to create Markdown'
     },
     {
-      title: 'IT Development Best Practices',
-      description: 'Learn fundamental practices for software development and system management in your organization.',
-      link: '/docs/Itdevelopment/intro'
+      title: 'Visual Elements in Documentation',
+      description: 'Learn how to add and manage visual elements in your Markdown documents.',
+      link: '/docs/markdown-create/visual-elements',
+      category: 'Documentation',
+      subcategory: 'How to create Markdown'
     }
   ];
 
   const popular = [
+    // {
+    //   title: 'Project Documentation Guide',
+    //   description: 'Learn how to create comprehensive project documentation using Markdown.',
+    //   link: '/docs/markdown-create/project-docs',
+    //   category: 'How to create Markdown',
+    //   subcategory: 'Project Documentation',
+    //   status: 'Active',
+    //   date: '15 March 2025'
+    // },
+    // {
+    //   title: 'SOP Writing Guidelines',
+    //   description: 'Guidelines and templates for creating Standard Operating Procedures (SOPs).',
+    //   link: '/docs/markdown-create/sop-writing',
+    //   category: 'How to create Markdown',
+    //   subcategory: 'SOP',
+    //   status: 'Active',
+    //   date: '10 March 2025'
+    // },
     {
-      title: 'E-Commerce Management System',
-      description: 'Learn how to build and manage a complete e-commerce platform with admin dashboard and inventory management.',
-      link: '/docs/Itdevelopment/E-Commerce Management System',
+      title: 'Asana Project Management Guide',
+      description: 'Master project management and team collaboration using Asana with advanced workflows and best practices.',
+      link: '/docs/Itmanagement/HowtouseAsana',
+      category: 'IT Management',
+      subcategory: 'User Guide',
       status: 'Active',
-      date: '15 March 2025'
+      date: '08 March 2025'
     },
     {
       title: 'Customer Data Platform Setup',
       description: 'Complete guide for building a Customer Data Platform to centralize and manage customer data effectively.',
       link: '/docs/Datamanagement/Customer Data Platform',
-      status: 'Active',
-      date: '10 March 2025'
-    },
-    {
-      title: 'Asana Project Management Guide',
-      description: 'Master project management and team collaboration using Asana with advanced workflows and best practices.',
-      link: '/docs/Itmanagement/HowtouseAsana',
-      status: 'Active',
-      date: '08 March 2025'
-    },
-    {
-      title: 'Advanced Markdown Documentation',
-      description: 'Create professional documentation with advanced Markdown features, visual elements, and formatting techniques.',
-      link: '/docs/markdown-create/advanced-features',
+      category: 'Data Management',
+      subcategory: 'Tech Stack',
       status: 'Active',
       date: '05 March 2025'
     }
@@ -153,6 +169,14 @@ function LatestDocumentation() {
             <div className={styles.docsList}>
               {gettingStarted.map((doc, idx) => (
                 <div key={idx} className={styles.docItem}>
+                  <div className={styles.docBadges}>
+                    <span className={clsx(styles.badge, styles[`badge${doc.category.replace(/\s+/g, '')}`])}>
+                      {doc.category}
+                    </span>
+                    <span className={clsx(styles.badge, styles.badgeSubcategory)}>
+                      {doc.subcategory}
+                    </span>
+                  </div>
                   <h3 className={styles.docTitle}>
                     <Link to={doc.link}>
                       {doc.title}
@@ -170,8 +194,18 @@ function LatestDocumentation() {
               {popular.map((doc, idx) => (
                 <div key={idx} className={styles.docItem}>
                   <div className={styles.docHeader}>
-                    <span className={styles.docDate}>{doc.date}</span>
-                    <span className={styles.statusBadge}>{doc.status}</span>
+                    <div className={styles.docBadges}>
+                      <span className={clsx(styles.badge, styles[`badge${doc.category.replace(/\s+/g, '')}`])}>
+                        {doc.category}
+                      </span>
+                      <span className={clsx(styles.badge, styles.badgeSubcategory)}>
+                        {doc.subcategory}
+                      </span>
+                    </div>
+                    <div>
+                      <span className={styles.docDate}>{doc.date}</span>
+                      <span className={styles.statusBadge}>{doc.status}</span>
+                    </div>
                   </div>
                   <h3 className={styles.docTitle}>
                     <Link to={doc.link}>
