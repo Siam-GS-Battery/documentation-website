@@ -75,28 +75,28 @@ aws s3 cp s3://p-gsth-dw-s3-temp/dir1/ test123/ --recursive --profile <profilena
 
 ## 4.2. Upload/download via AWS Management Console
 
-### 1. Open AWS Management Console, go to S3 page by type s3 in search bar.
+1. Open AWS Management Console, go to S3 page by type s3 in search bar.
 
 ![AWS search bar](./img/image19.png)
 
-### 2. Select the S3 Bucket by clicking it. For example, p-gsth-dw-s3-temp bucket
+1. Select the S3 Bucket by clicking it. For example, p-gsth-dw-s3-temp bucket
 
-### 3. To upload file/folder click the Upload button. If want to upload to specific folder can navigate to folder first or can create new folder if needed.
+2. To upload file/folder click the Upload button. If want to upload to specific folder can navigate to folder first or can create new folder if needed.
 
 ![AWS S3 Upload](./img/image20.png)
 
-### 4. Choose want upload file(s) or folder(s) by clicking the Add files or Add folder button.
+3. Choose want upload file(s) or folder(s) by clicking the Add files or Add folder button.
 
 ![S3 Upload files and/or folder](./img/image21.png)
 
-### 5. After choosing the files or/and folder, the list will appear then click the Upload button.
+4. After choosing the files or/and folder, the list will appear then click the Upload button.
 
 ![AWS S3 Upload](./img/image22.png)
 
-### 6. There will be upload message status, then click the Close button.
+5. There will be upload message status, then click the Close button.
 
 ![AWS S3 message status](./img/image23.png)
 
-### 7. To download file via s3 console only select 1 file, to download multiple files must be via AWS CLI. To download file, select the file then click the Download button.
+6. To download file via s3 console only select 1 file, to download multiple files must be via AWS CLI. To download file, select the file then click the Download button.
 
 ![AWS S3 download file](./img/image24.png) 
