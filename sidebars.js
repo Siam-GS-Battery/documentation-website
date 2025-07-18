@@ -207,25 +207,7 @@ const sidebars = {
         description: 'A step-by-step manual for end users. Provides detailed instructions with visuals on how to use each feature of the system. Helps users navigate and operate the platform effectively and independently.'
       },
       items: [
-      {
-        type: 'category',
-        label: 'AWS General User Guide',
-        link: {
-          type: 'generated-index',
-          description: 'AWS General User Guide for data management and cloud services.'
-        },
-        items: [
-        'Datamanagement/AWS General User Guide/General Information',
-        'Datamanagement/AWS General User Guide/AWS Command Line Interface',
-        'Datamanagement/AWS General User Guide/Access EC2 Instance',
-        'Datamanagement/AWS General User Guide/Amazon Simple Storage Service',
-        'Datamanagement/AWS General User Guide/QuickSight',
-        'Datamanagement/AWS General User Guide/redshift',
-        'Datamanagement/AWS General User Guide/Business as Usual Operation',
-        
-        
-        ],
-      },
+      'Datamanagement/Customer Data Platform',
       ],
     },
     {
@@ -247,7 +229,25 @@ const sidebars = {
         description: 'Comprehensive project overview. Covers the project\'s goals, scope, architecture, database design, and development process. Helps all stakeholders understand the system at a high level.'
       },
       items: [
-        'Datamanagement/Customer Data Platform',
+        {
+          type: 'category',
+          label: 'AWS General User Guide',
+          link: {
+            type: 'generated-index',
+            description: 'AWS General User Guide for data management and cloud services.'
+          },
+          items: [
+          'Datamanagement/AWS General User Guide/General Information',
+          'Datamanagement/AWS General User Guide/AWS Command Line Interface',
+          'Datamanagement/AWS General User Guide/Access EC2 Instance',
+          'Datamanagement/AWS General User Guide/Amazon Simple Storage Service',
+          'Datamanagement/AWS General User Guide/QuickSight',
+          'Datamanagement/AWS General User Guide/redshift',
+          'Datamanagement/AWS General User Guide/Business as Usual Operation',
+          
+          
+          ],
+        },
       ],
     },
     {
