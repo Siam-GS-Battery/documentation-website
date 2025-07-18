@@ -20,7 +20,7 @@ const sidebars = {
     'intro',
     {
       type: 'category',
-      label: 'How to create Markdown',
+      label: 'How to Create Markdown Files',
       items: [
         'markdown-create/intro',
         'markdown-create/markdown-basics',
