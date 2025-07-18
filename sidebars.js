@@ -20,7 +20,7 @@ const sidebars = {
     'intro',
     {
       type: 'category',
-      label: 'How to Create Markdown Files with Docusaurus',
+      label: 'How to Create Markdown Files',
       items: [
         'markdown-create/intro',
         'markdown-create/markdown-basics',
