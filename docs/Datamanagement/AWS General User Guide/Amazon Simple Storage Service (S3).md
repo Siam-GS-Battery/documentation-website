@@ -79,24 +79,24 @@ aws s3 cp s3://p-gsth-dw-s3-temp/dir1/ test123/ --recursive --profile <profilena
 
 ![AWS search bar](./img/image19.png)
 
-1. Select the S3 Bucket by clicking it. For example, p-gsth-dw-s3-temp bucket
+2. Select the S3 Bucket by clicking it. For example, p-gsth-dw-s3-temp bucket
 
-2. To upload file/folder click the Upload button. If want to upload to specific folder can navigate to folder first or can create new folder if needed.
+3. To upload file/folder click the Upload button. If want to upload to specific folder can navigate to folder first or can create new folder if needed.
 
 ![AWS S3 Upload](./img/image20.png)
 
-3. Choose want upload file(s) or folder(s) by clicking the Add files or Add folder button.
+4. Choose want upload file(s) or folder(s) by clicking the Add files or Add folder button.
 
 ![S3 Upload files and/or folder](./img/image21.png)
 
-4. After choosing the files or/and folder, the list will appear then click the Upload button.
+5. After choosing the files or/and folder, the list will appear then click the Upload button.
 
 ![AWS S3 Upload](./img/image22.png)
 
-5. There will be upload message status, then click the Close button.
+6. There will be upload message status, then click the Close button.
 
 ![AWS S3 message status](./img/image23.png)
 
-6. To download file via s3 console only select 1 file, to download multiple files must be via AWS CLI. To download file, select the file then click the Download button.
+7. To download file via s3 console only select 1 file, to download multiple files must be via AWS CLI. To download file, select the file then click the Download button.
 
 ![AWS S3 download file](./img/image24.png) 
