@@ -4,8 +4,8 @@
  * work well for content-centric websites.
  */
 
-/* Import IBM Plex Sans font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* Import IBM Plex fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 /* IBM Design System Color Palette */
 :root {
@@ -241,34 +241,34 @@
   }
 }
 
-/* ใช้ Font Inter ในทุกส่วนของเว็บไซต์ */
+/* ใช้ Font IBM Plex ในทุกส่วนของเว็บไซต์ */
 * {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
 }
 
-/* ใช้ Font Inter ใน headings */
+/* ใช้ Font IBM Plex ใน headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
 }
 
 /* ใช้ Font Inter ใน navigation */
 .navbar, .navbar__brand, .navbar__item, .navbar__link {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
 }
 
 /* ใช้ Font Inter ใน content */
 .main-wrapper, .main-wrapper * {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
 }
 
 /* ใช้ Font Inter ใน sidebar */
 .theme-doc-sidebar-menu, .theme-doc-sidebar-item-link {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
 }
 
 /* ใช้ Font Inter ใน footer */
 .footer, .footer * {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
 }
 
 /* ===== NAVBAR TEXT COLOR STYLING ===== */
@@ -299,7 +299,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #1f2937 !important; /* สีเทาเข้ม */
   font-weight: 100;
   font-size: 1.1rem;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
   color: #005baa !important;
 }
 
