@@ -23,7 +23,7 @@ To access the system in AWS, users need to log in to the AWS console by followin
 1. **Check your email** and click on the **Accept invitation** link
 2. This will take you to the **New user sign up** page where you can set your password
 
-![Figure 1. Email invitations](./img/Picture1.png)
+![Figure 1. Email invitations](./img/image2.png)
 
 > **Important:** The email includes your username and AWS access portal URL. Record this information for future login.
 
@@ -39,7 +39,7 @@ The AWS access portal will open and display the organization and applications yo
 - Expand the **Organization** to see a list of AWS accounts
 - Select the desired account to view roles that allow access to AWS resources
 
-![Figure 2. AWS access portal](./img/Picture2.png)
+![Figure 2. AWS access portal](./img/image3.png)
 
 Each permission set has two access methods:
 
@@ -51,7 +51,7 @@ Each permission set has two access methods:
 1. Click the **Role** link to sign in to the AWS Console Home
 2. Once logged in, ensure the region is set to **Thailand (ap-southeast-7)**
 
-![Figure 3. Choose Region](./img/Picture3.png)
+![Figure 3. Choose Region](./img/image4.png)
 
 ### 1.2.2 Change Region in AWS Console
 
@@ -60,7 +60,7 @@ To change regions in the AWS Console:
 1. Click the current region on the top-right menu bar
 2. Select your desired region (e.g., **Singapore (ap-southeast-1)**)
 
-![Figure 4. Change region](./img/Picture4.png)
+![Figure 4. Change region](./img/image5.png)
 
 ---
 
@@ -90,7 +90,7 @@ To get auto-refreshing credentials:
 1. Under the account, locate the assigned permission set (e.g., `p-gsth-ppc-dept`)
 2. Choose **Access keys** or **Command line or programmatic access**
 
-![Figure 5. AWS access portal access keys](./img/Picture5.png)
+![Figure 5. AWS access portal access keys](./img/image6.png)
 
 #### Step 4: Configure Credentials
 
@@ -118,7 +118,7 @@ To get credentials with manual refresh:
 
 1. In the **Get credentials** dialog, choose your OS platform
 
-![Figure 6. AWS Credentials](./img/Picture6.png)
+![Figure 6. AWS Credentials](./img/image7.png)
 
 #### Step 4: Choose Credential Method
 

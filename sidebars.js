@@ -218,7 +218,11 @@ const sidebars = {
         'Datamanagement/AWS General User Guide/General Information',
         'Datamanagement/AWS General User Guide/AWS Command Line Interface',
         'Datamanagement/AWS General User Guide/Access EC2 Instance',
+        'Datamanagement/AWS General User Guide/Amazon Simple Storage Service',
         'Datamanagement/AWS General User Guide/QuickSight',
+        'Datamanagement/AWS General User Guide/redshift',
+        'Datamanagement/AWS General User Guide/Business as Usual Operation',
+        
         
         ],
       },

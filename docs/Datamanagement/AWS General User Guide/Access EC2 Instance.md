@@ -70,7 +70,7 @@ aws ssm start-session --target "i-061da0d3edbe1c747" --document-name "AWS-StartP
 
 Go to EC2 by search EC2 in search bar.
 
-![AWS search bar](./img/Picture10.png)
+![AWS search bar](./img/image11.png)
 
 ### 2. Select and Connect to Instance
 
@@ -80,11 +80,11 @@ Click Instances, select EC2 that want to connect, click the Connect button.
 
 Click on Session Manager then click the Connect button.
 
-![Session Manager Connect](./img/Picture11.png)
+![Session Manager Connect](./img/image12.png)
 
 ### 4. Browser Session
 
 It will open new tab on browser.
 
-![Connect EC2](./img/Picture12.png)
+![Connect EC2](./img/image13.png)
 

@@ -4,47 +4,132 @@
  * work well for content-centric websites.
  */
 
-/* Import Inter font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* Import IBM Plex Sans font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* IBM Design System Color Palette */
+:root {
+  /* IBM Primary Colors */
+  --ibm-blue-60: #0062FF;        /* Primary Blue */
+  --ibm-blue-70: #0043CE;        /* Darker Blue */
+  --ibm-blue-50: #0F62FE;        /* Lighter Blue */
+  --ibm-blue-40: #78A9FF;        /* Light Blue */
+  --ibm-blue-30: #A7C7E7;        /* Very Light Blue */
+  
+  /* IBM Gray Scale */
+  --ibm-gray-100: #161616;       /* Darkest Gray */
+  --ibm-gray-90: #262626;        /* Very Dark Gray */
+  --ibm-gray-80: #393939;        /* Dark Gray */
+  --ibm-gray-70: #525252;        /* Medium Dark Gray */
+  --ibm-gray-60: #6F6F6F;        /* Medium Gray */
+  --ibm-gray-50: #8D8D8D;        /* Medium Light Gray */
+  --ibm-gray-40: #A8A8A8;        /* Light Gray */
+  --ibm-gray-30: #C1C1C1;        /* Very Light Gray */
+  --ibm-gray-20: #DDE1E6;        /* Lightest Gray */
+  --ibm-gray-10: #F4F4F4;        /* Background Gray */
+  --ibm-gray-5: #FAFAFA;         /* Very Light Background */
+  
+  /* IBM Semantic Colors */
+  --ibm-green-60: #24A148;       /* Success Green */
+  --ibm-red-60: #DA1E28;         /* Error Red */
+  --ibm-orange-60: #FF832B;      /* Warning Orange */
+  --ibm-purple-60: #8A3FFC;      /* Purple */
+  --ibm-teal-60: #0072C3;        /* Teal */
+  
+  /* IBM Background Colors */
+  --ibm-background: #FFFFFF;     /* White Background */
+  --ibm-background-alt: #F4F4F4; /* Alternative Background */
+  --ibm-background-dark: #161616; /* Dark Background */
+  
+  /* IBM Text Colors */
+  --ibm-text-primary: #161616;   /* Primary Text */
+  --ibm-text-secondary: #525252; /* Secondary Text */
+  --ibm-text-tertiary: #8D8D8D;  /* Tertiary Text */
+  --ibm-text-inverse: #FFFFFF;   /* Inverse Text */
+  
+  /* IBM Border Colors */
+  --ibm-border-light: #E0E0E0;   /* Light Border */
+  --ibm-border-medium: #C1C1C1;  /* Medium Border */
+  --ibm-border-dark: #8D8D8D;    /* Dark Border */
+  
+  /* IBM Shadow Colors */
+  --ibm-shadow-light: rgba(0, 0, 0, 0.1);
+  --ibm-shadow-medium: rgba(0, 0, 0, 0.15);
+  --ibm-shadow-dark: rgba(0, 0, 0, 0.2);
+}
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #3b82f6;
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e40af;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
-  --ifm-color-primary-lightest: #dbeafe;
+  --ifm-color-primary: var(--ibm-blue-60);
+  --ifm-color-primary-dark: var(--ibm-blue-70);
+  --ifm-color-primary-darker: var(--ibm-blue-70);
+  --ifm-color-primary-darkest: var(--ibm-blue-70);
+  --ifm-color-primary-light: var(--ibm-blue-50);
+  --ifm-color-primary-lighter: var(--ibm-blue-40);
+  --ifm-color-primary-lightest: var(--ibm-blue-30);
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: var(--ibm-shadow-light);
   
-  /* เปลี่ยน Font เป็น Inter และปรับขนาดตัวหนังสือให้เท่ากับ Next.js Templates */
-  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
-  --ifm-heading-font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  --ifm-font-family-monospace: 'Inter', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  /* IBM Typography System */
+  --ifm-font-family-base: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'IBM Plex Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'IBM Plex Mono', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
   
-  /* ปรับขนาดตัวหนังสือให้เล็กลงและบางลงเล็กน้อย */
+  /* IBM Typography Scale */
   --ifm-font-size-base: 14px;
-  --ifm-line-height-base: 1.6;
-  --ifm-h1-font-size: 2.2rem;
-  --ifm-h2-font-size: 1.8rem;
-  --ifm-h3-font-size: 1.4rem;
-  --ifm-h4-font-size: 1.2rem;
-  --ifm-h5-font-size: 1rem;
-  --ifm-h6-font-size: 0.9rem;
+  --ifm-line-height-base: 1.5;
+  --ifm-h1-font-size: 2.25rem;    /* 36px */
+  --ifm-h2-font-size: 1.75rem;    /* 28px */
+  --ifm-h3-font-size: 1.5rem;     /* 24px */
+  --ifm-h4-font-size: 1.25rem;    /* 20px */
+  --ifm-h5-font-size: 1.125rem;   /* 18px */
+  --ifm-h6-font-size: 1rem;       /* 16px */
+  
+  /* IBM Spacing System (8px grid) */
+  --ibm-spacing-01: 0.125rem;     /* 2px */
+  --ibm-spacing-02: 0.25rem;      /* 4px */
+  --ibm-spacing-03: 0.5rem;       /* 8px */
+  --ibm-spacing-04: 0.75rem;      /* 12px */
+  --ibm-spacing-05: 1rem;         /* 16px */
+  --ibm-spacing-06: 1.5rem;       /* 24px */
+  --ibm-spacing-07: 2rem;         /* 32px */
+  --ibm-spacing-08: 2.5rem;       /* 40px */
+  --ibm-spacing-09: 3rem;         /* 48px */
+  --ibm-spacing-10: 4rem;         /* 64px */
+  --ibm-spacing-11: 5rem;         /* 80px */
+  --ibm-spacing-12: 6rem;         /* 96px */
+  
+  /* IBM Border Radius */
+  --ibm-border-radius-small: 2px;
+  --ibm-border-radius-medium: 4px;
+  --ibm-border-radius-large: 8px;
+  
+  /* IBM Transitions */
+  --ibm-transition-fast: 0.1s ease;
+  --ibm-transition-medium: 0.2s ease;
+  --ibm-transition-slow: 0.3s ease;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #60a5fa;
-  --ifm-color-primary-dark: #3b82f6;
-  --ifm-color-primary-darker: #2563eb;
-  --ifm-color-primary-darkest: #1d4ed8;
-  --ifm-color-primary-light: #93c5fd;
-  --ifm-color-primary-lighter: #dbeafe;
-  --ifm-color-primary-lightest: #eff6ff;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: var(--ibm-blue-40);
+  --ifm-color-primary-dark: var(--ibm-blue-50);
+  --ifm-color-primary-darker: var(--ibm-blue-60);
+  --ifm-color-primary-darkest: var(--ibm-blue-70);
+  --ifm-color-primary-light: var(--ibm-blue-30);
+  --ifm-color-primary-lighter: var(--ibm-blue-30);
+  --ifm-color-primary-lightest: var(--ibm-blue-30);
+  --docusaurus-highlighted-code-line-bg: var(--ibm-shadow-medium);
+  
+  /* Dark mode background and text colors */
+  --ibm-background: var(--ibm-gray-100);
+  --ibm-background-alt: var(--ibm-gray-90);
+  --ibm-text-primary: var(--ibm-gray-10);
+  --ibm-text-secondary: var(--ibm-gray-30);
+  --ibm-text-tertiary: var(--ibm-gray-50);
+  --ibm-border-light: var(--ibm-gray-80);
+  --ibm-border-medium: var(--ibm-gray-70);
+  --ibm-border-dark: var(--ibm-gray-60);
 }
 
 /* ===== STANDARD LAYOUT CONTAINER STYLING ===== */
@@ -1019,4 +1104,212 @@ input, textarea, select {
 .theme-doc-layout-main::-webkit-scrollbar-thumb:hover {
   background-color: var(--ifm-color-emphasis-400);
 }
+
+/* ===== IBM DESIGN SYSTEM LAYOUT GUIDELINES ===== */
+
+/* IBM Layout Principles */
+.ibm-layout {
+  /* Clean, spacious design with consistent spacing */
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--ibm-spacing-07);
+  box-sizing: border-box;
+}
+
+/* IBM Grid System */
+.ibm-grid {
+  display: grid;
+  gap: var(--ibm-spacing-06);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.ibm-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.ibm-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.ibm-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* IBM Container System */
+.ibm-container {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: 0 var(--ibm-spacing-07);
+}
+
+.ibm-container--narrow {
+  max-width: 800px;
+}
+
+.ibm-container--wide {
+  max-width: 1600px;
+}
+
+/* IBM Spacing Utilities */
+.ibm-padding--01 { padding: var(--ibm-spacing-01); }
+.ibm-padding--02 { padding: var(--ibm-spacing-02); }
+.ibm-padding--03 { padding: var(--ibm-spacing-03); }
+.ibm-padding--04 { padding: var(--ibm-spacing-04); }
+.ibm-padding--05 { padding: var(--ibm-spacing-05); }
+.ibm-padding--06 { padding: var(--ibm-spacing-06); }
+.ibm-padding--07 { padding: var(--ibm-spacing-07); }
+.ibm-padding--08 { padding: var(--ibm-spacing-08); }
+.ibm-padding--09 { padding: var(--ibm-spacing-09); }
+.ibm-padding--10 { padding: var(--ibm-spacing-10); }
+
+.ibm-margin--01 { margin: var(--ibm-spacing-01); }
+.ibm-margin--02 { margin: var(--ibm-spacing-02); }
+.ibm-margin--03 { margin: var(--ibm-spacing-03); }
+.ibm-margin--04 { margin: var(--ibm-spacing-04); }
+.ibm-margin--05 { margin: var(--ibm-spacing-05); }
+.ibm-margin--06 { margin: var(--ibm-spacing-06); }
+.ibm-margin--07 { margin: var(--ibm-spacing-07); }
+.ibm-margin--08 { margin: var(--ibm-spacing-08); }
+.ibm-margin--09 { margin: var(--ibm-spacing-09); }
+.ibm-margin--10 { margin: var(--ibm-spacing-10); }
+
+/* IBM Typography Utilities */
+.ibm-text--heading-01 {
+  font-size: var(--ifm-h1-font-size);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.ibm-text--heading-02 {
+  font-size: var(--ifm-h2-font-size);
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: 0;
+}
+
+.ibm-text--heading-03 {
+  font-size: var(--ifm-h3-font-size);
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+
+.ibm-text--heading-04 {
+  font-size: var(--ifm-h4-font-size);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.ibm-text--body-long-01 {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.ibm-text--body-long-02 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0;
+}
+
+.ibm-text--body-short-01 {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.ibm-text--body-short-02 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: 0;
+}
+
+.ibm-text--caption-01 {
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: 0.32px;
+}
+
+.ibm-text--label-01 {
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: 0.32px;
+}
+
+/* IBM Color Utilities */
+.ibm-color--blue-60 { color: var(--ibm-blue-60); }
+.ibm-color--blue-70 { color: var(--ibm-blue-70); }
+.ibm-color--blue-50 { color: var(--ibm-blue-50); }
+.ibm-color--blue-40 { color: var(--ibm-blue-40); }
+.ibm-color--blue-30 { color: var(--ibm-blue-30); }
+
+.ibm-color--gray-100 { color: var(--ibm-gray-100); }
+.ibm-color--gray-90 { color: var(--ibm-gray-90); }
+.ibm-color--gray-80 { color: var(--ibm-gray-80); }
+.ibm-color--gray-70 { color: var(--ibm-gray-70); }
+.ibm-color--gray-60 { color: var(--ibm-gray-60); }
+.ibm-color--gray-50 { color: var(--ibm-gray-50); }
+.ibm-color--gray-40 { color: var(--ibm-gray-40); }
+.ibm-color--gray-30 { color: var(--ibm-gray-30); }
+.ibm-color--gray-20 { color: var(--ibm-gray-20); }
+.ibm-color--gray-10 { color: var(--ibm-gray-10); }
+.ibm-color--gray-5 { color: var(--ibm-gray-5); }
+
+.ibm-color--green-60 { color: var(--ibm-green-60); }
+.ibm-color--red-60 { color: var(--ibm-red-60); }
+.ibm-color--orange-60 { color: var(--ibm-orange-60); }
+.ibm-color--purple-60 { color: var(--ibm-purple-60); }
+.ibm-color--teal-60 { color: var(--ibm-teal-60); }
+
+/* IBM Background Utilities */
+.ibm-bg--blue-60 { background-color: var(--ibm-blue-60); }
+.ibm-bg--blue-70 { background-color: var(--ibm-blue-70); }
+.ibm-bg--blue-50 { background-color: var(--ibm-blue-50); }
+.ibm-bg--blue-40 { background-color: var(--ibm-blue-40); }
+.ibm-bg--blue-30 { background-color: var(--ibm-blue-30); }
+
+.ibm-bg--gray-100 { background-color: var(--ibm-gray-100); }
+.ibm-bg--gray-90 { background-color: var(--ibm-gray-90); }
+.ibm-bg--gray-80 { background-color: var(--ibm-gray-80); }
+.ibm-bg--gray-70 { background-color: var(--ibm-gray-70); }
+.ibm-bg--gray-60 { background-color: var(--ibm-gray-60); }
+.ibm-bg--gray-50 { background-color: var(--ibm-gray-50); }
+.ibm-bg--gray-40 { background-color: var(--ibm-gray-40); }
+.ibm-bg--gray-30 { background-color: var(--ibm-gray-30); }
+.ibm-bg--gray-20 { background-color: var(--ibm-gray-20); }
+.ibm-bg--gray-10 { background-color: var(--ibm-gray-10); }
+.ibm-bg--gray-5 { background-color: var(--ibm-gray-5); }
+
+.ibm-bg--green-60 { background-color: var(--ibm-green-60); }
+.ibm-bg--red-60 { background-color: var(--ibm-red-60); }
+.ibm-bg--orange-60 { background-color: var(--ibm-orange-60); }
+.ibm-bg--purple-60 { background-color: var(--ibm-purple-60); }
+.ibm-bg--teal-60 { background-color: var(--ibm-teal-60); }
+
+/* IBM Border Utilities */
+.ibm-border--light { border: 1px solid var(--ibm-border-light); }
+.ibm-border--medium { border: 1px solid var(--ibm-border-medium); }
+.ibm-border--dark { border: 1px solid var(--ibm-border-dark); }
+
+.ibm-border-radius--small { border-radius: var(--ibm-border-radius-small); }
+.ibm-border-radius--medium { border-radius: var(--ibm-border-radius-medium); }
+.ibm-border-radius--large { border-radius: var(--ibm-border-radius-large); }
+
+/* IBM Shadow Utilities */
+.ibm-shadow--light { box-shadow: 0 1px 3px var(--ibm-shadow-light); }
+.ibm-shadow--medium { box-shadow: 0 2px 6px var(--ibm-shadow-medium); }
+.ibm-shadow--dark { box-shadow: 0 4px 12px var(--ibm-shadow-dark); }
+
+/* IBM Transition Utilities */
+.ibm-transition--fast { transition: all var(--ibm-transition-fast); }
+.ibm-transition--medium { transition: all var(--ibm-transition-medium); }
+.ibm-transition--slow { transition: all var(--ibm-transition-slow); }
 

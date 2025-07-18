@@ -68,12 +68,29 @@ Emojis can make your documentation more friendly and visually appealing:
 This is an informational message that provides helpful context or background information.
 :::
 
+&nbsp;
+```markdown
+:::info
+**Information Callout**
+This is an informational message that provides helpful context or background information.
+:::
+```
+
 ### Warning Callout
 
 :::warning
 **Warning Callout**
 This is a warning message that alerts users to potential issues or important considerations.
 :::
+
+&nbsp;
+```markdown
+:::warning
+**Warning Callout**
+This is a warning message that alerts users to potential issues or important considerations.
+:::
+```
+
 
 ### Danger Callout
 
@@ -82,6 +99,14 @@ This is a warning message that alerts users to potential issues or important con
 This is a critical warning about potentially destructive actions or important security considerations.
 :::
 
+&nbsp;
+```markdown
+:::danger
+**Danger Callout**
+This is a critical warning about potentially destructive actions or important security considerations.
+:::
+```
+
 ### Tip Callout
 
 :::tip
@@ -89,12 +114,28 @@ This is a critical warning about potentially destructive actions or important se
 This is a helpful tip that can improve the user experience or provide shortcuts.
 :::
 
+&nbsp;
+```markdown
+:::tip
+**Tip Callout**
+This is a helpful tip that can improve the user experience or provide shortcuts.
+:::
+```
+
 ### Note Callout
 
 :::note
 **Note Callout**
 This is a general note that provides additional information or clarification.
 :::
+
+&nbsp;
+```markdown
+:::note
+**Note Callout**
+This is a general note that provides additional information or clarification.
+:::
+```
 
 ## Color-Coded Sections
 
@@ -116,6 +157,13 @@ This is a general note that provides additional information or clarification.
 ## Progress Indicators
 
 ### Task Progress
+**Project Progress: 75% Complete**
+
+- [x] Planning Phase
+- [x] Design Phase
+- [x] Development Phase
+- [ ] Testing Phase
+- [ ] Deployment Phase
 
 ```markdown
 **Project Progress: 75% Complete**
@@ -132,6 +180,12 @@ This is a general note that provides additional information or clarification.
 <span style={{ backgroundColor: '#28a745', color: 'white', padding: '2px 8px', borderRadius: '12px', fontSize: '12px' }}>Active</span>
 <span style={{ backgroundColor: '#ffc107', color: 'black', padding: '2px 8px', borderRadius: '12px', fontSize: '12px' }}>Pending</span>
 <span style={{ backgroundColor: '#dc3545', color: 'white', padding: '2px 8px', borderRadius: '12px', fontSize: '12px' }}>Failed</span>
+&nbsp;
+```markdown
+<span style={{ backgroundColor: '#28a745', color: 'white', padding: '2px 8px', borderRadius: '12px', fontSize: '12px' }}>Active</span>
+<span style={{ backgroundColor: '#ffc107', color: 'black', padding: '2px 8px', borderRadius: '12px', fontSize: '12px' }}>Pending</span>
+<span style={{ backgroundColor: '#dc3545', color: 'white', padding: '2px 8px', borderRadius: '12px', fontSize: '12px' }}>Failed</span>
+```
 
 ## Code Highlighting
 

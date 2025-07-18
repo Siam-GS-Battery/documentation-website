@@ -40,46 +40,57 @@ function CategoryCards() {
       title: 'IT Management',
       description: 'Documentation and best practices for IT management',
       link: '/docs/Itmanagement/intro',
-      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=200&fit=crop&crop=center'
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=200&fit=crop&crop=center',
+      category: 'Management'
     },
     {
       title: 'IT Development',
       description: 'Documentation and best practices for IT development',
       link: '/docs/Itdevelopment/intro',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop&crop=center'
+      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop&crop=center',
+      category: 'Development'
     },
     {
       title: 'Data Management',
       description: 'Documentation and best practices for data management',
       link: '/docs/Datamanagement/intro',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center'
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center',
+      category: 'Data'
+    },
+    {
+      title: 'Documentation',
+      description: 'Learn how to create effective documentation',
+      link: '/docs/markdown-create/intro',
+      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop&crop=center',
+      category: 'Guide'
     }
   ];
 
   return (
     <section className={styles.categorySection}>
       <div className="container">
-      <h2>Categories</h2>
-        <div className="row">
+        <h2 className={styles.sectionTitle}>Recommended for you</h2>
+        <div className={styles.categoryGrid}>
           {categories.map((category, idx) => (
-            <div key={idx} className="col col--4 margin-bottom--lg">
-              <div className={styles.categoryCard}>
-                <div className={styles.categoryIcon}>
-                  <img 
-                    src={category.image} 
-                    alt={category.title}
-                  />
-                </div>
-                <div className={styles.categoryContent}>
-                  <h3>{category.title}</h3>
-                  <p>{category.description}</p>
-                  <Link
-                    className="button button--outline button--primary"
-                    to={category.link}
-                  >
-                    View Documentation
-                  </Link>
-                </div>
+            <div key={idx} className={styles.categoryCard}>
+              <div className={styles.categoryImage}>
+                <img 
+                  src={category.image} 
+                  alt={category.title}
+                />
+              </div>
+              <div className={styles.categoryContent}>
+                <div className={styles.categoryLabel}>{category.category}</div>
+                <h3 className={styles.categoryTitle}>{category.title}</h3>
+                <p className={styles.categoryDescription}>{category.description}</p>
+                <Link
+                  className={styles.categoryLink}
+                  to={category.link}
+                >
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.16666 10H15.8333M15.8333 10L10.8333 5M15.8333 10L10.8333 15" stroke="currentColor" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
               </div>
             </div>
           ))}

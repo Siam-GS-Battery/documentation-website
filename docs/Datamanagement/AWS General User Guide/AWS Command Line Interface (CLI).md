@@ -87,7 +87,7 @@ To access AWS Management using the AWS CLI, the previously created access key an
    aws configure sso
    ```
 
-   ![aws configure sso](./img/Picture7.png)
+   ![aws configure sso](./img/image8.png)
 
 2. Fill with these values:
    - **SSO session name (Recommended):** siamgsbattery
@@ -110,7 +110,7 @@ To access AWS Management using the AWS CLI, the previously created access key an
    ```
    Will return list S3 buckets
 
-   ![aws s3 ls](./img/Picture8.png)
+   ![aws s3 ls](./img/image9.png)
 
 **Tips:** You can use help command for detail of command:
 ```bash
@@ -124,7 +124,7 @@ For example, detail s3 command:
 aws s3 help
 ```
 
-![aws cli help](./img/Picture9.png)
+![aws cli help](./img/image10.png)
 
 Use arrow up and down to scroll, for exit press `q`.
 
