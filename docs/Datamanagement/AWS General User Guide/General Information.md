@@ -68,9 +68,10 @@ To change regions in the AWS Console:
 
 The AWS access portal provides IAM Identity Center users with SSO access to AWS accounts and cloud applications. After signing in, temporary credentials can be retrieved for CLI or SDK usage.
 
-> **Note:** IAM Identity Center users differ from IAM users. IAM users use long-term credentials, while IAM Identity Center users get temporary credentials—recommended as a security best practice.
+:::tip
+**Note:**  IAM Identity Center users differ from IAM users. IAM users use long-term credentials, while IAM Identity Center users get temporary credentials—recommended as a security best practice.
+:::
 
-There are two options for getting and refreshing temporary credentials:
 
 ### 1.3.1 Automatic Credential Refresh (Recommended)
 

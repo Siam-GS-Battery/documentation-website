@@ -16,13 +16,13 @@ description: Guide for business as usual operations including Excel file prepara
 
 One of the data sources for current dashboard on QuickSight is manually processed Excel file. List of Excel files that were processed as of now was as follows:
 
-a. `PLAN-AMB-{MMM}-{YYYYY}-{REV No.}.xlsx` 
-b. `STOCK-TARGET-FY{YYYY}_Rev{REV No.}.xlsx` 
-c. `CAP-And-Sales-Rolling_N12.xlsx` 
-d. `PLATE-TARGET-FY{YYYY}.xlsx`
-e. `PLATE-MASTERLIST_{YYYYMMDD}.xlsx`
-f. `PLATE CAP and Sales Rolling N12.xlsx`
-g. `LEAD SHEET CAP and Sales Rolling N12.xlsx`
+- `PLAN-AMB-{MMM}-{YYYYY}-{REV No.}.xlsx`
+- `STOCK-TARGET-FY{YYYY}_Rev{REV No.}.xlsx`
+- `CAP-And-Sales-Rolling_N12.xlsx`
+- `PLATE-TARGET-FY{YYYY}.xlsx`
+- `PLATE-MASTERLIST_{YYYYMMDD}.xlsx`
+- `PLATE CAP and Sales Rolling N12.xlsx`
+- `LEAD SHEET CAP and Sales Rolling N12.xlsx`
 
 This excel file will need to be uploaded into S3 bucket that has been configured during the project implementation which is available at the `p-gsth-dw-s3-data`:
 
