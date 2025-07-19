@@ -138,7 +138,7 @@
 :root {
   --layout-max-width: 1400px;
   --sidebar-width: 280px;
-  --toc-width: 330px; /* เพิ่มความกว้างจาก 240px เป็น 280px */
+  --toc-width: 280px; 
   --content-max-width: 800px;
   --content-padding: 2rem;
   --header-height: 60px;
