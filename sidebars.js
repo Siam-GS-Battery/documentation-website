@@ -20,7 +20,7 @@ const sidebars = {
     'intro',
     {
       type: 'category',
-      label: 'How to create Markdown',
+      label: 'How to Create Markdown Files',
       items: [
         'markdown-create/intro',
         'markdown-create/markdown-basics',
@@ -145,7 +145,7 @@ const sidebars = {
         description: 'Technologies used in the project. Lists the programming languages, frameworks, tools, and platforms used to build and run the system. Useful for developers, maintainers, and technical stakeholders.'
       },
       items: [
-      'techstack/asana',
+      'techstack/claude-code',
       ],
     },
     {

@@ -19,6 +19,10 @@ const config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
+  plugins: [
+    'docusaurus-plugin-image-zoom',
+  ],
+
   // Set the production url of your site here
   url: 'https://your-docusaurus-site.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -215,6 +219,17 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+      },
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        background: {
+          light: 'rgb(255, 255, 255)',
+          dark: 'rgb(50, 50, 50)'
+        },
+        config: {
+          margin: 32,
+          scrollOffset: 0,
+        }
       },
     }),
 };
