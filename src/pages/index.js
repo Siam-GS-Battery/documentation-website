@@ -286,7 +286,7 @@ function TeamMembers() {
     },
     {
       name: 'Thitison Chedkai',
-      role: 'IT & Data Management',
+      role: 'Information Technology Officer',
       image: memberJune
     },
     {
