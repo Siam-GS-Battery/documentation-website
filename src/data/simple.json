@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-Commerce Management System",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
+      "sections": {
+        "challenge": "Developing a comprehensive e-commerce management system to streamline operations and improve customer experience."
+      }
+    },
+    {
+      "id": 2,
+      "title": "Data Analytics Platform",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
+      "sections": {
+        "challenge": "Creating a robust data analytics platform to provide actionable insights and improve decision-making processes."
+      }
+    },
+    {
+      "id": 3,
+      "title": "Cloud Infrastructure Migration",
+      "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop",
+      "sections": {
+        "challenge": "Migrating existing infrastructure to cloud platforms while ensuring minimal disruption to business operations."
+      }
+    }
+  ]
+} 

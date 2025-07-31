@@ -237,46 +237,49 @@ function LatestDocumentation() {
 function TeamMembers() {
   const members = [
     {
-      name: 'Bow',
-      role: 'IT Manager',
-      image: memberBow,
-      description: 'ผู้จัดการแผนกเทคโนโลยีสารสนเทศ'
+      name: 'Thanakorn Chollavorn',
+      role: 'Asst.General Manager of Information Technology & Data Management',
+      image: memberPtum
     },
     {
-      name: 'Mew',
-      role: 'System Administrator',
-      image: memberMew,
-      description: 'ดูแลระบบและเครือข่าย'
+      name: 'Sahachol Suwanichsuksan',
+      role: 'Asst.Manager of Information Technology (Acting)',
+      image: memberToi
     },
     {
-      name: 'June',
-      role: 'Developer',
-      image: memberJune,
-      description: 'พัฒนาแอปพลิเคชันและเว็บไซต์'
+      name: 'Haripong Dokput',
+      role: 'Chief of IT Management',
+      image: memberDuay
     },
     {
-      name: 'Duay',
-      role: 'Database Administrator',
-      image: memberDuay,
-      description: 'จัดการฐานข้อมูลและระบบ'
+      name: 'Phongsaton Viangkam',
+      role: 'Sr.Officer IT',
+      image: memberNew
     },
     {
-      name: 'New',
-      role: 'IT Support',
-      image: memberNew,
-      description: 'ให้บริการสนับสนุนด้าน IT'
+      name: 'Nisarat Hawharn',
+      role: 'Data Strategy Operation',
+      image: memberBow
     },
     {
-      name: 'Toi',
-      role: 'Network Engineer',
-      image: memberToi,
-      description: 'ดูแลเครือข่ายและความปลอดภัย'
+      name: 'Thitison Chedkai',
+      role: 'IT & Data Management',
+      image: memberJune
     },
     {
-      name: 'Ptum',
-      role: 'IT Specialist',
-      image: memberPtum,
-      description: 'ผู้เชี่ยวชาญด้านเทคโนโลยี'
+      name: 'Ratchanok Rachramthong',
+      role: 'Project Management Officer',
+      image: memberMew
+    },
+    {
+      name: 'Pantira Sripimmeang',
+      role: 'Software Engineer',
+      image: memberBow
+    },
+    {
+      name: 'Burased Baworncharoenpun',
+      role: 'AI Engineer',
+      image: memberMew
     }
   ];
 
@@ -284,29 +287,36 @@ function TeamMembers() {
     <section className={styles.teamSection}>
       <div className="container">
         <div className="text--center margin-bottom--xl">
-          <h2>Our Team</h2>
-          <p>Our team of IT & Data Management experts ready to serve</p>
+          <h2>IT TEAM</h2>
+          <p>Key members of the IT team who collaborate to develop and solve various project issues.</p>
         </div>
         <div className="row">
           {members.map((member, idx) => (
-            <div key={idx} className="col col--3 margin-bottom--lg">
-              <div className="card">
-                <div className="card__image">
+            <div key={idx} className="col col--4 margin-bottom--lg">
+              <div className="text--center" style={{ padding: '1rem' }}>
+                <div style={{ marginBottom: '1rem' }}>
                   <img 
                     src={member.image} 
                     alt={member.name}
                     style={{
-                      width: '100%',
-                      height: '200px',
+                        width: '240px',
+                        height: '300px',
                       objectFit: 'cover',
-                      borderRadius: '8px 8px 0 0'
+                      borderRadius: '8px',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                      transition: 'transform 0.3s ease'
                     }}
+                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                   />
                 </div>
-                <div className="card__body">
-                  <h3>{member.name}</h3>
-                  <p className="text--primary">{member.role}</p>
-                  <p className="text--secondary">{member.description}</p>
+                <div>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.5rem', color: '#1f2937' }}>
+                    {member.name}
+                  </h3>
+                  <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: 0 }}>
+                    {member.role}
+                  </p>
                 </div>
               </div>
             </div>
@@ -326,9 +336,9 @@ export default function Home() {
       <HomepageHeader />
       <main>
         {/* <HomepageFeatures /> */}
-        {/* <TeamMembers /> */}
         <CategoryCards />
         <LatestDocumentation />
+        <TeamMembers />
       </main>
     </Layout>
   );

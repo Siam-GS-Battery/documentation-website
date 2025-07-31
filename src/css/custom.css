@@ -162,11 +162,24 @@
 }
 
 /* ปรับ navbar container */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
 .navbar__inner {
   max-width: var(--layout-max-width);
   margin: 0 auto;
   padding: 0 var(--content-padding);
   box-sizing: border-box;
+}
+
+/* Add padding to body to prevent content from being hidden under navbar */
+body {
+  padding-top: var(--ifm-navbar-height);
 }
 
 /* ปรับ footer container */

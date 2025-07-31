@@ -1,7 +1,11 @@
 /**
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
+ 
  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .heroBanner {
   margin-top: 50px;
@@ -431,5 +435,71 @@
   
   .docTitle {
     font-size: 0.95rem;
+  }
+}
+
+/* ===== TEAM MEMBERS SECTION ===== */
+.teamSection {
+  padding: 4rem 0;
+  background-color: #f8fafc;
+}
+
+.memberImageContainer {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.memberImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.memberImage:hover {
+  transform: scale(1.05);
+  border-color: #0f62fe;
+  box-shadow: 0 6px 20px rgba(15, 98, 254, 0.2);
+}
+
+.memberInfo {
+  margin-top: 1rem;
+}
+
+.memberName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+}
+
+.memberRole {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive design for team members */
+@media screen and (max-width: 768px) {
+  .teamSection {
+    padding: 3rem 0;
+  }
+  
+  .memberImage {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .memberName {
+    font-size: 1rem;
+  }
+  
+  .memberRole {
+    font-size: 0.8rem;
   }
 }
