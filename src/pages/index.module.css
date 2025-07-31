@@ -3,9 +3,7 @@
  * and scoped locally.
  
  */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 .heroBanner {
   margin-top: 50px;
@@ -239,7 +237,7 @@
   font-size: 1.8rem;
   font-weight: 600;
   color: #1f2937;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid #e5e7eb;
 }
@@ -247,11 +245,11 @@
 .docsList {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .docItem {
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #f3f4f6;
 }
 
@@ -283,10 +281,10 @@
 }
 
 .docTitle {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.35rem 0;
   font-size: 1.125rem;
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .docTitle a {
@@ -303,14 +301,14 @@
 .docDescription {
   margin: 0;
   color: #656d76;
-  line-height: 1.5;
+  line-height: 1.4;
   font-size: 0.875rem;
 }
 
 .docBadges {
   display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 4px;
+  margin-bottom: 4px;
   flex-wrap: wrap;
 }
 
@@ -349,6 +347,11 @@
 .badgeDocumentation {
   background-color: #fef3c7;
   color: #92400e;
+}
+
+.badgeProject {
+  background-color: #e2e8f0;
+  color: #2da7ff;
 }
 
 /* Responsive design for latest documentation */

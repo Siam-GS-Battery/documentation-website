@@ -132,7 +132,9 @@ function LatestDocumentation() {
       link: '/docs/markdown-create/visual-elements',
       category: 'Documentation',
       subcategory: 'How to create Markdown'
-    }
+    },
+    
+
   ];
 
   const popular = [
@@ -154,24 +156,42 @@ function LatestDocumentation() {
     //   status: 'Active',
     //   date: '10 March 2025'
     // },
+    // {
+    //   title: 'Asana Project Management Guide',
+    //   description: 'Master project management and team collaboration using Asana with advanced workflows and best practices.',
+    //   link: '/docs/Itmanagement/HowtouseAsana',
+    //   category: 'IT Management',
+    //   subcategory: 'User Guide',
+    //   status: 'Active',
+    //   date: '08 March 2025'
+    // },
+    // {
+    //   title: 'Customer Data Platform Setup',
+    //   description: 'Complete guide for building a Customer Data Platform to centralize and manage customer data effectively.',
+    //   link: '/docs/Datamanagement/Customer Data Platform',
+    //   category: 'Data Management',
+    //   subcategory: 'Tech Stack',
+    //   status: 'Active',
+    //   date: '05 March 2025'
+    // },
     {
-      title: 'Asana Project Management Guide',
-      description: 'Master project management and team collaboration using Asana with advanced workflows and best practices.',
-      link: '/docs/Itmanagement/HowtouseAsana',
-      category: 'IT Management',
-      subcategory: 'User Guide',
+      title: 'AWS General User Guide',
+      description: 'AWS General User GuideThe information in this document is confidential to the company to whom it is addressed and should be used for that purpose only.',
+      link: '/docs/Datamanagement/AWS General User Guide/General Information',
+      category: 'Data Management',
+      subcategory: 'Project',
       status: 'Active',
-      date: '08 March 2025'
+      date: '31 July 2025'
     },
     {
-      title: 'Customer Data Platform Setup',
-      description: 'Complete guide for building a Customer Data Platform to centralize and manage customer data effectively.',
-      link: '/docs/Datamanagement/Customer Data Platform',
+      title: 'AWS Command Line Interface (CLI)',
+      description: 'AWS General User GuideThe information in this document is confidential to the company to whom it is addressed and should be used for that purpose only.',
+      link: '/docs/Datamanagement/AWS Command Line Interface (CLI)/General Information',
       category: 'Data Management',
-      subcategory: 'Tech Stack',
+      subcategory: 'Project',
       status: 'Active',
-      date: '05 March 2025'
-    }
+      date: '31 July 2025'
+    },
   ];
 
   return (
@@ -314,21 +334,22 @@ function TeamMembers() {
                   />
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                  <h3 style={{ 
-                    fontSize: '1.1rem', 
+                  <p style={{ 
+                    fontSize: '1rem', 
                     fontWeight: '600', 
                     marginBottom: '0.5rem', 
                     color: '#1f2937',
                     textAlign: 'center'
                   }}>
                     {member.name}
-                  </h3>
+                  </p>
                   <p style={{ 
-                    fontSize: '0.875rem', 
+                    fontSize: '1rem', 
                     color: '#6b7280', 
                     margin: '0 auto',
                     textAlign: 'center',
-                    maxWidth: '240px'
+                    maxWidth: '240px',
+                    marginBottom: '1.5rem',
                   }}>
                     {member.role}
                   </p>
@@ -346,7 +367,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Documentation - IT & Data Management`}
+      title={`IT-Portal`}
       description="IT & Data Management">
       <HomepageHeader />
       <main>
