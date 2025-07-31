@@ -72,60 +72,7 @@ const projects = [
     team: project.department,
   })),
   // Additional projects for demonstration
-  {
-    id: 'database-migration',
-    title: 'Database Migration System',
-    description: 'Comprehensive database migration and optimization system for enterprise data management.',
-    image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=500&q=80',
-    categories: ['database', 'infrastructure'],
-    division: 'it-data',
-    team: 'Data Management',
-  },
-  {
-    id: 'business-automation',
-    title: 'Business Process Automation',
-    description: 'End-to-end automation solution for streamlining business operations and workflows.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80',
-    categories: ['business', 'ai'],
-    division: 'accounting-finance',
-    team: 'Data Management',
-  },
-  {
-    id: 'cloud-infrastructure',
-    title: 'Cloud Infrastructure Setup',
-    description: 'Scalable cloud infrastructure deployment and management system.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=500&q=80',
-    categories: ['infrastructure'],
-    division: 'technical',
-    team: 'Data Management',
-  },
-  {
-    id: 'data-warehouse',
-    title: 'Data Warehouse Solution',
-    description: 'Enterprise data warehouse with real-time analytics and reporting capabilities.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80',
-    categories: ['database', 'business'],
-    division: 'it-data',
-    team: 'Data Management',
-  },
-  {
-    id: 'hr-management',
-    title: 'HR Management System',
-    description: 'Comprehensive human resources management system for employee lifecycle management.',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80',
-    categories: ['business'],
-    division: 'hr-ad',
-    team: 'Data Management',
-  },
-  {
-    id: 'quality-control',
-    title: 'Quality Control Dashboard',
-    description: 'Real-time quality monitoring and control system for production processes.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80',
-    categories: ['business'],
-    division: 'quality-assurance',
-    team: 'Data Management',
-  }
+
 ]
 
 function Project() {
