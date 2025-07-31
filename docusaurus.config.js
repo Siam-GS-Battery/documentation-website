@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'IT Documentation',
-  tagline: 'Dinosaurs are cool',
+  title: 'IT Portal',
+  tagline: 'IT Portal',
   favicon: 'img/logo.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -34,7 +34,7 @@ const config = {
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
-  onBrokenLinks: 'warn',
+        onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -90,6 +90,7 @@ const config = {
         respectPrefersColorScheme: false,
       },
       navbar: {
+        hideOnScroll: false,
         title: 'IT & Data Management',
         logo: {
           alt: 'My Site Logo',
@@ -97,6 +98,11 @@ const config = {
           width: 120, // ปรับความกว้างของโลโก้ (ค่าเริ่มต้นประมาณ 150-200)
         },
         items: [
+          {
+            to: '/project',
+            label: 'Projects',
+            position: 'left',
+          },
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
@@ -121,6 +127,7 @@ const config = {
             position: 'left',
             label: 'Data Management',
           },
+          
           // {
           //   to: '/content-submission',
           //   label: 'Create Document',

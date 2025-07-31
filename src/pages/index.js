@@ -10,12 +10,15 @@ import styles from './index.module.css';
 
 // Import member images
 import memberBow from '@site/src/assets/memberbow.jpg';
-import memberMew from '@site/src/assets/membermew.jpg';
+import memberMew from '@site/src/assets/membermew.png';
 import memberJune from '@site/src/assets/memberjune.jpg';
 import memberDuay from '@site/src/assets/memberduay.jpg';
 import memberNew from '@site/src/assets/membernew.jpg';
 import memberToi from '@site/src/assets/membertoi.jpg';
 import memberPtum from '@site/src/assets/memberptum.jpg';
+import memberfah from '@site/src/assets/memberfah.png';
+import memberboss from '@site/src/assets/memberboss.png';
+
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -129,7 +132,9 @@ function LatestDocumentation() {
       link: '/docs/markdown-create/visual-elements',
       category: 'Documentation',
       subcategory: 'How to create Markdown'
-    }
+    },
+    
+
   ];
 
   const popular = [
@@ -151,24 +156,42 @@ function LatestDocumentation() {
     //   status: 'Active',
     //   date: '10 March 2025'
     // },
+    // {
+    //   title: 'Asana Project Management Guide',
+    //   description: 'Master project management and team collaboration using Asana with advanced workflows and best practices.',
+    //   link: '/docs/Itmanagement/HowtouseAsana',
+    //   category: 'IT Management',
+    //   subcategory: 'User Guide',
+    //   status: 'Active',
+    //   date: '08 March 2025'
+    // },
+    // {
+    //   title: 'Customer Data Platform Setup',
+    //   description: 'Complete guide for building a Customer Data Platform to centralize and manage customer data effectively.',
+    //   link: '/docs/Datamanagement/Customer Data Platform',
+    //   category: 'Data Management',
+    //   subcategory: 'Tech Stack',
+    //   status: 'Active',
+    //   date: '05 March 2025'
+    // },
     {
-      title: 'Asana Project Management Guide',
-      description: 'Master project management and team collaboration using Asana with advanced workflows and best practices.',
-      link: '/docs/Itmanagement/HowtouseAsana',
-      category: 'IT Management',
-      subcategory: 'User Guide',
+      title: 'AWS General User Guide',
+      description: 'AWS General User GuideThe information in this document is confidential to the company to whom it is addressed and should be used for that purpose only.',
+      link: '/docs/Datamanagement/AWS General User Guide/General Information',
+      category: 'Data Management',
+      subcategory: 'Project',
       status: 'Active',
-      date: '08 March 2025'
+      date: '31 July 2025'
     },
     {
-      title: 'Customer Data Platform Setup',
-      description: 'Complete guide for building a Customer Data Platform to centralize and manage customer data effectively.',
-      link: '/docs/Datamanagement/Customer Data Platform',
+      title: 'AWS Command Line Interface (CLI)',
+      description: 'AWS General User GuideThe information in this document is confidential to the company to whom it is addressed and should be used for that purpose only.',
+      link: '/docs/Datamanagement/AWS Command Line Interface (CLI)/General Information',
       category: 'Data Management',
-      subcategory: 'Tech Stack',
+      subcategory: 'Project',
       status: 'Active',
-      date: '05 March 2025'
-    }
+      date: '31 July 2025'
+    },
   ];
 
   return (
@@ -237,46 +260,49 @@ function LatestDocumentation() {
 function TeamMembers() {
   const members = [
     {
-      name: 'Bow',
-      role: 'IT Manager',
-      image: memberBow,
-      description: 'ผู้จัดการแผนกเทคโนโลยีสารสนเทศ'
+      name: 'Thanakorn Chollavorn',
+      role: 'Asst.General Manager of Information Technology & Data Management',
+      image: memberPtum
     },
     {
-      name: 'Mew',
-      role: 'System Administrator',
-      image: memberMew,
-      description: 'ดูแลระบบและเครือข่าย'
+      name: 'Sahachol Suwanichsuksan',
+      role: 'Asst.Manager of Information Technology (Acting)',
+      image: memberToi
     },
     {
-      name: 'June',
-      role: 'Developer',
-      image: memberJune,
-      description: 'พัฒนาแอปพลิเคชันและเว็บไซต์'
+      name: 'Haripong Dokput',
+      role: 'Chief of IT Management',
+      image: memberDuay
     },
     {
-      name: 'Duay',
-      role: 'Database Administrator',
-      image: memberDuay,
-      description: 'จัดการฐานข้อมูลและระบบ'
+      name: 'Phongsaton Viangkam',
+      role: 'Sr.Officer IT',
+      image: memberNew
     },
     {
-      name: 'New',
-      role: 'IT Support',
-      image: memberNew,
-      description: 'ให้บริการสนับสนุนด้าน IT'
+      name: 'Nisarat Hawharn',
+      role: 'Data Strategy Operation',
+      image: memberBow
     },
     {
-      name: 'Toi',
-      role: 'Network Engineer',
-      image: memberToi,
-      description: 'ดูแลเครือข่ายและความปลอดภัย'
+      name: 'Thitison Chedkai',
+      role: 'IT & Data Management',
+      image: memberJune
     },
     {
-      name: 'Ptum',
-      role: 'IT Specialist',
-      image: memberPtum,
-      description: 'ผู้เชี่ยวชาญด้านเทคโนโลยี'
+      name: 'Ratchanok Rachramthong',
+      role: 'Project Management Officer',
+      image: memberMew
+    },
+    {
+      name: 'Pantira Sripimmeang',
+      role: 'Software Engineer',
+      image: memberfah
+    },
+    {
+      name: 'Burased Baworncharoenpun',
+      role: 'AI Engineer',
+      image: memberboss
     }
   ];
 
@@ -284,29 +310,49 @@ function TeamMembers() {
     <section className={styles.teamSection}>
       <div className="container">
         <div className="text--center margin-bottom--xl">
-          <h2>Our Team</h2>
-          <p>Our team of IT & Data Management experts ready to serve</p>
+          <h2 style={{ fontSize: '2rem', fontWeight: 'bold' }}>IT TEAM</h2>
+          <p  style={{ fontSize: '1rem', fontWeight: '400', color: '#6b7280' }}>Key members of the IT team who collaborate to develop and solve various project issues.</p>
         </div>
-        <div className="row">
+        <div className="row" style={{ justifyContent: 'center' }}>
           {members.map((member, idx) => (
-            <div key={idx} className="col col--3 margin-bottom--lg">
-              <div className="card">
-                <div className="card__image">
+            <div key={idx} className="col col--4" style={{ display: 'flex', justifyContent: 'center', padding: '0', marginBottom: '1rem' }}>
+              <div className="text--center" style={{ padding: '0 0.25rem', maxWidth: '280px' }}>
+                <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
                   <img 
                     src={member.image} 
                     alt={member.name}
                     style={{
-                      width: '100%',
-                      height: '200px',
+                      width: '240px',
+                      height: '300px',
                       objectFit: 'cover',
-                      borderRadius: '8px 8px 0 0'
+                      borderRadius: '8px',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                      transition: 'transform 0.3s ease'
                     }}
+                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                   />
                 </div>
-                <div className="card__body">
-                  <h3>{member.name}</h3>
-                  <p className="text--primary">{member.role}</p>
-                  <p className="text--secondary">{member.description}</p>
+                <div style={{ textAlign: 'center' }}>
+                  <p style={{ 
+                    fontSize: '1rem', 
+                    fontWeight: '600', 
+                    marginBottom: '0.5rem', 
+                    color: '#1f2937',
+                    textAlign: 'center'
+                  }}>
+                    {member.name}
+                  </p>
+                  <p style={{ 
+                    fontSize: '1rem', 
+                    color: '#6b7280', 
+                    margin: '0 auto',
+                    textAlign: 'center',
+                    maxWidth: '240px',
+                    marginBottom: '1.5rem',
+                  }}>
+                    {member.role}
+                  </p>
                 </div>
               </div>
             </div>
@@ -321,14 +367,14 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Documentation - IT & Data Management`}
+      title={`IT-Portal`}
       description="IT & Data Management">
       <HomepageHeader />
       <main>
         {/* <HomepageFeatures /> */}
-        {/* <TeamMembers /> */}
         <CategoryCards />
         <LatestDocumentation />
+        <TeamMembers />
       </main>
     </Layout>
   );
