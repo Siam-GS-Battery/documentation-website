@@ -99,6 +99,11 @@ const config = {
         },
         items: [
           {
+            to: '/project',
+            label: 'Projects',
+            position: 'left',
+          },
+          {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
@@ -122,11 +127,7 @@ const config = {
             position: 'left',
             label: 'Data Management',
           },
-          {
-            to: '/project',
-            label: 'Projects',
-            position: 'left',
-          },
+          
           // {
           //   to: '/content-submission',
           //   label: 'Create Document',
