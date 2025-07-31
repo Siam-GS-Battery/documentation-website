@@ -4,25 +4,235 @@
       "id": 1,
       "title": "E-Commerce Management System",
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
+      "category": ["business"],
+      "division": "it-data",
+      "department": "IT Development",
       "sections": {
-        "challenge": "Developing a comprehensive e-commerce management system to streamline operations and improve customer experience."
-      }
+        "challenge": "Developing a comprehensive e-commerce management system to streamline operations and improve customer experience. The existing system was fragmented across multiple platforms, causing inefficiencies and poor user experience.\n\nKey challenges included:\n• Integration of multiple payment gateways\n• Real-time inventory management\n• Scalable architecture for high traffic\n• Mobile-responsive design\n• Security compliance",
+        "solution": "We designed and implemented a modern, scalable e-commerce platform using microservices architecture. The solution includes:\n\n• React-based frontend with responsive design\n• Node.js backend with Express framework\n• MongoDB for flexible data storage\n• Redis for caching and session management\n• Docker containerization for easy deployment\n• CI/CD pipeline with automated testing",
+        "impact": "The new e-commerce system delivered significant improvements:\n\n• 40% increase in conversion rate\n• 60% reduction in page load time\n• 99.9% system uptime\n• 50% reduction in customer support tickets\n• Mobile sales increased by 80%"
+      },
+      "metrics": [
+        {
+          "percentage": "40%",
+          "title": "Conversion Rate",
+          "description": "Increase in sales conversion"
+        },
+        {
+          "percentage": "60%",
+          "title": "Load Time",
+          "description": "Reduction in page load time"
+        },
+        {
+          "percentage": "99.9%",
+          "title": "Uptime",
+          "description": "System availability"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "Retail Business Division",
+        "keyTeamMembers": [
+          "Frontend Developer - React Specialist",
+          "Backend Developer - Node.js Expert",
+          "DevOps Engineer - AWS Certified",
+          "UI/UX Designer - E-commerce Expert"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "React.js",
+          "description": "Frontend framework"
+        },
+        {
+          "name": "Node.js",
+          "description": "Backend runtime"
+        },
+        {
+          "name": "MongoDB",
+          "description": "Database solution"
+        }
+      ],
+      "vendors": [
+        {
+          "name": "AWS",
+          "type": "Cloud Provider"
+        },
+        {
+          "name": "Stripe",
+          "type": "Payment Gateway"
+        }
+      ],
+      "files": [
+        {
+          "name": "Project Documentation.pdf",
+          "date": "2024-01-15"
+        },
+        {
+          "name": "Technical Specifications.docx",
+          "date": "2024-01-10"
+        }
+      ],
+      "projectImages": [
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1556742049-0cfed4f9da2c?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop"
+      ]
     },
     {
       "id": 2,
       "title": "Data Analytics Platform",
       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
+      "category": ["database", "ai"],
+      "division": "it-data",
+      "department": "Data Management",
       "sections": {
-        "challenge": "Creating a robust data analytics platform to provide actionable insights and improve decision-making processes."
-      }
+        "challenge": "Creating a robust data analytics platform to provide actionable insights and improve decision-making processes. The organization had data scattered across multiple systems with no unified view.\n\nKey challenges:\n• Data integration from multiple sources\n• Real-time processing capabilities\n• Scalable storage solutions\n• Interactive dashboard creation\n• Data security and compliance",
+        "solution": "We built a comprehensive data analytics platform using modern technologies:\n\n• Apache Kafka for real-time data streaming\n• Apache Spark for data processing\n• Elasticsearch for search and analytics\n• React-based dashboard with D3.js visualizations\n• PostgreSQL for structured data storage\n• Docker and Kubernetes for containerization",
+        "impact": "The analytics platform transformed data-driven decision making:\n\n• 70% faster report generation\n• 90% reduction in manual data processing\n• Real-time insights for business operations\n• 50% improvement in forecast accuracy\n• Automated alerting system"
+      },
+      "metrics": [
+        {
+          "percentage": "70%",
+          "title": "Report Speed",
+          "description": "Faster report generation"
+        },
+        {
+          "percentage": "90%",
+          "title": "Automation",
+          "description": "Reduction in manual work"
+        },
+        {
+          "percentage": "50%",
+          "title": "Accuracy",
+          "description": "Forecast improvement"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "Data Management Division",
+        "keyTeamMembers": [
+          "Data Engineer - Apache Spark Expert",
+          "Frontend Developer - React & D3.js",
+          "Data Scientist - Machine Learning",
+          "DevOps Engineer - Kubernetes Specialist"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Apache Spark",
+          "description": "Data processing engine"
+        },
+        {
+          "name": "Apache Kafka",
+          "description": "Streaming platform"
+        },
+        {
+          "name": "Elasticsearch",
+          "description": "Search and analytics"
+        }
+      ],
+      "vendors": [
+        {
+          "name": "Google Cloud",
+          "type": "Cloud Provider"
+        },
+        {
+          "name": "Confluent",
+          "type": "Kafka Service"
+        }
+      ],
+      "files": [
+        {
+          "name": "Analytics Architecture.pdf",
+          "date": "2024-02-20"
+        },
+        {
+          "name": "Data Dictionary.xlsx",
+          "date": "2024-02-15"
+        }
+      ],
+      "projectImages": [
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop"
+      ]
     },
     {
       "id": 3,
       "title": "Cloud Infrastructure Migration",
       "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop",
+      "category": ["infrastructure"],
+      "division": "it-data",
+      "department": "IT Infrastructure",
       "sections": {
-        "challenge": "Migrating existing infrastructure to cloud platforms while ensuring minimal disruption to business operations."
-      }
+        "challenge": "Migrating existing infrastructure to cloud platforms while ensuring minimal disruption to business operations. The legacy system was costly to maintain and lacked scalability.\n\nChallenges faced:\n• Zero-downtime migration requirements\n• Legacy application compatibility\n• Data security during transition\n• Staff training and adaptation\n• Cost optimization",
+        "solution": "We executed a phased cloud migration strategy using AWS services:\n\n• AWS EC2 for compute instances\n• AWS RDS for database migration\n• AWS S3 for storage solutions\n• AWS CloudFront for CDN\n• AWS Lambda for serverless functions\n• Infrastructure as Code using Terraform",
+        "impact": "The cloud migration delivered substantial benefits:\n\n• 45% reduction in infrastructure costs\n• 99.99% improved system availability\n• 80% faster deployment cycles\n• Auto-scaling capabilities implemented\n• Enhanced disaster recovery"
+      },
+      "metrics": [
+        {
+          "percentage": "45%",
+          "title": "Cost Reduction",
+          "description": "Infrastructure savings"
+        },
+        {
+          "percentage": "99.99%",
+          "title": "Availability",
+          "description": "System uptime"
+        },
+        {
+          "percentage": "80%",
+          "title": "Deployment",
+          "description": "Faster releases"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "IT Infrastructure Division",
+        "keyTeamMembers": [
+          "Cloud Architect - AWS Certified",
+          "DevOps Engineer - Kubernetes Expert",
+          "Security Specialist - Cloud Security",
+          "System Administrator - Migration Expert"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "AWS EC2",
+          "description": "Compute instances"
+        },
+        {
+          "name": "Terraform",
+          "description": "Infrastructure as Code"
+        },
+        {
+          "name": "Docker",
+          "description": "Containerization"
+        }
+      ],
+      "vendors": [
+        {
+          "name": "Amazon Web Services",
+          "type": "Cloud Provider"
+        },
+        {
+          "name": "HashiCorp",
+          "type": "Infrastructure Tools"
+        }
+      ],
+      "files": [
+        {
+          "name": "Migration Strategy.pdf",
+          "date": "2024-03-10"
+        },
+        {
+          "name": "Infrastructure Diagram.png",
+          "date": "2024-03-05"
+        }
+      ],
+      "projectImages": [
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop"
+      ]
     }
   ]
 } 

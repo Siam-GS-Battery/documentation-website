@@ -1,19 +1,89 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
-import { useParams } from '@docusaurus/router';
-import { FiGithub, FiDownload } from 'react-icons/fi';
+import { useLocation } from '@docusaurus/router';
+import { FiDownload, FiArrowLeft } from 'react-icons/fi';
+import { 
+  AiFillFilePdf, 
+  AiFillFileWord, 
+  AiFillFileExcel,
+  AiFillFileImage,
+  AiFillFile 
+} from 'react-icons/ai';
+import { 
+  FaReact, 
+  FaNodeJs, 
+  FaDocker, 
+  FaAws, 
+  FaStripe,
+  FaGoogle
+} from 'react-icons/fa';
+import { 
+  SiMongodb, 
+  SiApachekafka, 
+  SiApachespark,
+  SiElasticsearch,
+  SiTerraform,
+  SiHashicorp
+} from 'react-icons/si';
 import projectData from '../data/simple.json';
+import styles from './Project-detail.module.css';
+
+const getToolIcon = (toolName) => {
+  const name = toolName.toLowerCase();
+  if (name.includes('react')) return <FaReact style={{ color: '#61DAFB' }} />; // สีฟ้า React
+  if (name.includes('node')) return <FaNodeJs style={{ color: '#339933' }} />; // สีเขียว Node.js
+  if (name.includes('mongo')) return <SiMongodb style={{ color: '#47A248' }} />; // สีเขียว MongoDB
+  if (name.includes('kafka')) return <SiApachekafka style={{ color: '#231F20' }} />; // สีดำ Kafka
+  if (name.includes('spark')) return <SiApachespark style={{ color: '#E25A1C' }} />; // สีส้ม Spark
+  if (name.includes('elastic')) return <SiElasticsearch style={{ color: '#005571' }} />; // สีน้ำเงิน Elasticsearch
+  if (name.includes('terraform')) return <SiTerraform style={{ color: '#7B42BC' }} />; // สีม่วง Terraform
+  if (name.includes('docker')) return <FaDocker style={{ color: '#2496ED' }} />; // สีฟ้า Docker
+  if (name.includes('ec2') || name.includes('aws')) return <FaAws style={{ color: '#FF9900' }} />; // สีส้ม AWS
+  return null;
+};
+
+const getFileIcon = (fileName) => {
+  const extension = fileName.toLowerCase().split('.').pop();
+  switch (extension) {
+    case 'pdf':
+      return <AiFillFilePdf style={{ color: '#ff0000' }} />; // สีแดงสำหรับ PDF
+    case 'docx':
+    case 'doc':
+      return <AiFillFileWord style={{ color: '#2b579a' }} />; // สีน้ำเงินสำหรับ Word
+    case 'xlsx':
+    case 'xls':
+      return <AiFillFileExcel style={{ color: '#217346' }} />; // สีเขียวสำหรับ Excel
+    case 'png':
+    case 'jpg':
+    case 'jpeg':
+      return <AiFillFileImage style={{ color: '#4a5568' }} />; // สีเทาสำหรับรูปภาพ
+    default:
+      return <AiFillFile style={{ color: '#718096' }} />; // สีเทาสำหรับไฟล์ทั่วไป
+  }
+};
+
+const getVendorIcon = (vendorName) => {
+  const name = vendorName.toLowerCase();
+  if (name.includes('aws') || name.includes('amazon')) return <FaAws style={{ color: '#FF9900' }} />; // สีส้ม AWS
+  if (name.includes('stripe')) return <FaStripe style={{ color: '#008CDD' }} />; // สีฟ้า Stripe
+  if (name.includes('google')) return <FaGoogle style={{ color: '#4285F4' }} />; // สีฟ้า Google
+  // if (name.includes('confluent')) return <SiConfluent style={{ color: '#023AFF' }} />; // สีน้ำเงิน Confluent - SiConfluent not available
+  if (name.includes('hashicorp')) return <SiHashicorp style={{ color: '#000000' }} />; // สีดำ HashiCorp
+  return null;
+};
 
 export default function ProjectDetail() {
   const [copied, setCopied] = useState(false);
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const params = useParams();
+  const location = useLocation();
   
   useEffect(() => {
-    // Find project by ID from URL parameter
-    const foundProject = projectData.projects.find(p => p.id === params.id);
+    // Get project ID from query parameter
+    const urlParams = new URLSearchParams(location.search);
+    const projectId = parseInt(urlParams.get('id'), 10);
+    const foundProject = projectData.projects.find(p => p.id === projectId);
     
     if (foundProject) {
       setProject(foundProject);
@@ -22,7 +92,7 @@ export default function ProjectDetail() {
       window.location.href = '/project';
     }
     setLoading(false);
-  }, [params.id]);
+  }, [location.search]);
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -42,8 +112,11 @@ export default function ProjectDetail() {
   if (loading) {
     return (
       <Layout title="Loading...">
-        <div className="bg-white min-h-screen py-8 flex items-center justify-center">
-          <div className="text-xl text-gray-600">Loading...</div>
+        <div className={styles.loadingContainer}>
+          <div className={styles.loadingContent}>
+            <div className={styles.spinner}></div>
+            <div className={styles.loadingText}>Loading project details...</div>
+          </div>
         </div>
       </Layout>
     );
@@ -55,32 +128,43 @@ export default function ProjectDetail() {
 
   return (
     <Layout title={project.title}>
-      <div className="bg-white min-h-screen py-8">
-        <div className="max-w-[1200px] mx-auto px-4">
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          {/* Back Button */}
+          <button 
+            onClick={() => window.history.back()}
+            className={styles.backButton}
+          >
+            <FiArrowLeft />
+            Back to Projects
+          </button>
+          
           {/* Project Header */}
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mt-16 mb-16">{project.title}</h1>
+          <h1 className={styles.projectTitle}>{project.title}</h1>
 
           {/* Metrics Section */}
-          <div className="flex flex-row justify-between items-stretch mb-12 w-full">
-            {project.metrics && project.metrics.map((metric, index) => (
-              <div key={index} className="flex-1 flex flex-col items-start justify-center text-left">
-                <div className="border-l border-gray-400 h-full pl-6">
-                  <div className="text-4xl md:text-5xl font-extrabold text-blue-700 mb-1">{metric.percentage}</div>
-                  <div className="text-lg font-bold mb-1">{metric.title}</div>
-                  <div className="text-gray-700 text-base font-normal">{metric.description}</div>
+          {project.metrics && project.metrics.length > 0 && (
+            <div className={styles.metricsContainer}>
+              {project.metrics.map((metric, index) => (
+                <div key={index} className={styles.metricItem}>
+                  <div className={styles.metricBorder}>
+                    <div className={styles.metricPercentage}>{metric.percentage}</div>
+                    <div className={styles.metricTitle}>{metric.title}</div>
+                    <div className={styles.metricDescription}>{metric.description}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* Main Content Area */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          <div className={styles.contentGrid}>
             {/* Left Column */}
-            <div className="lg:col-span-2 flex flex-col gap-8">
+            <div className={styles.leftColumn}>
               {/* Challenge Section */}
-              <section className="scroll-animate">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Challenge</h2>
-                <div className="text-gray-700 leading-relaxed">
+              <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>Challenge</h2>
+                <div className={styles.sectionContent}>
                   {project.sections.challenge.split('\n\n').map((paragraph, index) => {
                     if (paragraph.includes('\n•')) {
                       // Convert bullet points to proper list
@@ -107,94 +191,98 @@ export default function ProjectDetail() {
               </section>
 
               {/* Solution Section */}
-              <section className="scroll-animate">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Solution</h2>
-                <div className="text-gray-700 leading-relaxed">
-                  {project.sections.solution.split('\n\n').map((paragraph, index) => {
-                    if (paragraph.includes('\n•')) {
-                      // Convert bullet points to proper list
-                      const parts = paragraph.split('\n');
-                      const introText = parts[0];
-                      const items = parts.slice(1).filter(item => item.trim().startsWith('•'));
-                      return (
-                        <div key={index}>
-                          <p className="mb-2">{introText}</p>
-                          <ul className="list-disc pl-6 space-y-1">
-                            {items.map((item, itemIndex) => (
-                              <li key={itemIndex} className="text-gray-700">
-                                {item.replace('•', '').trim()}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      );
-                    } else {
-                      return <p key={index} className="mb-2">{paragraph}</p>;
-                    }
-                  })}
-                </div>
-              </section>
+              {project.sections.solution && (
+                <section className={styles.section}>
+                  <h2 className={styles.sectionTitle}>Solution</h2>
+                  <div className={styles.sectionContent}>
+                    {project.sections.solution.split('\n\n').map((paragraph, index) => {
+                      if (paragraph.includes('\n•')) {
+                        // Convert bullet points to proper list
+                        const parts = paragraph.split('\n');
+                        const introText = parts[0];
+                        const items = parts.slice(1).filter(item => item.trim().startsWith('•'));
+                        return (
+                          <div key={index}>
+                            <p className="mb-2">{introText}</p>
+                            <ul className="list-disc pl-6 space-y-1">
+                              {items.map((item, itemIndex) => (
+                                <li key={itemIndex} className="text-gray-700">
+                                  {item.replace('•', '').trim()}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        );
+                      } else {
+                        return <p key={index} className="mb-2">{paragraph}</p>;
+                      }
+                    })}
+                  </div>
+                </section>
+              )}
 
               {/* Impact Section */}
-              <section className="scroll-animate">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Impact</h2>
-                <div className="text-gray-700 leading-relaxed">
-                  {project.sections.impact.split('\n\n').map((paragraph, index) => {
-                    if (paragraph.startsWith('•')) {
-                      // Convert bullet points to proper list
-                      const items = paragraph.split('\n').filter(item => item.trim().startsWith('•'));
-                      return (
-                        <div key={index}>
-                          <p className="mb-2">{paragraph.split('\n')[0]}</p>
-                          <ul className="list-disc pl-6 space-y-1">
-                            {items.map((item, itemIndex) => (
-                              <li key={itemIndex} className="text-gray-700">
-                                {item.replace('•', '').trim()}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      );
-                    } else {
-                      return <p key={index} className="mb-2">{paragraph}</p>;
-                    }
-                  })}
-                </div>
-              </section>
+              {project.sections.impact && (
+                <section className={styles.section}>
+                  <h2 className={styles.sectionTitle}>Impact</h2>
+                  <div className={styles.sectionContent}>
+                    {project.sections.impact.split('\n\n').map((paragraph, index) => {
+                      if (paragraph.includes('\n•')) {
+                        // Convert bullet points to proper list
+                        const parts = paragraph.split('\n');
+                        const introText = parts[0];
+                        const items = parts.slice(1).filter(item => item.trim().startsWith('•'));
+                        return (
+                          <div key={index}>
+                            <p className="mb-2">{introText}</p>
+                            <ul className="list-disc pl-6 space-y-1">
+                              {items.map((item, itemIndex) => (
+                                <li key={itemIndex} className="text-gray-700">
+                                  {item.replace('•', '').trim()}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        );
+                      } else {
+                        return <p key={index} className="mb-2">{paragraph}</p>;
+                      }
+                    })}
+                  </div>
+                </section>
+              )}
 
               {/* Project Images Gallery*/}
               {project.projectImages && project.projectImages.length > 0 && (
-                <section className="scroll-animate mt-8">
-                  <h2 className="text-xl font-bold text-gray-900 mb-6">Project Images</h2>
-                  <div className="space-y-4">
+                <section className={`${styles.section} ${styles.gallerySection}`}>
+                  <h2 className={styles.galleryTitle}>Project Images</h2>
+                  <div>
                     {/* Main Image */}
-                    <div className="relative overflow-hidden rounded-lg shadow-lg">
+                    <div className={styles.mainImageContainer}>
                       <img 
                         src={project.projectImages[selectedImageIndex]} 
                         alt={`Project image ${selectedImageIndex + 1}`} 
-                        className="w-full h-80 object-cover transition-all duration-300"
+                        className={styles.mainImage}
                       />
-                      <div className="absolute bottom-4 left-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                      <div className={styles.imageCounter}>
                         {selectedImageIndex + 1} / {project.projectImages.length}
                       </div>
                     </div>
                     
                     {/* Thumbnail Images */}
-                    <div className="grid grid-cols-5 gap-3">
+                    <div className={styles.thumbnailGrid}>
                       {project.projectImages.map((image, index) => (
                         <div 
                           key={index} 
-                          className={`relative cursor-pointer overflow-hidden rounded-lg shadow-md transition-all duration-300 ${
-                            index === selectedImageIndex 
-                              ? 'ring-2 ring-blue-500 scale-105' 
-                              : 'hover:scale-105'
+                          className={`${styles.thumbnailContainer} ${
+                            index === selectedImageIndex ? styles.active : ''
                           }`}
                           onClick={() => selectImage(index)}
                         >
                           <img 
                             src={image} 
                             alt={`Project image ${index + 1}`} 
-                            className="w-full h-20 object-cover"
+                            className={styles.thumbnail}
                           />
                         </div>
                       ))}
@@ -205,80 +293,87 @@ export default function ProjectDetail() {
             </div>
 
             {/* Right Column - Sidebar */}
-            <aside className="lg:col-span-1 space-y-8 sticky top-8 self-start">
+            <aside className={styles.sidebar}>
               {/* About Project */}
-              <div className="mt-10">
-                <div className="text-xl font-bold text-gray-900 mb-2">About Project</div>
-                <div className="text-base font-bold text-gray-900 mb-1">Stakeholder</div>
-                <div className="text-base text-gray-500 mb-8">{project.aboutProject.stakeholder}</div>
-                <div className="mb-2">
-                  <div className="text-base font-bold text-gray-900 mb-2">Key Team Members</div>
-                  <ul className="list-none pl-0 text-gray-700">
-                    {project.aboutProject.keyTeamMembers.map((member, index) => (
-                      <li key={index} className="text-base text-gray-700 mb-4">{member}</li>
-                    ))}
-                  </ul>
+              {project.aboutProject && (
+                <div className={styles.sidebarSection}>
+                  <div className={styles.sidebarTitle}>About Project</div>
+                  {project.aboutProject.stakeholder && (
+                    <>
+                      <div className={styles.sidebarSubtitle}>Stakeholder</div>
+                      <div className={styles.sidebarText}>{project.aboutProject.stakeholder}</div>
+                    </>
+                  )}
+                  {project.aboutProject.keyTeamMembers && (
+                    <div>
+                      <div className={styles.sidebarSubtitle}>Key Team Members</div>
+                      <ul className={styles.teamMembersList}>
+                        {project.aboutProject.keyTeamMembers.map((member, index) => (
+                          <li key={index} className={styles.teamMember}>{member}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-              </div>
-              <hr className="my-4 border-gray-300" />
+              )}
+              <hr className={styles.divider} />
 
               {/* Implementation tools */}
               <div>
-                <div className="text-xl font-bold text-gray-900 mb-4">Implementation tools</div>
+                <div className={styles.sidebarTitle}>Implementation tools</div>
                 {project.implementationTools && project.implementationTools.map((tool, index) => (
-                  <div key={index} className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded bg-gray-200 flex items-center justify-center">
-                      <FiGithub className="text-xl text-gray-600" />
+                  <div key={index} className={styles.toolItem}>
+                    <div className={styles.toolIcon}>
+                      {getToolIcon(tool.name)}
                     </div>
-                    <div className="flex-1">
-                      <div className="text-base font-bold text-gray-900 leading-tight">{tool.name}</div>
-                      <div className="text-base text-gray-500 leading-tight">{tool.description}</div>
+                    <div className={styles.toolInfo}>
+                      <div className={styles.toolName}>{tool.name}</div>
+                      <div className={styles.toolDescription}>{tool.description}</div>
                     </div>
                   </div>
                 ))}
               </div>
-              <hr className="my-4 border-gray-300" />
+              <hr className={styles.divider} />
 
               {/* Vendors */}
               <div>
-                <div className="text-xl font-bold text-gray-900 mb-4">Vendors</div>
+                <div className={styles.sidebarTitle}>Vendors</div>
                 {project.vendors && project.vendors.map((vendor, index) => (
-                  <div key={index} className="flex items-center gap-3 mb-2">
-                    <div className="w-12 h-12 rounded bg-gray-200 flex items-center justify-center">
-                      <FiGithub className="text-xl text-gray-600" />
+                  <div key={index} className={styles.toolItem}>
+                    <div className={styles.toolIcon}>
+                      {getVendorIcon(vendor.name)}
                     </div>
-                    <div className="flex-1">
-                      <div className="text-base font-bold text-gray-900 leading-tight">{vendor.name}</div>
-                      <div className="text-base text-gray-500 leading-tight">{vendor.type}</div>
+                    <div className={styles.toolInfo}>
+                      <div className={styles.toolName}>{vendor.name}</div>
+                      <div className={styles.toolDescription}>{vendor.type}</div>
                     </div>
                   </div>
                 ))}
               </div>
-              <hr className="my-4 border-gray-300" />
+              <hr className={styles.divider} />
 
               {/* File Section */}
               <div>
-                <div className="text-xl font-bold text-gray-900 mb-2">File</div>
-                <ul className="divide-y divide-gray-100">
+                <div className={styles.sidebarTitle}>File</div>
+                <ul className={styles.filesList}>
                   {project.files && project.files.map((file, idx) => (
-                    <li key={idx} className="flex items-center justify-between py-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded bg-gray-200 flex items-center justify-center">
-                          {/* Placeholder for file icon */}
-                          <div className="w-8 h-8 bg-gray-300 rounded"></div>
+                    <li key={idx} className={styles.fileItem}>
+                      <div className={styles.fileInfo}>
+                        <div className={styles.fileIconContainer}>
+                          {getFileIcon(file.name)}
                         </div>
                         <div>
-                          <div className="text-base font-bold text-gray-900 leading-tight">{file.name}</div>
-                          <div className="text-base text-gray-500 leading-tight">{file.date}</div>
+                          <div className={styles.fileName}>{file.name}</div>
+                          <div className={styles.fileDate}>{file.date}</div>
                         </div>
                       </div>
                       <a
                         href="/"
                         download
-                        className="text-gray-700 hover:text-blue-800 transition flex items-center gap-1"
+                        className={styles.downloadLink}
                         title="Download file"
                       >
-                        <FiDownload className="text-lg" />
+                        <FiDownload className={styles.downloadIcon} />
                       </a>
                     </li>
                   ))}
@@ -288,25 +383,6 @@ export default function ProjectDetail() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .scroll-animate {
-          opacity: 0;
-          transform: translateY(30px);
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </Layout>
   );
 }

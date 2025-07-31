@@ -10,12 +10,15 @@ import styles from './index.module.css';
 
 // Import member images
 import memberBow from '@site/src/assets/memberbow.jpg';
-import memberMew from '@site/src/assets/membermew.jpg';
+import memberMew from '@site/src/assets/membermew.png';
 import memberJune from '@site/src/assets/memberjune.jpg';
 import memberDuay from '@site/src/assets/memberduay.jpg';
 import memberNew from '@site/src/assets/membernew.jpg';
 import memberToi from '@site/src/assets/membertoi.jpg';
 import memberPtum from '@site/src/assets/memberptum.jpg';
+import memberfah from '@site/src/assets/memberfah.png';
+import memberboss from '@site/src/assets/memberboss.png';
+
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -274,12 +277,12 @@ function TeamMembers() {
     {
       name: 'Pantira Sripimmeang',
       role: 'Software Engineer',
-      image: memberBow
+      image: memberfah
     },
     {
       name: 'Burased Baworncharoenpun',
       role: 'AI Engineer',
-      image: memberMew
+      image: memberboss
     }
   ];
 
@@ -287,20 +290,20 @@ function TeamMembers() {
     <section className={styles.teamSection}>
       <div className="container">
         <div className="text--center margin-bottom--xl">
-          <h2>IT TEAM</h2>
-          <p>Key members of the IT team who collaborate to develop and solve various project issues.</p>
+          <h2 style={{ fontSize: '2rem', fontWeight: 'bold' }}>IT TEAM</h2>
+          <p  style={{ fontSize: '1rem', fontWeight: '400', color: '#6b7280' }}>Key members of the IT team who collaborate to develop and solve various project issues.</p>
         </div>
-        <div className="row">
+        <div className="row" style={{ justifyContent: 'center' }}>
           {members.map((member, idx) => (
-            <div key={idx} className="col col--4 margin-bottom--lg">
-              <div className="text--center" style={{ padding: '1rem' }}>
-                <div style={{ marginBottom: '1rem' }}>
+            <div key={idx} className="col col--4" style={{ display: 'flex', justifyContent: 'center', padding: '0', marginBottom: '1rem' }}>
+              <div className="text--center" style={{ padding: '0 0.25rem', maxWidth: '280px' }}>
+                <div style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
                   <img 
                     src={member.image} 
                     alt={member.name}
                     style={{
-                        width: '240px',
-                        height: '300px',
+                      width: '240px',
+                      height: '300px',
                       objectFit: 'cover',
                       borderRadius: '8px',
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
@@ -310,11 +313,23 @@ function TeamMembers() {
                     onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                   />
                 </div>
-                <div>
-                  <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.5rem', color: '#1f2937' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <h3 style={{ 
+                    fontSize: '1.1rem', 
+                    fontWeight: '600', 
+                    marginBottom: '0.5rem', 
+                    color: '#1f2937',
+                    textAlign: 'center'
+                  }}>
                     {member.name}
                   </h3>
-                  <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: 0 }}>
+                  <p style={{ 
+                    fontSize: '0.875rem', 
+                    color: '#6b7280', 
+                    margin: '0 auto',
+                    textAlign: 'center',
+                    maxWidth: '240px'
+                  }}>
                     {member.role}
                   </p>
                 </div>

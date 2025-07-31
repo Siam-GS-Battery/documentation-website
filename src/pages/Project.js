@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '@theme/Layout';
 import styles from './Project.module.css';
-import aiIcon from '../assets/ai1.png';
-import businessIcon from '../assets/cloud-application1.png';
-import databaseIcon from '../assets/server1.png';
-import infrastructureIcon from '../assets/digitalization1.png';
-import securityIcon from '../assets/cyber-security1.png';
 import ProjectDetail from './Project-detail';
 import { Link } from 'react-router-dom';
 import projectData from '../data/simple.json';
@@ -25,19 +20,33 @@ const divisions = [
 /** SVG ICONS for categories */
 const categoryIcons = {
   ai: (
-    <img src={aiIcon} alt="AI/ML" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.847a4.5 4.5 0 003.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 00-3.09 3.091zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423L16.5 15.75l.394 1.183a2.25 2.25 0 001.423 1.423L19.5 18.75l-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+    </svg>
   ),
   business: (
-    <img src={businessIcon} alt="Business Application" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m2.25-18v18m13.5-18v18m2.25-18v18M6.75 6.75h10.5M6.75 9.75h10.5M6.75 12.75h10.5" />
+    </svg>
   ),
   database: (
-    <img src={databaseIcon} alt="Database" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+      <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"></path>
+      <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"></path>
+    </svg>
   ),
   infrastructure: (
-    <img src={infrastructureIcon} alt="Infrastructure" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+      <line x1="8" y1="21" x2="16" y2="21"></line>
+      <line x1="12" y1="17" x2="12" y2="21"></line>
+    </svg>
   ),
   security: (
-    <img src={securityIcon} alt="Security" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+    </svg>
   ),
 }
 
@@ -122,6 +131,8 @@ const projects = [
 function Project() {
   const [selectedCategories, setSelectedCategories] = useState(['all'])
   const [selectedDivision, setSelectedDivision] = useState('all')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState('categories')
 
   const toggleCategory = (categoryId) => {
     if (categoryId === 'all') {
@@ -136,6 +147,14 @@ function Project() {
         }
       })
     }
+  }
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
   }
 
   const filteredProjects = projects.filter(project => {
@@ -174,7 +193,7 @@ function Project() {
       {/* Main Content: Sidebar + Project Grid */}
       <section className={styles.mainContent}>
         <div className={styles.contentWrapper}>
-          {/* Sidebar Division Filter */}
+          {/* Sidebar Division Filter - Desktop Only */}
           <aside className={styles.sidebar}>
             <div className={styles.filterTitle}>Filter</div>
             <div className={styles.divisionList}>
@@ -190,27 +209,134 @@ function Project() {
             </div>
           </aside>
 
-          {/* Main Project Grid + Category Filter */}
-          <div className={styles.projectGrid}>
-            {/* Categories Filter */}
-            <div className={styles.categoriesFilter}>
-              <div className={styles.categoryButtons}>
-                {categories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => toggleCategory(category.id)}
-                    className={`${styles.categoryButton} ${selectedCategories.includes(category.id) ? styles.active : ''}`}
-                  >
-                    <div className={styles.categoryIcon}>{categoryIcons[category.id]}</div>
-                    <span className={styles.categoryText}>
-                      {category.id === 'business'
-                        ? <>Business<br />Application</>
-                        : category.name}
-                    </span>
-                  </button>
-                ))}
+          {/* Mobile Hamburger Menu */}
+          <div className={styles.mobileMenuContainer}>
+            <button 
+              className={styles.hamburgerButton}
+              onClick={toggleMobileMenu}
+              aria-label="Toggle filters menu"
+            >
+              <div className={`${styles.hamburgerIcon} ${isMobileMenuOpen ? styles.open : ''}`}>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
+              <span className={styles.hamburgerText}>Filters</span>
+            </button>
+            
+            {isMobileMenuOpen && (
+              <>
+                <div className={styles.menuOverlay} onClick={closeMobileMenu}></div>
+                <div className={styles.mobileMenu}>
+                  <div className={styles.menuHeader}>
+                    <h3>Filters</h3>
+                    <button className={styles.closeButton} onClick={closeMobileMenu}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                    </button>
+                  </div>
+                  
+                  <div className={styles.tabContainer}>
+                    <div className={styles.tabButtons}>
+                      <button 
+                        className={`${styles.tabButton} ${activeTab === 'categories' ? styles.activeTab : ''}`}
+                        onClick={() => setActiveTab('categories')}
+                      >
+                        Categories
+                      </button>
+                      <button 
+                        className={`${styles.tabButton} ${activeTab === 'departments' ? styles.activeTab : ''}`}
+                        onClick={() => setActiveTab('departments')}
+                      >
+                        Departments
+                      </button>
+                    </div>
+                    
+                    <div className={styles.tabContent}>
+                      {activeTab === 'categories' && (
+                        <div className={styles.categoriesTab}>
+                          <div className={styles.mobileCategories}>
+                            {categories.map((category) => (
+                              <button
+                                key={category.id}
+                                onClick={() => {
+                                  toggleCategory(category.id)
+                                  closeMobileMenu()
+                                }}
+                                className={`${styles.mobileCategoryButton} ${selectedCategories.includes(category.id) ? styles.active : ''}`}
+                              >
+                                <div className={styles.categoryIcon}>{categoryIcons[category.id]}</div>
+                                <span className={styles.categoryText}>
+                                  {category.id === 'business'
+                                    ? 'Business Application'
+                                    : category.name}
+                                </span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      
+                      {activeTab === 'departments' && (
+                        <div className={styles.departmentsTab}>
+                          <div className={styles.mobileDivisionList}>
+                            {divisions.map((division) => (
+                              <button
+                                key={division.id}
+                                onClick={() => {
+                                  setSelectedDivision(division.id)
+                                  closeMobileMenu()
+                                }}
+                                className={`${styles.mobileDivisionButton} ${selectedDivision === division.id ? styles.active : ''}`}
+                              >
+                                {division.name}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {/* Close button at top right corner */}
+                  <button 
+                    className={styles.topCloseButton}
+                    onClick={closeMobileMenu}
+                    aria-label="Close menu"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M18 6L6 18" />
+                      <path d="M6 6L18 18" />
+                    </svg>
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Desktop Categories Filter */}
+          <div className={styles.desktopCategoriesFilter}>
+            <div className={styles.categoryButtons}>
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => toggleCategory(category.id)}
+                  className={`${styles.categoryButton} ${selectedCategories.includes(category.id) ? styles.active : ''}`}
+                >
+                  <div className={styles.categoryIcon}>{categoryIcons[category.id]}</div>
+                  <span className={styles.categoryText}>
+                    {category.id === 'business'
+                      ? <>Business<br />Application</>
+                      : category.name}
+                  </span>
+                </button>
+              ))}
             </div>
+          </div>
+
+          {/* Main Project Grid */}
+          <div className={styles.projectGrid}>
 
             {/* Project Count */}
             <div className={styles.projectCount}>
@@ -241,7 +367,7 @@ function Project() {
                     <p className={styles.projectDescription}>{project.description}</p>
                     {/* Read More Link */}
                     <Link
-                      to={`/project-detail/${project.id}`}
+                      to={`/project-detail?id=${project.id}`}
                       className={styles.readMoreLink}
                     >
                       Read More
