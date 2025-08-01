@@ -190,3 +190,32 @@
 ### Mobile vs Desktop Experience:
 - **📱 Mobile**: Hamburger Menu (Categories + Departments tabs) → Projects
 - **💻 Desktop**: Enhanced Sidebar (Departments + Categories) → Projects (Full Width)
+
+---
+
+## Metrics Section Animation Enhancement
+
+### ✅ 13. Implement Animated Number Counter for Metrics
+- เพิ่มการแสดงผลแบบ animated number counter สำหรับ metrics ที่เป็นตัวเลข
+- ใช้ React state และ useEffect hook ในการจัดการการนับตัวเลข
+
+#### Technical Implementation:
+- **State Management**:
+  - `counters` - เก็บค่าตัวเลขที่กำลังนับของแต่ละ metric
+- **Animation Logic**:
+  - Duration: 1 second (1000ms)
+  - Steps: 60 steps per animation
+  - Increment: คำนวณจาก targetValue / steps
+  - Interval: stepDuration = duration / steps
+
+#### Features:
+- **Smooth Animation**: ตัวเลขค่อยๆ เพิ่มขึ้นจาก 0 ถึงค่าเป้าหมาย
+- **Format Handling**: 
+  - แสดงทศนิยม 1 ตำแหน่ง
+  - รักษาสัญลักษณ์ % ถ้ามีในค่าเดิม
+- **Fallback**: แสดงค่าเดิมถ้าไม่ใช่ตัวเลข
+
+#### Improvements:
+- **Better UX**: การแสดงผลน่าสนใจมากขึ้นด้วย animation
+- **Smooth Transition**: การเปลี่ยนแปลงค่าแบบ smooth
+- **Flexible**: รองรับทั้งค่าที่เป็นตัวเลขและข้อความ

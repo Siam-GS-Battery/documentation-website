@@ -84,6 +84,7 @@ export default function ProjectDetail() {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [counters, setCounters] = useState({});
   const location = useLocation();
   
   useEffect(() => {
@@ -105,6 +106,36 @@ export default function ProjectDetail() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Effect for number counter animation
+  useEffect(() => {
+    if (project?.metrics) {
+      project.metrics.forEach((metric, index) => {
+        const targetValue = parseFloat(metric.percentage);
+        if (!isNaN(targetValue)) {
+          let startValue = 0;
+          const duration = 1000; // 1 seconds duration
+          const steps = 60; // 60 steps
+          const increment = targetValue / steps;
+          const stepDuration = duration / steps;
+
+          const timer = setInterval(() => {
+            startValue += increment;
+            setCounters(prev => ({
+              ...prev,
+              [index]: startValue >= targetValue ? targetValue : startValue
+            }));
+
+            if (startValue >= targetValue) {
+              clearInterval(timer);
+            }
+          }, stepDuration);
+
+          return () => clearInterval(timer);
+        }
+      });
+    }
+  }, [project?.metrics]);
 
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
@@ -155,7 +186,11 @@ export default function ProjectDetail() {
               {project.metrics.map((metric, index) => (
                 <div key={index} className={styles.metricItem}>
                   <div className={styles.metricBorder}>
-                    <div className={styles.metricPercentage}>{metric.percentage}</div>
+                    <div className={styles.metricPercentage}>
+                      {typeof counters[index] === 'number' 
+                        ? `${counters[index].toFixed(1)}${metric.percentage.includes('%') ? '%' : ''}`
+                        : metric.percentage}
+                    </div>
                     <div className={styles.metricTitle}>{metric.title}</div>
                     <div className={styles.metricDescription}>{metric.description}</div>
                   </div>
