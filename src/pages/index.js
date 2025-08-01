@@ -186,7 +186,7 @@ function LatestDocumentation() {
     {
       title: 'AWS Command Line Interface (CLI)',
       description: 'AWS General User GuideThe information in this document is confidential to the company to whom it is addressed and should be used for that purpose only.',
-      link: '/docs/Datamanagement/AWS Command Line Interface (CLI)/General Information',
+      link: '/docs/Datamanagement/AWS General User Guide/AWS Command Line Interface',
       category: 'Data Management',
       subcategory: 'Project',
       status: 'Active',
@@ -286,7 +286,7 @@ function TeamMembers() {
     },
     {
       name: 'Thitison Chedkai',
-      role: 'IT & Data Management',
+      role: 'Information Technology Officer',
       image: memberJune
     },
     {

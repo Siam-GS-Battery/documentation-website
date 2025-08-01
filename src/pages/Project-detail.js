@@ -23,7 +23,10 @@ import {
   SiApachespark,
   SiElasticsearch,
   SiTerraform,
-  SiHashicorp
+  SiHashicorp,
+  SiPython,
+  SiFastapi,
+  SiOpencv
 } from 'react-icons/si';
 import projectData from '../data/simple.json';
 import styles from './Project-detail.module.css';
@@ -39,6 +42,10 @@ const getToolIcon = (toolName) => {
   if (name.includes('terraform')) return <SiTerraform style={{ color: '#7B42BC' }} />; // สีม่วง Terraform
   if (name.includes('docker')) return <FaDocker style={{ color: '#2496ED' }} />; // สีฟ้า Docker
   if (name.includes('ec2') || name.includes('aws')) return <FaAws style={{ color: '#FF9900' }} />; // สีส้ม AWS
+  if (name.includes('yolo')) return <SiPython style={{ color: '#3776AB' }} />; // สีน้ำเงิน Python/YOLO
+  if (name.includes('paddleocr')) return <SiOpencv style={{ color: '#5C3EE8' }} />; // สีม่วง OpenCV (แทน PaddleOCR)
+  if (name.includes('fastapi')) return <SiFastapi style={{ color: '#009688' }} />; // สีเขียว FastAPI
+  if (name.includes('qwen')) return <SiPython style={{ color: '#3776AB' }} />; // สีน้ำเงิน Python/Qwen
   return null;
 };
 
@@ -195,26 +202,43 @@ export default function ProjectDetail() {
                 <section className={styles.section}>
                   <h2 className={styles.sectionTitle}>Solution</h2>
                   <div className={styles.sectionContent}>
-                    {project.sections.solution.split('\n\n').map((paragraph, index) => {
-                      if (paragraph.includes('\n•')) {
-                        // Convert bullet points to proper list
-                        const parts = paragraph.split('\n');
-                        const introText = parts[0];
-                        const items = parts.slice(1).filter(item => item.trim().startsWith('•'));
+                    {project.sections.solution.split('\n\n\n').map((paragraph, index) => {
+                      if (paragraph.includes('\n-')) {
+                        // Handle bullet points with proper indentation
+                        const parts = paragraph.split('\n\n');
+                        const titleLine = parts[0].trim();
+                        const items = parts.slice(1).join('\n').split('\n').filter(item => item.trim().startsWith('-'));
+                        
                         return (
-                          <div key={index}>
-                            <p className="mb-2">{introText}</p>
-                            <ul className="list-disc pl-6 space-y-1">
+                          <div key={index} className="mb-8">
+                            {/* Handle markdown bold in title */}
+                            <p className="mb-6 text-xl font-semibold">
+                              {titleLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}
+                            </p>
+                            <ul className="list-none pl-8 space-y-4 mb-8">
                               {items.map((item, itemIndex) => (
-                                <li key={itemIndex} className="text-gray-700">
-                                  {item.replace('•', '').trim()}
+                                <li key={itemIndex} className="text-gray-700 flex items-start">
+                                  <span className="mr-4 text-lg">•</span>
+                                  <span className="text-base leading-relaxed">
+                                    {/* Handle markdown bold in list items */}
+                                    {item.replace('-', '').trim().replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}
+                                  </span>
                                 </li>
                               ))}
                             </ul>
                           </div>
                         );
                       } else {
-                        return <p key={index} className="mb-2">{paragraph}</p>;
+                        // Handle regular paragraphs with markdown bold
+                        return (
+                          <p 
+                            key={index} 
+                            className="mb-4"
+                            dangerouslySetInnerHTML={{
+                              __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            }}
+                          />
+                        );
                       }
                     })}
                   </div>
@@ -335,54 +359,60 @@ export default function ProjectDetail() {
               </div>
               <hr className={styles.divider} />
 
-              {/* Vendors */}
-              <div>
-                <div className={styles.sidebarTitle}>Vendors</div>
-                {project.vendors && project.vendors.map((vendor, index) => (
-                  <div key={index} className={styles.toolItem}>
-                    <div className={styles.toolIcon}>
-                      {getVendorIcon(vendor.name)}
-                    </div>
-                    <div className={styles.toolInfo}>
-                      <div className={styles.toolName}>{vendor.name}</div>
-                      <div className={styles.toolDescription}>{vendor.type}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <hr className={styles.divider} />
-
-              {/* File Section */}
-              <div>
-                <div className={styles.sidebarTitle}>File</div>
-                <ul className={styles.filesList}>
-                  {project.files && project.files.map((file, idx) => (
-                    <li key={idx} className={styles.fileItem}>
-                      <div className={styles.fileInfo}>
-                        <div className={styles.fileIconContainer}>
-                          {getFileIcon(file.name)}
+              {/* Vendors - Show only if vendors exist and not empty */}
+              {project.vendors && project.vendors.length > 0 && (
+                <>
+                  <div>
+                    <div className={styles.sidebarTitle}>Vendors</div>
+                    {project.vendors.map((vendor, index) => (
+                      <div key={index} className={styles.toolItem}>
+                        <div className={styles.toolIcon}>
+                          {getVendorIcon(vendor.name)}
                         </div>
-                        <div>
-                          <div className={styles.fileName}>{file.name}</div>
-                          <div className={styles.fileDate}>{file.date}</div>
+                        <div className={styles.toolInfo}>
+                          <div className={styles.toolName}>{vendor.name}</div>
+                          <div className={styles.toolDescription}>{vendor.type}</div>
                         </div>
                       </div>
-                      <a
-                        href="/"
-                        download
-                        className={styles.downloadLink}
-                        title="Download file"
-                      >
-                        <FiDownload className={styles.downloadIcon} />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                    ))}
+                  </div>
+                  <hr className={styles.divider} />
+                </>
+              )}
+
+              {/* File Section - Show only if files exist and not empty */}
+              {project.files && project.files.length > 0 && (
+                <div>
+                  <div className={styles.sidebarTitle}>File</div>
+                  <ul className={styles.filesList}>
+                    {project.files.map((file, idx) => (
+                      <li key={idx} className={styles.fileItem}>
+                        <div className={styles.fileInfo}>
+                          <div className={styles.fileIconContainer}>
+                            {getFileIcon(file.name)}
+                          </div>
+                          <div>
+                            <div className={styles.fileName}>{file.name}</div>
+                            <div className={styles.fileDate}>{file.date}</div>
+                          </div>
+                        </div>
+                        <a
+                          href="/"
+                          download
+                          className={styles.downloadLink}
+                          title="Download file"
+                        >
+                          <FiDownload className={styles.downloadIcon} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </aside>
           </div>
         </div>
       </div>
-    </Layout>
+    </Layout>  
   );
 }
