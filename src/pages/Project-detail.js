@@ -413,6 +413,6 @@ export default function ProjectDetail() {
           </div>
         </div>
       </div>
-    </Layout>
+    </Layout>  
   );
 }
