@@ -276,7 +276,7 @@ function TeamMembers() {
     },
     {
       name: 'Phongsaton Viangkam',
-      role: 'Sr.Officer IT',
+      role: 'Sr.Officer Information Technology',
       image: memberNew
     },
     {
