@@ -367,7 +367,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`IT-Portal`}
+      title={`Home`}
       description="IT & Data Management">
       <HomepageHeader />
       <main>
