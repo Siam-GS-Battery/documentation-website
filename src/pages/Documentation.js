@@ -1,20 +1,15 @@
 import React, { useState } from 'react'
 import Layout from '@theme/Layout';
-import styles from './Project.module.css';
-import ProjectDetail from './Project-detail';
+import styles from './Documentation.module.css';
 import { Link } from 'react-router-dom';
-import projectData from '../data/documents.json';
+import projectData from '../data/simple.json';
 
 const divisions = [
   { id: 'all', name: 'All Divisions' },
-  { id: 'it_dm', name: 'IT & Data Management' },
-  { id: 'hr_ad', name: 'HR & AD Division' },
-  { id: 'af', name: 'Accounting & Finance Division' },
-  { id: 'pc', name: 'Production Control & Procurement Division' },
-  { id: 'pm', name: 'Production & Maintenance Division' },
-  { id: 'qa', name: 'Quality Assurance Division' },
-  { id: 'sm', name: 'Sales & Marketing Division' },
-  { id: 'tech', name: 'Technical Division' },
+  { id: 'datamanagement', name: 'Data Management' },
+  { id: 'itdevelopment', name: 'IT Development' },
+  { id: 'itmanagement', name: 'IT Management' },
+
 ]
 
 /** SVG ICONS for categories */
@@ -36,16 +31,16 @@ const categoryIcons = {
       <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"></path>
     </svg>
   ),
-  cloud: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-    </svg>
-  ),
   infrastructure: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
       <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
       <line x1="8" y1="21" x2="16" y2="21"></line>
       <line x1="12" y1="17" x2="12" y2="21"></line>
+    </svg>
+  ),
+  cloud: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
     </svg>
   ),
   security: (
@@ -65,23 +60,71 @@ const categories = [
   { id: 'security', name: 'Security' },
 ]
 
+// Function to automatically categorize documents based on rules
+const autoCategorizeDocument = (document, rules) => {
+  let categories = document.categories || [];
+  let division = document.division || 'it-data';
+  
+  // Apply keyword-based categorization
+  if (rules.keywords) {
+    const titleAndDescription = `${document.title} ${document.description}`.toLowerCase();
+    const path = document.path || '';
+    
+    for (const [keyword, keywordCategories] of Object.entries(rules.keywords)) {
+      if (titleAndDescription.includes(keyword.toLowerCase()) || path.includes(keyword)) {
+        keywordCategories.forEach(cat => {
+          if (!categories.includes(cat)) {
+            categories.push(cat);
+          }
+        });
+      }
+    }
+  }
+  
+  // Apply path-based categorization
+  if (rules.pathMappings) {
+    for (const [pathKeyword, pathCategories] of Object.entries(rules.pathMappings)) {
+      if (document.path && document.path.includes(pathKeyword)) {
+        pathCategories.forEach(cat => {
+          if (!categories.includes(cat)) {
+            categories.push(cat);
+          }
+        });
+        // Set division based on path mapping
+        if (pathCategories.includes('datamanagement')) {
+          division = 'datamanagement';
+        } else if (pathCategories.includes('itmanagement')) {
+          division = 'itmanagement';
+        } else if (pathCategories.includes('itdevelopment')) {
+          division = 'itdevelopment';
+        }
+      }
+    }
+  }
+  
+  return { categories, division };
+};
+
 // Use data from JSON file and add additional projects for demonstration
 const projects = [
-  // Projects from JSON file
-  ...(projectData.projects || []).map(project => ({
-    id: project.id,
-    title: project.title,
-    description: project.sections?.challenge ? project.sections.challenge.substring(0, 150) + '...' : 'No description available',
-    image: project.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80',
-    categories: project.category || [],
-    division: project.division || 'it-data',
-    team: project.department || 'IT Department',
-  })),
-  // Additional projects for demonstration
-
+  // Documents from JSON file
+  ...projectData.documents.map(document => {
+    const { categories, division } = autoCategorizeDocument(document, projectData.categorizationRules || {});
+    
+    return {
+      id: document.id,
+      title: document.title,
+      description: document.description,
+      path: document.path, // Add the document path for direct linking
+      categories: categories,
+      division: division,
+      team: 'IT Department',
+    };
+  }),
+  // Additional documents for demonstration
 ]
 
-function Project() {
+function Documentation() {
   const [selectedCategories, setSelectedCategories] = useState(['all'])
   const [selectedDivision, setSelectedDivision] = useState('all')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -121,7 +164,7 @@ function Project() {
   })
 
   return (
-    <Layout title="IT Projects" description="Browse our IT project portfolio">
+    <Layout title="Documentation" description="Browse our documentation portfolio">
       <div className={styles.container}>
       {/* Hero Section */}
       <section className={styles.heroSection}>
@@ -135,7 +178,7 @@ function Project() {
         </div>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            IT Project Stories
+            Documentation
           </h1>
           <p className={styles.heroDescription}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget turpis tincidunt, condimentum ex vel, facilisis augue. Nunc interdum, risus non vestibulum volutpat,
@@ -289,7 +332,7 @@ function Project() {
             {/* Project Count */}
             <div className={styles.projectCount}>
               <p>
-                Showing <span className={styles.highlight}>{filteredProjects.length}</span> of <span className={styles.bold}>{projects.filter(p=>p.division===selectedDivision).length}</span> projects
+                Showing <span className={styles.highlight}>{filteredProjects.length}</span> of <span className={styles.bold}>{projects.filter(p=>p.division===selectedDivision).length}</span> documents
               </p>
             </div>
 
@@ -301,13 +344,7 @@ function Project() {
                   data-category={project.categories ? project.categories.join(',') : ''}
                   className={styles.projectCard}
                 >
-                  {/* Project Image */}
-                  <div className={styles.projectImage}>
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                    />
-                  </div>
+
 
                   {/* Project Content */}
                   <div className={styles.projectContent}>
@@ -315,7 +352,7 @@ function Project() {
                     <p className={styles.projectDescription}>{project.description}</p>
                     {/* Read More Link */}
                     <Link
-                      to={`/project-detail?id=${project.id}`}
+                      to={`/docs/${project.path}`}
                       className={styles.readMoreLink}
                     >
                       Read More
@@ -332,7 +369,7 @@ function Project() {
             {/* No Results Message */}
             {filteredProjects.length === 0 && (
               <div className={styles.noResults}>
-                <h3>No projects found</h3>
+                <h3>No documents found</h3>
                 <p>Try selecting different categories or clear all filters</p>
               </div>
             )}
@@ -344,4 +381,4 @@ function Project() {
   )
 }
 
-export default Project
+export default Documentation

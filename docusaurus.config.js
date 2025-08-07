@@ -104,29 +104,34 @@ const config = {
             position: 'left',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
+            to: '/documentation',
             label: 'Documentation',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'ITmanagementSidebar',
             position: 'left',
-            label: 'IT Management',
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'ITdevelopmentSidebar',
-            position: 'left',
-            label: 'IT Development',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'DataManagementSidebar',
-            position: 'left',
-            label: 'Data Management',
-          },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Documentation (Old)',
+          // },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'ITmanagementSidebar',
+          //   position: 'left',
+          //   label: 'IT Management',
+          // },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'ITdevelopmentSidebar',
+          //   position: 'left',
+          //   label: 'IT Development',
+          // },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'DataManagementSidebar',
+          //   position: 'left',
+          //   label: 'Data Management',
+          // },
           
           // {
           //   to: '/content-submission',
@@ -143,84 +148,92 @@ const config = {
       },
       footer: {
         style: 'dark',
-        // links: [
-        //   {
-        //     title: 'Documentation',
-        //     items: [
-        //       {
-        //         label: 'Documentation',
-        //         to: '/docs/intro',
-        //       },
-        //       {
-        //         label: 'IT Management',
-        //         to: '/docs/Itmanagement/intro',
-        //       },
-        //       {
-        //         label: 'IT Development',
-        //         to: '/docs/Itdevelopment/intro',
-        //       },
-        //       {
-        //         label: 'Data Management',
-        //         to: '/docs/Datamanagement/intro',
-        //       },
-        //     ],
-        //   },
-          // {
-          //   title: 'Team',
-          //   items: [
-          //     {
-          //       label: 'Bow - IT Manager',
-          //       href: '#',
-          //     },
-          //     {
-          //       label: 'Mew - System Administrator',
-          //       href: '#',
-          //     },
-          //     {
-          //       label: 'June - Developer',
-          //       href: '#',
-          //     },
-          //     {
-          //       label: 'Duay - Database Administrator',
-          //       href: '#',
-          //     },
-          //   ],
-          // },
-        //   {
-        //     title: 'Contact Us',
-        //     items: [
-        //       {
-        //         label: 'Email',
-        //         href: 'mailto:it-support@company.com',
-        //       },
-        //       {
-        //         label: 'Phone',
-        //         href: 'tel:+66-2-123-4567',
-        //       },
-        //       {
-        //         label: 'Address',
-        //         href: '#',
-        //       },
-        //     ],
-        //   },
-        //   {
-        //     title: 'More Links',
-        //     items: [
-        //       {
-        //         label: 'Blog',
-        //         to: '/blog',
-        //       },
-        //       {
-        //         label: 'Privacy Policy',
-        //         href: '#',
-        //       },
-        //       {
-        //         label: 'Terms of Use',
-        //         href: '#',
-        //       },
-        //     ],
-        //   },
-        // ],
+        links: [
+          {
+            title: 'Documentation',
+            items: [
+              {
+                label: 'Documentation',
+                to: '/docs/intro',
+              },
+              {
+                label: 'IT Management',
+                to: '/docs/Itmanagement/intro',
+              },
+              {
+                label: 'IT Development',
+                to: '/docs/Itdevelopment/intro',
+              },
+              {
+                label: 'Data Management',
+                to: '/docs/Datamanagement/intro',
+              },
+            ],
+          },
+          {
+            title: 'Team',
+            items: [
+              {
+                label: 'Thanakorn C. - Asst.General Manager',
+                href: '#',
+              },
+              {
+                label: 'Sahachol S. - Asst.Manager IT',
+                href: '#',
+              },
+              {
+                label: 'Haripong D. - Chief of IT Management',
+                href: '#',
+              },
+              {
+                label: 'Phongsaton V. - Sr.Officer IT',
+                href: '#',
+              },
+              {
+                label: 'Nisarat H. - Data Strategy Operation',
+                href: '#',
+              },
+              {
+                label: 'Thitison C. - IT Officer',
+                href: '#',
+              },
+              {
+                label: 'Ratchanok R. - Project Management',
+                href: '#',
+              },
+              {
+                label: 'Pantira S. - Software Engineer',
+                href: '#',
+              },
+              {
+                label: 'Burased B. - AI Engineer',
+                href: '#',
+              },
+            ],
+          },
+          {
+            title: 'Contact Us',
+            items: [
+              {
+                label: 'Email',
+                href: 'mailto:IT@gsbattery.co.th',
+              },
+              {
+                label: 'Location',
+                href: 'https://maps.app.goo.gl/N6mtENXDfGig1XR98',
+              },
+            ],
+          },
+          {
+            title: 'Quick Links',
+            items: [
+              {
+                label: 'Projects',
+                to: '/project',
+              },
+            ],
+          },
+        ],
         copyright: `© ${new Date().getFullYear()} Siam GS Battery. All rights reserved.`,
       },
       prism: {

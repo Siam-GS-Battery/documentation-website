@@ -1,67 +1,36 @@
 {
-  "projects": [
+  "documents": [
     {
-      "id": 1,
-      "title": "BOM OCR System",
-      "image": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=500&h=300&fit=crop",
-      "category": ["ai"],
-      "division": "production-procurement",
-      "department": "Production Control",
-      "sections": {
-        "challenge": "The manual process of entering Bill of Materials (BOM) data from PDFs and images into the SQL database was extremely time-consuming and prone to human error. A single document took an average of 8 minutes (5-6 minutes for data entry and 1-2 minutes for verification), limiting productivity to only 6-7 documents per hour.",
-        "solution": "We designed and implemented an AI-powered OCR system to automate the data extraction process. The solution leverages a multi-stage pipeline that includes:\n\nThe system consists of three main components:\n\n\n1. **Table Detection**\n\n   \n\n\n- Uses object detection model\n   \n\n\n- Identifies and isolates table structures\n   \n\n\n- Detects key data fields and layouts\n\n\n  - Processes multiple table formats\n\n\n2. **Data Extraction**\n\n\n   - Utilizes **PaddleOCR** for text recognition\n\n\n   - Employs **PaddleStructure** for structural analysis\n\n\n  - Uses **Docling PDF Extractor** for PDF parsing\n\n\n   - Handles both textual and structured data\n\n\n3. **Data Validation**\n\n\n  - Powered by **Qwen2.5-VL-32B** model\n\n\n   - Validates extracted data accuracy\n\n\n   - Reconstructs complete tables\n\n\n   - Ensures data consistency",
-        "impact": "This automated pipeline significantly reduced the time required for data processing and increased overall productivity. The time per document was cut down to just 1-2 minutes, boosting the workload from 6-7 PDFs per hour to 15 PDFs per hour. In the future, we aim to further improve the pipeline's accuracy to enable direct data integration into the database."
-      },
-      "metrics": [
-        {
-          "percentage": "75%",
-          "title": "Time Reduction",
-          "description": "Reduced time per document from 8 to 2 minutes"
-        },
-        {
-          "percentage": "150%",
-          "title": "Productivity Increase",
-          "description": "Boosted productivity from 6 to 15 PDFs per hour"
-        },
-        {
-          "percentage": "Significant",
-          "title": "Error Reduction",
-          "description": "Minimized human error in data entry"
-        }
-      ],
-      "aboutProject": {
-        "stakeholder": "Supply Chain & Manufacturing",
-        "keyTeamMembers": [
-          "Data Scientist - AI/ML Specialist",
-          "Backend Engineer - FastAPI Expert",
-          "Frontend Developer - Vue.js Developer"
-        ]
-      },
-      "implementationTools": [
-        {
-          "name": "YOLO",
-          "description": "Object Detection"
-        },
-        {
-          "name": "PaddleOCR",
-          "description": "Text Recognition"
-        },
-        {
-          "name": "Qwen2.5-VL-32B",
-          "description": "Data Validation & Reconstruction"
-        },
-        {
-          "name": "FastAPI",
-          "description": "Backend API"
-        }
-      ],
-      "vendors": [],
-      "files": [],
-      "projectImages": [
-        "https://img.notionusercontent.com/s3/prod-files-secure%2F0ab4043a-bfc2-4472-9e32-456c582818e5%2Fcfe379f5-6b07-4304-abc6-b106f3a74923%2Fimage.png/size/w=2000?exp=1754038218&sig=dZCybI7kVDCbHRIiygl3ne6KLtlW3vPRpMqv99gi004&id=241c8351-15bd-8078-873f-e9e16cb6874f&table=block&userId=3d9849b5-dd00-4339-84d7-476f5ef0151e",
-        "https://img.notionusercontent.com/s3/prod-files-secure%2F0ab4043a-bfc2-4472-9e32-456c582818e5%2F11b4d94d-0f7f-4a59-8fd9-df422233f277%2Fimage.png/size/w=2000?exp=1754038272&sig=XaG5B40zQ-84mG6NjohJj0JMKhZmW2L0mRclJYxOdVc&id=241c8351-15bd-80d6-8bc4-fb2aba771bd7&table=block&userId=3d9849b5-dd00-4339-84d7-476f5ef0151e",
-        "https://img.notionusercontent.com/s3/prod-files-secure%2F0ab4043a-bfc2-4472-9e32-456c582818e5%2F5c4e46c2-320f-4753-9376-5ccf0118cf43%2Fimage.png/size/w=2000?exp=1754038290&sig=tHB-Fu9BdWfT7HTASqhE5FG7SLRip9c4bIi9xLVy9NI&id=241c8351-15bd-80f7-a379-c7875272cac3&table=block&userId=3d9849b5-dd00-4339-84d7-476f5ef0151e"
-      ]
+      "id": "1",
+      "title": "AWS General Information",
+      "description": "General information about AWS services and usage",
+      "categories": ["datamanagement", "cloud"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS General User Guide/General Information"
     }
-      ]
-} 
+  ],
+  "categorizationRules": {
+    "keywords": {
+      "AWS": ["datamanagement", "cloud"],
+      "S3": ["datamanagement", "cloud"],
+      "EC2": ["datamanagement", "cloud"],
+      "Redshift": ["datamanagement", "cloud"],
+      "QuickSight": ["datamanagement", "cloud"],
+      "CLI": ["datamanagement", "cloud"],
+      "Database": ["datamanagement"],
+      "Data": ["datamanagement"],
+      "Security": ["security"],
+      "Infrastructure": ["infrastructure"],
+      "Business": ["business"],
+      "AI": ["ai"],
+      "Machine Learning": ["ai"],
+      "ML": ["ai"]
+    },
+    "pathMappings": {
+      "Datamanagement": ["datamanagement"],
+      "Itmanagement": ["itmanagement"],
+      "Itdevelopment": ["itdevelopment"],
+      "markdown-create": ["markdown"]
+    }
+  }
+}
