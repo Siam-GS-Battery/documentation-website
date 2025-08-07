@@ -181,7 +181,7 @@ function Documentation() {
             Documentation
           </h1>
           <p className={styles.heroDescription}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget turpis tincidunt, condimentum ex vel, facilisis augue. Nunc interdum, risus non vestibulum volutpat,
+            Explore our comprehensive documentation library covering IT development, data management, and business applications. Find detailed guides, tutorials, and best practices for your technical needs.
           </p>
         </div>
       </section>
