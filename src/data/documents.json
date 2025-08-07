@@ -1,264 +1,68 @@
 {
-  "documents": [
+  "projects": [
     {
       "id": 1,
-      "title": "Standard Operating Procedure - User Access Management",
-      "content": "This document outlines the standard procedures for managing user access across all systems. It includes guidelines for account creation, modification, and deletion processes.",
-      "type": "sop",
-      "division": "it_dm",
-      "author": "IT Security Team",
-      "lastUpdated": "2024-01-15",
-      "version": "2.1",
-      "fileSize": "1.2 MB",
-      "tags": ["access control", "security", "user management"],
-      "status": "active"
-    },
-    {
-      "id": 2,
-      "title": "Company Information Security Policy",
-      "content": "Comprehensive information security policy that defines the organization's approach to protecting sensitive data and information assets.",
-      "type": "policy",
-      "division": "it_dm",
-      "author": "IT Management",
-      "lastUpdated": "2024-01-10",
-      "version": "3.0",
-      "fileSize": "2.5 MB",
-      "tags": ["security", "compliance", "data protection"],
-      "status": "active"
-    },
-    {
-      "id": 3,
-      "title": "HR Recruitment Process Guidelines",
-      "content": "Detailed guidelines for the recruitment process including job posting, candidate screening, interview procedures, and onboarding.",
-      "type": "sop",
-      "division": "hr_ad",
-      "author": "HR Department",
-      "lastUpdated": "2024-01-08",
-      "version": "1.5",
-      "tags": ["recruitment", "hiring", "onboarding"],
-      "status": "active"
-    },
-    {
-      "id": 4,
-      "title": "Employee Benefits Policy",
-      "content": "Comprehensive policy covering all employee benefits including health insurance, retirement plans, vacation time, and other perks.",
-      "type": "policy",
-      "division": "hr_ad",
-      "author": "HR Management",
-      "lastUpdated": "2024-01-12",
-      "version": "2.2",
-      "tags": ["benefits", "compensation", "employee rights"],
-      "status": "active"
-    },
-    {
-      "id": 5,
-      "title": "Financial Reporting Standards",
-      "content": "Standards and procedures for financial reporting including monthly, quarterly, and annual financial statements preparation.",
-      "type": "sop",
-      "division": "af",
-      "author": "Finance Team",
-      "lastUpdated": "2024-01-05",
-      "version": "1.8",
-      "tags": ["financial reporting", "accounting", "compliance"],
-      "status": "active"
-    },
-    {
-      "id": 6,
-      "title": "Budget Management Policy",
-      "content": "Policy governing budget planning, allocation, monitoring, and control across all departments and projects.",
-      "type": "policy",
-      "division": "af",
-      "author": "Finance Management",
-      "lastUpdated": "2024-01-14",
-      "version": "2.0",
-      "tags": ["budget", "financial planning", "cost control"],
-      "status": "active"
-    },
-    {
-      "id": 7,
-      "title": "Project Management Methodology",
-      "content": "Standard methodology for project management including initiation, planning, execution, monitoring, and closure phases.",
-      "type": "sop",
-      "division": "pc",
-      "author": "Project Management Office",
-      "lastUpdated": "2024-01-06",
-      "version": "2.3",
-      "tags": ["project management", "methodology", "process"],
-      "status": "active"
-    },
-    {
-      "id": 8,
-      "title": "Change Management Policy",
-      "content": "Policy for managing organizational changes including communication strategies, stakeholder engagement, and implementation guidelines.",
-      "type": "policy",
-      "division": "pc",
-      "author": "Change Management Team",
-      "lastUpdated": "2024-01-11",
-      "version": "1.7",
-      "tags": ["change management", "organizational change", "communication"],
-      "status": "active"
-    },
-    {
-      "id": 9,
-      "title": "Product Development Lifecycle",
-      "content": "Comprehensive guide for product development from concept to launch including design, testing, and market introduction phases.",
-      "type": "sop",
-      "division": "pd",
-      "author": "Product Development Team",
-      "lastUpdated": "2024-01-09",
-      "version": "2.4",
-      "tags": ["product development", "lifecycle", "innovation"],
-      "status": "active"
-    },
-    {
-      "id": 10,
-      "title": "Intellectual Property Protection Policy",
-      "content": "Policy for protecting intellectual property including patents, trademarks, copyrights, and trade secrets.",
-      "type": "policy",
-      "division": "pd",
-      "author": "Legal Department",
-      "lastUpdated": "2024-01-13",
-      "version": "1.9",
-      "tags": ["intellectual property", "patents", "legal protection"],
-      "status": "active"
-    },
-    {
-      "id": 11,
-      "title": "Quality Assurance Testing Procedures",
-      "content": "Standard procedures for quality assurance testing including test planning, execution, reporting, and defect management.",
-      "type": "sop",
-      "division": "qa",
-      "author": "QA Team",
-      "lastUpdated": "2024-01-07",
-      "version": "2.1",
-      "tags": ["quality assurance", "testing", "defect management"],
-      "status": "active"
-    },
-    {
-      "id": 12,
-      "title": "Quality Management System Policy",
-      "content": "Comprehensive quality management system policy ensuring consistent quality standards across all products and services.",
-      "type": "policy",
-      "division": "qa",
-      "author": "Quality Management",
-      "lastUpdated": "2024-01-16",
-      "version": "2.5",
-      "tags": ["quality management", "standards", "compliance"],
-      "status": "active"
-    },
-    {
-      "id": 13,
-      "title": "Software Development Standards",
-      "content": "Standards and best practices for software development including coding standards, version control, and deployment procedures.",
-      "type": "sop",
-      "division": "sd",
-      "author": "Software Development Team",
-      "lastUpdated": "2024-01-04",
-      "version": "2.2",
-      "tags": ["software development", "coding standards", "version control"],
-      "status": "active"
-    },
-    {
-      "id": 14,
-      "title": "Software Licensing Policy",
-      "content": "Policy governing software licensing including procurement, compliance, and usage monitoring across the organization.",
-      "type": "policy",
-      "division": "sd",
-      "author": "Software Asset Management",
-      "lastUpdated": "2024-01-17",
-      "version": "1.6",
-      "tags": ["software licensing", "compliance", "asset management"],
-      "status": "active"
-    },
-    {
-      "id": 15,
-      "title": "Technical Documentation Standards",
-      "content": "Standards for creating and maintaining technical documentation including architecture diagrams, API documentation, and user guides.",
-      "type": "sop",
-      "division": "td",
-      "author": "Technical Writing Team",
-      "lastUpdated": "2024-01-03",
-      "version": "1.8",
-      "tags": ["technical documentation", "standards", "documentation"],
-      "status": "active"
-    },
-    {
-      "id": 16,
-      "title": "Knowledge Management Policy",
-      "content": "Policy for managing organizational knowledge including documentation, sharing, and preservation of critical information.",
-      "type": "policy",
-      "division": "td",
-      "author": "Knowledge Management Team",
-      "lastUpdated": "2024-01-18",
-      "version": "2.0",
-      "tags": ["knowledge management", "information sharing", "documentation"],
-      "status": "active"
-    },
-    {
-      "id": 17,
-      "title": "Data Management Procedures",
-      "content": "Procedures for managing data including collection, storage, processing, and disposal in compliance with data protection regulations.",
-      "type": "sop",
-      "division": "it_dm",
-      "author": "Data Management Team",
-      "lastUpdated": "2024-01-02",
-      "version": "2.3",
-      "tags": ["data management", "data protection", "compliance"],
-      "status": "active"
-    },
-    {
-      "id": 18,
-      "title": "Cloud Infrastructure Management",
-      "content": "Guidelines for managing cloud infrastructure including provisioning, monitoring, scaling, and cost optimization strategies.",
-      "type": "sop",
-      "division": "it_dm",
-      "author": "Cloud Infrastructure Team",
-      "lastUpdated": "2024-01-19",
-      "version": "1.7",
-      "tags": ["cloud infrastructure", "provisioning", "monitoring"],
-      "status": "active"
-    },
-    {
-      "id": 19,
-      "title": "Disaster Recovery Plan",
-      "content": "Comprehensive disaster recovery plan including backup procedures, recovery time objectives, and business continuity strategies.",
-      "type": "sop",
-      "division": "it_dm",
-      "author": "IT Operations Team",
-      "lastUpdated": "2024-01-01",
-      "version": "2.4",
-      "tags": ["disaster recovery", "backup", "business continuity"],
-      "status": "active"
-    },
-    {
-      "id": 20,
-      "title": "Vendor Management Policy",
-      "content": "Policy for managing relationships with vendors and suppliers including selection criteria, performance monitoring, and contract management.",
-      "type": "policy",
-      "division": "pc",
-      "author": "Procurement Team",
-      "lastUpdated": "2024-01-20",
-      "version": "1.9",
-      "tags": ["vendor management", "procurement", "contracts"],
-      "status": "active"
+      "title": "BOM OCR System",
+      "image": "https://i.postimg.cc/Nfc53K5G/image1.webp",
+      "category": ["ai"],
+      "division": "production-procurement",
+      "department": "Production Control",
+      "sections": {
+        "challenge": "The manual process of entering Bill of Materials (BOM) data from PDFs and images into the SQL database was extremely time-consuming and prone to human error. A single document took an average of 8 minutes (5-6 minutes for data entry and 1-2 minutes for verification), limiting productivity to only 6-7 documents per hour.",
+        "solution": "We designed and implemented an AI-powered OCR system to automate the data extraction process. The solution leverages a multi-stage pipeline that includes:\n\nThe system consists of three main components:\n\n\n1. **Table Detection**\n\n   \n\n\n- Uses object detection model\n   \n\n\n- Identifies and isolates table structures\n   \n\n\n- Detects key data fields and layouts\n\n\n  - Processes multiple table formats\n\n\n2. **Data Extraction**\n\n\n   - Utilizes **PaddleOCR** for text recognition\n\n\n   - Employs **PaddleStructure** for structural analysis\n\n\n  - Uses **Docling PDF Extractor** for PDF parsing\n\n\n   - Handles both textual and structured data\n\n\n3. **Data Validation**\n\n\n  - Powered by **Qwen2.5-VL-32B** model\n\n\n   - Validates extracted data accuracy\n\n\n   - Reconstructs complete tables\n\n\n   - Ensures data consistency",
+        "impact": "This automated pipeline significantly reduced the time required for data processing and increased overall productivity. The time per document was cut down to just 1-2 minutes, boosting the workload from 6-7 PDFs per hour to 15 PDFs per hour. In the future, we aim to further improve the pipeline's accuracy to enable direct data integration into the database."
+      },
+      "metrics": [
+        {
+          "percentage": "75%",
+          "title": "Time Reduction",
+          "description": "Reduced time per document from 8 to 2 minutes"
+        },
+        {
+          "percentage": "150%",
+          "title": "Productivity Increase",
+          "description": "Boosted productivity from 6 to 15 PDFs per hour"
+        },
+        {
+          "percentage": "Significant",
+          "title": "Error Reduction",
+          "description": "Minimized human error in data entry"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "Supply Chain & Manufacturing",
+        "keyTeamMembers": [
+          "Data Scientist - AI/ML Specialist",
+          "Backend Engineer - FastAPI Expert",
+          "Frontend Developer - Vue.js Developer"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "YOLO",
+          "description": "Object Detection"
+        },
+        {
+          "name": "PaddleOCR",
+          "description": "Text Recognition"
+        },
+        {
+          "name": "Qwen2.5-VL-32B",
+          "description": "Data Validation & Reconstruction"
+        },
+        {
+          "name": "FastAPI",
+          "description": "Backend API"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/Nfc53K5G/image1.webp",
+        "https://i.postimg.cc/PxPrz4hn/image2.webp",
+        "https://i.postimg.cc/J4w4ZZ2S/image3.webp"
+      ]
     }
-  ],
-  "metadata": {
-    "totalDocuments": 20,
-    "lastUpdated": "2024-01-20",
-    "types": {
-      "sop": "SOP",
-      "policy": "Policy Document"
-    },
-    "divisions": {
-      "hr_ad": "HR & AD",
-      "af": "AF",
-      "pc": "PC", 
-      "pd": "PD",
-      "qa": "QA",
-      "sd": "SD",
-      "td": "TD",
-      "it_dm": "IT & DM"
-    }
-  }
+    
+      ]
 } 

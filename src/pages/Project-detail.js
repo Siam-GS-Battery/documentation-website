@@ -28,7 +28,7 @@ import {
   SiFastapi,
   SiOpencv
 } from 'react-icons/si';
-import projectData from '../data/simple.json';
+import projectData from '../data/documents.json';
 import styles from './Project-detail.module.css';
 
 const getToolIcon = (toolName) => {
