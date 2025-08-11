@@ -102,6 +102,7 @@ const config = {
             to: '/',
             label: 'Home',
             position: 'left',
+            exact: true,
           },
           {
             to: '/project',
@@ -236,6 +237,10 @@ const config = {
                 label: 'Projects',
                 to: '/project',
               },
+              {
+                label: 'Documentation',
+                to: '/Documentation',
+              }
             ],
           },
         ],

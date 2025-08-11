@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from '@docusaurus/router'
+import { Link } from 'react-router-dom'
 import Layout from '@theme/Layout'
+import styles from './Project.module.css'
 import memberbow from '../assets/memberbow.jpg'
 import membertoi from '../assets/membertoi.jpg'
 import memberduay from '../assets/memberduay.jpg'
@@ -14,8 +16,6 @@ import Home1 from '../assets/Home1.jpg'
 import Home2 from '../assets/Home2.jpg'
 import Home3 from '../assets/Home3.jpg'
 import projectData from '../data/documents.json'
-import { useLanguage } from '../contexts/LanguageContext'
-import { getTranslation } from '../translations/translations'
 
 // Image preloader component
 const ImagePreloader = ({ images, onLoadComplete }) => {
@@ -179,13 +179,26 @@ const slides = [
   },
 ]
 
+// Use data from JSON file for projects
+const projects = [
+  // Projects from JSON file
+  ...(projectData.projects || []).map(project => ({
+    id: project.id,
+    title: project.title,
+    description: project.sections?.challenge ? project.sections.challenge.substring(0, 150) + '...' : 'No description available',
+    image: project.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80',
+    categories: project.category || [],
+    division: project.division || 'it-data',
+    team: project.department || 'IT Department',
+  })),
+]
+
 export default function Home() {
   const [current, setCurrent] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const [showHero, setShowHero] = useState(false)
   const history = useHistory()
-  const { currentLanguage } = useLanguage()
 
   // Auto slide effect
   useEffect(() => {
@@ -320,7 +333,7 @@ export default function Home() {
         <section className="relative w-screen h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-20 2xl:-mx-24" style={{marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw'}}>
           <div className="flex flex-col items-center space-y-4">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            <p className="text-gray-600 text-sm sm:text-base">{getTranslation(currentLanguage, 'loading') || 'Loading...'}</p>
+            <p className="text-gray-600 text-sm sm:text-base">Loading...</p>
           </div>
         </section>
       )}
@@ -341,10 +354,10 @@ export default function Home() {
         {/* Text */}
         <div className={`relative z-30 flex flex-col items-center justify-center w-full h-full text-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white mb-2 sm:mb-4 md:mb-6 drop-shadow-lg animate-pulse leading-tight">
-            {getTranslation(currentLanguage, 'welcomeTitle')}
+            Welcome to IT & Data Management
           </h1>
           <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto drop-shadow-md animate-pulse px-2 leading-relaxed">
-            {getTranslation(currentLanguage, 'welcomeDescription')}
+            Explore our documentation, projects, and team members
           </p>
           {/* Floating elements - responsive visibility */}
           <div className="hidden md:block absolute top-10 left-10 w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-blue-400 rounded-full animate-bounce opacity-70" style={{ animationDelay: '0s' }}></div>
@@ -388,19 +401,19 @@ export default function Home() {
       <section className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-white scroll-animate" id="summary-outcomes">
         <div className="max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto text-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mt-4 sm:mt-8 md:mt-12 lg:mt-16 mb-2 sm:mb-3 md:mb-4 hover:text-blue-600 transition-colors duration-300 cursor-pointer leading-tight">
-            {getTranslation(currentLanguage, 'summaryOutcomes')}
+            Summary Outcomes
           </h2>
           <p className="text-gray-500 mb-6 sm:mb-8 md:mb-10 hover:text-gray-700 transition-colors duration-300 text-sm sm:text-base md:text-lg lg:text-xl px-2 sm:px-4 md:px-6 leading-relaxed">
-            {getTranslation(currentLanguage, 'summaryDescription')}
+            Key achievements and metrics from our projects
           </p>
-          <button className="bg-blue-600 text-white px-4 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 md:py-4 rounded-md font-medium shadow hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg mb-8 sm:mb-12 md:mb-16 lg:mb-20 text-sm sm:text-base md:text-lg">
-            {getTranslation(currentLanguage, 'viewMore')}
-          </button>
+          <Link to="/project" className="inline-block bg-blue-600 text-white px-4 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 md:py-4 rounded-md font-medium shadow hover:bg-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg mb-8 sm:mb-12 md:mb-16 lg:mb-20 text-sm sm:text-base md:text-lg no-underline hover:no-underline">
+            View More
+          </Link>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 mt-8 sm:mt-12 md:mt-16 mb-8 sm:mb-16 md:mb-20 lg:mb-24">
             {[
-              { number: 10, label: getTranslation(currentLanguage, 'totalProjects') },
-              { number: 5, label: getTranslation(currentLanguage, 'costSaving') },
-              { number: 5, label: getTranslation(currentLanguage, 'timeSaving') }
+              { number: 10, label: 'Total Projects' },
+              { number: 5, label: 'Cost Saving (M)' },
+              { number: 5, label: 'Time Saving (M)' }
             ].map((item, index) => (
               <div key={index} className="group hover:scale-105 transition-all duration-300 cursor-pointer p-4 sm:p-6 md:p-8 rounded-lg hover:bg-gray-50">
                 <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-blue-700 mb-2 sm:mb-3 md:mb-4 group-hover:text-blue-800 transition-colors duration-300">
@@ -415,41 +428,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Project & Activities */}
+      {/* Project & Activities - Using Project Cards Grid from Project.js */}
       <section className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-gray-50 scroll-animate">
         <div className="max-w-2xl sm:max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
-          <div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-            <div className="flex justify-between items-center mb-2 sm:mb-3 md:mb-4">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold hover:text-blue-600 transition-colors duration-300 cursor-pointer leading-tight">
-                {getTranslation(currentLanguage, 'projectActivities')}
-              </h2>
-              <a href="/project" className="text-blue-600 hover:underline text-base sm:text-lg md:text-xl font-medium hover:text-blue-800 transition-colors duration-300 whitespace-nowrap">
-                {getTranslation(currentLanguage, 'readMore')} &rarr;
+          <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+            <div className="flex justify-between items-start mb-3 sm:mb-4 md:mb-5 lg:mb-6">
+              <div className="flex-1 mr-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold hover:text-blue-600 transition-colors duration-300 cursor-pointer leading-tight mb-2 sm:mb-3">
+                  Projects & Activities
+                </h2>
+              </div>
+              <a href="/project" className="text-blue-600 hover:underline text-base sm:text-lg md:text-xl font-medium hover:text-blue-800 transition-colors duration-300 whitespace-nowrap flex-shrink-0 self-start">
+                Read More &rarr;
               </a>
             </div>
-            <p className="text-gray-500 hover:text-gray-700 transition-colors duration-300 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-3xl">
-              Empowering business transformation through innovative IT projects and digital solutions that drive efficiency, cost savings, and operational excellence across the organization.
-            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
-            {projectData.projects.slice(0, 3).map((project) => (
-              <div key={project.id} className="flex flex-col group hover:scale-105 transition-all duration-300 cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl p-4 sm:p-6 md:p-8">
-                <div className="relative overflow-hidden rounded-md mb-4 sm:mb-6 h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72">
-                  <FallbackImage 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" 
+          
+          {/* Project Cards Grid from Project.js */}
+          <div className={styles.projectCards}>
+            {projects.slice(0, 3).map((project) => (
+              <div
+                key={project.id}
+                data-category={project.categories ? project.categories.join(',') : ''}
+                className={styles.projectCard}
+              >
+                {/* Project Image */}
+                <div className={styles.projectImage}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
                 </div>
-                <h3 className="font-bold text-base sm:text-lg md:text-xl lg:text-2xl mb-2 sm:mb-3 md:mb-4 group-hover:text-blue-600 transition-colors duration-300 leading-tight">{project.title}</h3>
-                <p className="text-gray-500 mb-4 sm:mb-6 md:mb-8 group-hover:text-gray-700 transition-colors duration-300 text-sm sm:text-base md:text-lg leading-relaxed flex-grow">{project.sections.challenge.substring(0, 120)}...</p>
-                <button 
-                  onClick={() => history.push(`/project-detail/${project.id}`)}
-                  className="mt-auto bg-blue-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-md font-medium hover:bg-blue-700 transition-all duration-300 text-sm sm:text-base md:text-lg w-fit hover:scale-105 hover:shadow-lg"
-                >
-                  {getTranslation(currentLanguage, 'viewDetails')}
-                </button>
+
+                {/* Project Content */}
+                <div className={styles.projectContent}>
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  <p className={styles.projectDescription}>{project.description}</p>
+                  {/* Read More Link */}
+                  <Link
+                    to={`/project-detail?id=${project.id}`}
+                    className={styles.readMoreLink}
+                  >
+                    Read More
+                    <svg className={styles.readMoreIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+                {/* Blue Bar */}
+                <div className={styles.projectBar}></div>
               </div>
             ))}
           </div>
@@ -460,65 +487,65 @@ export default function Home() {
       <section className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-white scroll-animate">
         <div className="max-w-2xl sm:max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-full mx-auto text-center mt-4 sm:mt-8 md:mt-12 lg:mt-16 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 sm:mb-3 md:mb-4 hover:text-blue-600 transition-colors duration-300 cursor-pointer leading-tight">
-            {getTranslation(currentLanguage, 'itTeam')}
+            IT Team
           </h2>
           <p className="text-gray-500 mb-8 sm:mb-12 md:mb-16 lg:mb-20 hover:text-gray-700 transition-colors duration-300 text-sm sm:text-base md:text-lg lg:text-xl px-2 sm:px-4 leading-relaxed">
-            {getTranslation(currentLanguage, 'itTeamDescription')}
+            Meet our dedicated team of IT professionals
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 justify-items-center">
             {[
               {
                 id: 1,
                 name: 'Thanakorn Chollavorn',
-                position: getTranslation(currentLanguage, 'positions.asstGeneralManager'),
+                position: 'Asst.General Manager of Information Technology & Data Management',
                 image: memberptum
               },
               {
                 id: 2,
                 name: 'Sahachol Suwanichsuksan',
-                position: getTranslation(currentLanguage, 'Senior Chief of IT Development'),
+                position: 'Senior Chief of IT Development',
                 image: membertoi
               },
               {
                 id: 3,
                 name: 'Haripong Dokput',
-                position: getTranslation(currentLanguage, 'positions.chiefITManagement'),
+                position: 'Chief of IT Management',
                 image: memberduay
               },
               {
                 id: 4,
                 name: 'Phongsaton Viangkam',
-                position: getTranslation(currentLanguage, 'positions.srOfficerIT'),
+                position: 'Sr.Officer IT',
                 image: membernew
               },
               {
                 id: 5,
                 name: 'Nisarat Hawharn',
-                position: getTranslation(currentLanguage, 'positions.dataStrategyOperation'),
+                position: 'Data Strategy Operation',
                 image: memberbow
               },
               {
                 id: 6,
                 name: 'Thitison Chedkai',
-                position: getTranslation(currentLanguage, 'Information Technology Officer'),
+                position: 'Information Technology Officer',
                 image: memberjune
               },
               {
                 id: 7,
                 name: 'Ratchanok Rachramthong',
-                position: getTranslation(currentLanguage, 'positions.projectManagementOfficer'),
+                position: 'Project Management Officer',
                 image: memberMew
               },
               {
                 id: 8,
                 name: 'Pantira Sripimmeang',
-                position: getTranslation(currentLanguage, 'positions.softwareEngineer'),
+                position: 'Software Engineer',
                 image: memberfah
               },
               {
                 id: 9,
                 name: 'Burased Baworncharoenpun',
-                position: getTranslation(currentLanguage, 'positions.aiEngineer'),
+                position: 'AI Engineer',
                 image: memberboss
               },
             ].map((member) => (
