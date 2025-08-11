@@ -135,10 +135,10 @@ function Project() {
         </div>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            IT Project Stories
+            Projects & Activities
           </h1>
           <p className={styles.heroDescription}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget turpis tincidunt, condimentum ex vel, facilisis augue. Nunc interdum, risus non vestibulum volutpat,
+            Explore our comprehensive collection of IT projects and activities that showcase innovative solutions, technological advancements, and collaborative efforts across various departments within our organization.
           </p>
         </div>
       </section>

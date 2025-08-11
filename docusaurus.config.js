@@ -99,6 +99,11 @@ const config = {
         },
         items: [
           {
+            to: '/',
+            label: 'Home',
+            position: 'left',
+          },
+          {
             to: '/project',
             label: 'Projects',
             position: 'left',

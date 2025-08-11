@@ -8,6 +8,8 @@ import {
   PluginHtmlClassNameProvider,
 } from '@docusaurus/theme-common/internal';
 import {DocsPreferredVersionContextProvider} from '@docusaurus/plugin-content-docs/client';
+import { LanguageProvider } from '@site/src/contexts/LanguageContext';
+
 const Provider = composeProviders([
   ColorModeProvider,
   AnnouncementBarProvider,
@@ -15,6 +17,7 @@ const Provider = composeProviders([
   DocsPreferredVersionContextProvider,
   PluginHtmlClassNameProvider,
   NavbarProvider,
+  LanguageProvider,
 ]);
 export default function LayoutProvider({children}) {
   return <Provider>{children}</Provider>;

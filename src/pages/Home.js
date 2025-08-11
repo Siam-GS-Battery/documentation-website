@@ -428,7 +428,7 @@ export default function Home() {
               </a>
             </div>
             <p className="text-gray-500 hover:text-gray-700 transition-colors duration-300 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-3xl">
-              {getTranslation(currentLanguage, 'projectActivitiesDescription')}
+              Empowering business transformation through innovative IT projects and digital solutions that drive efficiency, cost savings, and operational excellence across the organization.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16">
