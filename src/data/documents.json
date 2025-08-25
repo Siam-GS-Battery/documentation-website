@@ -32,9 +32,7 @@
       "aboutProject": {
         "stakeholder": "Supply Chain & Manufacturing",
         "keyTeamMembers": [
-          "Data Scientist - AI/ML Specialist",
-          "Backend Engineer - FastAPI Expert",
-          "Frontend Developer - Vue.js Developer"
+          "Burased B. - AI Engineer"
         ]
       },
       "implementationTools": [
@@ -95,7 +93,7 @@
       "aboutProject": {
         "stakeholder": "i-Net (24/7 monitoring support)",
         "keyTeamMembers": [
-          "Phongsaton - Project Manager"
+          "Phongsaton V. - Project Manager"
         ]
       },
       "implementationTools": [
@@ -130,9 +128,9 @@
       "division": "it_dm",
       "department": "it_dm",
       "sections": {
-        "challenge": "The IT & Data Management department faced significant challenges in project visibility and documentation management. Projects were scattered across various platforms, making it difficult to track progress, share knowledge, and maintain consistent documentation. Team members struggled to find relevant project information quickly, leading to duplicated efforts and inefficient resource allocation. The lack of a centralized system also made it challenging for stakeholders to get real-time updates on project status and outcomes.",
-        "solution": "Developed IT-PORTAL, a comprehensive web-based platform that serves as a centralized hub for all IT & Data Management projects. The solution features a responsive design optimized for both desktop and mobile usage, with integrated Markdown documentation support for easy content creation and editing. The platform includes project categorization, search functionality, real-time status tracking, and collaborative documentation features. Users can access project details, timelines, team information, and related documents from a single, user-friendly interface.",
-        "impact": "IT-PORTAL has transformed how the department manages and showcases projects, resulting in improved transparency, better knowledge sharing, and enhanced stakeholder engagement. The platform has become the single source of truth for all IT projects, enabling better decision-making and resource planning. Mobile accessibility has increased team productivity by allowing access to critical project information anytime, anywhere."
+        "challenge": "The IT & Data Management department faced significant challenges in knowledge management and documentation accessibility. Team members had to navigate through multiple scattered documentation sources including various wikis, shared drives, and individual team repositories to find project information, technical guides, and standard operating procedures. This fragmented approach led to duplicated efforts, inconsistent documentation standards, and difficulty in onboarding new team members. Additionally, there was no centralized location to showcase completed projects and their technical implementations, making it challenging to leverage past experiences and best practices across different teams and initiatives.",
+        "solution": "Developed IT-PORTAL using Docusaurus, a modern React-based static site generator optimized for documentation websites. The solution provides a comprehensive knowledge management platform with multiple organized sections including IT Management (project workflows and Asana guides), IT Development (coding standards and technical documentation), Data Management (AWS guides, Customer Data Platform documentation), and tutorial sections for team onboarding. The platform features full-text search capabilities, responsive mobile design, Markdown/MDX support for rich content creation, automated deployment pipelines, and integrated content submission forms. Built with modern web technologies including React, TailwindCSS for styling, and Playwright for end-to-end testing, ensuring reliability and maintainability.",
+        "impact": "IT-PORTAL has revolutionized knowledge management within the IT & Data Management department by establishing a centralized, searchable documentation hub that significantly improves team efficiency and collaboration. The platform has standardized documentation practices across all teams, reduced onboarding time for new team members from weeks to days, and eliminated the time-consuming process of searching through multiple repositories for technical information. With comprehensive AWS guides, project management workflows, and coding standards all accessible in one location, the platform has enhanced decision-making capabilities and accelerated project delivery. The mobile-responsive design ensures that critical documentation and project information are available to team members whether they're in the office or working remotely, supporting modern hybrid work environments."
       },
       "metrics": [
         {

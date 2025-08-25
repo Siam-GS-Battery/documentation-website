@@ -198,6 +198,7 @@ export default function Home() {
   const [current, setCurrent] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const [showHero] = useState(true)
+  const [projectIndex, setProjectIndex] = useState(0)
 
   // Auto slide effect
   useEffect(() => {
@@ -228,7 +229,7 @@ export default function Home() {
     const cacheImages = () => {
       const allImages = [
         ...slides.map(slide => slide.image),
-        ...projects.slice(0, 3).map(project => project.image),
+        ...projects.map(project => project.image),
         memberMew, memberbow, membertoi, memberduay, membernew, memberjune, memberptum, memberfah, memberboss
       ].filter(Boolean)
 
@@ -319,6 +320,27 @@ export default function Home() {
     setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
   }
 
+  // Project carousel navigation
+  const nextProject = () => {
+    setProjectIndex((prev) => {
+      const maxIndex = Math.max(0, projects.length - 3)
+      return prev >= maxIndex ? 0 : prev + 1
+    })
+  }
+
+  const prevProject = () => {
+    setProjectIndex((prev) => {
+      const maxIndex = Math.max(0, projects.length - 3)
+      return prev <= 0 ? maxIndex : prev - 1
+    })
+  }
+
+  // Get current visible projects
+  const visibleProjects = projects.slice(projectIndex, projectIndex + 3)
+  
+  // Show navigation only if we have more than 3 projects
+  const showProjectNavigation = projects.length > 3
+
   return (
     <Layout
       title="Home"
@@ -400,7 +422,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 mt-8 sm:mt-12 md:mt-16 mb-8 sm:mb-16 md:mb-20 lg:mb-24">
             {[
               { number: 3, label: 'Total Projects' },
-              { number: 800, label: 'Annual Cost Saving (K THB)', suffix: 'K' },
+              { number: 800, label: 'Annual Cost Saving (THB)', suffix: 'K' },
               { number: 75, label: 'Average Time Reduction (%)', suffix: '%' }
             ].map((item, index) => (
               <div key={index} className="group hover:scale-105 transition-all duration-300 cursor-pointer p-4 sm:p-6 md:p-8 rounded-lg hover:bg-gray-50">
@@ -432,41 +454,87 @@ export default function Home() {
             </div>
           </div>
           
-          {/* Project Cards Grid from Project.js */}
-          <div className={styles.projectCards}>
-            {projects.slice(0, 3).map((project) => (
-              <div
-                key={project.id}
-                data-category={project.categories ? project.categories.join(',') : ''}
-                className={styles.projectCard}
-              >
-                {/* Project Image */}
-                <div className={styles.projectImage}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                  />
-                </div>
+          {/* Project Cards Carousel Container */}
+          <div className="relative">
+            {/* Navigation Arrows */}
+            {showProjectNavigation && (
+              <>
+                <button
+                  onClick={prevProject}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl backdrop-blur-sm -ml-2 sm:-ml-4"
+                  aria-label="Previous Projects"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                </button>
+                <button
+                  onClick={nextProject}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl backdrop-blur-sm -mr-2 sm:-mr-4"
+                  aria-label="Next Projects"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </button>
+              </>
+            )}
 
-                {/* Project Content */}
-                <div className={styles.projectContent}>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectDescription}>{project.description}</p>
-                  {/* Read More Link */}
-                  <Link
-                    to={`/project-detail?id=${project.id}`}
-                    className={styles.readMoreLink}
-                  >
-                    Read More
-                    <svg className={styles.readMoreIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+            {/* Project Cards Grid */}
+            <div className={`${styles.projectCards} transition-all duration-500 ease-in-out`}>
+              {visibleProjects.map((project) => (
+                <div
+                  key={project.id}
+                  data-category={project.categories ? project.categories.join(',') : ''}
+                  className={`${styles.projectCard} transform transition-all duration-500`}
+                >
+                  {/* Project Image */}
+                  <div className={styles.projectImage}>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                    />
+                  </div>
+
+                  {/* Project Content */}
+                  <div className={styles.projectContent}>
+                    <h3 className={styles.projectTitle}>{project.title}</h3>
+                    <p className={styles.projectDescription}>{project.description}</p>
+                    {/* Read More Link */}
+                    <Link
+                      to={`/project-detail?id=${project.id}`}
+                      className={styles.readMoreLink}
+                    >
+                      Read More
+                      <svg className={styles.readMoreIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                  {/* Blue Bar */}
+                  <div className={styles.projectBar}></div>
                 </div>
-                {/* Blue Bar */}
-                <div className={styles.projectBar}></div>
+              ))}
+            </div>
+
+            {/* Project indicators */}
+            {showProjectNavigation && (
+              <div className="flex justify-center mt-6 space-x-2">
+                {Array.from({ length: Math.ceil(projects.length / 3) }).map((_, idx) => {
+                  const startIndex = idx * 3
+                  const isActive = projectIndex >= startIndex && projectIndex < startIndex + 3
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setProjectIndex(startIndex)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        isActive ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
+                      }`}
+                    />
+                  )
+                })}
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
