@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from '@docusaurus/router';
-import { FiDownload, FiArrowLeft } from 'react-icons/fi';
+import { FiDownload, FiArrowLeft, FiUser, FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { 
   AiFillFilePdf, 
   AiFillFileWord, 
@@ -91,23 +91,8 @@ const getVendorIcon = (vendorName) => {
   // if (name.includes('confluent')) return <SiConfluent style={{ color: '#023AFF' }} />; // สีน้ำเงิน Confluent - SiConfluent not available
   if (name.includes('hashicorp')) return <SiHashicorp style={{ color: '#000000' }} />; // สีดำ HashiCorp
   
-  // Return placeholder with first letter when no specific icon
-  return (
-    <div style={{ 
-      width: '100%', 
-      height: '100%', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center',
-      backgroundColor: '#f0f2f5',
-      borderRadius: '50%',
-      fontSize: '14px',
-      fontWeight: 'bold',
-      color: '#4a5568'
-    }}>
-      {vendorName.charAt(0).toUpperCase()}
-    </div>
-  );
+  // Return person icon when no specific vendor icon
+  return <FiUser style={{ color: '#718096', fontSize: '20px' }} />;
 };
 
 export default function ProjectDetail() {
@@ -116,6 +101,8 @@ export default function ProjectDetail() {
   const [loading, setLoading] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [counters, setCounters] = useState({});
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImageIndex, setLightboxImageIndex] = useState(0);
   const location = useLocation();
   
   useEffect(() => {
@@ -187,6 +174,53 @@ export default function ProjectDetail() {
   const selectImage = (index) => {
     setSelectedImageIndex(index);
   };
+
+  const openLightbox = (index) => {
+    setLightboxImageIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const navigateLightbox = (direction) => {
+    if (direction === 'prev') {
+      setLightboxImageIndex((prev) => 
+        prev > 0 ? prev - 1 : project.projectImages.length - 1
+      );
+    } else {
+      setLightboxImageIndex((prev) => 
+        prev < project.projectImages.length - 1 ? prev + 1 : 0
+      );
+    }
+  };
+
+  // Handle keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!lightboxOpen) return;
+      
+      switch(e.key) {
+        case 'Escape':
+          closeLightbox();
+          break;
+        case 'ArrowLeft':
+          navigateLightbox('prev');
+          break;
+        case 'ArrowRight':
+          navigateLightbox('next');
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen, project]);
 
   if (loading) {
     return (
@@ -365,6 +399,8 @@ export default function ProjectDetail() {
                         src={project.projectImages[selectedImageIndex]} 
                         alt={`Project image ${selectedImageIndex + 1}`} 
                         className={styles.mainImage}
+                        onClick={() => openLightbox(selectedImageIndex)}
+                        style={{ cursor: 'pointer' }}
                       />
                       <div className={styles.imageCounter}>
                         {selectedImageIndex + 1} / {project.projectImages.length}
@@ -495,6 +531,52 @@ export default function ProjectDetail() {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && project?.projectImages && (
+        <div className={styles.lightbox} onClick={closeLightbox}>
+          <button 
+            className={styles.lightboxClose}
+            onClick={closeLightbox}
+            aria-label="Close lightbox"
+          >
+            <FiX size={24} />
+          </button>
+          
+          <button 
+            className={styles.lightboxPrev}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox('prev');
+            }}
+            aria-label="Previous image"
+          >
+            <FiChevronLeft size={32} />
+          </button>
+
+          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={project.projectImages[lightboxImageIndex]} 
+              alt={`Project image ${lightboxImageIndex + 1}`}
+              className={styles.lightboxImage}
+            />
+            <div className={styles.lightboxCounter}>
+              {lightboxImageIndex + 1} / {project.projectImages.length}
+            </div>
+          </div>
+
+          <button 
+            className={styles.lightboxNext}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox('next');
+            }}
+            aria-label="Next image"
+          >
+            <FiChevronRight size={32} />
+          </button>
+        </div>
+      )}
     </Layout>  
   );
 }
