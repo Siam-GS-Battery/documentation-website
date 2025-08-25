@@ -63,65 +63,6 @@
     },
     {
       "id": 2,
-      "title": "Wazuh SIEM",
-      "image": "https://i.postimg.cc/zvv4f73R/img.png",
-      "category": ["security"],
-      "division": "it_dm",
-      "department": "it_dm",
-      "sections": {
-        "challenge": "The organization relied on a commercial SIEM solution (Splunk) that was expensive to maintain, with annual licensing costs reaching nearly 800,000 THB. Security analysts faced difficulties in conducting real-time investigations due to limited customization, and compliance reporting was largely manual, leading to delays and increased workload. The lack of a cost-effective and flexible solution created operational inefficiencies and budgetary strain.",
-        "solution": "The team implemented an in-house Wazuh SIEM solution, replacing the costly Splunk platform. Wazuh provided centralized log management, threat detection, and compliance reporting at a fraction of the cost. The open-source nature of Wazuh allowed full customization to fit organizational needs, while integration with existing infrastructure enabled continuous monitoring and automated alerts. To ensure operational reliability, the system was set up with 24/7 monitoring responsibilities assigned to the internal security team and supported by i-Net.",
-        "impact": "The implementation of Wazuh SIEM significantly reduced operational costs while strengthening the organization's cybersecurity posture. By eliminating the annual 800,000 THB Splunk license, the project delivered direct cost savings and allowed budget reallocation to other IT priorities. Automated log collection and real-time monitoring improved incident response efficiency, reducing investigation time from hours to minutes. Compliance audits became faster and more accurate through built-in reporting features, ensuring the organization met regulatory requirements without the burden of manual work."
-      },
-      "metrics": [
-        {
-          "percentage": "800K THB",
-          "title": "Cost Reduction",
-          "description": "Annual savings from replacing Splunk with Wazuh"
-        },
-        {
-          "percentage": "120+ hours",
-          "title": "Manual Work Elimination",
-          "description": "Annual time saved through automated compliance reporting"
-        },
-        {
-          "percentage": "80%",
-          "title": "Process Efficiency Gain",
-          "description": "Reduction in incident investigation time"
-        }
-      ],
-      "aboutProject": {
-        "stakeholder": "i-Net (24/7 monitoring support)",
-        "keyTeamMembers": [
-          "Phongsaton V. - Project Manager"
-        ]
-      },
-      "implementationTools": [
-        {
-          "name": "Wazuh",
-          "description": "Core SIEM platform providing log collection, intrusion detection, and compliance reporting."
-        },
-        {
-          "name": "Elastic Stack",
-          "description": "Elasticsearch, Logstash, and Kibana used for indexing, searching, and visualizing event data."
-        },
-        {
-          "name": "Linux Servers",
-          "description": "Stable and secure environment to host Wazuh and Elastic components."
-        },
-        {
-          "name": "Ansible",
-          "description": "Configuration management and deployment automation, ensuring consistent setup across environments."
-        }
-      ],
-      "vendors": ["i-Net"],
-      "files": [],
-      "projectImages": [
-        "https://i.postimg.cc/zvv4f73R/img.png"
-      ]
-    },
-    {
-      "id": 3,
       "title": "IT-PORTAL",
       "image": "https://i.postimg.cc/fT2g8pB4/Screenshot-2568-08-25-at-10-18-36.png",
       "category": ["business"],
@@ -196,6 +137,554 @@
         "https://i.postimg.cc/GpqBDPbj/Screenshot-2568-08-25-at-10-19-57.png",
         "https://i.postimg.cc/xd0JqpVC/Screenshot-2568-08-25-at-10-20-16.png"
       ]
-    }
+    },
+    {
+      "id": 3,
+      "title": "Enhance Security Microsoft 365 Services",
+      "image": "https://i.postimg.cc/RZSJmqbW/1.jpg",
+      "category": ["cloud", "security"],
+      "division": "enterprise-services",
+      "department": "IT Security & Compliance",
+      "sections": {
+        "challenge": "The organization faced several security and compliance challenges with Microsoft 365 Standard: weak account protection due to lack of MFA, endpoint vulnerability from unencrypted notebooks, limited security features without Intune/DLP/Defender, critical user groups (MGR, Finance, Purchase, Sales, IT) exposed to high risks, and compliance gaps due to licensing limitations.",
+        "solution": "The security program included enforcing MFA for all user accounts, deploying BitLocker encryption on all notebooks, and upgrading 70 key users (MGR, Finance, Purchase, Sales, IT) from Microsoft 365 Standard to Premium. Advanced security features were activated, including Intune for device management, DLP for data loss prevention, and Defender for malware and phishing protection. Additionally, users were trained and educated on security best practices.",
+        "impact": "The project improved account protection with MFA, safeguarded sensitive endpoint data through BitLocker, and provided advanced security and management features to critical user groups. Compliance posture was strengthened to align with cybersecurity and data protection standards, reducing overall cyber risks and minimizing the chance of business disruption."
+      },
+      "metrics": [
+        {
+          "percentage": "100%",
+          "title": "MFA Adoption",
+          "description": "All user accounts are protected with Multi-Factor Authentication"
+        },
+        {
+          "percentage": "100%",
+          "title": "Device Encryption",
+          "description": "All notebooks encrypted with BitLocker"
+        },
+        {
+          "percentage": "70 Users",
+          "title": "Premium License Upgrade",
+          "description": "Key users upgraded to Microsoft 365 Premium"
+        },
+        {
+          "percentage": "Full",
+          "title": "Compliance Readiness",
+          "description": "Meets cybersecurity and data protection standards"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "Corporate IT Security & Management",
+        "keyTeamMembers": [
+          "Phongsaton V. - Project Manager"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Microsoft 365 Premium",
+          "description": "Advanced licensing with security features"
+        },
+        {
+          "name": "Multi-Factor Authentication (MFA)",
+          "description": "Account protection against unauthorized access"
+        },
+        {
+          "name": "BitLocker",
+          "description": "Notebook encryption for data protection"
+        },
+        {
+          "name": "Microsoft Intune",
+          "description": "Device and policy management"
+        },
+        {
+          "name": "Microsoft Defender",
+          "description": "Threat protection against malware and phishing"
+        },
+        {
+          "name": "Data Loss Prevention (DLP)",
+          "description": "Safeguard sensitive information"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/RZSJmqbW/1.jpg",
+        "https://i.postimg.cc/zGxbG590/2.png",
+        "https://i.postimg.cc/9fPHwFxP/3.png"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Wazuh SIEM & Endpoint Monitoring",
+      "image": "https://i.postimg.cc/HW3nkFXG/Image1.png",
+      "category": ["security"],
+      "division": "it_dm",
+      "department": "SOC & IT Security",
+      "sections": {
+        "challenge": "The organization lacked full visibility into endpoints and servers, relied on manual threat detection, and faced delays in incident response due to slow log analysis. Compliance with ISO and NIST was difficult without automated log collection and alerting. Additionally, the growing threat landscape (malware, ransomware, phishing) required timely and accurate detection.",
+        "solution": "Wazuh SIEM was deployed for real-time log collection and security event monitoring. Wazuh agents were installed on endpoints and servers to monitor activity and detect threats. Automated alerts and reporting were configured to accelerate response, and integration with SOC processes enhanced incident handling. Log collection and reporting were also aligned with compliance and audit requirements.",
+        "impact": "The implementation of Wazuh improved visibility across IT infrastructure, enabled faster incident response through automated alerts, and enhanced detection of modern threats. Compliance readiness was achieved with ISO 27001 and NIST standards, while business risks from cyberattacks and disruptions were significantly reduced."
+      },
+      "metrics": [
+        {
+          "percentage": "Real-Time",
+          "title": "Threat Visibility",
+          "description": "SOC team gains immediate insights into activities and risks"
+        },
+        {
+          "percentage": "50%+",
+          "title": "Incident Response Acceleration",
+          "description": "Automated alerts reduced response times by half"
+        },
+        {
+          "percentage": "Accurate",
+          "title": "Advanced Threat Detection",
+          "description": "Identifies malware, ransomware, and phishing attempts"
+        },
+        {
+          "percentage": "Full",
+          "title": "Compliance Readiness",
+          "description": "Aligned with ISO 27001, NIST, and audit requirements"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "SOC & IT Security Teams",
+        "keyTeamMembers": [
+          "Phongsaton V. - Project Manager"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Wazuh SIEM",
+          "description": "Log collection, monitoring, and threat detection"
+        },
+        {
+          "name": "Wazuh Agents",
+          "description": "Endpoint and server activity monitoring"
+        },
+        {
+          "name": "Automated Alerting & Reporting",
+          "description": "Real-time notifications and compliance reports"
+        },
+        {
+          "name": "SOC Playbooks",
+          "description": "Incident response and threat hunting integration"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/HW3nkFXG/Image1.png",
+        "https://i.postimg.cc/3wgJ5qYc/Image2.png",
+        "https://i.postimg.cc/bJgyd2G0/Image3.png"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Windows Server Upgrade 2012R2 to 2025",
+      "image": "https://i.postimg.cc/Z5kyQzX1/2.png",
+      "category": ["infrastructure", "security"],
+      "division": "it_dm",
+      "department": "IT Operations",
+      "sections": {
+        "challenge": "Windows Server 2012R2 has reached End of Support (EOS), meaning no more security patches, higher risks of vulnerabilities, compatibility issues with modern tools, operational inefficiency due to missing new features, and difficulty in meeting compliance requirements.",
+        "solution": "The organization upgraded AD Servers (AD1, AD2), File Share, Entra Connect, and WSUS to Windows Server 2025. A detailed migration plan and testing were conducted to minimize downtime, along with system hardening to align with modern security standards. The upgraded environment now supports integration with Microsoft 365, Azure AD, Intune, and Microsoft Defender, while centralized management and monitoring tools improve operations.",
+        "impact": "The migration significantly improved system security, performance, and stability. The infrastructure is now compliant with ISO 27001 and NIST standards, integrates seamlessly with modern cloud services, and is future-proof for expansion and upcoming IT services."
+      },
+      "metrics": [
+        {
+          "percentage": "100%",
+          "title": "Security Patching",
+          "description": "Continuous updates reduce vulnerability risks"
+        },
+        {
+          "percentage": "30%+",
+          "title": "Performance Improvement",
+          "description": "Better support for workloads and enhanced system stability"
+        },
+        {
+          "percentage": "Full",
+          "title": "Compliance Readiness",
+          "description": "Aligned with ISO 27001 and NIST standards"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "IT Infrastructure & Security",
+        "keyTeamMembers": [
+          "Phongsaton V. - Project Manager"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Windows Server 2025",
+          "description": "Core OS upgrade for AD, File Share, WSUS"
+        },
+        {
+          "name": "Azure AD / Entra Connect",
+          "description": "Identity and Access Management"
+        },
+        {
+          "name": "Microsoft Intune",
+          "description": "Device and Policy Management"
+        },
+        {
+          "name": "Microsoft Defender",
+          "description": "Security & Threat Protection"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/Z5kyQzX1/2.png",
+        "https://i.postimg.cc/BZk88GZX/1.jpg",
+        "https://i.postimg.cc/d1X0T8Yz/3.png"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Endpoint Security Upgrade Kaspersky EDR",
+      "image": "https://i.postimg.cc/mrnZ1rZ2/1.jpg",
+      "category": ["security", "cybersecurity"],
+      "division": "it_dm",
+      "department": "IT Security",
+      "sections": {
+        "challenge": "Traditional antivirus lacked advanced threat detection, visibility, and rapid response, leaving risks of ransomware, phishing, fileless attacks, and compliance gaps.",
+        "solution": "1. Upgrade to Kaspersky EDR with behavioral analysis\n2. Threat Hunting & Forensics for endpoint activity\n3. Automated Response with isolation & remediation\n4. Centralized Management Console for all endpoints\n5. Integration with SOC for investigation workflows",
+        "impact": "Improved protection against ransomware and zero-day threats, faster incident response, better visibility and control, compliance with ISO 27001/NIST, and stronger business continuity."
+      },
+      "metrics": [
+        {
+          "percentage": "90%",
+          "title": "Threat Detection",
+          "description": "Behavioral and advanced analytics coverage"
+        },
+        {
+          "percentage": "70% faster",
+          "title": "Incident Response",
+          "description": "Automated isolation and remediation"
+        },
+        {
+          "percentage": "100%",
+          "title": "Audit Readiness",
+          "description": "Compliance with ISO/NIST standards"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "IT Security & SOC Team",
+        "keyTeamMembers": [
+          "Thitison C. - IT Security Officer"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Kaspersky EDR",
+          "description": "Endpoint Detection & Response platform"
+        },
+        {
+          "name": "Centralized Management Console",
+          "description": "Unified endpoint security monitoring"
+        }
+      ],
+      "vendors": ["Kaspersky"],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/mrnZ1rZ2/1.jpg",
+        "https://i.postimg.cc/vB6YrdD7/2.png",
+      "https://i.postimg.cc/D0k25Yb9/3.jpg"
+      ]
+    },
+      {
+        "id": 9,
+        "title": "Server Room Availability & Safety",
+        "image": "https://i.postimg.cc/kM1s63KY/1.jpg",
+        "category": ["infrastructure", "security"],
+        "division": "it_dm",
+        "department": "IT Operations",
+        "sections": {
+          "challenge": "High risks including fire, weak structural protection, unauthorized access, water leakage, and lack of surveillance, leading to potential downtime, data loss, and compliance gaps.",
+          "solution": "1. Fire Suppression System (NOVEC) for IT equipment\n2. Fireproof Wall & Insulation per data center standards\n3. Smart Access Control (card/biometric)\n4. Water Leak Detection sensors with real-time alerts\n5. CCTV & Monitoring for evidence and incident review",
+          "impact": "Reduced downtime risks, enhanced data security, improved compliance readiness (ISO 27001, NIST), high availability environment, and audit-ready logs with CCTV and access control."
+        },
+        "metrics": [
+          {
+            "percentage": "99.9%",
+            "title": "High Availability",
+            "description": "Server room environment resilience"
+          },
+          {
+            "percentage": "100%",
+            "title": "Access Control Compliance",
+            "description": "Logs and audit-ready evidence"
+          },
+          {
+            "percentage": "ISO 27001",
+            "title": "Compliance Standard",
+            "description": "Aligned with industry regulations"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "IT Infrastructure & Security",
+          "keyTeamMembers": [
+            "Facilities Manager - Fire & Safety",
+            "Network Security Engineer - Access Control",
+            "System Admin - Monitoring & Surveillance"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "NOVEC Fire Suppression",
+            "description": "Automatic fire suppression for IT rooms"
+          },
+          {
+            "name": "Smart Access Control",
+            "description": "Biometric & card-based access control"
+          },
+          {
+            "name": "Water Leak Sensors",
+            "description": "Real-time detection and alerts"
+          },
+          {
+            "name": "CCTV Monitoring System",
+            "description": "Security and incident evidence"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/kM1s63KY/1.jpg",
+          "https://i.postimg.cc/3JkB2SZ8/2.jpg",
+        "https://i.postimg.cc/G2MFyG8T/3.png"
+        ]
+      },
+      {
+        "id": 10,
+        "title": "External Backup DR Site by Veeam",
+        "image": "https://i.postimg.cc/Cx6qhS8S/1.png",
+        "category": ["infrastructure", "security"],
+        "division": "it_dm",
+        "department": "IT Operations",
+        "sections": {
+          "challenge": "Incomplete DR site backup systems created business continuity risks. Recovery was slow, data loss risk was high, and compliance requirements were not met.",
+          "solution": "A DR Site was established with high-performance storage. Veeam managed centralized backup, replication, and recovery, with automated schedules meeting RPO 6 hours. DR tests were conducted regularly to ensure RTO 2 hours compliance.",
+          "impact": "The DR site provided reliable disaster recovery with faster recovery times (RTO 2h) and reduced data loss (RPO 6h). Centralized management improved efficiency, while compliance and audit readiness were achieved."
+        },
+        "metrics": [
+          {
+            "percentage": "RPO 6h",
+            "title": "Data Loss Protection",
+            "description": "Replication meets recovery point objective"
+          },
+          {
+            "percentage": "RTO 2h",
+            "title": "Recovery Time Objective",
+            "description": "Full recovery achievable within SLA"
+          },
+          {
+            "percentage": "100%",
+            "title": "Compliance Readiness",
+            "description": "Meets audit and regulatory standards"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "IT Operations & Business Continuity",
+          "keyTeamMembers": [
+            "Disaster Recovery Lead - DR Site Operations",
+            "Backup Engineer - Veeam Replication",
+            "Compliance Officer - DR Audit"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "Veeam Backup & Replication",
+            "description": "Backup, replication, and DR solution"
+          },
+          {
+            "name": "DR Site Storage",
+            "description": "High-performance storage for DR workloads"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/Cx6qhS8S/1.png",
+          "https://i.postimg.cc/XvGyXmKF/2.png",
+          "https://i.postimg.cc/HLq8Mz3N/3.png"
+        ]
+      },
+      {
+        "id": 11,
+        "title": "PAM Privileged Access Management",
+        "image": "https://i.postimg.cc/Xvk6K7g0/1.png",
+        "category": ["security", "identity"],
+        "division": "security-operations",
+        "department": "IT Security",
+        "sections": {
+          "challenge": "High-level privileged accounts (Admin, Root) were not controlled, creating risks of unauthorized access, credential misuse, and insider threats. Manual password management made policy enforcement difficult, while lack of monitoring hindered ISO and NIST compliance.",
+          "solution": "A PAM solution was deployed to centrally manage privileged accounts with a secure password vault. Privileged sessions were monitored and recorded, while automated access controls enforced time-bound permissions. Audit and compliance reports were generated to support ISO 27001, NIST, and regulatory audits.",
+          "impact": "The project reduced security risks from uncontrolled privileged access, improved audit readiness, and strengthened insider threat protection. Automated workflows increased operational efficiency by eliminating manual password management."
+        },
+        "metrics": [
+          {
+            "percentage": "80%+",
+            "title": "Risk Reduction",
+            "description": "Minimized unauthorized privileged access"
+          },
+          {
+            "percentage": "100%",
+            "title": "Centralized Control",
+            "description": "Privileged accounts managed via PAM"
+          },
+          {
+            "percentage": "Full",
+            "title": "Audit Readiness",
+            "description": "Aligned with ISO 27001 and NIST"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "IT Security & Compliance",
+          "keyTeamMembers": [
+            "Security Engineer - PAM Deployment",
+            "IT Administrator - Password Vault Management",
+            "Compliance Officer - Audit & Reporting"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "PAM Solution",
+            "description": "Privileged access management system"
+          },
+          {
+            "name": "Password Vault",
+            "description": "Centralized encrypted password storage"
+          },
+          {
+            "name": "Session Recording",
+            "description": "Monitoring and recording of privileged activity"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/Xvk6K7g0/1.png",
+          "https://i.postimg.cc/MTZ292sf/2.png",
+          "https://i.postimg.cc/W39RKWKW/3.png"
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Internal Backup StoreOnce by Veeam",
+        "image": "https://i.postimg.cc/vZMs4VWv/1.png",
+        "category": ["infrastructure", "security"],
+        "division": "it_dm",
+        "department": "IT Operations",
+        "sections": {
+          "challenge": "Existing backup systems were aging, unreliable, and slow. Backup jobs often failed, creating risks of data loss, SLA breaches, and compliance gaps. Meeting RPO 24 hours and RTO 2 hours was difficult.",
+          "solution": "StoreOnce storage was deployed with Veeam Backup for centralized management of backups, replication, and recovery. Automated schedules improved reliability, while compliance reports ensured SLA alignment with RPO 24h and RTO 2h.",
+          "impact": "Backup reliability and performance improved. Recovery times were reduced to within SLA, data protection compliance was achieved, and centralized monitoring improved IT operational efficiency."
+        },
+        "metrics": [
+          {
+            "percentage": "100%",
+            "title": "Backup Reliability",
+            "description": "Stable backups with StoreOnce + Veeam"
+          },
+          {
+            "percentage": "RPO 24h / RTO 2h",
+            "title": "SLA Compliance",
+            "description": "Meets recovery objectives for business continuity"
+          },
+          {
+            "percentage": "Centralized",
+            "title": "Management",
+            "description": "Single-pane management for all backups"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "IT Operations & Compliance",
+          "keyTeamMembers": [
+            "Backup Administrator - Veeam",
+            "System Engineer - StoreOnce Deployment",
+            "Compliance Officer - SLA Alignment"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "HPE StoreOnce",
+            "description": "Backup storage appliance"
+          },
+          {
+            "name": "Veeam Backup & Replication",
+            "description": "Backup and recovery solution"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/vZMs4VWv/1.png",
+          "https://i.postimg.cc/3xBHmx1Q/2.png",
+         "https://i.postimg.cc/q7DVDDWm/3.png" 
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Replacement VMware Servers",
+        "image": "https://i.postimg.cc/qvQMzzn2/1.png",
+        "category": ["infrastructure", "virtualization"],
+        "division": "infrastructure-services",
+        "department": "Data Center",
+        "sections": {
+          "challenge": "Aging VMware servers caused reduced performance, downtime risks, insufficient capacity, and unsupported versions vulnerable to security threats.",
+          "solution": "New VMware servers were procured and deployed. Virtual machines were migrated to the new infrastructure, and VMware ESXi/vCenter were upgraded to the latest versions. High Availability (HA), vMotion, and redundancy were configured with security hardening applied.",
+          "impact": "System performance and capacity improved significantly. Downtime was minimized with HA and modern VMware features, while infrastructure was secured and future-proofed for expansion."
+        },
+        "metrics": [
+          {
+            "percentage": "2x",
+            "title": "Performance Increase",
+            "description": "Faster workloads with upgraded hardware"
+          },
+          {
+            "percentage": "99.9%",
+            "title": "System Availability",
+            "description": "Reduced downtime risk with HA and redundancy"
+          },
+          {
+            "percentage": "Future-Ready",
+            "title": "Infrastructure",
+            "description": "Supports new VMware features and cloud integration"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "Infrastructure & Data Center",
+          "keyTeamMembers": [
+            "System Engineer - VMware Deployment",
+            "Data Center Operations - Migration",
+            "Security Officer - Server Hardening"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "VMware ESXi",
+            "description": "Hypervisor for virtualized workloads"
+          },
+          {
+            "name": "vCenter",
+            "description": "Centralized management and monitoring"
+          },
+          {
+            "name": "vMotion & HA",
+            "description": "High Availability and live migration features"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/qvQMzzn2/1.png",
+          "https://i.postimg.cc/g0JcRmqQ/2.png",
+              "https://i.postimg.cc/Gp5LxVX2/3.jpg"
+        ]
+      }
+      
+      
+      
   ]
 } 
