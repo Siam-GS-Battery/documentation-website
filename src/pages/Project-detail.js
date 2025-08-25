@@ -31,7 +31,9 @@ import {
   SiLinux,
   SiTailwindcss,
   SiPostcss,
-  SiMdx
+  SiMdx,
+  SiVmware,
+  SiKaspersky
 } from 'react-icons/si';
 import projectData from '../data/documents.json';
 import styles from './Project-detail.module.css';
@@ -71,6 +73,66 @@ const getToolIcon = (toolName) => {
   if (name.includes('playwright')) {
     // Use external SVG for Playwright
     return <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Windows Server
+  if (name.includes('windows server') || name.includes('windows 2025') || name.includes('windows 2022')) {
+    return <img src="https://logos-world.net/wp-content/uploads/2020/12/Windows-New-Logo.png" alt="Windows Server" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Microsoft tools - use external image since SiMicrosoft is not available
+  if (name.includes('microsoft') || name.includes('365') || name.includes('intune') || name.includes('defender') || name.includes('azure') || name.includes('bitlocker') || name.includes('mfa') || name.includes('multi-factor') || name.includes('entra')) {
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // VMware tools
+  if (name.includes('vmware') || name.includes('esxi') || name.includes('vcenter') || name.includes('vmotion')) return <SiVmware style={{ color: '#607078' }} />;
+  // HPE tools - use external image since SiHpe is not available
+  if (name.includes('storeonce') || name.includes('hpe')) {
+    return <img src="https://cdn.cs.1worldsync.com/c4/67/c46742b7-6f5e-4d10-859b-72a15d34c064.jpg" alt="HPE" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Kaspersky
+  if (name.includes('kaspersky') || name.includes('edr')) return <SiKaspersky style={{ color: '#006d5c' }} />;
+  // Veeam
+  if (name.includes('veeam')) {
+    return <img src="https://www.horizoniq.com/wp-content/uploads/2024/10/Veeam_main_logo_with_contor_RGB.png" alt="Veeam" style={{ width: '120%', height: '120%', objectFit: 'contain', transform: 'scale(1.2)' }} />;
+  }
+  // NOVEC Fire Suppression
+  if (name.includes('novec') || name.includes('fire')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/785/785116.png" alt="Fire Suppression" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Access Control
+  if (name.includes('access control') || name.includes('smart access') || name.includes('biometric')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Access Control" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Water Leak Detection
+  if (name.includes('water leak') || name.includes('leak detection')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/2917/2917995.png" alt="Water Leak Detection" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // CCTV
+  if (name.includes('cctv') || name.includes('monitoring system') || name.includes('surveillance')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/1584/1584808.png" alt="CCTV" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // PAM
+  if (name.includes('pam') || name.includes('privileged access') || name.includes('password vault') || name.includes('session recording')) {
+    return <img src="https://www.crossidentity.com/wp-content/uploads/2021/08/PAM-Main-Image-aug-500x450.png" alt="PAM" style={{ width: '120%', height: '120%', objectFit: 'contain' }} />;
+  }
+  // DR Site Storage
+  if (name.includes('dr site') || name.includes('storage')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/2344/2344147.png" alt="Storage" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // SOC Playbooks
+  if (name.includes('soc') || name.includes('playbook') || name.includes('incident response')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/2913/2913033.png" alt="SOC" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Automated Alerting
+  if (name.includes('automated') || name.includes('alert') || name.includes('reporting')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/1827/1827422.png" alt="Alerting" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Data Loss Prevention
+  if (name.includes('dlp') || name.includes('data loss prevention')) {
+    return <img src="https://img.freepik.com/premium-vector/data-loss-prevention-icon-vector-image-can-be-used-risk-management_120816-116925.jpg" alt="DLP" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Centralized Management
+  if (name.includes('centralized') || name.includes('management console')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/1875/1875208.png" alt="Management" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
   }
   return null;
 };
