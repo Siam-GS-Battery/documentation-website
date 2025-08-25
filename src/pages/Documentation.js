@@ -71,7 +71,7 @@ function Documentation() {
   const [currentView, setCurrentView] = useState('main')
   const [selectedMainCategory, setSelectedMainCategory] = useState(null)
   const [selectedSubcategory, setSelectedSubcategory] = useState(null)
-  const itemsPerPage = 9
+  const itemsPerPage = 6
 
   const toggleCategory = (categoryId) => {
     if (categoryId === 'all') {
