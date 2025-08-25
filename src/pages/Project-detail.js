@@ -26,19 +26,25 @@ import {
   SiHashicorp,
   SiPython,
   SiFastapi,
-  SiOpencv
+  SiOpencv,
+  SiAnsible,
+  SiLinux
 } from 'react-icons/si';
 import projectData from '../data/documents.json';
 import styles from './Project-detail.module.css';
 
 const getToolIcon = (toolName) => {
+  if (!toolName) return null;
   const name = toolName.toLowerCase();
   if (name.includes('react')) return <FaReact style={{ color: '#61DAFB' }} />; // สีฟ้า React
   if (name.includes('node')) return <FaNodeJs style={{ color: '#339933' }} />; // สีเขียว Node.js
   if (name.includes('mongo')) return <SiMongodb style={{ color: '#47A248' }} />; // สีเขียว MongoDB
   if (name.includes('kafka')) return <SiApachekafka style={{ color: '#231F20' }} />; // สีดำ Kafka
   if (name.includes('spark')) return <SiApachespark style={{ color: '#E25A1C' }} />; // สีส้ม Spark
-  if (name.includes('elastic')) return <SiElasticsearch style={{ color: '#005571' }} />; // สีน้ำเงิน Elasticsearch
+  if (name.includes('elastic')) {
+    // Use external SVG for Elastic Stack
+    return <img src="https://www.svgrepo.com/show/303574/elasticsearch-logo.svg" alt="Elastic Stack" style={{ width: '100%', height: '100%' }} />;
+  }
   if (name.includes('terraform')) return <SiTerraform style={{ color: '#7B42BC' }} />; // สีม่วง Terraform
   if (name.includes('docker')) return <FaDocker style={{ color: '#2496ED' }} />; // สีฟ้า Docker
   if (name.includes('ec2') || name.includes('aws')) return <FaAws style={{ color: '#FF9900' }} />; // สีส้ม AWS
@@ -46,10 +52,17 @@ const getToolIcon = (toolName) => {
   if (name.includes('paddleocr')) return <SiOpencv style={{ color: '#5C3EE8' }} />; // สีม่วง OpenCV (แทน PaddleOCR)
   if (name.includes('fastapi')) return <SiFastapi style={{ color: '#009688' }} />; // สีเขียว FastAPI
   if (name.includes('qwen')) return <SiPython style={{ color: '#3776AB' }} />; // สีน้ำเงิน Python/Qwen
+  if (name.includes('wazuh')) {
+    // Use external PNG for Wazuh
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Wazuh_blue.png" alt="Wazuh" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('ansible')) return <SiAnsible style={{ color: '#EE0000' }} />; // สีแดง Ansible
+  if (name.includes('linux')) return <SiLinux style={{ color: '#FCC624' }} />; // สีเหลือง Linux
   return null;
 };
 
 const getFileIcon = (fileName) => {
+  if (!fileName) return <AiFillFile />;
   const extension = fileName.toLowerCase().split('.').pop();
   switch (extension) {
     case 'pdf':
@@ -70,13 +83,31 @@ const getFileIcon = (fileName) => {
 };
 
 const getVendorIcon = (vendorName) => {
+  if (!vendorName) return null;
   const name = vendorName.toLowerCase();
   if (name.includes('aws') || name.includes('amazon')) return <FaAws style={{ color: '#FF9900' }} />; // สีส้ม AWS
   if (name.includes('stripe')) return <FaStripe style={{ color: '#008CDD' }} />; // สีฟ้า Stripe
   if (name.includes('google')) return <FaGoogle style={{ color: '#4285F4' }} />; // สีฟ้า Google
   // if (name.includes('confluent')) return <SiConfluent style={{ color: '#023AFF' }} />; // สีน้ำเงิน Confluent - SiConfluent not available
   if (name.includes('hashicorp')) return <SiHashicorp style={{ color: '#000000' }} />; // สีดำ HashiCorp
-  return null;
+  
+  // Return placeholder with first letter when no specific icon
+  return (
+    <div style={{ 
+      width: '100%', 
+      height: '100%', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      backgroundColor: '#f0f2f5',
+      borderRadius: '50%',
+      fontSize: '14px',
+      fontWeight: 'bold',
+      color: '#4a5568'
+    }}>
+      {vendorName.charAt(0).toUpperCase()}
+    </div>
+  );
 };
 
 export default function ProjectDetail() {
@@ -111,8 +142,12 @@ export default function ProjectDetail() {
   useEffect(() => {
     if (project?.metrics) {
       project.metrics.forEach((metric, index) => {
-        const targetValue = parseFloat(metric.percentage);
-        if (!isNaN(targetValue)) {
+        // Check if the value is a pure percentage number
+        const percentageMatch = metric.percentage.match(/^(\d+(?:\.\d+)?)%?$/);
+        
+        if (percentageMatch) {
+          // Only animate pure percentage numbers
+          const targetValue = parseFloat(percentageMatch[1]);
           let startValue = 0;
           const duration = 1000; // 1 seconds duration
           const steps = 60; // 60 steps
@@ -132,6 +167,12 @@ export default function ProjectDetail() {
           }, stepDuration);
 
           return () => clearInterval(timer);
+        } else {
+          // For non-percentage values (like "800,000 THB" or "120+ hours"), display as-is
+          setCounters(prev => ({
+            ...prev,
+            [index]: metric.percentage
+          }));
         }
       });
     }
@@ -187,9 +228,11 @@ export default function ProjectDetail() {
                 <div key={index} className={styles.metricItem}>
                   <div className={styles.metricBorder}>
                     <div className={styles.metricPercentage}>
-                      {typeof counters[index] === 'number' 
-                        ? `${counters[index].toFixed(1)}${metric.percentage.includes('%') ? '%' : ''}`
-                        : metric.percentage}
+                      {typeof counters[index] === 'string' 
+                        ? counters[index]
+                        : typeof counters[index] === 'number' 
+                          ? `${counters[index].toFixed(1)}${metric.percentage.includes('%') ? '%' : ''}`
+                          : metric.percentage}
                     </div>
                     <div className={styles.metricTitle}>{metric.title}</div>
                     <div className={styles.metricDescription}>{metric.description}</div>
@@ -399,17 +442,21 @@ export default function ProjectDetail() {
                 <>
                   <div>
                     <div className={styles.sidebarTitle}>Vendors</div>
-                    {project.vendors.map((vendor, index) => (
-                      <div key={index} className={styles.toolItem}>
-                        <div className={styles.toolIcon}>
-                          {getVendorIcon(vendor.name)}
+                    {project.vendors.map((vendor, index) => {
+                      const vendorName = typeof vendor === 'string' ? vendor : vendor.name;
+                      const vendorType = typeof vendor === 'string' ? '' : vendor.type;
+                      return (
+                        <div key={index} className={styles.toolItem}>
+                          <div className={styles.toolIcon}>
+                            {getVendorIcon(vendorName)}
+                          </div>
+                          <div className={styles.toolInfo}>
+                            <div className={styles.toolName}>{vendorName}</div>
+                            {vendorType && <div className={styles.toolDescription}>{vendorType}</div>}
+                          </div>
                         </div>
-                        <div className={styles.toolInfo}>
-                          <div className={styles.toolName}>{vendor.name}</div>
-                          <div className={styles.toolDescription}>{vendor.type}</div>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                   <hr className={styles.divider} />
                 </>

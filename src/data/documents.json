@@ -5,8 +5,8 @@
       "title": "BOM OCR System",
       "image": "https://i.postimg.cc/Nfc53K5G/image1.webp",
       "category": ["ai"],
-      "division": "production-procurement",
-      "department": "Production Control",
+      "division": "pc",
+      "department": "pc",
       "sections": {
         "challenge": "The manual process of entering Bill of Materials (BOM) data from PDFs and images into the SQL database was extremely time-consuming and prone to human error. A single document took an average of 8 minutes (5-6 minutes for data entry and 1-2 minutes for verification), limiting productivity to only 6-7 documents per hour.",
         "solution": "We designed and implemented an AI-powered OCR system to automate the data extraction process. The solution leverages a multi-stage pipeline that includes:\n\nThe system consists of three main components:\n\n\n1. **Table Detection**\n\n   \n\n\n- Uses object detection model\n   \n\n\n- Identifies and isolates table structures\n   \n\n\n- Detects key data fields and layouts\n\n\n  - Processes multiple table formats\n\n\n2. **Data Extraction**\n\n\n   - Utilizes **PaddleOCR** for text recognition\n\n\n   - Employs **PaddleStructure** for structural analysis\n\n\n  - Uses **Docling PDF Extractor** for PDF parsing\n\n\n   - Handles both textual and structured data\n\n\n3. **Data Validation**\n\n\n  - Powered by **Qwen2.5-VL-32B** model\n\n\n   - Validates extracted data accuracy\n\n\n   - Reconstructs complete tables\n\n\n   - Ensures data consistency",
@@ -62,7 +62,65 @@
         "https://i.postimg.cc/PxPrz4hn/image2.webp",
         "https://i.postimg.cc/J4w4ZZ2S/image3.webp"
       ]
-    }
-    
+    },
+    {
+      "id": 2,
+      "title": "Wazuh SIEM",
+      "image": "https://i.postimg.cc/zvv4f73R/img.png",
+      "category": ["security"],
+      "division": "it_dm",
+      "department": "it_dm",
+      "sections": {
+        "challenge": "The organization relied on a commercial SIEM solution (Splunk) that was expensive to maintain, with annual licensing costs reaching nearly 800,000 THB. Security analysts faced difficulties in conducting real-time investigations due to limited customization, and compliance reporting was largely manual, leading to delays and increased workload. The lack of a cost-effective and flexible solution created operational inefficiencies and budgetary strain.",
+        "solution": "The team implemented an in-house Wazuh SIEM solution, replacing the costly Splunk platform. Wazuh provided centralized log management, threat detection, and compliance reporting at a fraction of the cost. The open-source nature of Wazuh allowed full customization to fit organizational needs, while integration with existing infrastructure enabled continuous monitoring and automated alerts. To ensure operational reliability, the system was set up with 24/7 monitoring responsibilities assigned to the internal security team and supported by i-Net.",
+        "impact": "The implementation of Wazuh SIEM significantly reduced operational costs while strengthening the organization's cybersecurity posture. By eliminating the annual 800,000 THB Splunk license, the project delivered direct cost savings and allowed budget reallocation to other IT priorities. Automated log collection and real-time monitoring improved incident response efficiency, reducing investigation time from hours to minutes. Compliance audits became faster and more accurate through built-in reporting features, ensuring the organization met regulatory requirements without the burden of manual work."
+      },
+      "metrics": [
+        {
+          "percentage": "800,000 THB",
+          "title": "Cost Reduction",
+          "description": "Annual savings from replacing Splunk with Wazuh"
+        },
+        {
+          "percentage": "120+ hours",
+          "title": "Manual Work Elimination",
+          "description": "Annual time saved through automated compliance reporting"
+        },
+        {
+          "percentage": "80%",
+          "title": "Process Efficiency Gain",
+          "description": "Reduction in incident investigation time"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "i-Net (24/7 monitoring support)",
+        "keyTeamMembers": [
+          "Phongsaton - Project Manager"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Wazuh",
+          "description": "Core SIEM platform providing log collection, intrusion detection, and compliance reporting."
+        },
+        {
+          "name": "Elastic Stack",
+          "description": "Elasticsearch, Logstash, and Kibana used for indexing, searching, and visualizing event data."
+        },
+        {
+          "name": "Linux Servers",
+          "description": "Stable and secure environment to host Wazuh and Elastic components."
+        },
+        {
+          "name": "Ansible",
+          "description": "Configuration management and deployment automation, ensuring consistent setup across environments."
+        }
+      ],
+      "vendors": ["i-Net"],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/zvv4f73R/img.png"
       ]
+    }
+  ]
 } 
