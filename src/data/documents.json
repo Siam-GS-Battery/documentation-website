@@ -121,6 +121,83 @@
       "projectImages": [
         "https://i.postimg.cc/zvv4f73R/img.png"
       ]
+    },
+    {
+      "id": 3,
+      "title": "IT-PORTAL",
+      "image": "https://i.postimg.cc/fT2g8pB4/Screenshot-2568-08-25-at-10-18-36.png",
+      "category": ["business"],
+      "division": "it_dm",
+      "department": "it_dm",
+      "sections": {
+        "challenge": "The IT & Data Management department faced significant challenges in project visibility and documentation management. Projects were scattered across various platforms, making it difficult to track progress, share knowledge, and maintain consistent documentation. Team members struggled to find relevant project information quickly, leading to duplicated efforts and inefficient resource allocation. The lack of a centralized system also made it challenging for stakeholders to get real-time updates on project status and outcomes.",
+        "solution": "Developed IT-PORTAL, a comprehensive web-based platform that serves as a centralized hub for all IT & Data Management projects. The solution features a responsive design optimized for both desktop and mobile usage, with integrated Markdown documentation support for easy content creation and editing. The platform includes project categorization, search functionality, real-time status tracking, and collaborative documentation features. Users can access project details, timelines, team information, and related documents from a single, user-friendly interface.",
+        "impact": "IT-PORTAL has transformed how the department manages and showcases projects, resulting in improved transparency, better knowledge sharing, and enhanced stakeholder engagement. The platform has become the single source of truth for all IT projects, enabling better decision-making and resource planning. Mobile accessibility has increased team productivity by allowing access to critical project information anytime, anywhere."
+      },
+      "metrics": [
+        {
+          "percentage": "99%",
+          "title": "Manual Work Elimination",
+          "description": "Reduced time spent searching for project information and documentation"
+        },
+        {
+          "percentage": "60%",
+          "title": "Process Efficiency Gain",
+          "description": "Improved project documentation and reporting processes"
+        },
+        {
+          "percentage": "90%",
+          "title": "Data Accuracy Improvement",
+          "description": "Enhanced data consistency and accuracy through centralized management"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "IT & Data Management",
+        "keyTeamMembers": [
+          "Pantira S. - Software Engineer"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Docusaurus",
+          "description": "React-based static site generator for documentation websites",
+          "image": "https://i.postimg.cc/sgWYKYt1/docusaurus-logo.png"
+        },
+        {
+          "name": "React",
+          "description": "JavaScript library for building user interfaces",
+          "image": "https://i.postimg.cc/g0VkRSDf/react-logo.png"
+        },
+        {
+          "name": "TailwindCSS",
+          "description": "Utility-first CSS framework for rapid UI development",
+          "image": "https://i.postimg.cc/zGGz8gJZ/tailwind-logo.png"
+        },
+        {
+          "name": "MDX",
+          "description": "Markdown with JSX support for enhanced documentation",
+          "image": "https://i.postimg.cc/CKJGWj6M/mdx-logo.png"
+        },
+        {
+          "name": "Playwright",
+          "description": "End-to-end testing framework for web applications",
+          "image": "https://i.postimg.cc/dt5QYxB4/playwright-logo.png"
+        },
+        {
+          "name": "PostCSS",
+          "description": "CSS post-processor for transforming styles",
+          "image": "https://i.postimg.cc/jSkn8n8g/postcss-logo.png"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/SsPJTy22/Screenshot-2568-08-25-at-10-19-40.png",
+        "https://i.postimg.cc/d13hj71c/Screenshot-2568-08-25-at-10-19-50.png",
+        "https://i.postimg.cc/sgPGjd8q/Screenshot-2568-08-25-at-10-20-06.png",
+        "https://i.postimg.cc/GpqBDPbj/Screenshot-2568-08-25-at-10-19-57.png",
+        "https://i.postimg.cc/xd0JqpVC/Screenshot-2568-08-25-at-10-20-16.png"
+      ]
     }
   ]
 } 

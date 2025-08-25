@@ -28,7 +28,10 @@ import {
   SiFastapi,
   SiOpencv,
   SiAnsible,
-  SiLinux
+  SiLinux,
+  SiTailwindcss,
+  SiPostcss,
+  SiMdx
 } from 'react-icons/si';
 import projectData from '../data/documents.json';
 import styles from './Project-detail.module.css';
@@ -58,6 +61,17 @@ const getToolIcon = (toolName) => {
   }
   if (name.includes('ansible')) return <SiAnsible style={{ color: '#EE0000' }} />; // สีแดง Ansible
   if (name.includes('linux')) return <SiLinux style={{ color: '#FCC624' }} />; // สีเหลือง Linux
+  if (name.includes('docusaurus')) {
+    // Use external SVG for Docusaurus
+    return <img src="https://docusaurus.io/img/docusaurus.svg" alt="Docusaurus" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('tailwind')) return <SiTailwindcss style={{ color: '#06B6D4' }} />; // สีฟ้า TailwindCSS
+  if (name.includes('postcss')) return <SiPostcss style={{ color: '#DD3A0A' }} />; // สีแดง PostCSS
+  if (name.includes('mdx')) return <SiMdx style={{ color: '#1B1F24' }} />; // สีดำ MDX
+  if (name.includes('playwright')) {
+    // Use external SVG for Playwright
+    return <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
   return null;
 };
 

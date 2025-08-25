@@ -184,11 +184,13 @@ const projects = [
   ...(projectData.projects || []).map(project => ({
     id: project.id,
     title: project.title,
-    description: project.sections?.challenge ? project.sections.challenge.substring(0, 150) + '...' : 'No description available',
+    description: project.sections?.impact ? project.sections.impact.substring(0, 180) + '...' : 
+                 project.sections?.challenge ? project.sections.challenge.substring(0, 180) + '...' : 
+                 'No description available',
     image: project.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80',
     categories: project.category || [],
-    division: project.division || 'it-data',
-    team: project.department || 'IT Department',
+    division: project.division || 'it_dm',
+    team: project.department || 'IT & Data Management',
   })),
 ]
 
@@ -226,8 +228,8 @@ export default function Home() {
     const cacheImages = () => {
       const allImages = [
         ...slides.map(slide => slide.image),
-        ...projectData.projects.slice(0, 3).map(project => project.image),
-        memberMew, memberbow, membertoi, memberduay, membernew, memberjune, memberptum
+        ...projects.slice(0, 3).map(project => project.image),
+        memberMew, memberbow, membertoi, memberduay, membernew, memberjune, memberptum, memberfah, memberboss
       ].filter(Boolean)
 
       allImages.forEach(src => {
@@ -397,9 +399,9 @@ export default function Home() {
           </Link>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 mt-8 sm:mt-12 md:mt-16 mb-8 sm:mb-16 md:mb-20 lg:mb-24">
             {[
-              { number: 2, label: 'Total Projects' },
-              { number: 800, label: 'Cost Saving (K THB/Year)', suffix: 'K' },
-              { number: 75, label: 'Time Reduction (%)', suffix: '%' }
+              { number: 3, label: 'Total Projects' },
+              { number: 800, label: 'Annual Cost Saving (K THB)', suffix: 'K' },
+              { number: 75, label: 'Average Time Reduction (%)', suffix: '%' }
             ].map((item, index) => (
               <div key={index} className="group hover:scale-105 transition-all duration-300 cursor-pointer p-4 sm:p-6 md:p-8 rounded-lg hover:bg-gray-50">
                 <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-blue-700 mb-2 sm:mb-3 md:mb-4 group-hover:text-blue-800 transition-colors duration-300">
