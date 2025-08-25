@@ -77,7 +77,7 @@
       },
       "metrics": [
         {
-          "percentage": "800,000 THB",
+          "percentage": "800K THB",
           "title": "Cost Reduction",
           "description": "Annual savings from replacing Splunk with Wazuh"
         },

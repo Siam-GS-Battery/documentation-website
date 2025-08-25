@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from '@docusaurus/router'
 import { Link } from 'react-router-dom'
 import Layout from '@theme/Layout'
 import styles from './Project.module.css'
@@ -196,9 +195,7 @@ const projects = [
 export default function Home() {
   const [current, setCurrent] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
-  const [imagesLoaded, setImagesLoaded] = useState(false)
-  const [showHero, setShowHero] = useState(false)
-  const history = useHistory()
+  const [showHero] = useState(true)
 
   // Auto slide effect
   useEffect(() => {
@@ -263,8 +260,7 @@ export default function Home() {
 
   // Handle image loading completion
   const handleImagesLoaded = () => {
-    setImagesLoaded(true)
-    setShowHero(true)
+    // Images are now preloaded in background
   }
 
   // Fade in animation on mount
@@ -325,21 +321,11 @@ export default function Home() {
     <Layout
       title="Home"
       description="IT & Data Management Portal Homepage">
-      {/* Image Preloader */}
+      {/* Image Preloader - Hidden */}
       <ImagePreloader images={slides} onLoadComplete={handleImagesLoaded} />
-      
-      {/* Loading State - Full Width */}
-      {!imagesLoaded && (
-        <section className="relative w-screen h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-20 2xl:-mx-24" style={{marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw'}}>
-          <div className="flex flex-col items-center space-y-4">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            <p className="text-gray-600 text-sm sm:text-base">Loading...</p>
-          </div>
-        </section>
-      )}
 
       {/* Hero Section - Full Width */}
-      <section className={`relative w-screen h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] flex items-center justify-center overflow-hidden transition-opacity duration-500 ${showHero ? 'opacity-100' : 'opacity-0'} -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-20 2xl:-mx-24`} style={{marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw'}}>
+      <section className="relative w-screen h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] flex items-center justify-center overflow-hidden transition-opacity duration-500 opacity-100 -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-20 2xl:-mx-24" style={{marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw'}}>
         {/* Slides */}
         {slides.map((slide, idx) => (
           <FallbackImage
@@ -411,13 +397,13 @@ export default function Home() {
           </Link>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 mt-8 sm:mt-12 md:mt-16 mb-8 sm:mb-16 md:mb-20 lg:mb-24">
             {[
-              { number: 10, label: 'Total Projects' },
-              { number: 5, label: 'Cost Saving (M)' },
-              { number: 5, label: 'Time Saving (M)' }
+              { number: 2, label: 'Total Projects' },
+              { number: 800, label: 'Cost Saving (K THB/Year)', suffix: 'K' },
+              { number: 75, label: 'Time Reduction (%)', suffix: '%' }
             ].map((item, index) => (
               <div key={index} className="group hover:scale-105 transition-all duration-300 cursor-pointer p-4 sm:p-6 md:p-8 rounded-lg hover:bg-gray-50">
                 <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-blue-700 mb-2 sm:mb-3 md:mb-4 group-hover:text-blue-800 transition-colors duration-300">
-                  <AnimatedCounter target={item.number} duration={2500} />
+                  <AnimatedCounter target={item.number} duration={2500} suffix={item.suffix || ''} />
                 </div>
                 <div className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors duration-300 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
                   {item.label}
