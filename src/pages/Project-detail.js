@@ -341,7 +341,7 @@ export default function ProjectDetail() {
                       {typeof counters[index] === 'string' 
                         ? counters[index]
                         : typeof counters[index] === 'number' 
-                          ? `${counters[index].toFixed(1)}${metric.percentage.includes('%') ? '%' : ''}`
+                          ? `${Math.round(counters[index])}${metric.percentage.includes('%') ? '%' : ''}`
                           : metric.percentage}
                     </div>
                     <div className={styles.metricTitle}>{metric.title}</div>

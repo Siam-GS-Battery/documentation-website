@@ -320,23 +320,35 @@ export default function Home() {
     setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
   }
 
-  // Project carousel navigation
+  // Project carousel navigation with continuous scrolling
   const nextProject = () => {
     setProjectIndex((prev) => {
-      const maxIndex = Math.max(0, projects.length - 3)
-      return prev >= maxIndex ? 0 : prev + 1
+      // Continuous scrolling: move to next card
+      return (prev + 1) % projects.length
     })
   }
 
   const prevProject = () => {
     setProjectIndex((prev) => {
-      const maxIndex = Math.max(0, projects.length - 3)
-      return prev <= 0 ? maxIndex : prev - 1
+      // Continuous scrolling: move to previous card
+      return prev === 0 ? projects.length - 1 : prev - 1
     })
   }
 
-  // Get current visible projects
-  const visibleProjects = projects.slice(projectIndex, projectIndex + 3)
+  // Get current visible projects with continuous scrolling
+  const getVisibleProjects = () => {
+    const visibleCount = 3
+    const result = []
+    
+    for (let i = 0; i < visibleCount; i++) {
+      const index = (projectIndex + i) % projects.length
+      result.push(projects[index])
+    }
+    
+    return result
+  }
+  
+  const visibleProjects = getVisibleProjects()
   
   // Show navigation only if we have more than 3 projects
   const showProjectNavigation = projects.length > 3
@@ -421,7 +433,7 @@ export default function Home() {
           </Link>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 mt-8 sm:mt-12 md:mt-16 mb-8 sm:mb-16 md:mb-20 lg:mb-24">
             {[
-              { number: 3, label: 'Total Projects' },
+              { number: 11, label: 'Total Projects' },
               { number: 800, label: 'Annual Cost Saving (THB)', suffix: 'K' },
               { number: 75, label: 'Average Time Reduction (%)', suffix: '%' }
             ].map((item, index) => (
@@ -455,13 +467,13 @@ export default function Home() {
           </div>
           
           {/* Project Cards Carousel Container */}
-          <div className="relative">
+          <div className="relative px-12 sm:px-16 lg:px-20">
             {/* Navigation Arrows */}
             {showProjectNavigation && (
               <>
                 <button
                   onClick={prevProject}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl backdrop-blur-sm -ml-2 sm:-ml-4"
+                  className="absolute -left-8 sm:-left-12 lg:-left-16 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 sm:p-4 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl backdrop-blur-sm"
                   aria-label="Previous Projects"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
@@ -470,7 +482,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={nextProject}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl backdrop-blur-sm -mr-2 sm:-mr-4"
+                  className="absolute -right-8 sm:-right-12 lg:-right-16 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 sm:p-4 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl backdrop-blur-sm"
                   aria-label="Next Projects"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
@@ -480,8 +492,8 @@ export default function Home() {
               </>
             )}
 
-            {/* Project Cards Grid */}
-            <div className={`${styles.projectCards} transition-all duration-500 ease-in-out`}>
+            {/* Project Cards Grid with smooth transition */}
+            <div className={`${styles.projectCards} transition-transform duration-700 ease-in-out`}>
               {visibleProjects.map((project) => (
                 <div
                   key={project.id}
