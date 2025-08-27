@@ -52,6 +52,19 @@ const getToolIcon = (toolName) => {
   }
   if (name.includes('terraform')) return <SiTerraform style={{ color: '#7B42BC' }} />; // สีม่วง Terraform
   if (name.includes('docker')) return <FaDocker style={{ color: '#2496ED' }} />; // สีฟ้า Docker
+  // AWS Services - check for specific services first, then generic AWS
+  if (name.includes('s3') || name === 'aws s3') {
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Amazon-S3-Logo.svg/1712px-Amazon-S3-Logo.svg.png" alt="AWS S3" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('lambda') || name === 'aws lambda') {
+    return <img src="https://img.icons8.com/color/600/awslambda.png" alt="AWS Lambda" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('redshift') || name === 'amazon redshift') {
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Amazon-Redshift-Logo.svg/1862px-Amazon-Redshift-Logo.svg.png" alt="Amazon Redshift" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('quicksight') || name === 'amazon quicksight') {
+    return <img src="https://cdn.worldvectorlogo.com/logos/amazon-quicksight.svg" alt="Amazon QuickSight" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
   if (name.includes('ec2') || name.includes('aws')) return <FaAws style={{ color: '#FF9900' }} />; // สีส้ม AWS
   if (name.includes('yolo')) return <SiPython style={{ color: '#3776AB' }} />; // สีน้ำเงิน Python/YOLO
   if (name.includes('paddleocr')) return <SiOpencv style={{ color: '#5C3EE8' }} />; // สีม่วง OpenCV (แทน PaddleOCR)

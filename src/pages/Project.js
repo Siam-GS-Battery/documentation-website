@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '@theme/Layout';
 import styles from './Project.module.css';
-import ProjectDetail from './Project-detail';
 import { Link } from 'react-router-dom';
 import projectData from '../data/documents.json';
 
@@ -87,7 +86,45 @@ function Project() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('categories')
   const [currentPage, setCurrentPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
   const itemsPerPage = 9
+
+  // Scroll to Categories Filter function (works for both desktop and mobile)
+  const scrollToCategories = () => {
+    // Add small delay to ensure elements are rendered
+    setTimeout(() => {
+      // Try desktop categories filter first
+      let categoriesFilter = document.querySelector(`.${styles.desktopCategoriesFilter}`);
+      
+      // If not found or not visible, try mobile menu container
+      if (!categoriesFilter || window.getComputedStyle(categoriesFilter).display === 'none') {
+        categoriesFilter = document.querySelector(`.${styles.mobileMenuContainer}`);
+      }
+      
+      if (categoriesFilter) {
+        const rect = categoriesFilter.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetPosition = rect.top + scrollTop - 50; // 50px offset from top
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
+  }
+
+  // Handle page change with loading state
+  const handlePageChange = (newPage) => {
+    setIsLoading(true);
+    setCurrentPage(newPage);
+    scrollToCategories();
+    
+    // Simulate loading time
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+  }
 
   const toggleCategory = (categoryId) => {
     if (categoryId === 'all') {
@@ -345,7 +382,24 @@ function Project() {
 
             {/* Project Cards Grid */}
             <div className={styles.projectCards}>
-              {currentProjects.map((project) => (
+              {isLoading ? (
+                // Skeleton Loading Cards
+                Array.from({ length: itemsPerPage }).map((_, index) => (
+                  <div key={`skeleton-${index}`} className={styles.projectCard}>
+                    <div className={styles.skeletonCard}>
+                      <div className={styles.skeletonImage}></div>
+                      <div className={styles.projectContent}>
+                        <div className={styles.skeletonTitle}></div>
+                        <div className={styles.skeletonText}></div>
+                        <div className={styles.skeletonText}></div>
+                        <div className={styles.skeletonButton}></div>
+                      </div>
+                      <div className={styles.projectBar}></div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                currentProjects.map((project) => (
                 <div
                   key={project.id}
                   data-category={project.categories ? project.categories.join(',') : ''}
@@ -377,7 +431,8 @@ function Project() {
                   {/* Blue Bar */}
                   <div className={styles.projectBar}></div>
                 </div>
-              ))}
+              ))
+              )}
             </div>
 
             {/* Pagination Controls */}
@@ -385,7 +440,7 @@ function Project() {
               <div className={styles.pagination}>
                 <button
                   className={`${styles.pageButton} ${styles.prevButton}`}
-                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                  onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
                 >
                   <svg className={styles.pageIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -402,7 +457,7 @@ function Project() {
                       <button
                         key={page}
                         className={`${styles.pageNumber} ${currentPage === page ? styles.active : ''}`}
-                        onClick={() => setCurrentPage(page)}
+                        onClick={() => handlePageChange(page)}
                       >
                         {page}
                       </button>
@@ -412,7 +467,7 @@ function Project() {
                 
                 <button
                   className={`${styles.pageButton} ${styles.nextButton}`}
-                  onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                  onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
                 >
                   Next

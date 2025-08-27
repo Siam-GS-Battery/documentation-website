@@ -75,19 +75,19 @@
       },
       "metrics": [
         {
-          "percentage": "99%",
-          "title": "Manual Work Elimination",
-          "description": "Reduced time spent searching for project information and documentation"
+          "percentage": "Centralized Knowledge",
+          "title": "Single Source of Truth",
+          "description": "All project information and documentation consolidated in one accessible location"
         },
         {
-          "percentage": "60%",
-          "title": "Process Efficiency Gain",
-          "description": "Improved project documentation and reporting processes"
+          "percentage": "Time Saving",
+          "title": "Faster Information Access",
+          "description": "Significantly reduced time spent searching for technical guides and project details"
         },
         {
-          "percentage": "90%",
-          "title": "Data Accuracy Improvement",
-          "description": "Enhanced data consistency and accuracy through centralized management"
+          "percentage": "Team Collaboration",
+          "title": "Enhanced Knowledge Sharing",
+          "description": "Improved collaboration and knowledge transfer between team members and departments"
         }
       ],
       "aboutProject": {
@@ -671,6 +671,78 @@
           "https://i.postimg.cc/qvQMzzn2/1.png",
           "https://i.postimg.cc/g0JcRmqQ/2.png",
           "https://i.postimg.cc/Gp5LxVX2/3.jpg"
+        ]
+      },
+      {
+        "id": 12,
+        "title": "PPC Dashboard",
+        "image": "https://i.postimg.cc/tgQPZZG5/image-1.png",
+        "category": ["cloud"],
+        "division": "production-procurement",
+        "department": "Production Control",
+        "sections": {
+          "challenge": "Currently, We handles the planning, the production and the delivery for the Battery Production. However, to do all this the team has to do some manual processing to be able to monitor all the available raw material, stock, production, inventory, and shipping of the battery. To monitor all of the available materials and the produced goods, Siam GS Battery team uses an ERP tool to be able to monitor the production and do additional processing with the help of some Query processing in the SQL Database and by using Excel for manually calculating the data. This task can be a bit tedious and can be automated, and to further help the team a reporting dashboard can be created to make data representations is easier to understand.",
+          "solution": "The solution consists of three major components : \n\n\n- Data migration to move data from on premises to the cloud environment.\n\n\n- Data pipelines to process and curate the data.\n\n\n- Visualization report to show the curated data insightfully according to the business needs.\n\n\nThe solution fully leverages AWS cloud service stack to ensure seamless integration and scalability.",
+          "impact": "Migrating data from on-premise to the cloud and adopting AWS QuickSight brings significant benefits by reducing manual summary time around 10 mins/persons and enabling scalable, high-performance data storage and analytics. Organizations gain faster access to insights through self-service, interactive dashboards, with the ability to integrate seamlessly into AWS services such as Redshift, and S3. Business users benefit from single sources data, collaborative analytics and built-in machine learning for forecasting and anomaly detection, while IT teams reduce time spent managing BI infrastructure. Overall, the migration improves efficiency, agility, and accessibility while enhancing security, compliance, and long-term scalability."
+        },
+        "metrics": [
+          {
+            "percentage": "70%",
+            "title": "Time Reduction",
+            "description": "Reduced time summary time from 10 to 3 minutes"
+          },
+          {
+            "percentage": "150%",
+            "title": "Productivity Increase",
+            "description": "Boosted productivity from 6 to 15 PDFs per hour"
+          },
+          {
+            "percentage": "100%",
+            "title": "Error Reduction",
+            "description": "Minimized human error in data summary"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "Supply Chain & Manufacturing",
+          "keyTeamMembers": [
+            "Nisarat H. - Data Strategy Operation (GS PM)",
+            "Hafiz Janitra R. - Xtremax PM",
+            "Aldi Chisty - Xtremax Member",
+            "Atho' Novian A. - Xtremax Member",
+            "Laras Ervintyana D - Xtremax Member",
+            "Jitprasert C. - Xtremax Member"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "AWS S3",
+            "description": "Amazon Simple Storage Service",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Amazon-S3-Logo.svg/1712px-Amazon-S3-Logo.svg.png"
+          },
+          {
+            "name": "AWS Lambda",
+            "description": "Formatter / ETL",
+            "image": "https://img.icons8.com/color/600/awslambda.png"
+          },
+          {
+            "name": "Amazon Redshift",
+            "description": "Data Warehouse Management",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Amazon-Redshift-Logo.svg/1862px-Amazon-Redshift-Logo.svg.png"
+          },
+          {
+            "name": "Amazon QuickSight",
+            "description": "Business analytics",
+            "image": "https://cdn.worldvectorlogo.com/logos/amazon-quicksight.svg"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/tgQPZZG5/image-1.png",
+          "https://i.postimg.cc/fR0mR7py/image-2.png",
+          "https://i.postimg.cc/MG7By6W8/image-3.png",
+          "https://i.postimg.cc/nzTQP3jR/MVP-Planning-AS-IS-drawio.png",
+          "https://i.postimg.cc/QtjTm2tK/Screenshot-2025-08-18-082305.png"
         ]
       }
   ]

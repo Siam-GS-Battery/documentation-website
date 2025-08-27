@@ -245,11 +245,22 @@ body {
   }
 }
 
-/* ปรับขนาดโลโก้ใน Navbar */
+/* ปรับขนาดโลโก้ใน Navbar และป้องกันการแสดงซ้อน */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+}
+
 .navbar__logo img {
   height: 26px; /* ปรับความสูงของโลโก้ (ค่าเริ่มต้นประมาณ 40px) */
   width: auto;
   margin-right: 20px; /* รักษาอัตราส่วน */
+  display: block; /* ป้องกันการแสดงซ้อน */
+}
+
+/* ซ่อนโลโก้ที่ซ้ำกัน ถ้ามี */
+.navbar__logo img:not(:first-child) {
+  display: none !important;
 }
 
 /* หรือถ้าต้องการปรับขนาดแบบ responsive */

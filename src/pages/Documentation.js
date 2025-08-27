@@ -71,7 +71,45 @@ function Documentation() {
   const [currentView, setCurrentView] = useState('main')
   const [selectedMainCategory, setSelectedMainCategory] = useState(null)
   const [selectedSubcategory, setSelectedSubcategory] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
   const itemsPerPage = 6
+
+  // Scroll to Categories Filter function (works for both desktop and mobile)
+  const scrollToCategories = () => {
+    // Add small delay to ensure elements are rendered
+    setTimeout(() => {
+      // Try desktop categories filter first
+      let categoriesFilter = document.querySelector(`.${styles.desktopCategoriesFilter}`);
+      
+      // If not found or not visible, try mobile menu container
+      if (!categoriesFilter || window.getComputedStyle(categoriesFilter).display === 'none') {
+        categoriesFilter = document.querySelector(`.${styles.mobileMenuContainer}`);
+      }
+      
+      if (categoriesFilter) {
+        const rect = categoriesFilter.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetPosition = rect.top + scrollTop - 50; // 50px offset from top
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
+  }
+
+  // Handle page change with loading state
+  const handlePageChange = (newPage) => {
+    setIsLoading(true);
+    setCurrentPage(newPage);
+    scrollToCategories();
+    
+    // Simulate loading time
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+  }
 
   const toggleCategory = (categoryId) => {
     if (categoryId === 'all') {
@@ -368,7 +406,23 @@ function Documentation() {
 
             {/* Cards Grid */}
             <div className={styles.projectCards}>
-              {paginatedItems.map((item) => {
+              {isLoading ? (
+                // Skeleton Loading Cards
+                Array.from({ length: Math.min(itemsPerPage, currentItems.length) }).map((_, index) => (
+                  <div key={`skeleton-${index}`} className={styles.projectCard}>
+                    <div className={styles.skeletonCard}>
+                      <div className={styles.projectContent}>
+                        <div className={styles.skeletonTitle}></div>
+                        <div className={styles.skeletonText}></div>
+                        <div className={styles.skeletonText}></div>
+                        <div className={styles.skeletonButton}></div>
+                      </div>
+                      <div className={styles.projectBar}></div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                paginatedItems.map((item) => {
                 if (currentView === 'main') {
                   // Main category cards
                   return (
@@ -414,7 +468,8 @@ function Documentation() {
                     </div>
                   )
                 }
-              })}
+              })
+              )}
             </div>
 
             {/* Pagination Controls */}
@@ -422,7 +477,7 @@ function Documentation() {
               <div className={styles.pagination}>
                 <button
                   className={`${styles.pageButton} ${styles.prevButton}`}
-                  onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                  onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
                 >
                   <svg className={styles.pageIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -439,7 +494,7 @@ function Documentation() {
                       <button
                         key={page}
                         className={`${styles.pageNumber} ${currentPage === page ? styles.active : ''}`}
-                        onClick={() => setCurrentPage(page)}
+                        onClick={() => handlePageChange(page)}
                       >
                         {page}
                       </button>
@@ -449,7 +504,7 @@ function Documentation() {
                 
                 <button
                   className={`${styles.pageButton} ${styles.nextButton}`}
-                  onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                  onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
                 >
                   Next

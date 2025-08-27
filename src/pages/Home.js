@@ -326,6 +326,8 @@ export default function Home() {
       // Continuous scrolling: move to next card
       return (prev + 1) % projects.length
     })
+    // Scroll to project section
+    document.getElementById('project-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   const prevProject = () => {
@@ -333,6 +335,8 @@ export default function Home() {
       // Continuous scrolling: move to previous card
       return prev === 0 ? projects.length - 1 : prev - 1
     })
+    // Scroll to project section
+    document.getElementById('project-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   // Get current visible projects with continuous scrolling
@@ -361,7 +365,7 @@ export default function Home() {
       <ImagePreloader images={slides} onLoadComplete={handleImagesLoaded} />
 
       {/* Hero Section - Full Width */}
-      <section className="relative w-screen h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] flex items-center justify-center overflow-hidden transition-opacity duration-500 opacity-100 -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-20 2xl:-mx-24" style={{marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw'}}>
+      <section className="relative w-screen h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] 2xl:h-[90vh] flex items-center justify-center overflow-hidden transition-opacity duration-500 opacity-100" style={{marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw', marginTop: '0', position: 'relative', zIndex: '1'}}>
         {/* Slides */}
         {slides.map((slide, idx) => (
           <FallbackImage
@@ -381,11 +385,11 @@ export default function Home() {
           <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto drop-shadow-md animate-pulse px-2 leading-relaxed">
             Explore our documentation, projects, and team members
           </p>
-          {/* Floating elements - responsive visibility */}
-          <div className="hidden md:block absolute top-10 left-10 w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-blue-400 rounded-full animate-bounce opacity-70" style={{ animationDelay: '0s' }}></div>
-          <div className="hidden md:block absolute top-20 right-20 w-4 h-4 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-green-400 rounded-full animate-bounce opacity-70" style={{ animationDelay: '0.5s' }}></div>
+          {/* Floating elements - moved lower to avoid navbar area */}
+          <div className="hidden md:block absolute top-1/3 left-10 w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 bg-blue-400 rounded-full animate-bounce opacity-70" style={{ animationDelay: '0s' }}></div>
+          <div className="hidden md:block absolute top-1/2 right-20 w-4 h-4 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-green-400 rounded-full animate-bounce opacity-70" style={{ animationDelay: '0.5s' }}></div>
           <div className="hidden md:block absolute bottom-20 left-20 w-3 h-3 sm:w-5 sm:h-5 lg:w-6 lg:h-6 bg-yellow-400 rounded-full animate-bounce opacity-70" style={{ animationDelay: '1s' }}></div>
-          <div className="hidden lg:block absolute top-32 right-12 w-3 h-3 bg-purple-400 rounded-full animate-bounce opacity-60" style={{ animationDelay: '1.5s' }}></div>
+          <div className="hidden lg:block absolute bottom-1/3 right-12 w-3 h-3 bg-purple-400 rounded-full animate-bounce opacity-60" style={{ animationDelay: '1.5s' }}></div>
           <div className="hidden lg:block absolute bottom-32 right-32 w-4 h-4 bg-pink-400 rounded-full animate-bounce opacity-60" style={{ animationDelay: '2s' }}></div>
         </div>
         {/* Navigation Arrows - Responsive */}
@@ -451,7 +455,7 @@ export default function Home() {
       </section>
 
       {/* Project & Activities - Using Project Cards Grid from Project.js */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-gray-50 scroll-animate">
+      <section id="project-section" className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 bg-gray-50 scroll-animate">
         <div className="max-w-2xl sm:max-w-4xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-full mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
           <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
             <div className="flex justify-between items-start mb-3 sm:mb-4 md:mb-5 lg:mb-6">
@@ -538,7 +542,10 @@ export default function Home() {
                   return (
                     <button
                       key={idx}
-                      onClick={() => setProjectIndex(startIndex)}
+                      onClick={() => {
+                        setProjectIndex(startIndex)
+                        document.getElementById('project-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                      }}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
                         isActive ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
                       }`}
