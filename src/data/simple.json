@@ -48,6 +48,31 @@
           "path": "Datamanagement/AWS General User Guide/redshift"
         }
       ]
+    },
+    {
+      "id": "aws-quicksight-ppc-guide",
+      "title": "AWS QuickSight PPC Dashboard User Guide",
+      "description": "Complete guide for Production Planning Dashboard on AWS QuickSight platform",
+      "subcategories": [
+        {
+          "id": "11",
+          "title": "General Information",
+          "description": "Introduction and overview of the Production Planning Dashboard project",
+          "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/General Information"
+        },
+        {
+          "id": "12",
+          "title": "Data Source & Update Notice",
+          "description": "Guidelines for data source management and update procedures",
+          "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/Data Source and Update Notice"
+        },
+        {
+          "id": "13",
+          "title": "How to Setting Dashboard",
+          "description": "Configuration guide for customizing dashboard visuals and parameters",
+          "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/How to Setting Dashboard"
+        }
+      ]
     }
   ],
   "documents": [
@@ -106,6 +131,30 @@
       "categories": ["datamanagement", "cloud"],
       "division": "datamanagement",
       "path": "Datamanagement/AWS General User Guide/Business as Usual Operation"
+    },
+    {
+      "id": "11",
+      "title": "General Information",
+      "description": "Introduction and overview of the Production Planning Dashboard project",
+      "categories": ["datamanagement", "business"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/General Information"
+    },
+    {
+      "id": "12",
+      "title": "Data Source & Update Notice",
+      "description": "Guidelines for data source management and update procedures",
+      "categories": ["datamanagement", "business"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/Data Source and Update Notice"
+    },
+    {
+      "id": "13",
+      "title": "How to Setting Dashboard",
+      "description": "Configuration guide for customizing dashboard visuals and parameters",
+      "categories": ["datamanagement", "business"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/How to Setting Dashboard"
     }
   ],
   "categorizationRules": {
@@ -115,6 +164,9 @@
       "EC2": ["datamanagement", "cloud"],
       "Redshift": ["datamanagement", "cloud"],
       "QuickSight": ["datamanagement", "cloud"],
+      "PPC Dashboard": ["datamanagement", "cloud"],
+      "Dashboard": ["datamanagement", "cloud"],
+      "Production Planning": ["datamanagement", "cloud"],
       "CLI": ["datamanagement", "cloud"],
       "Database": ["datamanagement"],
       "Data": ["datamanagement"],

@@ -686,22 +686,17 @@
           "impact": "Migrating data from on-premise to the cloud and adopting AWS QuickSight brings significant benefits by reducing manual summary time around 10 mins/persons and enabling scalable, high-performance data storage and analytics. Organizations gain faster access to insights through self-service, interactive dashboards, with the ability to integrate seamlessly into AWS services such as Redshift, and S3. Business users benefit from single sources data, collaborative analytics and built-in machine learning for forecasting and anomaly detection, while IT teams reduce time spent managing BI infrastructure. Overall, the migration improves efficiency, agility, and accessibility while enhancing security, compliance, and long-term scalability."
         },
         "metrics": [
-          {
-            "percentage": "70%",
-            "title": "Time Reduction",
-            "description": "Reduced time summary time from 10 to 3 minutes"
-          },
-          {
-            "percentage": "150%",
-            "title": "Productivity Increase",
-            "description": "Boosted productivity from 6 to 15 PDFs per hour"
-          },
-          {
-            "percentage": "100%",
-            "title": "Error Reduction",
-            "description": "Minimized human error in data summary"
-          }
-        ],
+        {
+          "percentage": "70%",
+          "title": "Time Reduction",
+          "description": "Reduced time summary time from 10 to 3 minutes"
+        },
+        {
+          "percentage": "100%",
+          "title": "Error Reduction",
+          "description": "Minimized human error in data summary"
+        }
+      ],
         "aboutProject": {
           "stakeholder": "Supply Chain & Manufacturing",
           "keyTeamMembers": [

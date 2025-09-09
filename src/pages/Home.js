@@ -437,7 +437,7 @@ export default function Home() {
           </Link>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 mt-8 sm:mt-12 md:mt-16 mb-8 sm:mb-16 md:mb-20 lg:mb-24">
             {[
-              { number: 11, label: 'Total Projects' },
+              { number: 12, label: 'Total Projects' },
               { number: 800, label: 'Annual Cost Saving (THB)', suffix: 'K' },
               { number: 75, label: 'Average Time Reduction (%)', suffix: '%' }
             ].map((item, index) => (

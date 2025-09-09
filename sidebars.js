@@ -243,13 +243,28 @@ const sidebars = {
           'Datamanagement/AWS General User Guide/Amazon Simple Storage Service',
           'Datamanagement/AWS General User Guide/QuickSight',
           'Datamanagement/AWS General User Guide/redshift',
-          'Datamanagement/AWS General User Guide/Business as Usual Operation',
+          'Datamanagement/AWS General User Guide/Business as Usual Operation'
           
+          ],
+        },
+        {
+          type: 'category',
+          label: 'AWS QuickSight PPC Dashboard User Guide',
+          link: {
+            type: 'generated-index',
+            description: 'Complete guide for Production Planning Dashboard on AWS QuickSight platform.'
+          },
+          items: [
+          'Datamanagement/AWS QuickSight PPC Dashboard User Guide/General Information',
+          'Datamanagement/AWS QuickSight PPC Dashboard User Guide/Data Source and Update Notice',
+          'Datamanagement/AWS QuickSight PPC Dashboard User Guide/How to Setting Dashboard'
           
           ],
         },
       ],
+      
     },
+    
     // {
     //   type: 'category',
     //   label: 'Troubleshooting',

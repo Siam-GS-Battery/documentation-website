@@ -346,7 +346,7 @@ export default function ProjectDetail() {
 
           {/* Metrics Section */}
           {project.metrics && project.metrics.length > 0 && (
-            <div className={styles.metricsContainer}>
+            <div className={`${styles.metricsContainer} ${project.metrics.length > 2 ? styles.spaceBetween : ''}`}>
               {project.metrics.map((metric, index) => (
                 <div key={index} className={styles.metricItem}>
                   <div className={styles.metricBorder}>

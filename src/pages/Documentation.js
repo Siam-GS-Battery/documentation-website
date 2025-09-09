@@ -168,7 +168,31 @@ function Documentation() {
   // Get current items based on view
   const getCurrentItems = () => {
     if (currentView === 'main') {
-      return projectData.mainCategories || []
+      let filteredItems = projectData.mainCategories || []
+      
+      // Apply division filter
+      if (selectedDivision !== 'all') {
+        filteredItems = filteredItems.filter(item => {
+          // Check if any subcategory matches the division
+          return item.subcategories?.some(subcat => {
+            const doc = projectData.documents.find(doc => doc.id === subcat.id)
+            return doc && doc.division === selectedDivision
+          })
+        })
+      }
+      
+      // Apply category filter
+      if (selectedCategories.length > 0 && !selectedCategories.includes('all')) {
+        filteredItems = filteredItems.filter(item => {
+          // Check if any subcategory matches the selected categories
+          return item.subcategories?.some(subcat => {
+            const doc = projectData.documents.find(doc => doc.id === subcat.id)
+            return doc && doc.categories?.some(cat => selectedCategories.includes(cat))
+          })
+        })
+      }
+      
+      return filteredItems
     } else if (currentView === 'documents' && selectedMainCategory) {
       // For documents, we get the subcategories from the selected main category
       return selectedMainCategory.subcategories || []
