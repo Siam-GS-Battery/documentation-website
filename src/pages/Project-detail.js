@@ -87,6 +87,18 @@ const getToolIcon = (toolName) => {
     // Use external SVG for Playwright
     return <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
   }
+  // TypeScript
+  if (name.includes('typescript')) {
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" alt="TypeScript" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Supabase
+  if (name.includes('supabase')) {
+    return <img src="https://avatars.githubusercontent.com/u/54469796?s=200&v=4" alt="Supabase" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Chart.js
+  if (name.includes('chart')) {
+    return <img src="https://www.chartjs.org/img/chartjs-logo.svg" alt="Chart.js" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
   // Windows Server
   if (name.includes('windows server') || name.includes('windows 2025') || name.includes('windows 2022')) {
     return <img src="https://logos-world.net/wp-content/uploads/2020/12/Windows-New-Logo.png" alt="Windows Server" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
@@ -551,7 +563,11 @@ export default function ProjectDetail() {
                 {project.implementationTools && project.implementationTools.map((tool, index) => (
                   <div key={index} className={styles.toolItem}>
                     <div className={styles.toolIcon}>
-                      {getToolIcon(tool.name)}
+                      {tool.image ? (
+                        <img src={tool.image} alt={tool.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                      ) : (
+                        getToolIcon(tool.name)
+                      )}
                     </div>
                     <div className={styles.toolInfo}>
                       <div className={styles.toolName}>{tool.name}</div>

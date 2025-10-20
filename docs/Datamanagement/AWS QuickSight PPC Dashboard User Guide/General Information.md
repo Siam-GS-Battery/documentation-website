@@ -2,7 +2,7 @@
 id: General Information
 title: General Information
 sidebar_label: General Information
-description: This document serves as a formal reference for the management of the Production Planning Dashboard project deployed on the AWS QuickSight cloud platform. It is designed to support two distinct user groups: general users and administrative users. For general users, the document provides instructions on how to access and interact with the dashboard's visualizations. For administrative users, it offers detailed guidance on maintaining, configuring, and designing visuals to meet the information needs of general users.
+description: "This document serves as a formal reference for the management of the Production Planning Dashboard project deployed on the AWS QuickSight cloud platform. It is designed to support two distinct user groups: general users and administrative users. For general users, the document provides instructions on how to access and interact with the dashboard's visualizations. For administrative users, it offers detailed guidance on maintaining, configuring, and designing visuals to meet the information needs of general users."
 ---
 
 # General Information

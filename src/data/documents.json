@@ -9,7 +9,7 @@
       "department": "pc",
       "sections": {
         "challenge": "The manual process of entering Bill of Materials (BOM) data from PDFs and images into the SQL database was extremely time-consuming and prone to human error. A single document took an average of 8 minutes (5-6 minutes for data entry and 1-2 minutes for verification), limiting productivity to only 6-7 documents per hour.",
-        "solution": "We designed and implemented an AI-powered OCR system to automate the data extraction process. The solution leverages a multi-stage pipeline that includes:\n\nThe system consists of three main components:\n\n\n1. **Table Detection**\n\n   \n\n\n- Uses object detection model\n   \n\n\n- Identifies and isolates table structures\n   \n\n\n- Detects key data fields and layouts\n\n\n  - Processes multiple table formats\n\n\n2. **Data Extraction**\n\n\n   - Utilizes **PaddleOCR** for text recognition\n\n\n   - Employs **PaddleStructure** for structural analysis\n\n\n  - Uses **Docling PDF Extractor** for PDF parsing\n\n\n   - Handles both textual and structured data\n\n\n3. **Data Validation**\n\n\n  - Powered by **Qwen2.5-VL-32B** model\n\n\n   - Validates extracted data accuracy\n\n\n   - Reconstructs complete tables\n\n\n   - Ensures data consistency",
+        "solution": "We designed and implemented an AI-powered OCR system to automate the data extraction process through a multi-stage pipeline consisting of three main components: Table Detection using object detection models to identify and isolate table structures across multiple formats, Data Extraction utilizing PaddleOCR for text recognition, PaddleStructure for structural analysis, and Docling PDF Extractor for PDF parsing, and Data Validation powered by the Qwen2.5-VL-32B model to validate accuracy, reconstruct complete tables, and ensure data consistency.",
         "impact": "This automated pipeline significantly reduced the time required for data processing and increased overall productivity. The time per document was cut down to just 1-2 minutes, boosting the workload from 6-7 PDFs per hour to 15 PDFs per hour. In the future, we aim to further improve the pipeline's accuracy to enable direct data integration into the database."
       },
       "metrics": [
@@ -69,9 +69,9 @@
       "division": "it_dm",
       "department": "it_dm",
       "sections": {
-        "challenge": "The IT & Data Management department faced significant challenges in knowledge management and documentation accessibility. Team members had to navigate through multiple scattered documentation sources including various wikis, shared drives, and individual team repositories to find project information, technical guides, and standard operating procedures. This fragmented approach led to duplicated efforts, inconsistent documentation standards, and difficulty in onboarding new team members. Additionally, there was no centralized location to showcase completed projects and their technical implementations, making it challenging to leverage past experiences and best practices across different teams and initiatives.",
-        "solution": "Developed IT-PORTAL using Docusaurus, a modern React-based static site generator optimized for documentation websites. The solution provides a comprehensive knowledge management platform with multiple organized sections including IT Management (project workflows and Asana guides), IT Development (coding standards and technical documentation), Data Management (AWS guides, Customer Data Platform documentation), and tutorial sections for team onboarding. The platform features full-text search capabilities, responsive mobile design, Markdown/MDX support for rich content creation, automated deployment pipelines, and integrated content submission forms. Built with modern web technologies including React, TailwindCSS for styling, and Playwright for end-to-end testing, ensuring reliability and maintainability.",
-        "impact": "IT-PORTAL has revolutionized knowledge management within the IT & Data Management department by establishing a centralized, searchable documentation hub that significantly improves team efficiency and collaboration. The platform has standardized documentation practices across all teams, reduced onboarding time for new team members from weeks to days, and eliminated the time-consuming process of searching through multiple repositories for technical information. With comprehensive AWS guides, project management workflows, and coding standards all accessible in one location, the platform has enhanced decision-making capabilities and accelerated project delivery. The mobile-responsive design ensures that critical documentation and project information are available to team members whether they're in the office or working remotely, supporting modern hybrid work environments."
+        "challenge": "The IT & Data Management department faced significant challenges in knowledge management and documentation accessibility, with team members navigating through multiple scattered sources including various wikis, shared drives, and individual repositories to find project information, technical guides, and standard operating procedures, leading to duplicated efforts, inconsistent documentation standards, difficulty in onboarding new team members, and challenges in leveraging past experiences across different teams.",
+        "solution": "Developed IT-PORTAL using Docusaurus, a modern React-based static site generator, providing a comprehensive knowledge management platform with organized sections for IT Management, IT Development, and Data Management, featuring full-text search capabilities, responsive mobile design, Markdown/MDX support, automated deployment pipelines, integrated content submission forms, and built with modern web technologies including React, TailwindCSS, and Playwright for end-to-end testing.",
+        "impact": "IT-PORTAL revolutionized knowledge management by establishing a centralized, searchable documentation hub that standardized documentation practices across all teams, reduced onboarding time from weeks to days, eliminated time-consuming searches through multiple repositories, enhanced decision-making capabilities, accelerated project delivery, and ensured critical documentation accessibility for team members in both office and remote environments through mobile-responsive design."
       },
       "metrics": [
         {
@@ -146,9 +146,9 @@
       "division": "it_dm",
       "department": "it_dm",
       "sections": {
-        "challenge": "The organization faced several security and compliance challenges with Microsoft 365 Standard: weak account protection due to lack of MFA, endpoint vulnerability from unencrypted notebooks, limited security features without Intune/DLP/Defender, critical user groups (MGR, Finance, Purchase, Sales, IT) exposed to high risks, and compliance gaps due to licensing limitations.",
-        "solution": "The security program included enforcing MFA for all user accounts, deploying BitLocker encryption on all notebooks, and upgrading 70 key users (MGR, Finance, Purchase, Sales, IT) from Microsoft 365 Standard to Premium. Advanced security features were activated, including Intune for device management, DLP for data loss prevention, and Defender for malware and phishing protection. Additionally, users were trained and educated on security best practices.",
-        "impact": "The project improved account protection with MFA, safeguarded sensitive endpoint data through BitLocker, and provided advanced security and management features to critical user groups. Compliance posture was strengthened to align with cybersecurity and data protection standards, reducing overall cyber risks and minimizing the chance of business disruption."
+        "challenge": "The organization faced critical security and compliance challenges with Microsoft 365 Standard including weak account protection without MFA leaving accounts vulnerable to unauthorized access, unencrypted notebooks exposing sensitive data to theft risks, missing Intune, DLP, and Defender capabilities limiting threat protection, elevated security risks for critical users (Managers, Finance, Purchase, Sales, IT), and licensing limitations preventing compliance with cybersecurity and data protection standards.",
+        "solution": "A comprehensive security enhancement program was implemented in multiple phases: enforcing Multi-Factor Authentication (MFA) and conditional access policies across all user accounts, deploying BitLocker encryption on all notebooks and workstations for full-disk protection, upgrading 70 key users from Microsoft 365 Standard to Premium focusing on high-risk groups, activating Microsoft Intune for centralized device and policy management, implementing Data Loss Prevention (DLP) to protect sensitive information, deploying Microsoft Defender for advanced threat protection, and conducting security awareness training for all users on best practices and compliance requirements.",
+        "impact": "The security enhancement project delivered significant improvements including all accounts secured with MFA dramatically reducing unauthorized access risks, BitLocker encryption safeguarding sensitive endpoint data from theft and breaches, advanced Defender capabilities protecting against malware, ransomware, and phishing attacks, strengthened compliance posture meeting cybersecurity and data protection standards, centralized management through Intune ensuring consistent security policies, enhanced logging and monitoring for audit requirements, overall cyber risk significantly decreased across the organization, minimized potential for security incidents and business disruption, and increased employee awareness and confidence in security practices."
       },
       "metrics": [
         {
@@ -181,27 +181,33 @@
       "implementationTools": [
         {
           "name": "Microsoft 365 Premium",
-          "description": "Advanced licensing with security features"
+          "description": "Advanced licensing with security features",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png"
         },
         {
           "name": "Multi-Factor Authentication (MFA)",
-          "description": "Account protection against unauthorized access"
+          "description": "Account protection against unauthorized access",
+          "image": "https://i.postimg.cc/SxqWjWd0/mfa-icon.png"
         },
         {
           "name": "BitLocker",
-          "description": "Notebook encryption for data protection"
+          "description": "Notebook encryption for data protection",
+          "image": "https://i.postimg.cc/7LjN8Yqj/bitlocker-icon.png"
         },
         {
           "name": "Microsoft Intune",
-          "description": "Device and policy management"
+          "description": "Device and policy management",
+          "image": "https://i.postimg.cc/VvzYKbMQ/intune-logo.png"
         },
         {
           "name": "Microsoft Defender",
-          "description": "Threat protection against malware and phishing"
+          "description": "Threat protection against malware and phishing",
+          "image": "https://i.postimg.cc/9fP1SJNF/defender-logo.png"
         },
         {
           "name": "Data Loss Prevention (DLP)",
-          "description": "Safeguard sensitive information"
+          "description": "Safeguard sensitive information",
+          "image": "https://i.postimg.cc/FzqNbJL5/dlp-icon.png"
         }
       ],
       "vendors": [],
@@ -681,9 +687,9 @@
         "division": "production-procurement",
         "department": "Production Control",
         "sections": {
-          "challenge": "Currently, We handles the planning, the production and the delivery for the Battery Production. However, to do all this the team has to do some manual processing to be able to monitor all the available raw material, stock, production, inventory, and shipping of the battery. To monitor all of the available materials and the produced goods, Siam GS Battery team uses an ERP tool to be able to monitor the production and do additional processing with the help of some Query processing in the SQL Database and by using Excel for manually calculating the data. This task can be a bit tedious and can be automated, and to further help the team a reporting dashboard can be created to make data representations is easier to understand.",
-          "solution": "The solution consists of three major components : \n\n\n- Data migration to move data from on premises to the cloud environment.\n\n\n- Data pipelines to process and curate the data.\n\n\n- Visualization report to show the curated data insightfully according to the business needs.\n\n\nThe solution fully leverages AWS cloud service stack to ensure seamless integration and scalability.",
-          "impact": "Migrating data from on-premise to the cloud and adopting AWS QuickSight brings significant benefits by reducing manual summary time around 10 mins/persons and enabling scalable, high-performance data storage and analytics. Organizations gain faster access to insights through self-service, interactive dashboards, with the ability to integrate seamlessly into AWS services such as Redshift, and S3. Business users benefit from single sources data, collaborative analytics and built-in machine learning for forecasting and anomaly detection, while IT teams reduce time spent managing BI infrastructure. Overall, the migration improves efficiency, agility, and accessibility while enhancing security, compliance, and long-term scalability."
+          "challenge": "The Battery Production team handles planning, production, and delivery through manual processing to monitor available raw materials, stock, production, inventory, and shipping, using an ERP tool with additional Query processing in SQL Database and Excel for manual data calculation. This manual process takes a long time to summarize information and uses a large amount of paper (9,604 sheets per year), creating a tedious workflow that could be automated with a reporting dashboard to make data representations easier to understand.",
+          "solution": "The solution consists of three major components including data migration to move data from on-premises to the cloud environment, data pipelines to process and curate the data, and visualization reports to show curated data insightfully according to business needs, fully leveraging the AWS cloud service stack to ensure seamless integration and scalability.",
+          "impact": "Migrating data from on-premise to the cloud and adopting AWS QuickSight brought significant benefits by reducing manual summary time around 10 minutes per person, enabling scalable high-performance data storage and analytics, providing faster access to insights through self-service interactive dashboards with seamless integration into AWS services such as Redshift and S3, allowing business users to benefit from single source data, collaborative analytics and built-in machine learning for forecasting and anomaly detection, reducing IT teams' time spent managing BI infrastructure, and improving efficiency, agility, accessibility while enhancing security, compliance, and long-term scalability."
         },
         "metrics": [
         {
@@ -739,6 +745,85 @@
           "https://i.postimg.cc/nzTQP3jR/MVP-Planning-AS-IS-drawio.png",
           "https://i.postimg.cc/QtjTm2tK/Screenshot-2025-08-18-082305.png"
         ]
-      }
+      },
+      {
+      "id": 13,
+      "title": "Kaizen Online System",
+      "image": "https://i.postimg.cc/gj9F03FJ/Screenshot-2568-10-16-at-13-22-18.png",
+      "category": ["business"],
+      "division": "it_dm",
+      "department": "it_dm",
+      "sections": {
+        "challenge": "The Kaizen suggestion and improvement tracking process was manual and paper-based, creating significant inefficiencies. The process took a long time to summarize information and consumed a large amount of paper with total usage of 9,604 sheets per year. This manual approach made it difficult to track improvement project status, delayed approval workflows, and lacked a centralized system to manage employee submissions and track implementation progress across the organization.",
+        "solution": "Developed an online Kaizen submission system that replaced paper forms with web input, integrated approval workflow including pre-approval before Kaizen Team, and centralized all Kaizen documents in a single digital platform, providing streamlined submission, tracking, and approval processes with clear workflow steps to reduce errors and delays.",
+        "impact": "The online system enables faster Kaizen submission and approval, completely eliminated paper usage achieving a fully digital workflow (0 sheets per year), created a centralized platform that improves tracking and accessibility, and established clear approval steps that reduce errors and delays, resulting in employees spending only 5 minutes per person per month to fill forms, supervisor approval completed within 1 hour, and data summarization reduced to 0.16 hours per person per month."
+      },
+      "metrics": [
+        {
+          "percentage": "0 sheets/year",
+          "title": "Paper Usage",
+          "description": "Complete elimination of paper (from 9,604 sheets/year)"
+        },
+        {
+          "percentage": "5 min",
+          "title": "Form Filling Time",
+          "description": "Time per person per month to submit Kaizen"
+        },
+        {
+          "percentage": "0.16 hr",
+          "title": "Data Summarization",
+          "description": "Time per person per month for data summary"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "Kaizen Team",
+        "keyTeamMembers": [
+          "Nisarat H. - Data Strategy Operation",
+          "Rachanok R. - Project Management Officer",
+          "Pantira S. - Software Engineer"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "React",
+          "description": "Frontend UI Framework",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+        },
+        {
+          "name": "Node.js & Express",
+          "description": "Backend API Server",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg"
+        },
+        {
+          "name": "TypeScript",
+          "description": "Type-Safe Development",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"
+        },
+        {
+          "name": "Supabase",
+          "description": "Cloud Database & Backend Services",
+          "image": "https://avatars.githubusercontent.com/u/54469796?s=200&v=4"
+        },
+        {
+          "name": "Tailwind CSS",
+          "description": "UI Styling Framework",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+        },
+        {
+          "name": "Chart.js",
+          "description": "Data Visualization",
+          "image": "https://www.chartjs.org/img/chartjs-logo.svg"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/gj9F03FJ/Screenshot-2568-10-16-at-13-22-18.png",
+        "https://i.postimg.cc/nr8bLq8g/Screenshot-2568-10-16-at-13-23-10.png",
+        "https://i.postimg.cc/XqMSv9SY/Screenshot-2568-10-16-at-13-22-30.png",
+        "https://i.postimg.cc/5ycdt8dN/Screenshot-2568-10-16-at-13-22-04.png",
+        "https://i.postimg.cc/26LNm2JR/Screenshot-2568-10-16-at-13-23-39.png"
+      ]
+      } 
   ]
 } 
