@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Layout from '@theme/Layout';
-import styles from './Project.module.css';
-import ProjectDetail from './Project-detail';
-import { Link } from 'react-router-dom';
+import styles from './project.module.css';
+import Link from '@docusaurus/Link';
 import projectData from '../data/documents.json';
 
 const divisions = [
@@ -86,6 +85,46 @@ function Project() {
   const [selectedDivision, setSelectedDivision] = useState('all')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('categories')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
+  const itemsPerPage = 9
+
+  // Scroll to Categories Filter function (works for both desktop and mobile)
+  const scrollToCategories = () => {
+    // Add small delay to ensure elements are rendered
+    setTimeout(() => {
+      // Try desktop categories filter first
+      let categoriesFilter = document.querySelector(`.${styles.desktopCategoriesFilter}`);
+      
+      // If not found or not visible, try mobile menu container
+      if (!categoriesFilter || window.getComputedStyle(categoriesFilter).display === 'none') {
+        categoriesFilter = document.querySelector(`.${styles.mobileMenuContainer}`);
+      }
+      
+      if (categoriesFilter) {
+        const rect = categoriesFilter.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetPosition = rect.top + scrollTop - 50; // 50px offset from top
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
+  }
+
+  // Handle page change with loading state
+  const handlePageChange = (newPage) => {
+    setIsLoading(true);
+    setCurrentPage(newPage);
+    scrollToCategories();
+    
+    // Simulate loading time
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+  }
 
   const toggleCategory = (categoryId) => {
     if (categoryId === 'all') {
@@ -100,6 +139,7 @@ function Project() {
         }
       })
     }
+    setCurrentPage(1) // Reset to first page when filter changes
   }
 
   const toggleMobileMenu = () => {
@@ -120,6 +160,53 @@ function Project() {
     return categoryMatch && divisionMatch
   })
 
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredProjects.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const currentProjects = filteredProjects.slice(startIndex, endIndex)
+
+  // Handle division change
+  const handleDivisionChange = (divisionId) => {
+    setSelectedDivision(divisionId)
+    setCurrentPage(1) // Reset to first page when filter changes
+  }
+
+  // Generate page numbers for pagination
+  const getPageNumbers = () => {
+    const pages = []
+    const maxVisible = 5
+    
+    if (totalPages <= maxVisible) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i)
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i)
+        }
+        pages.push('...')
+        pages.push(totalPages)
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1)
+        pages.push('...')
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i)
+        }
+      } else {
+        pages.push(1)
+        pages.push('...')
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pages.push(i)
+        }
+        pages.push('...')
+        pages.push(totalPages)
+      }
+    }
+    return pages
+  }
+
   return (
     <Layout title="IT Projects" description="Browse our IT project portfolio">
       <div className={styles.container}>
@@ -135,10 +222,10 @@ function Project() {
         </div>
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            IT Project Stories
+            Projects & Activities
           </h1>
           <p className={styles.heroDescription}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget turpis tincidunt, condimentum ex vel, facilisis augue. Nunc interdum, risus non vestibulum volutpat,
+            Explore our comprehensive collection of IT projects and activities that showcase innovative solutions, technological advancements, and collaborative efforts across various departments within our organization.
           </p>
         </div>
       </section>
@@ -153,7 +240,7 @@ function Project() {
               {divisions.map((division) => (
                 <button
                   key={division.id}
-                  onClick={() => setSelectedDivision(division.id)}
+                  onClick={() => handleDivisionChange(division.id)}
                   className={`${styles.divisionButton} ${selectedDivision === division.id ? styles.active : ''}`}
                 >
                   {division.name}
@@ -234,7 +321,7 @@ function Project() {
                               <button
                                 key={division.id}
                                 onClick={() => {
-                                  setSelectedDivision(division.id)
+                                  handleDivisionChange(division.id)
                                   closeMobileMenu()
                                 }}
                                 className={`${styles.mobileDivisionButton} ${selectedDivision === division.id ? styles.active : ''}`}
@@ -289,13 +376,30 @@ function Project() {
             {/* Project Count */}
             <div className={styles.projectCount}>
               <p>
-                Showing <span className={styles.highlight}>{filteredProjects.length}</span> of <span className={styles.bold}>{projects.filter(p=>p.division===selectedDivision).length}</span> projects
+                Showing <span className={styles.highlight}>{startIndex + 1}-{Math.min(endIndex, filteredProjects.length)}</span> of <span className={styles.bold}>{filteredProjects.length}</span> projects
               </p>
             </div>
 
             {/* Project Cards Grid */}
             <div className={styles.projectCards}>
-              {filteredProjects.map((project) => (
+              {isLoading ? (
+                // Skeleton Loading Cards
+                Array.from({ length: itemsPerPage }).map((_, index) => (
+                  <div key={`skeleton-${index}`} className={styles.projectCard}>
+                    <div className={styles.skeletonCard}>
+                      <div className={styles.skeletonImage}></div>
+                      <div className={styles.projectContent}>
+                        <div className={styles.skeletonTitle}></div>
+                        <div className={styles.skeletonText}></div>
+                        <div className={styles.skeletonText}></div>
+                        <div className={styles.skeletonButton}></div>
+                      </div>
+                      <div className={styles.projectBar}></div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                currentProjects.map((project) => (
                 <div
                   key={project.id}
                   data-category={project.categories ? project.categories.join(',') : ''}
@@ -327,8 +431,53 @@ function Project() {
                   {/* Blue Bar */}
                   <div className={styles.projectBar}></div>
                 </div>
-              ))}
+              ))
+              )}
             </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className={styles.pagination}>
+                <button
+                  className={`${styles.pageButton} ${styles.prevButton}`}
+                  onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                  disabled={currentPage === 1}
+                >
+                  <svg className={styles.pageIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  Previous
+                </button>
+                
+                <div className={styles.pageNumbers}>
+                  {getPageNumbers().map((page, index) => (
+                    page === '...' ? (
+                      <span key={`ellipsis-${index}`} className={styles.ellipsis}>...</span>
+                    ) : (
+                      <button
+                        key={page}
+                        className={`${styles.pageNumber} ${currentPage === page ? styles.active : ''}`}
+                        onClick={() => handlePageChange(page)}
+                      >
+                        {page}
+                      </button>
+                    )
+                  ))}
+                </div>
+                
+                <button
+                  className={`${styles.pageButton} ${styles.nextButton}`}
+                  onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                  <svg className={styles.pageIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            )}
+            
             {/* No Results Message */}
             {filteredProjects.length === 0 && (
               <div className={styles.noResults}>

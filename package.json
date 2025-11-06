@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "@docsearch/react": "^3.9.0",
-    "@docusaurus/core": "3.8.1",
-    "@docusaurus/preset-classic": "3.8.1",
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
     "@easyops-cn/docusaurus-search-local": "^0.51.1",
     "@mdx-js/react": "^3.0.0",
     "@types/react-router-dom": "^5.3.3",
@@ -30,7 +30,7 @@
     "react-router-dom": "^7.6.3"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.8.1",
+    "@docusaurus/module-type-aliases": "^3.9.2",
     "@docusaurus/types": "3.8.1",
     "@playwright/test": "^1.54.1",
     "@types/node": "^24.1.0",

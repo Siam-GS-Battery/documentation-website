@@ -8,6 +8,7 @@ import {
   PluginHtmlClassNameProvider,
 } from '@docusaurus/theme-common/internal';
 import {DocsPreferredVersionContextProvider} from '@docusaurus/plugin-content-docs/client';
+
 const Provider = composeProviders([
   ColorModeProvider,
   AnnouncementBarProvider,

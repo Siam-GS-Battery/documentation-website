@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Layout from '@theme/Layout';
-import styles from './Documentation.module.css';
-import { Link } from 'react-router-dom';
+import styles from './documentation.module.css';
+import Link from '@docusaurus/Link';
 import projectData from '../data/simple.json';
 
 const divisions = [
@@ -60,75 +60,56 @@ const categories = [
   { id: 'security', name: 'Security' },
 ]
 
-// Function to automatically categorize documents based on rules
-const autoCategorizeDocument = (document, rules) => {
-  let categories = document.categories || [];
-  let division = document.division || 'it-data';
-  
-  // Apply keyword-based categorization
-  if (rules.keywords) {
-    const titleAndDescription = `${document.title} ${document.description}`.toLowerCase();
-    const path = document.path || '';
-    
-    for (const [keyword, keywordCategories] of Object.entries(rules.keywords)) {
-      if (titleAndDescription.includes(keyword.toLowerCase()) || path.includes(keyword)) {
-        keywordCategories.forEach(cat => {
-          if (!categories.includes(cat)) {
-            categories.push(cat);
-          }
-        });
-      }
-    }
-  }
-  
-  // Apply path-based categorization
-  if (rules.pathMappings) {
-    for (const [pathKeyword, pathCategories] of Object.entries(rules.pathMappings)) {
-      if (document.path && document.path.includes(pathKeyword)) {
-        pathCategories.forEach(cat => {
-          if (!categories.includes(cat)) {
-            categories.push(cat);
-          }
-        });
-        // Set division based on path mapping
-        if (pathCategories.includes('datamanagement')) {
-          division = 'datamanagement';
-        } else if (pathCategories.includes('itmanagement')) {
-          division = 'itmanagement';
-        } else if (pathCategories.includes('itdevelopment')) {
-          division = 'itdevelopment';
-        }
-      }
-    }
-  }
-  
-  return { categories, division };
-};
 
-// Use data from JSON file and add additional projects for demonstration
-const projects = [
-  // Documents from JSON file
-  ...projectData.documents.map(document => {
-    const { categories, division } = autoCategorizeDocument(document, projectData.categorizationRules || {});
-    
-    return {
-      id: document.id,
-      title: document.title,
-      description: document.description,
-      path: document.path, // Add the document path for direct linking
-      categories: categories,
-      division: division,
-      team: 'IT Department',
-    };
-  }),
-  // Additional documents for demonstration
-]
 
 function Documentation() {
   const [selectedCategories, setSelectedCategories] = useState(['all'])
   const [selectedDivision, setSelectedDivision] = useState('all')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('categories')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [currentView, setCurrentView] = useState('main')
+  const [selectedMainCategory, setSelectedMainCategory] = useState(null)
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const itemsPerPage = 6
+
+  // Scroll to Categories Filter function (works for both desktop and mobile)
+  const scrollToCategories = () => {
+    // Add small delay to ensure elements are rendered
+    setTimeout(() => {
+      // Try desktop categories filter first
+      let categoriesFilter = document.querySelector(`.${styles.desktopCategoriesFilter}`);
+      
+      // If not found or not visible, try mobile menu container
+      if (!categoriesFilter || window.getComputedStyle(categoriesFilter).display === 'none') {
+        categoriesFilter = document.querySelector(`.${styles.mobileMenuContainer}`);
+      }
+      
+      if (categoriesFilter) {
+        const rect = categoriesFilter.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetPosition = rect.top + scrollTop - 50; // 50px offset from top
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
+  }
+
+  // Handle page change with loading state
+  const handlePageChange = (newPage) => {
+    setIsLoading(true);
+    setCurrentPage(newPage);
+    scrollToCategories();
+    
+    // Simulate loading time
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+  }
 
   const toggleCategory = (categoryId) => {
     if (categoryId === 'all') {
@@ -143,6 +124,7 @@ function Documentation() {
         }
       })
     }
+    setCurrentPage(1) // Reset to first page when filter changes
   }
 
   const toggleMobileMenu = () => {
@@ -153,15 +135,117 @@ function Documentation() {
     setIsMobileMenuOpen(false)
   }
 
-  const filteredProjects = projects.filter(project => {
-    // Filter by categories
-    const categoryMatch = selectedCategories.includes('all') || 
-      selectedCategories.length === 0 || 
-      (project.categories && project.categories.some(cat => selectedCategories.includes(cat)))
-    // Filter by division (all = show all)
-    const divisionMatch = selectedDivision === 'all' || project.division === selectedDivision
-    return categoryMatch && divisionMatch
-  })
+  // Function to handle main category selection
+  const handleMainCategoryClick = (category) => {
+    setSelectedMainCategory(category)
+    setCurrentView('documents')
+    setCurrentPage(1)
+  }
+
+  // Function to handle subcategory selection
+  const handleSubcategoryClick = (subcategory) => {
+    setSelectedSubcategory(subcategory)
+    setCurrentView('documents')
+    setCurrentPage(1)
+  }
+
+  // Function to go back to main categories
+  const handleBackToMain = () => {
+    setCurrentView('main')
+    setSelectedMainCategory(null)
+    setSelectedSubcategory(null)
+    setCurrentPage(1)
+  }
+
+  // Function to go back to subcategories (no longer needed)
+  const handleBackToSubcategories = () => {
+    setCurrentView('documents')
+    setSelectedSubcategory(null)
+    setCurrentPage(1)
+  }
+
+
+  // Get current items based on view
+  const getCurrentItems = () => {
+    if (currentView === 'main') {
+      let filteredItems = projectData.mainCategories || []
+      
+      // Apply division filter
+      if (selectedDivision !== 'all') {
+        filteredItems = filteredItems.filter(item => {
+          // Check if any subcategory matches the division
+          return item.subcategories?.some(subcat => {
+            const doc = projectData.documents.find(doc => doc.id === subcat.id)
+            return doc && doc.division === selectedDivision
+          })
+        })
+      }
+      
+      // Apply category filter
+      if (selectedCategories.length > 0 && !selectedCategories.includes('all')) {
+        filteredItems = filteredItems.filter(item => {
+          // Check if any subcategory matches the selected categories
+          return item.subcategories?.some(subcat => {
+            const doc = projectData.documents.find(doc => doc.id === subcat.id)
+            return doc && doc.categories?.some(cat => selectedCategories.includes(cat))
+          })
+        })
+      }
+      
+      return filteredItems
+    } else if (currentView === 'documents' && selectedMainCategory) {
+      // For documents, we get the subcategories from the selected main category
+      return selectedMainCategory.subcategories || []
+    }
+    return []
+  }
+
+  const currentItems = getCurrentItems()
+  const totalPages = Math.ceil(currentItems.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const paginatedItems = currentItems.slice(startIndex, endIndex)
+
+  // Handle division change
+  const handleDivisionChange = (divisionId) => {
+    setSelectedDivision(divisionId)
+    setCurrentPage(1) // Reset to first page when filter changes
+  }
+
+  // Generate page numbers for pagination
+  const getPageNumbers = () => {
+    const pages = []
+    const maxVisible = 5
+    
+    if (totalPages <= maxVisible) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i)
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i)
+        }
+        pages.push('...')
+        pages.push(totalPages)
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1)
+        pages.push('...')
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i)
+        }
+      } else {
+        pages.push(1)
+        pages.push('...')
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pages.push(i)
+        }
+        pages.push('...')
+        pages.push(totalPages)
+      }
+    }
+    return pages
+  }
 
   return (
     <Layout title="Documentation" description="Browse our documentation portfolio">
@@ -181,7 +265,7 @@ function Documentation() {
             Documentation
           </h1>
           <p className={styles.heroDescription}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget turpis tincidunt, condimentum ex vel, facilisis augue. Nunc interdum, risus non vestibulum volutpat,
+            Explore our comprehensive documentation library covering IT development, data management, and business applications. Find detailed guides, tutorials, and best practices for your technical needs.
           </p>
         </div>
       </section>
@@ -196,7 +280,7 @@ function Documentation() {
               {divisions.map((division) => (
                 <button
                   key={division.id}
-                  onClick={() => setSelectedDivision(division.id)}
+                  onClick={() => handleDivisionChange(division.id)}
                   className={`${styles.divisionButton} ${selectedDivision === division.id ? styles.active : ''}`}
                 >
                   {division.name}
@@ -277,7 +361,7 @@ function Documentation() {
                               <button
                                 key={division.id}
                                 onClick={() => {
-                                  setSelectedDivision(division.id)
+                                  handleDivisionChange(division.id)
                                   closeMobileMenu()
                                 }}
                                 className={`${styles.mobileDivisionButton} ${selectedDivision === division.id ? styles.active : ''}`}
@@ -326,51 +410,140 @@ function Documentation() {
             </div>
           </div>
 
-          {/* Main Project Grid */}
+          {/* Main Content Grid */}
           <div className={styles.projectGrid}>
+            {/* Breadcrumb Navigation */}
+            {currentView === 'documents' && selectedMainCategory && (
+              <div className={styles.breadcrumb}>
+                <button onClick={handleBackToMain} className={styles.breadcrumbLink}>Main Categories</button>
+                <span className={styles.breadcrumbSeparator}>/</span>
+                <span className={styles.breadcrumbCurrent}>{selectedMainCategory.title}</span>
+              </div>
+            )}
 
-            {/* Project Count */}
+            {/* Item Count */}
             <div className={styles.projectCount}>
               <p>
-                Showing <span className={styles.highlight}>{filteredProjects.length}</span> of <span className={styles.bold}>{projects.filter(p=>p.division===selectedDivision).length}</span> documents
+                Showing <span className={styles.highlight}>{startIndex + 1}-{Math.min(endIndex, currentItems.length)}</span> of <span className={styles.bold}>{currentItems.length}</span> {currentView === 'main' ? 'categories' : 'documents'}
               </p>
             </div>
 
-            {/* Project Cards Grid */}
+            {/* Cards Grid */}
             <div className={styles.projectCards}>
-              {filteredProjects.map((project) => (
-                <div
-                  key={project.id}
-                  data-category={project.categories ? project.categories.join(',') : ''}
-                  className={styles.projectCard}
-                >
-
-
-                  {/* Project Content */}
-                  <div className={styles.projectContent}>
-                    <h3 className={styles.projectTitle}>{project.title}</h3>
-                    <p className={styles.projectDescription}>{project.description}</p>
-                    {/* Read More Link */}
-                    <Link
-                      to={`/docs/${project.path}`}
-                      className={styles.readMoreLink}
-                    >
-                      Read More
-                      <svg className={styles.readMoreIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
+              {isLoading ? (
+                // Skeleton Loading Cards
+                Array.from({ length: Math.min(itemsPerPage, currentItems.length) }).map((_, index) => (
+                  <div key={`skeleton-${index}`} className={styles.projectCard}>
+                    <div className={styles.skeletonCard}>
+                      <div className={styles.projectContent}>
+                        <div className={styles.skeletonTitle}></div>
+                        <div className={styles.skeletonText}></div>
+                        <div className={styles.skeletonText}></div>
+                        <div className={styles.skeletonButton}></div>
+                      </div>
+                      <div className={styles.projectBar}></div>
+                    </div>
                   </div>
-                  {/* Blue Bar */}
-                  <div className={styles.projectBar}></div>
-                </div>
-              ))}
+                ))
+              ) : (
+                paginatedItems.map((item) => {
+                if (currentView === 'main') {
+                  // Main category cards
+                  return (
+                    <div
+                      key={item.id}
+                      className={`${styles.projectCard} ${styles.categoryCard}`}
+                      onClick={() => handleMainCategoryClick(item)}
+                    >
+                      <div className={styles.projectContent}>
+                        {/* <div className={styles.categoryIcon}>
+                          {categoryIcons[item.icon] || categoryIcons.database}
+                        </div> */}
+                        <h3 className={styles.projectTitle}>{item.title}</h3>
+                        <p className={styles.projectDescription}>{item.description}</p>
+                        <div className={styles.subcategoryCount}>
+                          {item.subcategories?.length || 0} documents
+                        </div>
+                      </div>
+                      <div className={styles.projectBar}></div>
+                    </div>
+                  )
+                } else {
+                  // Document cards
+                  return (
+                    <div
+                      key={item.id}
+                      className={styles.projectCard}
+                    >
+                      <div className={styles.projectContent}>
+                        <h3 className={styles.projectTitle}>{item.title}</h3>
+                        <p className={styles.projectDescription}>{item.description}</p>
+                        <Link
+                          to={`/docs/${item.path}`}
+                          className={styles.readMoreLink}
+                        >
+                          Read More
+                          <svg className={styles.readMoreIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </div>
+                      <div className={styles.projectBar}></div>
+                    </div>
+                  )
+                }
+              })
+              )}
             </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className={styles.pagination}>
+                <button
+                  className={`${styles.pageButton} ${styles.prevButton}`}
+                  onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                  disabled={currentPage === 1}
+                >
+                  <svg className={styles.pageIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  Previous
+                </button>
+                
+                <div className={styles.pageNumbers}>
+                  {getPageNumbers().map((page, index) => (
+                    page === '...' ? (
+                      <span key={`ellipsis-${index}`} className={styles.ellipsis}>...</span>
+                    ) : (
+                      <button
+                        key={page}
+                        className={`${styles.pageNumber} ${currentPage === page ? styles.active : ''}`}
+                        onClick={() => handlePageChange(page)}
+                      >
+                        {page}
+                      </button>
+                    )
+                  ))}
+                </div>
+                
+                <button
+                  className={`${styles.pageButton} ${styles.nextButton}`}
+                  onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                  <svg className={styles.pageIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            )}
+            
             {/* No Results Message */}
-            {filteredProjects.length === 0 && (
+            {currentItems.length === 0 && (
               <div className={styles.noResults}>
-                <h3>No documents found</h3>
-                <p>Try selecting different categories or clear all filters</p>
+                <h3>No {currentView === 'main' ? 'categories' : 'documents'} found</h3>
+                <p>Try going back or refreshing the page</p>
               </div>
             )}
           </div>

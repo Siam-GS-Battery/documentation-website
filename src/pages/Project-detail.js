@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from '@docusaurus/router';
-import { FiDownload, FiArrowLeft } from 'react-icons/fi';
+import { FiDownload, FiArrowLeft, FiUser, FiX, FiChevronLeft, FiChevronRight, FiExternalLink } from 'react-icons/fi';
 import { 
   AiFillFilePdf, 
   AiFillFileWord, 
@@ -26,30 +26,160 @@ import {
   SiHashicorp,
   SiPython,
   SiFastapi,
-  SiOpencv
+  SiOpencv,
+  SiAnsible,
+  SiLinux,
+  SiTailwindcss,
+  SiPostcss,
+  SiMdx,
+  SiVmware,
+  SiKaspersky
 } from 'react-icons/si';
 import projectData from '../data/documents.json';
-import styles from './Project-detail.module.css';
+import styles from './project-detail.module.css';
 
 const getToolIcon = (toolName) => {
+  if (!toolName) return null;
   const name = toolName.toLowerCase();
   if (name.includes('react')) return <FaReact style={{ color: '#61DAFB' }} />; // สีฟ้า React
   if (name.includes('node')) return <FaNodeJs style={{ color: '#339933' }} />; // สีเขียว Node.js
   if (name.includes('mongo')) return <SiMongodb style={{ color: '#47A248' }} />; // สีเขียว MongoDB
   if (name.includes('kafka')) return <SiApachekafka style={{ color: '#231F20' }} />; // สีดำ Kafka
   if (name.includes('spark')) return <SiApachespark style={{ color: '#E25A1C' }} />; // สีส้ม Spark
-  if (name.includes('elastic')) return <SiElasticsearch style={{ color: '#005571' }} />; // สีน้ำเงิน Elasticsearch
+  if (name.includes('elastic')) {
+    // Use external SVG for Elastic Stack
+    return <img src="https://www.svgrepo.com/show/303574/elasticsearch-logo.svg" alt="Elastic Stack" style={{ width: '100%', height: '100%' }} />;
+  }
   if (name.includes('terraform')) return <SiTerraform style={{ color: '#7B42BC' }} />; // สีม่วง Terraform
   if (name.includes('docker')) return <FaDocker style={{ color: '#2496ED' }} />; // สีฟ้า Docker
+  // AWS Services - check for specific services first, then generic AWS
+  if (name.includes('s3') || name === 'aws s3') {
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Amazon-S3-Logo.svg/1712px-Amazon-S3-Logo.svg.png" alt="AWS S3" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('lambda') || name === 'aws lambda') {
+    return <img src="https://img.icons8.com/color/600/awslambda.png" alt="AWS Lambda" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('redshift') || name === 'amazon redshift') {
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Amazon-Redshift-Logo.svg/1862px-Amazon-Redshift-Logo.svg.png" alt="Amazon Redshift" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('quicksight') || name === 'amazon quicksight') {
+    return <img src="https://cdn.worldvectorlogo.com/logos/amazon-quicksight.svg" alt="Amazon QuickSight" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
   if (name.includes('ec2') || name.includes('aws')) return <FaAws style={{ color: '#FF9900' }} />; // สีส้ม AWS
   if (name.includes('yolo')) return <SiPython style={{ color: '#3776AB' }} />; // สีน้ำเงิน Python/YOLO
   if (name.includes('paddleocr')) return <SiOpencv style={{ color: '#5C3EE8' }} />; // สีม่วง OpenCV (แทน PaddleOCR)
   if (name.includes('fastapi')) return <SiFastapi style={{ color: '#009688' }} />; // สีเขียว FastAPI
   if (name.includes('qwen')) return <SiPython style={{ color: '#3776AB' }} />; // สีน้ำเงิน Python/Qwen
+  if (name.includes('wazuh')) {
+    // Use external PNG for Wazuh
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Wazuh_blue.png" alt="Wazuh" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('ansible')) return <SiAnsible style={{ color: '#EE0000' }} />; // สีแดง Ansible
+  if (name.includes('linux')) return <SiLinux style={{ color: '#FCC624' }} />; // สีเหลือง Linux
+  if (name.includes('docusaurus')) {
+    // Use external SVG for Docusaurus
+    return <img src="https://docusaurus.io/img/docusaurus.svg" alt="Docusaurus" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  if (name.includes('tailwind')) return <SiTailwindcss style={{ color: '#06B6D4' }} />; // สีฟ้า TailwindCSS
+  if (name.includes('postcss')) return <SiPostcss style={{ color: '#DD3A0A' }} />; // สีแดง PostCSS
+  if (name.includes('mdx')) return <SiMdx style={{ color: '#1B1F24' }} />; // สีดำ MDX
+  if (name.includes('playwright')) {
+    // Use external SVG for Playwright
+    return <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // TypeScript
+  if (name.includes('typescript')) {
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" alt="TypeScript" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Supabase
+  if (name.includes('supabase')) {
+    return <img src="https://avatars.githubusercontent.com/u/54469796?s=200&v=4" alt="Supabase" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Chart.js
+  if (name.includes('chart')) {
+    return <img src="https://www.chartjs.org/img/chartjs-logo.svg" alt="Chart.js" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Windows Server
+  if (name.includes('windows server') || name.includes('windows 2025') || name.includes('windows 2022')) {
+    return <img src="https://logos-world.net/wp-content/uploads/2020/12/Windows-New-Logo.png" alt="Windows Server" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Microsoft tools - use external image since SiMicrosoft is not available
+  if (name.includes('microsoft') || name.includes('365') || name.includes('intune') || name.includes('defender') || name.includes('azure') || name.includes('bitlocker') || name.includes('mfa') || name.includes('multi-factor') || name.includes('entra')) {
+    return <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // VMware tools
+  if (name.includes('vmware') || name.includes('esxi') || name.includes('vcenter') || name.includes('vmotion')) return <SiVmware style={{ color: '#607078' }} />;
+  // HPE tools - use external image since SiHpe is not available
+  if (name.includes('storeonce') || name.includes('hpe')) {
+    return <img src="https://cdn.cs.1worldsync.com/c4/67/c46742b7-6f5e-4d10-859b-72a15d34c064.jpg" alt="HPE" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Kaspersky
+  if (name.includes('kaspersky') || name.includes('edr')) return <SiKaspersky style={{ color: '#006d5c' }} />;
+  // Veeam
+  if (name.includes('veeam')) {
+    return <img src="https://www.horizoniq.com/wp-content/uploads/2024/10/Veeam_main_logo_with_contor_RGB.png" alt="Veeam" style={{ width: '120%', height: '120%', objectFit: 'contain', transform: 'scale(1.2)' }} />;
+  }
+  // NOVEC Fire Suppression
+  if (name.includes('novec') || name.includes('fire')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/785/785116.png" alt="Fire Suppression" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Access Control
+  if (name.includes('access control') || name.includes('smart access') || name.includes('biometric')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Access Control" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Water Leak Detection
+  if (name.includes('water leak') || name.includes('leak detection')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/2917/2917995.png" alt="Water Leak Detection" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // CCTV
+  if (name.includes('cctv') || name.includes('monitoring system') || name.includes('surveillance')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/1584/1584808.png" alt="CCTV" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // PAM
+  if (name.includes('pam') || name.includes('privileged access') || name.includes('password vault') || name.includes('session recording')) {
+    return <img src="https://www.crossidentity.com/wp-content/uploads/2021/08/PAM-Main-Image-aug-500x450.png" alt="PAM" style={{ width: '120%', height: '120%', objectFit: 'contain' }} />;
+  }
+  // DR Site Storage
+  if (name.includes('dr site') || name.includes('storage')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/2344/2344147.png" alt="Storage" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // SOC Playbooks
+  if (name.includes('soc') || name.includes('playbook') || name.includes('incident response')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/2913/2913033.png" alt="SOC" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Automated Alerting
+  if (name.includes('automated') || name.includes('alert') || name.includes('reporting')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/1827/1827422.png" alt="Alerting" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Data Loss Prevention
+  if (name.includes('dlp') || name.includes('data loss prevention') || name.includes('data loss')) {
+    return <img src="https://img.icons8.com/color/512/data-protection.png" alt="DLP" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Multi-Factor Authentication (MFA)
+  if (name.includes('mfa') || name.includes('multi-factor') || name.includes('authentication')) {
+    return <img src="https://img.icons8.com/color/512/security-checked.png" alt="MFA" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // BitLocker
+  if (name.includes('bitlocker') || name.includes('encryption')) {
+    return <img src="https://img.icons8.com/color/512/lock.png" alt="BitLocker" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Microsoft Intune
+  if (name.includes('intune') || name.includes('device management')) {
+    return <img src="https://img.icons8.com/color/512/microsoft-admin.png" alt="Microsoft Intune" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Microsoft Defender
+  if (name.includes('defender') || name.includes('threat protection')) {
+    return <img src="https://img.icons8.com/color/512/security-shield-green.png" alt="Microsoft Defender" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Centralized Management
+  if (name.includes('centralized') || name.includes('management console')) {
+    return <img src="https://cdn-icons-png.flaticon.com/512/1875/1875208.png" alt="Management" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
   return null;
 };
 
 const getFileIcon = (fileName) => {
+  if (!fileName) return <AiFillFile />;
   const extension = fileName.toLowerCase().split('.').pop();
   switch (extension) {
     case 'pdf':
@@ -70,13 +200,16 @@ const getFileIcon = (fileName) => {
 };
 
 const getVendorIcon = (vendorName) => {
+  if (!vendorName) return null;
   const name = vendorName.toLowerCase();
   if (name.includes('aws') || name.includes('amazon')) return <FaAws style={{ color: '#FF9900' }} />; // สีส้ม AWS
   if (name.includes('stripe')) return <FaStripe style={{ color: '#008CDD' }} />; // สีฟ้า Stripe
   if (name.includes('google')) return <FaGoogle style={{ color: '#4285F4' }} />; // สีฟ้า Google
   // if (name.includes('confluent')) return <SiConfluent style={{ color: '#023AFF' }} />; // สีน้ำเงิน Confluent - SiConfluent not available
   if (name.includes('hashicorp')) return <SiHashicorp style={{ color: '#000000' }} />; // สีดำ HashiCorp
-  return null;
+  
+  // Return person icon when no specific vendor icon
+  return <FiUser style={{ color: '#718096', fontSize: '20px' }} />;
 };
 
 export default function ProjectDetail() {
@@ -85,6 +218,8 @@ export default function ProjectDetail() {
   const [loading, setLoading] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [counters, setCounters] = useState({});
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImageIndex, setLightboxImageIndex] = useState(0);
   const location = useLocation();
   
   useEffect(() => {
@@ -111,8 +246,12 @@ export default function ProjectDetail() {
   useEffect(() => {
     if (project?.metrics) {
       project.metrics.forEach((metric, index) => {
-        const targetValue = parseFloat(metric.percentage);
-        if (!isNaN(targetValue)) {
+        // Check if the value is a pure percentage number
+        const percentageMatch = metric.percentage.match(/^(\d+(?:\.\d+)?)%?$/);
+        
+        if (percentageMatch) {
+          // Only animate pure percentage numbers
+          const targetValue = parseFloat(percentageMatch[1]);
           let startValue = 0;
           const duration = 1000; // 1 seconds duration
           const steps = 60; // 60 steps
@@ -132,6 +271,12 @@ export default function ProjectDetail() {
           }, stepDuration);
 
           return () => clearInterval(timer);
+        } else {
+          // For non-percentage values (like "800,000 THB" or "120+ hours"), display as-is
+          setCounters(prev => ({
+            ...prev,
+            [index]: metric.percentage
+          }));
         }
       });
     }
@@ -146,6 +291,53 @@ export default function ProjectDetail() {
   const selectImage = (index) => {
     setSelectedImageIndex(index);
   };
+
+  const openLightbox = (index) => {
+    setLightboxImageIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const navigateLightbox = (direction) => {
+    if (direction === 'prev') {
+      setLightboxImageIndex((prev) => 
+        prev > 0 ? prev - 1 : project.projectImages.length - 1
+      );
+    } else {
+      setLightboxImageIndex((prev) => 
+        prev < project.projectImages.length - 1 ? prev + 1 : 0
+      );
+    }
+  };
+
+  // Handle keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!lightboxOpen) return;
+      
+      switch(e.key) {
+        case 'Escape':
+          closeLightbox();
+          break;
+        case 'ArrowLeft':
+          navigateLightbox('prev');
+          break;
+        case 'ArrowRight':
+          navigateLightbox('next');
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen, project]);
 
   if (loading) {
     return (
@@ -182,14 +374,16 @@ export default function ProjectDetail() {
 
           {/* Metrics Section */}
           {project.metrics && project.metrics.length > 0 && (
-            <div className={styles.metricsContainer}>
+            <div className={`${styles.metricsContainer} ${project.metrics.length > 2 ? styles.spaceBetween : ''}`}>
               {project.metrics.map((metric, index) => (
                 <div key={index} className={styles.metricItem}>
                   <div className={styles.metricBorder}>
                     <div className={styles.metricPercentage}>
-                      {typeof counters[index] === 'number' 
-                        ? `${counters[index].toFixed(1)}${metric.percentage.includes('%') ? '%' : ''}`
-                        : metric.percentage}
+                      {typeof counters[index] === 'string' 
+                        ? counters[index]
+                        : typeof counters[index] === 'number' 
+                          ? `${Math.round(counters[index])}${metric.percentage.includes('%') ? '%' : ''}`
+                          : metric.percentage}
                     </div>
                     <div className={styles.metricTitle}>{metric.title}</div>
                     <div className={styles.metricDescription}>{metric.description}</div>
@@ -322,6 +516,8 @@ export default function ProjectDetail() {
                         src={project.projectImages[selectedImageIndex]} 
                         alt={`Project image ${selectedImageIndex + 1}`} 
                         className={styles.mainImage}
+                        onClick={() => openLightbox(selectedImageIndex)}
+                        style={{ cursor: 'pointer' }}
                       />
                       <div className={styles.imageCounter}>
                         {selectedImageIndex + 1} / {project.projectImages.length}
@@ -383,7 +579,11 @@ export default function ProjectDetail() {
                 {project.implementationTools && project.implementationTools.map((tool, index) => (
                   <div key={index} className={styles.toolItem}>
                     <div className={styles.toolIcon}>
-                      {getToolIcon(tool.name)}
+                      {tool.image ? (
+                        <img src={tool.image} alt={tool.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                      ) : (
+                        getToolIcon(tool.name)
+                      )}
                     </div>
                     <div className={styles.toolInfo}>
                       <div className={styles.toolName}>{tool.name}</div>
@@ -399,17 +599,40 @@ export default function ProjectDetail() {
                 <>
                   <div>
                     <div className={styles.sidebarTitle}>Vendors</div>
-                    {project.vendors.map((vendor, index) => (
-                      <div key={index} className={styles.toolItem}>
-                        <div className={styles.toolIcon}>
-                          {getVendorIcon(vendor.name)}
+                    {project.vendors.map((vendor, index) => {
+                      const vendorName = typeof vendor === 'string' ? vendor : vendor.name;
+                      const vendorType = typeof vendor === 'string' ? '' : vendor.type;
+                      return (
+                        <div key={index} className={styles.toolItem}>
+                          <div className={styles.toolIcon}>
+                            {getVendorIcon(vendorName)}
+                          </div>
+                          <div className={styles.toolInfo}>
+                            <div className={styles.toolName}>{vendorName}</div>
+                            {vendorType && <div className={styles.toolDescription}>{vendorType}</div>}
+                          </div>
                         </div>
-                        <div className={styles.toolInfo}>
-                          <div className={styles.toolName}>{vendor.name}</div>
-                          <div className={styles.toolDescription}>{vendor.type}</div>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
+                  </div>
+                  <hr className={styles.divider} />
+                </>
+              )}
+
+              {/* Website Link - Show only if websiteUrl exists */}
+              {project.websiteUrl && (
+                <>
+                  <div>
+                    <div className={styles.sidebarTitle}>Website</div>
+                    <a
+                      href={project.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.websiteLink}
+                    >
+                      <FiExternalLink />
+                      <span>Visit Website</span>
+                    </a>
                   </div>
                   <hr className={styles.divider} />
                 </>
@@ -448,6 +671,52 @@ export default function ProjectDetail() {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && project?.projectImages && (
+        <div className={styles.lightbox} onClick={closeLightbox}>
+          <button 
+            className={styles.lightboxClose}
+            onClick={closeLightbox}
+            aria-label="Close lightbox"
+          >
+            <FiX size={24} />
+          </button>
+          
+          <button 
+            className={styles.lightboxPrev}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox('prev');
+            }}
+            aria-label="Previous image"
+          >
+            <FiChevronLeft size={32} />
+          </button>
+
+          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={project.projectImages[lightboxImageIndex]} 
+              alt={`Project image ${lightboxImageIndex + 1}`}
+              className={styles.lightboxImage}
+            />
+            <div className={styles.lightboxCounter}>
+              {lightboxImageIndex + 1} / {project.projectImages.length}
+            </div>
+          </div>
+
+          <button 
+            className={styles.lightboxNext}
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox('next');
+            }}
+            aria-label="Next image"
+          >
+            <FiChevronRight size={32} />
+          </button>
+        </div>
+      )}
     </Layout>  
   );
 }

@@ -91,13 +91,18 @@ const config = {
       },
       navbar: {
         hideOnScroll: false,
-        title: 'IT & Data Management',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'IT & Data Management',
           src: 'img/logo.svg', //เปลี่ยนโลโก้ที่นี่จ้า
-          width: 120, // ปรับความกว้างของโลโก้ (ค่าเริ่มต้นประมาณ 150-200)
+          href: '/', // เพิ่ม href เพื่อให้แน่ใจว่าลิงก์ถูกต้อง
         },
         items: [
+          {
+            to: '/',
+            label: 'Home',
+            position: 'left',
+            exact: true,
+          },
           {
             to: '/project',
             label: 'Projects',
@@ -231,6 +236,10 @@ const config = {
                 label: 'Projects',
                 to: '/project',
               },
+              {
+                label: 'Documentation',
+                to: '/Documentation',
+              }
             ],
           },
         ],

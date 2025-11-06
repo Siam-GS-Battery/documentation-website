@@ -5,11 +5,11 @@
       "title": "BOM OCR System",
       "image": "https://i.postimg.cc/Nfc53K5G/image1.webp",
       "category": ["ai"],
-      "division": "production-procurement",
-      "department": "Production Control",
+      "division": "pc",
+      "department": "pc",
       "sections": {
         "challenge": "The manual process of entering Bill of Materials (BOM) data from PDFs and images into the SQL database was extremely time-consuming and prone to human error. A single document took an average of 8 minutes (5-6 minutes for data entry and 1-2 minutes for verification), limiting productivity to only 6-7 documents per hour.",
-        "solution": "We designed and implemented an AI-powered OCR system to automate the data extraction process. The solution leverages a multi-stage pipeline that includes:\n\nThe system consists of three main components:\n\n\n1. **Table Detection**\n\n   \n\n\n- Uses object detection model\n   \n\n\n- Identifies and isolates table structures\n   \n\n\n- Detects key data fields and layouts\n\n\n  - Processes multiple table formats\n\n\n2. **Data Extraction**\n\n\n   - Utilizes **PaddleOCR** for text recognition\n\n\n   - Employs **PaddleStructure** for structural analysis\n\n\n  - Uses **Docling PDF Extractor** for PDF parsing\n\n\n   - Handles both textual and structured data\n\n\n3. **Data Validation**\n\n\n  - Powered by **Qwen2.5-VL-32B** model\n\n\n   - Validates extracted data accuracy\n\n\n   - Reconstructs complete tables\n\n\n   - Ensures data consistency",
+        "solution": "We designed and implemented an AI-powered OCR system to automate the data extraction process through a multi-stage pipeline consisting of three main components: Table Detection using object detection models to identify and isolate table structures across multiple formats, Data Extraction utilizing PaddleOCR for text recognition, PaddleStructure for structural analysis, and Docling PDF Extractor for PDF parsing, and Data Validation powered by the Qwen2.5-VL-32B model to validate accuracy, reconstruct complete tables, and ensure data consistency.",
         "impact": "This automated pipeline significantly reduced the time required for data processing and increased overall productivity. The time per document was cut down to just 1-2 minutes, boosting the workload from 6-7 PDFs per hour to 15 PDFs per hour. In the future, we aim to further improve the pipeline's accuracy to enable direct data integration into the database."
       },
       "metrics": [
@@ -32,9 +32,7 @@
       "aboutProject": {
         "stakeholder": "Supply Chain & Manufacturing",
         "keyTeamMembers": [
-          "Data Scientist - AI/ML Specialist",
-          "Backend Engineer - FastAPI Expert",
-          "Frontend Developer - Vue.js Developer"
+          "Burased B. - AI Engineer"
         ]
       },
       "implementationTools": [
@@ -62,7 +60,771 @@
         "https://i.postimg.cc/PxPrz4hn/image2.webp",
         "https://i.postimg.cc/J4w4ZZ2S/image3.webp"
       ]
-    }
-    
+    },
+    {
+      "id": 2,
+      "title": "IT-PORTAL",
+      "image": "https://i.postimg.cc/fT2g8pB4/Screenshot-2568-08-25-at-10-18-36.png",
+      "category": ["business"],
+      "division": "it_dm",
+      "department": "it_dm",
+      "sections": {
+        "challenge": "The IT & Data Management department faced significant challenges in knowledge management and documentation accessibility, with team members navigating through multiple scattered sources including various wikis, shared drives, and individual repositories to find project information, technical guides, and standard operating procedures, leading to duplicated efforts, inconsistent documentation standards, difficulty in onboarding new team members, and challenges in leveraging past experiences across different teams.",
+        "solution": "Developed IT-PORTAL using Docusaurus, a modern React-based static site generator, providing a comprehensive knowledge management platform with organized sections for IT Management, IT Development, and Data Management, featuring full-text search capabilities, responsive mobile design, Markdown/MDX support, automated deployment pipelines, integrated content submission forms, and built with modern web technologies including React, TailwindCSS, and Playwright for end-to-end testing.",
+        "impact": "IT-PORTAL revolutionized knowledge management by establishing a centralized, searchable documentation hub that standardized documentation practices across all teams, reduced onboarding time from weeks to days, eliminated time-consuming searches through multiple repositories, enhanced decision-making capabilities, accelerated project delivery, and ensured critical documentation accessibility for team members in both office and remote environments through mobile-responsive design."
+      },
+      "metrics": [
+        {
+          "percentage": "Centralized Knowledge",
+          "title": "Single Source of Truth",
+          "description": "All project information and documentation consolidated in one accessible location"
+        },
+        {
+          "percentage": "Time Saving",
+          "title": "Faster Information Access",
+          "description": "Significantly reduced time spent searching for technical guides and project details"
+        },
+        {
+          "percentage": "Team Collaboration",
+          "title": "Enhanced Knowledge Sharing",
+          "description": "Improved collaboration and knowledge transfer between team members and departments"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "IT & Data Management",
+        "keyTeamMembers": [
+          "Pantira S. - Software Engineer"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Docusaurus",
+          "description": "React-based static site generator for documentation websites",
+          "image": "https://i.postimg.cc/sgWYKYt1/docusaurus-logo.png"
+        },
+        {
+          "name": "React",
+          "description": "JavaScript library for building user interfaces",
+          "image": "https://i.postimg.cc/g0VkRSDf/react-logo.png"
+        },
+        {
+          "name": "TailwindCSS",
+          "description": "Utility-first CSS framework for rapid UI development",
+          "image": "https://i.postimg.cc/zGGz8gJZ/tailwind-logo.png"
+        },
+        {
+          "name": "MDX",
+          "description": "Markdown with JSX support for enhanced documentation",
+          "image": "https://i.postimg.cc/CKJGWj6M/mdx-logo.png"
+        },
+        {
+          "name": "Playwright",
+          "description": "End-to-end testing framework for web applications",
+          "image": "https://i.postimg.cc/dt5QYxB4/playwright-logo.png"
+        },
+        {
+          "name": "PostCSS",
+          "description": "CSS post-processor for transforming styles",
+          "image": "https://i.postimg.cc/jSkn8n8g/postcss-logo.png"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/SsPJTy22/Screenshot-2568-08-25-at-10-19-40.png",
+        "https://i.postimg.cc/d13hj71c/Screenshot-2568-08-25-at-10-19-50.png",
+        "https://i.postimg.cc/sgPGjd8q/Screenshot-2568-08-25-at-10-20-06.png",
+        "https://i.postimg.cc/GpqBDPbj/Screenshot-2568-08-25-at-10-19-57.png",
+        "https://i.postimg.cc/xd0JqpVC/Screenshot-2568-08-25-at-10-20-16.png"
       ]
+    },
+    {
+      "id": 3,
+      "title": "Enhance Security Microsoft 365 Services",
+      "image": "https://i.postimg.cc/RZSJmqbW/1.jpg",
+      "category": ["cloud", "security"],
+      "division": "it_dm",
+      "department": "it_dm",
+      "sections": {
+        "challenge": "The organization faced critical security and compliance challenges with Microsoft 365 Standard including weak account protection without MFA leaving accounts vulnerable to unauthorized access, unencrypted notebooks exposing sensitive data to theft risks, missing Intune, DLP, and Defender capabilities limiting threat protection, elevated security risks for critical users (Managers, Finance, Purchase, Sales, IT), and licensing limitations preventing compliance with cybersecurity and data protection standards.",
+        "solution": "A comprehensive security enhancement program was implemented in multiple phases: enforcing Multi-Factor Authentication (MFA) and conditional access policies across all user accounts, deploying BitLocker encryption on all notebooks and workstations for full-disk protection, upgrading 70 key users from Microsoft 365 Standard to Premium focusing on high-risk groups, activating Microsoft Intune for centralized device and policy management, implementing Data Loss Prevention (DLP) to protect sensitive information, deploying Microsoft Defender for advanced threat protection, and conducting security awareness training for all users on best practices and compliance requirements.",
+        "impact": "The security enhancement project delivered significant improvements including all accounts secured with MFA dramatically reducing unauthorized access risks, BitLocker encryption safeguarding sensitive endpoint data from theft and breaches, advanced Defender capabilities protecting against malware, ransomware, and phishing attacks, strengthened compliance posture meeting cybersecurity and data protection standards, centralized management through Intune ensuring consistent security policies, enhanced logging and monitoring for audit requirements, overall cyber risk significantly decreased across the organization, minimized potential for security incidents and business disruption, and increased employee awareness and confidence in security practices."
+      },
+      "metrics": [
+        {
+          "percentage": "100%",
+          "title": "MFA Adoption",
+          "description": "All user accounts are protected with Multi-Factor Authentication"
+        },
+        {
+          "percentage": "100%",
+          "title": "Device Encryption",
+          "description": "All notebooks encrypted with BitLocker"
+        },
+        {
+          "percentage": "70 Users",
+          "title": "Premium License Upgrade",
+          "description": "Key users upgraded to Microsoft 365 Premium"
+        },
+        {
+          "percentage": "Full",
+          "title": "Compliance Readiness",
+          "description": "Meets cybersecurity and data protection standards"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "Corporate IT Security & Management",
+        "keyTeamMembers": [
+          "Phongsaton V. - Sr.Officer IT"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Microsoft 365 Premium",
+          "description": "Advanced licensing with security features",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/2048px-Microsoft_logo.svg.png"
+        },
+        {
+          "name": "Multi-Factor Authentication (MFA)",
+          "description": "Account protection against unauthorized access",
+          "image": "https://i.postimg.cc/SxqWjWd0/mfa-icon.png"
+        },
+        {
+          "name": "BitLocker",
+          "description": "Notebook encryption for data protection",
+          "image": "https://i.postimg.cc/7LjN8Yqj/bitlocker-icon.png"
+        },
+        {
+          "name": "Microsoft Intune",
+          "description": "Device and policy management",
+          "image": "https://i.postimg.cc/VvzYKbMQ/intune-logo.png"
+        },
+        {
+          "name": "Microsoft Defender",
+          "description": "Threat protection against malware and phishing",
+          "image": "https://i.postimg.cc/9fP1SJNF/defender-logo.png"
+        },
+        {
+          "name": "Data Loss Prevention (DLP)",
+          "description": "Safeguard sensitive information",
+          "image": "https://i.postimg.cc/FzqNbJL5/dlp-icon.png"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/RZSJmqbW/1.jpg",
+        "https://i.postimg.cc/zGxbG590/2.png",
+        "https://i.postimg.cc/9fPHwFxP/3.png"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Wazuh SIEM & Endpoint Monitoring",
+      "image": "https://i.postimg.cc/HW3nkFXG/Image1.png",
+      "category": ["security"],
+      "division": "it_dm",
+      "department": "SOC & IT Security",
+      "sections": {
+        "challenge": "The organization lacked full visibility into endpoints and servers, relied on manual threat detection, and faced delays in incident response due to slow log analysis. Compliance with ISO and NIST was difficult without automated log collection and alerting. Additionally, the growing threat landscape (malware, ransomware, phishing) required timely and accurate detection.",
+        "solution": "Wazuh SIEM was deployed for real-time log collection and security event monitoring. Wazuh agents were installed on endpoints and servers to monitor activity and detect threats. Automated alerts and reporting were configured to accelerate response, and integration with SOC processes enhanced incident handling. Log collection and reporting were also aligned with compliance and audit requirements.",
+        "impact": "The implementation of Wazuh improved visibility across IT infrastructure, enabled faster incident response through automated alerts, and enhanced detection of modern threats. Compliance readiness was achieved with ISO 27001 and NIST standards, while business risks from cyberattacks and disruptions were significantly reduced."
+      },
+      "metrics": [
+        {
+          "percentage": "Real-Time",
+          "title": "Threat Visibility",
+          "description": "SOC team gains immediate insights into activities and risks"
+        },
+        {
+          "percentage": "50%+",
+          "title": "Incident Response Acceleration",
+          "description": "Automated alerts reduced response times by half"
+        },
+        {
+          "percentage": "Accurate",
+          "title": "Advanced Threat Detection",
+          "description": "Identifies malware, ransomware, and phishing attempts"
+        },
+        {
+          "percentage": "Full",
+          "title": "Compliance Readiness",
+          "description": "Aligned with ISO 27001, NIST, and audit requirements"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "SOC & IT Security Teams",
+        "keyTeamMembers": [
+          "Phongsaton V. - Sr.Officer IT"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Wazuh SIEM",
+          "description": "Log collection, monitoring, and threat detection"
+        },
+        {
+          "name": "Wazuh Agents",
+          "description": "Endpoint and server activity monitoring"
+        },
+        {
+          "name": "Automated Alerting & Reporting",
+          "description": "Real-time notifications and compliance reports"
+        },
+        {
+          "name": "SOC Playbooks",
+          "description": "Incident response and threat hunting integration"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/HW3nkFXG/Image1.png",
+        "https://i.postimg.cc/3wgJ5qYc/Image2.png",
+        "https://i.postimg.cc/bJgyd2G0/Image3.png"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Windows Server Upgrade 2012R2 to 2025",
+      "image": "https://i.postimg.cc/Z5kyQzX1/2.png",
+      "category": ["infrastructure", "security"],
+      "division": "it_dm",
+      "department": "IT Operations",
+      "sections": {
+        "challenge": "Windows Server 2012R2 has reached End of Support (EOS), meaning no more security patches, higher risks of vulnerabilities, compatibility issues with modern tools, operational inefficiency due to missing new features, and difficulty in meeting compliance requirements.",
+        "solution": "The organization upgraded AD Servers (AD1, AD2), File Share, Entra Connect, and WSUS to Windows Server 2025. A detailed migration plan and testing were conducted to minimize downtime, along with system hardening to align with modern security standards. The upgraded environment now supports integration with Microsoft 365, Azure AD, Intune, and Microsoft Defender, while centralized management and monitoring tools improve operations.",
+        "impact": "The migration significantly improved system security, performance, and stability. The infrastructure is now compliant with ISO 27001 and NIST standards, integrates seamlessly with modern cloud services, and is future-proof for expansion and upcoming IT services."
+      },
+      "metrics": [
+        {
+          "percentage": "100%",
+          "title": "Security Patching",
+          "description": "Continuous updates reduce vulnerability risks"
+        },
+        {
+          "percentage": "30%+",
+          "title": "Performance Improvement",
+          "description": "Better support for workloads and enhanced system stability"
+        },
+        {
+          "percentage": "Full",
+          "title": "Compliance Readiness",
+          "description": "Aligned with ISO 27001 and NIST standards"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "IT Infrastructure & Security",
+        "keyTeamMembers": [
+          "Phongsaton V. - Sr.Officer IT"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Windows Server 2025",
+          "description": "Core OS upgrade for AD, File Share, WSUS"
+        },
+        {
+          "name": "Azure AD / Entra Connect",
+          "description": "Identity and Access Management"
+        },
+        {
+          "name": "Microsoft Intune",
+          "description": "Device and Policy Management"
+        },
+        {
+          "name": "Microsoft Defender",
+          "description": "Security & Threat Protection"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/Z5kyQzX1/2.png",
+        "https://i.postimg.cc/BZk88GZX/1.jpg",
+        "https://i.postimg.cc/d1X0T8Yz/3.png"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Endpoint Security Upgrade Kaspersky EDR",
+      "image": "https://i.postimg.cc/L5v20VQC/1.png",
+      "category": ["security", "cybersecurity"],
+      "division": "it_dm",
+      "department": "IT Security",
+      "sections": {
+        "challenge": "Traditional antivirus lacked advanced threat detection, visibility, and rapid response, leaving risks of ransomware, phishing, fileless attacks, and compliance gaps.",
+        "solution": "1. Upgrade to Kaspersky EDR with behavioral analysis\n2. Threat Hunting & Forensics for endpoint activity\n3. Automated Response with isolation & remediation\n4. Centralized Management Console for all endpoints\n5. Integration with SOC for investigation workflows",
+        "impact": "Improved protection against ransomware and zero-day threats, faster incident response, better visibility and control, compliance with ISO 27001/NIST, and stronger business continuity."
+      },
+      "metrics": [
+        {
+          "percentage": "90%",
+          "title": "Threat Detection",
+          "description": "Behavioral and advanced analytics coverage"
+        },
+        {
+          "percentage": "70% faster",
+          "title": "Incident Response",
+          "description": "Automated isolation and remediation"
+        },
+        {
+          "percentage": "100%",
+          "title": "Audit Readiness",
+          "description": "Compliance with ISO/NIST standards"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "IT Security & SOC Team",
+        "keyTeamMembers": [
+          "Thitison C. - IT Security Officer"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "Kaspersky EDR",
+          "description": "Endpoint Detection & Response platform"
+        },
+        {
+          "name": "Centralized Management Console",
+          "description": "Unified endpoint security monitoring"
+        }
+      ],
+      "vendors": ["Kaspersky"],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/L5v20VQC/1.png",
+        "https://i.postimg.cc/SQGSsyQ6/2.jpg",
+        "https://i.postimg.cc/PrrtvBNB/image3.png"
+      ]
+    },
+      {
+        "id": 7,
+        "title": "Server Room Availability & Safety",
+        "image": "https://i.postimg.cc/kM1s63KY/1.jpg",
+        "category": ["infrastructure", "security"],
+        "division": "it_dm",
+        "department": "IT Operations",
+        "sections": {
+          "challenge": "High risks including fire, weak structural protection, unauthorized access, water leakage, and lack of surveillance, leading to potential downtime, data loss, and compliance gaps.",
+          "solution": "1. Fire Suppression System (NOVEC) for IT equipment\n2. Fireproof Wall & Insulation per data center standards\n3. Smart Access Control (card/biometric)\n4. Water Leak Detection sensors with real-time alerts\n5. CCTV & Monitoring for evidence and incident review",
+          "impact": "Reduced downtime risks, enhanced data security, improved compliance readiness (ISO 27001, NIST), high availability environment, and audit-ready logs with CCTV and access control."
+        },
+        "metrics": [
+          {
+            "percentage": "99.9%",
+            "title": "High Availability",
+            "description": "Server room environment resilience"
+          },
+          {
+            "percentage": "100%",
+            "title": "Access Control Compliance",
+            "description": "Logs and audit-ready evidence"
+          },
+          {
+            "percentage": "ISO 27001",
+            "title": "Compliance Standard",
+            "description": "Aligned with industry regulations"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "IT Infrastructure & Security",
+          "keyTeamMembers": [
+           "Thitison C. - IT Security Officer"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "NOVEC Fire Suppression",
+            "description": "Automatic fire suppression for IT rooms"
+          },
+          {
+            "name": "Smart Access Control",
+            "description": "Biometric & card-based access control"
+          },
+          {
+            "name": "Water Leak Sensors",
+            "description": "Real-time detection and alerts"
+          },
+          {
+            "name": "CCTV Monitoring System",
+            "description": "Security and incident evidence"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/kM1s63KY/1.jpg",
+          "https://i.postimg.cc/3JkB2SZ8/2.jpg",
+          "https://i.postimg.cc/G2MFyG8T/3.png"
+        ]
+      },
+      {
+        "id": 8,
+        "title": "External Backup DR Site by Veeam",
+        "image": "https://i.postimg.cc/Cx6qhS8S/1.png",
+        "category": ["infrastructure", "security"],
+        "division": "it_dm",
+        "department": "IT Operations",
+        "sections": {
+          "challenge": "Incomplete DR site backup systems created business continuity risks. Recovery was slow, data loss risk was high, and compliance requirements were not met.",
+          "solution": "A DR Site was established with high-performance storage. Veeam managed centralized backup, replication, and recovery, with automated schedules meeting RPO 6 hours. DR tests were conducted regularly to ensure RTO 2 hours compliance.",
+          "impact": "The DR site provided reliable disaster recovery with faster recovery times (RTO 2h) and reduced data loss (RPO 6h). Centralized management improved efficiency, while compliance and audit readiness were achieved."
+        },
+        "metrics": [
+          {
+            "percentage": "RPO 6h",
+            "title": "Data Loss Protection",
+            "description": "Replication meets recovery point objective"
+          },
+          {
+            "percentage": "RTO 2h",
+            "title": "Recovery Time Objective",
+            "description": "Full recovery achievable within SLA"
+          },
+          {
+            "percentage": "100%",
+            "title": "Compliance Readiness",
+            "description": "Meets audit and regulatory standards"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "IT Operations & Business Continuity",
+          "keyTeamMembers": [
+            "Haripong D. - Chief Information Security Officer"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "Veeam Backup & Replication",
+            "description": "Backup, replication, and DR solution"
+          },
+          {
+            "name": "DR Site Storage",
+            "description": "High-performance storage for DR workloads"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/Cx6qhS8S/1.png",
+          "https://i.postimg.cc/XvGyXmKF/2.png",
+          "https://i.postimg.cc/HLq8Mz3N/3.png"
+        ]
+      },
+      {
+        "id": 9,
+        "title": "PAM Privileged Access Management",
+        "image": "https://i.postimg.cc/Xvk6K7g0/1.png",
+        "category": ["security", "identity"],
+        "division": "it_dm",
+        "department": "IT Security",
+        "sections": {
+          "challenge": "High-level privileged accounts (Admin, Root) were not controlled, creating risks of unauthorized access, credential misuse, and insider threats. Manual password management made policy enforcement difficult, while lack of monitoring hindered ISO and NIST compliance.",
+          "solution": "A PAM solution was deployed to centrally manage privileged accounts with a secure password vault. Privileged sessions were monitored and recorded, while automated access controls enforced time-bound permissions. Audit and compliance reports were generated to support ISO 27001, NIST, and regulatory audits.",
+          "impact": "The project reduced security risks from uncontrolled privileged access, improved audit readiness, and strengthened insider threat protection. Automated workflows increased operational efficiency by eliminating manual password management."
+        },
+        "metrics": [
+          {
+            "percentage": "80%+",
+            "title": "Risk Reduction",
+            "description": "Minimized unauthorized privileged access"
+          },
+          {
+            "percentage": "100%",
+            "title": "Centralized Control",
+            "description": "Privileged accounts managed via PAM"
+          },
+          {
+            "percentage": "Full",
+            "title": "Audit Readiness",
+            "description": "Aligned with ISO 27001 and NIST"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "IT Security & Compliance",
+          "keyTeamMembers": [
+            "Haripong D. - Chief Information Security Officer"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "PAM Solution",
+            "description": "Privileged access management system"
+          },
+          {
+            "name": "Password Vault",
+            "description": "Centralized encrypted password storage"
+          },
+          {
+            "name": "Session Recording",
+            "description": "Monitoring and recording of privileged activity"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/Xvk6K7g0/1.png",
+          "https://i.postimg.cc/MTZ292sf/2.png",
+          "https://i.postimg.cc/W39RKWKW/3.png"
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Internal Backup StoreOnce by Veeam",
+        "image": "https://i.postimg.cc/vZMs4VWv/1.png",
+        "category": ["infrastructure", "security"],
+        "division": "it_dm",
+        "department": "IT Operations",
+        "sections": {
+          "challenge": "Existing backup systems were aging, unreliable, and slow. Backup jobs often failed, creating risks of data loss, SLA breaches, and compliance gaps. Meeting RPO 24 hours and RTO 2 hours was difficult.",
+          "solution": "StoreOnce storage was deployed with Veeam Backup for centralized management of backups, replication, and recovery. Automated schedules improved reliability, while compliance reports ensured SLA alignment with RPO 24h and RTO 2h.",
+          "impact": "Backup reliability and performance improved. Recovery times were reduced to within SLA, data protection compliance was achieved, and centralized monitoring improved IT operational efficiency."
+        },
+        "metrics": [
+          {
+            "percentage": "100%",
+            "title": "Backup Reliability",
+            "description": "Stable backups with StoreOnce + Veeam"
+          },
+          {
+            "percentage": "RPO 24h / RTO 2h",
+            "title": "SLA Compliance",
+            "description": "Meets recovery objectives for business continuity"
+          },
+          {
+            "percentage": "Centralized",
+            "title": "Management",
+            "description": "Single-pane management for all backups"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "IT Operations & Compliance",
+          "keyTeamMembers": [
+           "Haripong D. - Chief Information Security Officer"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "HPE StoreOnce",
+            "description": "Backup storage appliance"
+          },
+          {
+            "name": "Veeam Backup & Replication",
+            "description": "Backup and recovery solution"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/vZMs4VWv/1.png",
+          "https://i.postimg.cc/3xBHmx1Q/2.png",
+          "https://i.postimg.cc/q7DVDDWm/3.png"
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Replacement VMware Servers",
+        "image": "https://i.postimg.cc/qvQMzzn2/1.png",
+        "category": ["infrastructure", "virtualization"],
+        "division": "it_dm",
+        "department": "Data Center",
+        "sections": {
+          "challenge": "Aging VMware servers caused reduced performance, downtime risks, insufficient capacity, and unsupported versions vulnerable to security threats.",
+          "solution": "New VMware servers were procured and deployed. Virtual machines were migrated to the new infrastructure, and VMware ESXi/vCenter were upgraded to the latest versions. High Availability (HA), vMotion, and redundancy were configured with security hardening applied.",
+          "impact": "System performance and capacity improved significantly. Downtime was minimized with HA and modern VMware features, while infrastructure was secured and future-proofed for expansion."
+        },
+        "metrics": [
+          {
+            "percentage": "2x",
+            "title": "Performance Increase",
+            "description": "Faster workloads with upgraded hardware"
+          },
+          {
+            "percentage": "99.9%",
+            "title": "System Availability",
+            "description": "Reduced downtime risk with HA and redundancy"
+          },
+          {
+            "percentage": "Future-Ready",
+            "title": "Infrastructure",
+            "description": "Supports new VMware features and cloud integration"
+          }
+        ],
+        "aboutProject": {
+          "stakeholder": "Infrastructure & Data Center",
+          "keyTeamMembers": [
+            "Haripong D. - Chief Information Security Officer"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "VMware ESXi",
+            "description": "Hypervisor for virtualized workloads"
+          },
+          {
+            "name": "vCenter",
+            "description": "Centralized management and monitoring"
+          },
+          {
+            "name": "vMotion & HA",
+            "description": "High Availability and live migration features"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/qvQMzzn2/1.png",
+          "https://i.postimg.cc/g0JcRmqQ/2.png",
+          "https://i.postimg.cc/Gp5LxVX2/3.jpg"
+        ]
+      },
+      {
+        "id": 12,
+        "title": "PPC Dashboard",
+        "image": "https://i.postimg.cc/tgQPZZG5/image-1.png",
+        "category": ["cloud"],
+        "division": "production-procurement",
+        "department": "Production Control",
+        "sections": {
+          "challenge": "The Battery Production team handles planning, production, and delivery through manual processing to monitor available raw materials, stock, production, inventory, and shipping, using an ERP tool with additional Query processing in SQL Database and Excel for manual data calculation. This manual process takes a long time to summarize information and uses a large amount of paper (9,604 sheets per year), creating a tedious workflow that could be automated with a reporting dashboard to make data representations easier to understand.",
+          "solution": "The solution consists of three major components including data migration to move data from on-premises to the cloud environment, data pipelines to process and curate the data, and visualization reports to show curated data insightfully according to business needs, fully leveraging the AWS cloud service stack to ensure seamless integration and scalability.",
+          "impact": "Migrating data from on-premise to the cloud and adopting AWS QuickSight brought significant benefits by reducing manual summary time around 10 minutes per person, enabling scalable high-performance data storage and analytics, providing faster access to insights through self-service interactive dashboards with seamless integration into AWS services such as Redshift and S3, allowing business users to benefit from single source data, collaborative analytics and built-in machine learning for forecasting and anomaly detection, reducing IT teams' time spent managing BI infrastructure, and improving efficiency, agility, accessibility while enhancing security, compliance, and long-term scalability."
+        },
+        "metrics": [
+        {
+          "percentage": "70%",
+          "title": "Time Reduction",
+          "description": "Reduced time summary time from 10 to 3 minutes"
+        },
+        {
+          "percentage": "100%",
+          "title": "Error Reduction",
+          "description": "Minimized human error in data summary"
+        }
+      ],
+        "aboutProject": {
+          "stakeholder": "Supply Chain & Manufacturing",
+          "keyTeamMembers": [
+            "Nisarat H. - Data Strategy Operation (GS PM)",
+            "Hafiz Janitra R. - Xtremax PM",
+            "Aldi Chisty - Xtremax Member",
+            "Atho' Novian A. - Xtremax Member",
+            "Laras Ervintyana D - Xtremax Member",
+            "Jitprasert C. - Xtremax Member"
+          ]
+        },
+        "implementationTools": [
+          {
+            "name": "AWS S3",
+            "description": "Amazon Simple Storage Service",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Amazon-S3-Logo.svg/1712px-Amazon-S3-Logo.svg.png"
+          },
+          {
+            "name": "AWS Lambda",
+            "description": "Formatter / ETL",
+            "image": "https://img.icons8.com/color/600/awslambda.png"
+          },
+          {
+            "name": "Amazon Redshift",
+            "description": "Data Warehouse Management",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Amazon-Redshift-Logo.svg/1862px-Amazon-Redshift-Logo.svg.png"
+          },
+          {
+            "name": "Amazon QuickSight",
+            "description": "Business analytics",
+            "image": "https://cdn.worldvectorlogo.com/logos/amazon-quicksight.svg"
+          }
+        ],
+        "vendors": [],
+        "files": [],
+        "projectImages": [
+          "https://i.postimg.cc/tgQPZZG5/image-1.png",
+          "https://i.postimg.cc/fR0mR7py/image-2.png",
+          "https://i.postimg.cc/MG7By6W8/image-3.png",
+          "https://i.postimg.cc/nzTQP3jR/MVP-Planning-AS-IS-drawio.png",
+          "https://i.postimg.cc/QtjTm2tK/Screenshot-2025-08-18-082305.png"
+        ]
+      },
+      {
+      "id": 13,
+      "title": "Kaizen Online System",
+      "image": "https://i.postimg.cc/gj9F03FJ/Screenshot-2568-10-16-at-13-22-18.png",
+      "websiteUrl": "https://kaizen-online.up.railway.app/",
+      "category": ["business"],
+      "division": "it_dm",
+      "department": "it_dm",
+      "sections": {
+        "challenge": "The Kaizen suggestion and improvement tracking process was manual and paper-based, creating significant inefficiencies. The process took a long time to summarize information and consumed a large amount of paper with total usage of 9,604 sheets per year. This manual approach made it difficult to track improvement project status, delayed approval workflows, and lacked a centralized system to manage employee submissions and track implementation progress across the organization.",
+        "solution": "Developed an online Kaizen submission system that replaced paper forms with web input, integrated approval workflow including pre-approval before Kaizen Team, and centralized all Kaizen documents in a single digital platform, providing streamlined submission, tracking, and approval processes with clear workflow steps to reduce errors and delays.",
+        "impact": "The online system enables faster Kaizen submission and approval, completely eliminated paper usage achieving a fully digital workflow (0 sheets per year), created a centralized platform that improves tracking and accessibility, and established clear approval steps that reduce errors and delays, resulting in employees spending only 5 minutes per person per month to fill forms, supervisor approval completed within 1 hour, and data summarization reduced to 0.16 hours per person per month."
+      },
+      "metrics": [
+        {
+          "percentage": "0 sheets/year",
+          "title": "Paper Usage",
+          "description": "Complete elimination of paper (from 9,604 sheets/year)"
+        },
+        {
+          "percentage": "5 min",
+          "title": "Form Filling Time",
+          "description": "Time per person per month to submit Kaizen"
+        },
+        {
+          "percentage": "0.16 hr",
+          "title": "Data Summarization",
+          "description": "Time per person per month for data summary"
+        }
+      ],
+      "aboutProject": {
+        "stakeholder": "Kaizen Team",
+        "keyTeamMembers": [
+          "Nisarat H. - Data Strategy Operation",
+          "Rachanok R. - Project Management Officer",
+          "Pantira S. - Software Engineer"
+        ]
+      },
+      "implementationTools": [
+        {
+          "name": "React",
+          "description": "Frontend UI Framework",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+        },
+        {
+          "name": "Node.js & Express",
+          "description": "Backend API Server",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg"
+        },
+        {
+          "name": "TypeScript",
+          "description": "Type-Safe Development",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"
+        },
+        {
+          "name": "Supabase",
+          "description": "Cloud Database & Backend Services",
+          "image": "https://avatars.githubusercontent.com/u/54469796?s=200&v=4"
+        },
+        {
+          "name": "Tailwind CSS",
+          "description": "UI Styling Framework",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+        },
+        {
+          "name": "Chart.js",
+          "description": "Data Visualization",
+          "image": "https://www.chartjs.org/img/chartjs-logo.svg"
+        }
+      ],
+      "vendors": [],
+      "files": [],
+      "projectImages": [
+        "https://i.postimg.cc/gj9F03FJ/Screenshot-2568-10-16-at-13-22-18.png",
+        "https://i.postimg.cc/nr8bLq8g/Screenshot-2568-10-16-at-13-23-10.png",
+        "https://i.postimg.cc/XqMSv9SY/Screenshot-2568-10-16-at-13-22-30.png",
+        "https://i.postimg.cc/5ycdt8dN/Screenshot-2568-10-16-at-13-22-04.png",
+        "https://i.postimg.cc/26LNm2JR/Screenshot-2568-10-16-at-13-23-39.png"
+      ]
+      } 
+  ]
 } 

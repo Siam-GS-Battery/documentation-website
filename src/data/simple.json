@@ -1,12 +1,160 @@
 {
+  "mainCategories": [
+    {
+      "id": "aws-general-guide",
+      "title": "AWS General User Guide",
+      "description": "Complete guide for AWS services and best practices",
+      "subcategories": [
+        {
+          "id": "4",
+          "title": "Access EC2 Instance",
+          "description": "Guide to accessing and managing EC2 instances",
+          "path": "Datamanagement/AWS General User Guide/Access EC2 Instance"
+        },
+        {
+          "id": "3",
+          "title": "Amazon Simple Storage Service",
+          "description": "How to use AWS S3 for file storage and management",
+          "path": "Datamanagement/AWS General User Guide/Amazon Simple Storage Service"
+        },
+        {
+          "id": "2",
+          "title": "AWS Command Line Interface",
+          "description": "Guide for using AWS CLI tools and commands",
+          "path": "Datamanagement/AWS General User Guide/AWS Command Line Interface"
+        },
+        {
+          "id": "7",
+          "title": "Business as Usual Operation",
+          "description": "Standard operational procedures for AWS management",
+          "path": "Datamanagement/AWS General User Guide/Business as Usual Operation"
+        },
+        {
+          "id": "1",
+          "title": "General Information",
+          "description": "General information about AWS services and usage",
+          "path": "Datamanagement/AWS General User Guide/General Information"
+        },
+        {
+          "id": "5",
+          "title": "QuickSight",
+          "description": "Business intelligence service for data visualization",
+          "path": "Datamanagement/AWS General User Guide/QuickSight"
+        },
+        {
+          "id": "6",
+          "title": "Redshift",
+          "description": "Data warehouse service for big data analytics",
+          "path": "Datamanagement/AWS General User Guide/redshift"
+        }
+      ]
+    },
+    {
+      "id": "aws-quicksight-ppc-guide",
+      "title": "AWS QuickSight PPC Dashboard User Guide",
+      "description": "Complete guide for Production Planning Dashboard on AWS QuickSight platform",
+      "subcategories": [
+        {
+          "id": "11",
+          "title": "General Information",
+          "description": "Introduction and overview of the Production Planning Dashboard project",
+          "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/General Information"
+        },
+        {
+          "id": "12",
+          "title": "Data Source & Update Notice",
+          "description": "Guidelines for data source management and update procedures",
+          "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/Data Source and Update Notice"
+        },
+        {
+          "id": "13",
+          "title": "How to Setting Dashboard",
+          "description": "Configuration guide for customizing dashboard visuals and parameters",
+          "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/How to Setting Dashboard"
+        }
+      ]
+    }
+  ],
   "documents": [
     {
       "id": "1",
-      "title": "AWS General Information",
+      "title": "General Information",
       "description": "General information about AWS services and usage",
       "categories": ["datamanagement", "cloud"],
       "division": "datamanagement",
       "path": "Datamanagement/AWS General User Guide/General Information"
+    },
+    {
+      "id": "2",
+      "title": "AWS Command Line Interface",
+      "description": "Guide for using AWS CLI tools and commands",
+      "categories": ["datamanagement", "cloud"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS General User Guide/AWS Command Line Interface"
+    },
+    {
+      "id": "3",
+      "title": "Amazon Simple Storage Service",
+      "description": "How to use AWS S3 for file storage and management",
+      "categories": ["datamanagement", "cloud"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS General User Guide/Amazon Simple Storage Service"
+    },
+    {
+      "id": "4",
+      "title": "Access EC2 Instance",
+      "description": "Guide to accessing and managing EC2 instances",
+      "categories": ["datamanagement", "cloud"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS General User Guide/Access EC2 Instance"
+    },
+    {
+      "id": "5",
+      "title": "QuickSight",
+      "description": "Business intelligence service for data visualization",
+      "categories": ["datamanagement", "cloud"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS General User Guide/QuickSight"
+    },
+    {
+      "id": "6",
+      "title": "Redshift",
+      "description": "Data warehouse service for big data analytics",
+      "categories": ["datamanagement", "cloud"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS General User Guide/redshift"
+    },
+    {
+      "id": "7",
+      "title": "Business as Usual Operation",
+      "description": "Standard operational procedures for AWS management",
+      "categories": ["datamanagement", "cloud"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS General User Guide/Business as Usual Operation"
+    },
+    {
+      "id": "11",
+      "title": "General Information",
+      "description": "Introduction and overview of the Production Planning Dashboard project",
+      "categories": ["datamanagement", "business"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/General Information"
+    },
+    {
+      "id": "12",
+      "title": "Data Source & Update Notice",
+      "description": "Guidelines for data source management and update procedures",
+      "categories": ["datamanagement", "business"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/Data Source and Update Notice"
+    },
+    {
+      "id": "13",
+      "title": "How to Setting Dashboard",
+      "description": "Configuration guide for customizing dashboard visuals and parameters",
+      "categories": ["datamanagement", "business"],
+      "division": "datamanagement",
+      "path": "Datamanagement/AWS QuickSight PPC Dashboard User Guide/How to Setting Dashboard"
     }
   ],
   "categorizationRules": {
@@ -16,6 +164,9 @@
       "EC2": ["datamanagement", "cloud"],
       "Redshift": ["datamanagement", "cloud"],
       "QuickSight": ["datamanagement", "cloud"],
+      "PPC Dashboard": ["datamanagement", "cloud"],
+      "Dashboard": ["datamanagement", "cloud"],
+      "Production Planning": ["datamanagement", "cloud"],
       "CLI": ["datamanagement", "cloud"],
       "Database": ["datamanagement"],
       "Data": ["datamanagement"],
