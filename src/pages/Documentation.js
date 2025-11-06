@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Layout from '@theme/Layout';
-import styles from './Documentation.module.css';
-import { Link } from 'react-router-dom';
+import styles from './documentation.module.css';
+import Link from '@docusaurus/Link';
 import projectData from '../data/simple.json';
 
 const divisions = [

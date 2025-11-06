@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from '@docusaurus/router';
-import { FiDownload, FiArrowLeft, FiUser, FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiDownload, FiArrowLeft, FiUser, FiX, FiChevronLeft, FiChevronRight, FiExternalLink } from 'react-icons/fi';
 import { 
   AiFillFilePdf, 
   AiFillFileWord, 
@@ -36,7 +36,7 @@ import {
   SiKaspersky
 } from 'react-icons/si';
 import projectData from '../data/documents.json';
-import styles from './Project-detail.module.css';
+import styles from './project-detail.module.css';
 
 const getToolIcon = (toolName) => {
   if (!toolName) return null;
@@ -152,8 +152,24 @@ const getToolIcon = (toolName) => {
     return <img src="https://cdn-icons-png.flaticon.com/512/1827/1827422.png" alt="Alerting" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
   }
   // Data Loss Prevention
-  if (name.includes('dlp') || name.includes('data loss prevention')) {
-    return <img src="https://img.freepik.com/premium-vector/data-loss-prevention-icon-vector-image-can-be-used-risk-management_120816-116925.jpg" alt="DLP" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  if (name.includes('dlp') || name.includes('data loss prevention') || name.includes('data loss')) {
+    return <img src="https://img.icons8.com/color/512/data-protection.png" alt="DLP" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Multi-Factor Authentication (MFA)
+  if (name.includes('mfa') || name.includes('multi-factor') || name.includes('authentication')) {
+    return <img src="https://img.icons8.com/color/512/security-checked.png" alt="MFA" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // BitLocker
+  if (name.includes('bitlocker') || name.includes('encryption')) {
+    return <img src="https://img.icons8.com/color/512/lock.png" alt="BitLocker" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Microsoft Intune
+  if (name.includes('intune') || name.includes('device management')) {
+    return <img src="https://img.icons8.com/color/512/microsoft-admin.png" alt="Microsoft Intune" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
+  }
+  // Microsoft Defender
+  if (name.includes('defender') || name.includes('threat protection')) {
+    return <img src="https://img.icons8.com/color/512/security-shield-green.png" alt="Microsoft Defender" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />;
   }
   // Centralized Management
   if (name.includes('centralized') || name.includes('management console')) {
@@ -598,6 +614,25 @@ export default function ProjectDetail() {
                         </div>
                       );
                     })}
+                  </div>
+                  <hr className={styles.divider} />
+                </>
+              )}
+
+              {/* Website Link - Show only if websiteUrl exists */}
+              {project.websiteUrl && (
+                <>
+                  <div>
+                    <div className={styles.sidebarTitle}>Website</div>
+                    <a
+                      href={project.websiteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.websiteLink}
+                    >
+                      <FiExternalLink />
+                      <span>Visit Website</span>
+                    </a>
                   </div>
                   <hr className={styles.divider} />
                 </>
